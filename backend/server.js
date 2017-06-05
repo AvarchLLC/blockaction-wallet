@@ -6,6 +6,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
+const path = require('path');
 
 let config = require('./config/config');
 let routes = require('./routes');
@@ -17,9 +18,13 @@ let app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}));
 
+
 app.use('/',routes)
 
 let server = http.createServer(app);
+
+app.use(express.static(path.join(__dirname, 'public')))
+
 
 server.listen(config.port);
 
