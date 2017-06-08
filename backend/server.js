@@ -7,14 +7,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const path = require('path');
-
+const dbHelper = require('./helpers/database.helper');
 let config = require('./config/config');
 let routes = require('./routes');
 
 
-
 let app = express();
-
+dbHelper.init(app);
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -59,12 +58,10 @@ server.on('listening', ()=>{
     let addr = server.address()
     let bind = typeof addr === 'string'
     ? 'pipe' + addr
-        : 'port' + addr.port
-
+        : 'port' + addr.port;
     if(process.env.Node_ENV !== 'test') {
         console.log('Wallet Server listening on ' + bind, {})
     }
-
 })
 
 module.exports = app;

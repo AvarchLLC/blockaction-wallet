@@ -1,12 +1,12 @@
 'use strict';
-function({ {
+
     module.exports = {
         development: {
-            username: 'wallet',
-            password: 'wallet',
+            username: 'ebrwallet',
+            password: 'ebrwallet',
             host: 'localhost',
             port: '27017',
-            dbName: 'ebrwaller'
+            dbName: 'prj_ebrwallet'
         },
         production: {
             username: 'wallet',
@@ -24,6 +24,6 @@ function({ {
 
         }
     };
-})();
+
 
 
