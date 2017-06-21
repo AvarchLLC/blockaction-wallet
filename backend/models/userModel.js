@@ -19,9 +19,19 @@
         lastName: {
             type: String, trim: true
         },
+        city:{
+          type: String,
+            trim:true,
+            required:true
+        },
+        state:{
+            type:String,
+            trim:true
+        },
         country: {
             type: String,
-            trim: true
+            trim: true,
+            required:true
         },
         email: {
             type: String,
@@ -52,27 +62,11 @@
         passwordSalt: {
             type: String
         },
-        phoneNumber: {
+        phone: {
             type: String,
             trim: true
         },
-        mobileNumber: {
-            type: String,
-            trim: true
-        },
-        securityQuestion: {
-            type: String,
-            trim: true
-        },
-        securityAnswer: {
-            type: String,
-            trim: true
-        },
-        securityAnswerSalt: {
-            type: String,
-            trim: true
-        },
-        active: {
+       ative: {
             type: Boolean,
             default: true
         },
@@ -81,32 +75,14 @@
             trim: true,
             required: true
         },
-        imageName: {
-            type: String,
-            trim: true
-        },
         twoFactorAuthEnabled: {
             type: Boolean,
-            default: false
+            default: false,
         },
         twoFactorAuthSharedSecret: {
             type: String,
-            trim: true
-        },
-        addedBy: {
-            type: String,
-            trim: true
-        },
-        addedOn: {
-            type: Date,
-            default: Date.now
-        },
-        updatedBy: {
-            type: String,
-            trim: true
-        },
-        updatedOn: {
-            type: Date
+            trim: true,
+            default:null
         },
         deleted: {
             type: Boolean,
@@ -123,34 +99,8 @@
             type: Boolean,
             default: false
         },
-        blockedBy: {
-            type: String,
-            trim: true
-        },
         blockedOn: {
             type: Date
-        },
-        imageProperties: {
-            imageExtension: {
-                type: String,
-                trim: true
-            },
-            imagePath: {
-                type: String,
-                trim: true
-            }
-        },
-        userConfirmed: {
-            type: Boolean,
-            default: false
-        },
-        referredToken: {
-            type: String,
-            trim: true
-        },
-        token: {
-            type: String,
-            required: true
         }
     });
 
