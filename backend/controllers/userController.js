@@ -9,6 +9,7 @@
     const passwordModule = require('../lib/passwordGenerator');
     const async = require('asyncawait/async');
     const await = require('asyncawait/await');
+    const tokenModule = require('../lib/tokenGenerator');
 
 
     module.exports = {
@@ -55,7 +56,7 @@
         register: async((req,res,next)=>{
 
             req.userData.passwordSalt = await(passwordModule.generateSalt());
-            req.userData.password = await(passwordModule.generatePassword(req.userData.passwordSalt))
+            req.userData.password = await(passwordModule.generatePassword(req.userData.password,req.userData.passwordSalt))
 
             let newUser = new User(req.userData)
 
@@ -73,5 +74,56 @@
                 }
             })
 
-        })
+        }),
+
+        collectToAuthenticate: (req,res,next)=>{
+            let collectInstance = new collect();
+            collectInstance.setBody([
+                'username',
+                'password'])
+
+            collectInstance.setMandatoryFields({
+                username: 'Username is not provided',
+                password: 'password is not provided'
+            })
+
+            collectInstance.collect(req).then((data)=>{
+                    req.userCredential = data
+                    next();
+            }).
+                catch((err)=>{
+                err.status =400
+                next(err)
+            })
+        },
+
+        authenticate: (req,res,next)=>{
+            if(req.userCredential.username && req.userCredential.password){
+                    User.findOne({
+                        username: req.userCredential.username
+                    }).then((data)=>{
+                        passwordModule.generatePassword(req.userCredential.password,data.passwordSalt).then((response)=>{
+                            const token = tokenModule.generateJWT(data);
+                            if(response == data.password && (token && token.length)){
+                                console.log(data)
+                                req.cdata = {
+                                    success:1,
+                                    message:"User Authenticated Successfully",
+                                    token:token,
+                                }
+                                next();
+                            }
+                            else{
+                                req.cdata ={
+                                    success:0,
+                                    error:1,
+                                    message:"Username/Password Invalid",
+                                }
+                                next();
+                            }
+                        })
+                    })
+
+            }
+        }
     }

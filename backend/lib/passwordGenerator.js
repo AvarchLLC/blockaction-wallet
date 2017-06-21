@@ -7,34 +7,31 @@ module.exports ={
     generateSalt:()=>{
         let date = new Date()
         date = JSON.stringify(Math.floor(date/1000));
+        return new Promise((resolve,reject)=>{
+            bcrypt.genSalt(12,(err,salt)=>{
+                bcrypt.hash(date,salt,(err,hash)=>{
+                    if(hash){
+                        resolve(hash)
+                    }
+                })
+            })
+        }).catch((error)=>{
+            console.log(error);
+        })
 
-            var sha = crypto.createHash('sha1');
-            var preHash = sha.update(date)
-            var passwordSalt = preHash.digest('hex')
-
-
-        console.log("here",passwordSalt)
-        return passwordSalt
         // req.userDetail.passwordSalt = passwordSalt
 
     },
 
-    generatePassword: (passwordSalt)=>{
-        // console.log("________",passwordSalt)
+    generatePassword: (passphrase,passwordSalt)=>{
         return new Promise((resolve,reject)=>{
-            bcrypt.hash(passwordSalt,10,(err,hash)=>{
-                if(hash){
-                    console.log("&&&&",hash)
-                    // return hash
-                    resolve(hash)
-                }
-                else if(err){
-                    reject(err)
-                }
-                else{
-                    reject("Password Module: Unexpected Error at Password Generator")
-                }
-            })
+          bcrypt.hash(passphrase,passwordSalt,(err,hash)=>{
+              if(hash){
+                  resolve(hash)
+              }
+          })
+        }).catch((e)=>{
+            console.log(e)
         })
     }
 }

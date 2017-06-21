@@ -8,5 +8,8 @@ let dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-    port: process.env.PORT || 1234
+    port: process.env.PORT || 1234,
+    jwt:{
+        jwtSecret:'YouShallNotPass'
+    }
 }
