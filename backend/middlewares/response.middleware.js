@@ -9,6 +9,7 @@ module.exports = {
         res.json(req.cdata)
     },
     error:(err,req,res,next)=>{
+        console.log(err)
         if(!err){
             err = new Error('An Error has occured');
         }
@@ -20,7 +21,7 @@ module.exports = {
         if(code !==404 && code !==403){
             if(err.stack){
                 if(process.env.NODE_ENV !=='test'){
-                    console.log(itil.inspect(err.stack));
+                    console.log(util.inspect(err.stack));
                 }
             }
         }

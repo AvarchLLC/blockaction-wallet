@@ -88,11 +88,12 @@ module.exports = class collectClass {
         return new Promise((resolve,reject)=>{
             let errorArray=[];
             for (var entry in this.mandatoryFields){
-                if(!this.providedFields[entry]){
+                if(!this.providedFields[entry] || typeof (this.providedFields[entry]) === 'undefined' || this.providedFields[entry] ==='undefined'){
                     errorArray.push(this.mandatoryFields[entry]);
                 }
             }
             if(errorArray.length >0){
+                // return errorArray
                 reject(errorArray)
             }
             else{
@@ -109,11 +110,12 @@ module.exports = class collectClass {
               }).catch((err)=>{
                   reject(err)
               })
-          })
-      }).catch((err)=>{
-
+          }).catch((err)=>{
+              reject(err)
+      })
       })
     }
+
 
 
 }

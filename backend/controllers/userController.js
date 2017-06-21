@@ -53,6 +53,7 @@
         },
 
         register: async((req,res,next)=>{
+
             req.userData.passwordSalt = await(passwordModule.generateSalt());
             req.userData.password = await(passwordModule.generatePassword(req.userData.passwordSalt))
 

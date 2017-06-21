@@ -5,7 +5,7 @@ let server = require('../server');
 describe('user API tests ', function () {
     describe('for register',function () {
         it('should return an array of errors when mandatory fields are not provided', function (done) {
-            supertest(app).
+            supertest(server).
                 post('/register').
                 expect(400).
                 end(function (err, response) {
