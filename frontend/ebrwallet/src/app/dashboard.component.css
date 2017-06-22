@@ -1,0 +1,50 @@
+
+h1 {
+  color : dodgerblue;
+  font-size: 2em;
+}
+
+pre {
+  font-size: 14px;
+}
+
+
+.box {
+  border: 0.5px solid #ccc;
+  border-radius: 2px;
+  width: 600px;
+  margin: 30px;
+  padding: 30px;  
+}
+
+.inbetween {
+  
+  flex: 1;
+  flex-direction: 'row';
+  justify-content: 'center';
+  align-items: 'self';
+}
+input {
+  font-size: 14px;
+  min-height: 25px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+button {
+  font-weight: bold;
+  flex-wrap: 'nowrap';
+  padding: 10px;
+  font-size: 16px;
+  border: 0px ;
+  border-radius: 2px;
+  /*width: 90px;*/
+  height: 50px;
+  color: white;
+  background-color: dodgerblue;
+}
+
+button:disabled,
+button[disabled]{
+  background-color: #ccc
+}
