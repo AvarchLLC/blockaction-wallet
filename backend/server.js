@@ -20,6 +20,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/',routes)
 
+console.log(process.env.NODE_ENV)
+
 let server = http.createServer(app);
 
 app.use(express.static(path.join(__dirname, 'public')))

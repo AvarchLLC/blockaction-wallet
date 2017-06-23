@@ -105,7 +105,6 @@
                         passwordModule.generatePassword(req.userCredential.password,data.passwordSalt).then((response)=>{
                             const token = tokenModule.generateJWT(data);
                             if(response == data.password && (token && token.length)){
-                                console.log(data)
                                 req.cdata = {
                                     success:1,
                                     message:"User Authenticated Successfully",

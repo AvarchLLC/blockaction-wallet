@@ -26,6 +26,9 @@ You need to install Node.js and then the development tools. Node.js comes with a
 * `node server.js`
 * Browse to the application at _http://localhost:3000
 
+###Running the Tests
+run command  `grunt test`
+
 
 #####Browser Support
 The Application has been tested on Google Chrome and Mozilla Firefox however most modern browsers that support AngularJS Framework should be compatiable.

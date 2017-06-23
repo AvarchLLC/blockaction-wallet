@@ -16,11 +16,11 @@
             dbName: 'ebrwaller'
         },
         test: {
-            username: 'xcelTripUser',
-            password: 'xcelTripUser2017#NP',
-            host: 'ds143141.mlab.com',
-            port: '43141',
-            dbName: 'prj_xceltrip'
+            username: 'ebrwalletuser',
+            password: 'ebrwalletuser#NP',
+            host: 'localhost',
+            port: '27017',
+            dbName: 'test_prj_ebrwallet'
 
         }
     };

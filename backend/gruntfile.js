@@ -6,7 +6,10 @@ module.exports = function (grunt) {
                     reporter: 'spec',
                     clearRequireCache: true
                 },
-                src: ['test/*.js']
+                src: ['test/*.js'],
+            },
+            dev:{
+
             }
         },
 
@@ -18,14 +21,27 @@ module.exports = function (grunt) {
                     debounceDelay: 250,
                 },
                 files:['gruntfile.js','test/*.js'],
-                tasks: ['mochaTest']
+                tasks: ['mochaTest'],
+            },
+        },
+        env:{
+            options:{
+
+            },
+            dev:{
+                NODE_ENV: 'development',
+            },
+            test:{
+                NODE_ENV:'test'
             }
+
         }
 
     });
+    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default',['mochaTest']);
-    grunt.registerTask('test',['mochaTest']);
+    grunt.registerTask('default',['env:test','mochaTest','']);
+    grunt.registerTask('test',['env:test','mochaTest']);
 }
