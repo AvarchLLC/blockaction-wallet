@@ -1,0 +1,35 @@
+<div *ngIf="!wallet" class="box">
+  <h3>Load a existing wallet </h3>
+  <form>
+    <input type="file" (change)="fileChangeListener($event)">
+    <button (click)="loadWalletFromFile()">Load File</button>
+  </form>
+  <h3> Create a new wallet </h3>
+  <br/>
+  <div>
+    <label>Enter a wallet password: </label>
+    <input [(ngModel)]="password" placeholder="pass key..." />
+  </div>
+  <button (click)="create()">Create</button>
+</div>
+
+
+<div *ngIf="wallet" class="box">
+  <br />
+  <h2> My Wallet </h2>
+  <h1> {{ etherValue}} Ethers </h1>
+  <pre>
+      <b>Address:     </b> <em>{{ wallet.address }}</em>
+      <b>Public Key:  </b> <em>{{ wallet.publicKey.substring(0,40)}}...</em>
+      <b>Private Key: </b> <em> {{ privateKey ? privateKey.substring(0,40): '' }}...</em>
+  </pre>
+  <div> 
+    <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />
+    <button (click)="getKey()" >Get Private key </button>    
+  </div>
+  <br /><br />
+  <div class="inbetween">
+    <button (click)="saveWalletToFile()">Download Wallet</button>    
+    <button (click)="deleteWallet()">Delete Wallet</button>  
+  </div>
+</div>
