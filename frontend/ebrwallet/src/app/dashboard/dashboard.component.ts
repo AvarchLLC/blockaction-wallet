@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { WalletService } from './wallet.service'
+import { WalletService } from '../wallet.service'
 
-import { Wallet } from './wallet'
+import { Wallet } from '../wallet'
 
 @Component({
-  selector: 'dashboard',
-  templateUrl: 'dashboard.component.html',
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 
@@ -14,17 +14,14 @@ export class DashboardComponent implements OnInit {
 
 
   file : any
-
-  wallet : Wallet
+  wallet : Wallet 
   password: string
-  
   privateKey: string
-  walletString: string
   etherValue = 10;
-
   filePassword: string
 
   constructor(private walletService : WalletService) { }
+
 
   ngOnInit(): void {
     this.walletService
@@ -32,7 +29,6 @@ export class DashboardComponent implements OnInit {
       .then(wallet => {
         if(wallet) {
           this.wallet = wallet
-          this.walletString = JSON.stringify(wallet)
         }
       })
       .catch(err => console.error("Errors", err))
@@ -40,11 +36,12 @@ export class DashboardComponent implements OnInit {
 
   getKey() : void {
 
-
     this.walletService
-      .getPrivateKey(this.wallet ,this.filePassword)
+      .getPrivateKeyString(this.wallet ,this.filePassword)
       .then(key => { 
-        this.privateKey= key; 
+        this.privateKey= key;
+        console.log('priv key', key)
+        this.filePassword = null;
       })
       .catch(err => {
         console.error("errors", err); 
@@ -72,7 +69,6 @@ export class DashboardComponent implements OnInit {
       .createWallet(this.password)
       .then(data => {
         this.wallet = data
-        this.walletString = JSON.stringify(data)
         this.walletService
           .saveWallet(this.wallet)
           .then()
@@ -88,8 +84,11 @@ export class DashboardComponent implements OnInit {
   }
 
   loadWalletFromString(s: string): void {
-    this.walletString = s
-    this.wallet = JSON.parse(s)
+    this.wallet  = {
+      keystore: JSON.parse(s),
+      address : JSON.parse(s).address
+    }
+
     this.walletService
       .saveWallet(this.wallet)
       .then()
@@ -98,7 +97,6 @@ export class DashboardComponent implements OnInit {
 
   deleteWallet() : void {
     this.wallet = null;
-    this.walletString= "";
     localStorage.clear()
   }
 

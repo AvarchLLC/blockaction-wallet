@@ -1,0 +1,27 @@
+<!--<div class="box">
+	<br />
+	<h2>Login</h2>
+	  <h5>{{ message }}</h5>
+	  <h5>{{ error }}</h5>
+	 
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)"> 
+      <div class="form-element">
+        <label>Username </label><input formControlName="username" placeholder="Username" /><br />
+      </div>
+      <div class="form-element">
+        <label>Password </label><input formControlName="password" placeholder="Password" /><br />
+      </div>
+	  <input type="submit"  value="Log In" [disabled]="!form.valid" />
+	</form>
+</div>-->
+  <div class="login">
+	<h1>Login</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    	<input formControlName="username" type="text" class="form-control" name="u" placeholder="Username" required="required" />
+      <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
+      <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+<div class="text-center" style="padding-top: 20px;">
+        <a class="forgotPass" href="#">Forgot Password?</a>
+        </div>
+    </form>
+</div>

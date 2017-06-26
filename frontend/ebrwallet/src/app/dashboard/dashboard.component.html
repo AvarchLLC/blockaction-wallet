@@ -1,5 +1,5 @@
 <div *ngIf="!wallet" class="box">
-  <h3>Load a existing wallet </h3>
+  <h2>Load a existing wallet </h2>
   <form>
     <input type="file" (change)="fileChangeListener($event)">
     <button (click)="loadWalletFromFile()">Load File</button>
@@ -20,8 +20,8 @@
   <h1> {{ etherValue}} Ethers </h1>
   <pre>
       <b>Address:     </b> <em>{{ wallet.address }}</em>
-      <b>Public Key:  </b> <em>{{ wallet.publicKey.substring(0,40)}}...</em>
-      <b>Private Key: </b> <em> {{ privateKey ? privateKey.substring(0,40): '' }}...</em>
+      
+      <b>Private Key: </b> <em> {{ privateKey ? privateKey: '...' }}</em>
   </pre>
   <div> 
     <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />

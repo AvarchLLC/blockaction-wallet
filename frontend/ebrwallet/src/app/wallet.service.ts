@@ -11,20 +11,23 @@ export class WalletService {
 
   }
 
+  // creatWallet ... generates a new wallet object and returns encrypted object 
   createWallet(passsword : string) : Promise<Wallet> {
     
     var w : Wallet = {
       address: '',
-      publicKey: '',
-      walletFile: '',
+      keystore: '',
     }
 
     return new Promise((resolve,reject) => {
       try {
         var wallet = EthJS.Wallet.generate(false)
+        
         w.address = wallet.getAddressString()
-        w.publicKey = wallet.getPublicKeyString()
-        w.walletFile = wallet.toV3(passsword, { kdf : 'scrypt'})
+        w.keystore = wallet.toV3(passsword, { kdf : 'scrypt'}) // Encrypts wallet object with scrypt
+        
+        wallet = null // Set the unencrypted wallet memory to null
+        
         resolve(w)
       }
       catch (e) {
@@ -33,12 +36,17 @@ export class WalletService {
     })
   }
 
+  // getPrivateKey ... decrypts wallet object and returns private key bytes ( not safe )
   getPrivateKey(w : Wallet, passsword: String) : Promise<string> {
     
     return new Promise((resolve,reject) => {
       try {
-        var wallet = EthJS.Wallet.fromV3(w.walletFile, passsword)
-        resolve(wallet.getPrivateKeyString())
+        var wallet = EthJS.Wallet.fromV3(w.keystore, passsword)
+        var key = wallet.getPrivateKey()
+
+        wallet = null  // Set the unencrypted wallet memory to null
+
+        resolve(key)
       }
       catch(e) {
         reject('Key derivation failed -- possibly wrong password')
@@ -46,6 +54,25 @@ export class WalletService {
     })
   }
 
+
+  // getPrivateKey ... decrypts wallet object and returns private key string ( not safe )
+  getPrivateKeyString(w : Wallet, passsword: String) : Promise<string> {
+    
+    return new Promise((resolve,reject) => {
+      try {
+        var wallet = EthJS.Wallet.fromV3(w.keystore, passsword)
+        var key = wallet.getPrivateKeyString()
+
+        wallet = null  // Set the unencrypted wallet memory to null
+        resolve(key)
+      }
+      catch(e) {
+        reject('Key derivation failed -- possibly wrong password')
+      }
+    })
+  }
+
+  // loadWallet ... loads wallet object saved in memory
   loadWallet() : Promise<Wallet> {
     return new Promise((resolve, reject) => {
       try {
@@ -63,6 +90,7 @@ export class WalletService {
     })
   }
 
+  // saveWallet ... saves wallet object to memory
   saveWallet(w: Wallet) : Promise<any> {
     return new Promise((resolve, reject) => {
       try {
@@ -75,12 +103,13 @@ export class WalletService {
     })
   }
 
+  // saveWalletToFile ... saves the encrypted wallet object ( wallet keystore ) to disk
   saveWalletToFile(w: Wallet) : Promise<any> {
     return new Promise((resolve, reject) => {
       
       try {
-        var fileName = "walletFile"
-        var data = JSON.stringify(w)
+        var fileName = "walletKeystore"
+        var data = JSON.stringify(w.keystore)
         var blob = new Blob([data], {type: 'text/json'});
 
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {

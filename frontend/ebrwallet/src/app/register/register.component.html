@@ -1,0 +1,74 @@
+<!--<div class="box">
+  <br />
+  <h2> Create a account </h2>
+
+  <h5>{{ message }}</h5>
+  <h5>{{ error }}</h5>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)"> 
+    <div formGroupName="name">
+      <div class="form-element">
+        <label>First Name</label><input formControlName="first" placeholder="First Name" /><br />
+      </div>
+      <div class="form-element">
+        <label>Last Name</label><input formControlName="last" placeholder="Last Name" /><br />
+      </div>
+    </div>
+    <div class="form-element">
+      <label>Username</label><input  formControlName="userName" placeholder="Username" />
+    </div>
+    <div class="form-element">
+        <label>Email</label><input formControlName="email" placeholder="john@example.com" /><br />
+    </div>
+    <div class="form-element">
+        <label>Password</label><input formControlName="password" placeholder="Enter a password" /><br />
+    </div>
+    <div class="form-element">
+      <label>Confirm Password</label><input  formControlName="confirmPassword" placeholder="Re-enter the password" />
+    </div>
+    <div class="form-element">
+      <label>Country</label><input  formControlName="country" placeholder="Country" />
+    </div>
+    <div class="form-element">
+      <label>City</label><input  formControlName="city" placeholder="City" />
+    </div>
+    <br /><br />
+    <div class="inbetween">
+      <input type="submit" value="Register" [disabled]="!form.valid">    
+      
+    </div>
+  </form>
+  <button (click)="logval()">Log</button>    
+  <p>Errors: {{ form.errors}}
+  <p>Value: {{ form.value | json }}</p>
+  <p>Validation status: {{ form.status }}</p>
+</div>-->
+
+ <div class="register">
+	<h1>Register</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+      <div formGroupName="name">
+        <input formControlName="first" type="text" class="form-control" placeholder="First Name" required="required" />
+
+        <input formControlName="last" type="text" class="form-control" placeholder="Last Name" required="required" />
+      </div>
+      <input formControlName="username" type="text" class="form-control" placeholder="Username" required="required" />
+
+      <input formControlName="email" type="text" class="form-control" placeholder="Email" required="required" />
+
+      <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
+      <input formControlName="confirmPassword"  type="password" class="form-control" name="p" placeholder="Repeat Password" required="required" />
+
+
+      <input formControlName="country" type="text" class="form-control" placeholder="Country" required="required" />
+      
+      <input formControlName="city" type="text" class="form-control" placeholder="City" required="required" />
+
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-block btn-large">Register</button>
+
+<div class="text-center" style="padding-top: 20px;">
+
+        </div>
+    </form>
+</div>

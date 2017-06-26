@@ -2,10 +2,10 @@ import { InMemoryDbService} from 'angular-in-memory-web-api'
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb(){
-    const walletFile = {
+    const obj = {
       
     }
 
-    return {walletFile};    
+    return {obj};    
   }
 }
