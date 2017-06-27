@@ -34,9 +34,11 @@ export class AuthService {
     this.loggedIn = value;
   }
 
-  register(data) : Promise<any> {
+  register(body) : Promise<any> {
+    var data = `firstName=${body.firstName}&middleName=${body.middleName}&lastName=${body.lastName}&city=${body.city}&state=${body.state}&country=${body.country}&email=${body.email}&username=${body.username}&password=${body.password}&phone=${body.phone}`
+    
     return this.http
-      .post(`${this.serverUrl}/register`, JSON.stringify(data), {headers: this.headers})
+      .post(`${this.serverUrl}/register`, data, {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
@@ -45,28 +47,31 @@ export class AuthService {
   login(body) : Promise<any> {
 
     var data = `username=${body.username}&password=${body.password}`
+
 	  return this.http
       .post(`${this.serverUrl}/login`, data, {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .then(res => {
-        console.log('logged response', res)
-        this.handleAuth(res)
+        return this.handleAuth(res)
       })
       .catch(err => {
         console.log('login error', err)
       });
   }
 
-  handleAuth(authResult) {
-    if (authResult.success && authResult.token) {
-      window.location.hash = '';
-      this._getProfile(authResult);
-      this.router.navigate(['/dashboard']);
-    } else if (authResult.error) {
-      this.router.navigate(['/login']);
-      // console.error(`Error: ${err.error}`);
-    }
+  handleAuth(authResult) : Promise<any> {
+    return new Promise((resolve, reject) => {
+      try {
+        if (authResult.success && authResult.token) {
+          window.location.hash = '';
+          this._getProfile(authResult);
+        }
+        resolve(authResult)
+      }catch(e) {
+        reject(e)
+      }
+    })
   }
 
   private _getProfile(authResult) {

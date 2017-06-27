@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   
   message : string;
 
-  error : [string];
+  error : string;
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private authService : AuthService ) {
     
@@ -32,8 +32,8 @@ export class RegisterComponent implements OnInit {
                               ])
     // Username rule: should be minimum 4 and maximum 15 characters. Alphanumeric characters are allowed. special characters ._ are allowed. No spaces are acceptable. The starting character should be alphabet.
     var usernameValidator = Validators.compose([defaultValidator, Validators.pattern("[A-Za-z][A-Za-z0-9._]{3,14}")])
-    
     this.form = fb.group({
+    
       name : fb.group({
         first: ['', defaultValidator ],
         last : ['', defaultValidator ]
@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
       username: ['', [ usernameValidator]],
       country: ['', [ defaultValidator] ],
       city : ['', [ defaultValidator] ],
+      phone: ['', [ defaultValidator] ]
     }, { validator : this.matchingPasswords('password', 'confirmPassword')})
   }
 
@@ -65,28 +66,36 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(formValue) : void {
-    console.log('submitted', formValue)
     var body = {
       firstName : formValue.name.first,
       lastName : formValue.name.last,
       email : formValue.email,
       password : formValue.password,
-      country: formValue.coutry,
+      country: formValue.country,
       city : formValue.city,
-      username: formValue.username
+      username: formValue.username,
+      phone: formValue.phone
     }
 
 
     this.authService
       .register(body)
       .then(res => {
+
         if (res.error) {
-          this.error = res.errorMsg;
+          this.error= res.err.errorMsg.reduce(function(msg,acc){
+            return acc + msg
+          }, '')
           return 
         }
         this.message = res.message        
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        err = err.json();
+        this.error= err.errorMsg.reduce(function(msg,acc){
+          return acc + msg
+        }, '')}
+      )
   }
 
 }

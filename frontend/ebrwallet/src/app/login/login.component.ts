@@ -51,10 +51,12 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(body)
       .then(ok => {
-        if(ok) {
+        if(ok.success) {
           this.message = "Logged In"
           this.router.navigate(['/dashboard'])
-        } 
+        } else {
+          this.message = ok.message
+        }
       })
       .catch(err => console.error(err))
 	}

@@ -14,10 +14,7 @@ export class WalletService {
   // creatWallet ... generates a new wallet object and returns encrypted object 
   createWallet(passsword : string) : Promise<Wallet> {
     
-    var w : Wallet = {
-      address: '',
-      keystore: '',
-    }
+    var w : Wallet = new Wallet
 
     return new Promise((resolve,reject) => {
       try {
@@ -37,15 +34,15 @@ export class WalletService {
   }
 
   // getPrivateKey ... decrypts wallet object and returns private key bytes ( not safe )
-  getPrivateKey(w : Wallet, passsword: String) : Promise<string> {
+  getPrivateKey(w : Wallet, password: String) : Promise<string> {
     
     return new Promise((resolve,reject) => {
       try {
-        var wallet = EthJS.Wallet.fromV3(w.keystore, passsword)
+        var wallet = EthJS.Wallet.fromV3(w.keystore, password)
         var key = wallet.getPrivateKey()
 
         wallet = null  // Set the unencrypted wallet memory to null
-
+        password = null
         resolve(key)
       }
       catch(e) {
@@ -56,14 +53,15 @@ export class WalletService {
 
 
   // getPrivateKey ... decrypts wallet object and returns private key string ( not safe )
-  getPrivateKeyString(w : Wallet, passsword: String) : Promise<string> {
+  getPrivateKeyString(w : Wallet, password: String) : Promise<string> {
     
     return new Promise((resolve,reject) => {
       try {
-        var wallet = EthJS.Wallet.fromV3(w.keystore, passsword)
+        var wallet = EthJS.Wallet.fromV3(w.keystore, password)
         var key = wallet.getPrivateKeyString()
 
         wallet = null  // Set the unencrypted wallet memory to null
+        password = null
         resolve(key)
       }
       catch(e) {

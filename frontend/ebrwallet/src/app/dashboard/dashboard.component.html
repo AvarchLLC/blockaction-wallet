@@ -1,27 +1,58 @@
+<header>
+<div class="container">
+  <div class="logo">
+    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
+  </div>
+    <nav>
+        <ul>
+          <li><a href="">Ethereum</a></li>
+          <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Wallet</a></li>
+          <li><a [routerLink]="['/login']" routerLinkActive="active">Sign In</a></li>
+          <li><a [routerLink]="['/register']" routerLinkActive="active">Sign Up</a></li>
+        </ul>
+    </nav>
+  </div>
+</header>
+
 <div *ngIf="!wallet" class="box">
   <h2>Load a existing wallet </h2>
   <form>
     <input type="file" (change)="fileChangeListener($event)">
-    <button (click)="loadWalletFromFile()">Load File</button>
   </form>
-  <h3> Create a new wallet </h3>
+  <br />
+</div>
+<div *ngIf="!wallet" class="box">  
+  <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
+    <button>Log Out</button>
+  </div>
+  
+  <h2> Create a new wallet </h2>
   <br/>
   <div>
-    <label>Enter a wallet password: </label>
+    <label>Wallet Password: </label>
     <input [(ngModel)]="password" placeholder="pass key..." />
   </div>
+  <br />
   <button (click)="create()">Create</button>
 </div>
 
 
 <div *ngIf="wallet" class="box">
   <br />
+  <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
+    <button>Log Out</button>
+  </div>
   <h2> My Wallet </h2>
-  <h1> {{ etherValue}} Ethers </h1>
   <pre>
-      <b>Address:     </b> <em>{{ wallet.address }}</em>
+    <b>Ethers:     </b> <em>0.000{{ random }}</em>
       
-      <b>Private Key: </b> <em> {{ privateKey ? privateKey: '...' }}</em>
+    <b>Address:     </b> <em>{{ wallet.address }}</em>
+    <div>
+      <svg>
+        <path [attr.d]="qrSvg" style="transform:scale(3.5)"></path>
+      </svg>
+    </div>
+    <b>Private Key: </b> <em> {{ privateKey ? privateKey: '...' }}</em>
   </pre>
   <div> 
     <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />

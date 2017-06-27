@@ -1,28 +1,12 @@
-<!--<div class="box">
-  <br />
-  <h2>Login</h2>
-    <h5>{{ message }}</h5>
-    <h5>{{ error }}</h5>
-   
-  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)"> 
-      <div class="form-element">
-        <label>Username </label><input formControlName="username" placeholder="Username" /><br />
-      </div>
-      <div class="form-element">
-        <label>Password </label><input formControlName="password" placeholder="Password" /><br />
-      </div>
-    <input type="submit"  value="Log In" [disabled]="!form.valid" />
-  </form>
-</div>-->
 <div class="fullPage">
     <div class="card card-center card-md-p">
         <div class="text-center">
-            <img class="logo-icon mg-btm-sm" src="img/logo-icon.png" alt="logo" />
+            <img class="logo-icon mg-btm-sm" src="../../assets/img/logo-icon.png" alt="logo" />
         </div>
-        <form method="post">
-            <input type="text" class="form-control" name="u" placeholder="Username" required="required" />
-            <input type="password" class="form-control" name="p" placeholder="Password" required="required" />
-            <button type="submit" class="btn btn-primary btn-block btn-lg mg-btm-sm">Login</button>
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <input formControlName="username" type="text" class="form-control" name="u" placeholder="Username" required="required" />
+            <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-block btn-lg mg-btm-sm">Login</button>
             <div class="row">
                 <div class="col-md-6">
                     <a class="forgotPass text-sm" href="#">Forgot Password?</a>
@@ -34,24 +18,4 @@
         </form>
     </div>
 </div>
-<div class="fullPage">
-    <div class="card card-center card-md-p">
-        <div class="text-center">
-            <img class="logo-icon mg-btm-sm" src="img/logo-icon.png" alt="logo" />
-        </div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-            <input formControlName="username" type="text" class="form-control" name="u" placeholder="Username" required="required" />
-            <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
-            <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block btn-lg mg-btm-sm">Let me in.</button>
-            <div class="row">
-                <div class="col-md-6">
-                    <a class="text-sm" href="#">Forgot Password?</a>
-                </div>
-                <div class="col-md-6">
-                    <p class="text-sm text-right">Don't have Account? <a href="#">Register</a></p>
-                </div>
-            </div>
 
-        </form>
-    </div>
-    </div>
