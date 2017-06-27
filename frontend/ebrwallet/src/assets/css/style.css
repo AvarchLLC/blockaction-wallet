@@ -1,14 +1,49 @@
-*{
-  margin:0;
-  padding:0;
+body {
+    background: #f8f8f8;
+    font-family: "SourceSansPro-Regular", sans-serif;
+    font-size: 16px;
 }
-body{
-  background: #f8f8f8;
-  margin: 0;
-  padding: 0;
-  font-family: "SourceSansPro-Regular",sans-serif;
-  font-size: 16px;
+
+.fullPage {
+    background: #315F96 url(../img/bg.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
 }
+
+.card {
+    padding: 40px;
+    background:#fff;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.text-sm { font-size:90%; }
+.mg-btm-sm { margin-bottom:20px; }
+
+.card .form-control, .card .btn { margin-top:20px; }
+
+.logo-icon { max-width:72px;}
+
+.card-center { 
+box-shadow: 0px 10px 22px 0px rgba(0,0,0,0.30);
+    position: absolute;
+    top: 50%;
+    left: 50%; -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+  text-transform: uppercase;
+    background-image: linear-gradient(-179deg, #32C1F0 0%, #076E90 100%);
+    border: 1px solid #00ACE6;
+    box-shadow: inset 0px 1px 0px 0px rgba(204, 242, 255, 0.69);
+    border-radius: 2px;
+}
+
 @font-face {
 font-family:"SourceSansPro-ExtraLight";
 src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
@@ -21,9 +56,9 @@ src: url(../fonts/SourceSansPro-Regular.ttf) format('truetype');
 font-style: normal;
 font-weight: 400;
 }
-.menu{
+header{
   margin-top: 25px;
-  position:relative;
+
   max-height: 70px;
   background:#a2a2a2;
   background:-webkit-linear-gradient(#a2a2a2,#797979, #585858);
@@ -42,11 +77,11 @@ nav{
   text-align: center;
 }
 nav ul {
-  display: inline-block;
-  list-style: none;
   margin-top: 25px;
 }
 nav ul li{
+  list-style: none;
+  display: inline-block;
   margin:0 30px;
 }
 nav ul li a{
@@ -58,14 +93,12 @@ nav ul li a:hover{
   text-decoration: none;
   color:#00abe3;
 }
-.banner{
-  position:relative;
-  display: block;
+.banner img{
+float: right;
 }
 .banner-content{
-  z-index: 100;
-  position:absolute;
-  top: -400px;
+  margin-top: 130px;
+  z-index: 1000;
   color: #4a4a4a;
 }
 .banner-content p{
@@ -90,11 +123,12 @@ nav ul li a:hover{
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.we-provide{
+.bg-dark{
+  width: 100%;
   background: #4a4a4a;
   padding: 50px;
 }
-.we-provide p, h1{
+.bg-dark p, h1{
   color: #fff;
   line-height: 1.6;
 }

@@ -43,12 +43,16 @@
   <p>Validation status: {{ form.status }}</p>
 </div>-->
 
- <div class="register">
-	<h1>Register</h1>
+<div class="fullPage">
+    <div class="card card-center card-md-p">
+        <div class="text-center">
+            <img class="logo-icon mg-btm-sm" src="img/logo-icon.png" alt="logo" />
+        </div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 
       <div formGroupName="name">
+
         <input formControlName="first" type="text" class="form-control" placeholder="First Name" required="required" />
 
         <input formControlName="last" type="text" class="form-control" placeholder="Last Name" required="required" />
@@ -65,10 +69,9 @@
       
       <input formControlName="city" type="text" class="form-control" placeholder="City" required="required" />
 
-      <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-block btn-large">Register</button>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-block btn-lg mg-btm-sm">Register</button>
 
-<div class="text-center" style="padding-top: 20px;">
-
-        </div>
+<p class="text-center">Alerady have account? <a href="#">Login</a></p>
     </form>
+</div>
 </div>
