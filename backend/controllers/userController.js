@@ -101,8 +101,8 @@
             if(req.userCredential.username && req.userCredential.password){
                     User.findOne({
                         username: req.userCredential.username
-                    }).then((data,err)=>{
-                        if(data && data.length){
+                    }).then((data)=>{
+                        if(data){
                             passwordModule.generatePassword(req.userCredential.password,data.passwordSalt).then((response)=>{
                                 const token = tokenModule.generateJWT(data);
                                 if(response == data.password && (token && token.length)){
