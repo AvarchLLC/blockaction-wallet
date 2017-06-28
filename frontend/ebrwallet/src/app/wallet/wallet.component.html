@@ -31,8 +31,8 @@
                 <h2> Create wallet </h2>
                 <br/>
                 <div>
-                    <input class="form-control input-lg" [(ngModel)]="password" placeholder="Enter Passphrase" />
-                    <div class="text-right"><a href="#">Show Passphrase </a>
+                    <input type="{{ passphraseType }}" class="form-control input-lg" [(ngModel)]="password" placeholder="Enter Passphrase" />
+                    <div class="text-right"><a (click)="passphraseToggle()">Show Passphrase</a>
                     </div>
                 </div>
                 <br />

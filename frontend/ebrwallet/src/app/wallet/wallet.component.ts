@@ -43,7 +43,7 @@ export class WalletComponent implements OnInit {
   qrSvg
   
   slideClass : string = ''
-
+  passphraseType : string = 'password'
   constructor(private walletService : WalletService, private authService : AuthService) { }
 
   ngOnInit(): void {
@@ -58,6 +58,12 @@ export class WalletComponent implements OnInit {
       var lastIndex = qrString.toString().indexOf('/>')
       this.qrSvg = qrString.substring(index + 3, lastIndex - 1)
     }
+  }
+
+  passphraseToggle() {
+    this.passphraseType === 'password' 
+      ? this.passphraseType = 'text' 
+      : this.passphraseType = 'password'
   }
 
   // Decrypt private key from wallet keystore file
