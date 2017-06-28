@@ -13,7 +13,8 @@
         </nav>
     </div>
 </header>
-<div class="container-md bg-white">
+
+<div class="container-md bg-white {{ slideClass }}"  >
     <div class="box hide">
         <h2>Load a existing wallet </h2>
         <form>
@@ -60,14 +61,12 @@
       <svg>
         <path [attr.d]="qrSvg" style="transform:scale(.5)"></path>
       </svg>
-    <label>Private Key: </label> <em> {{ privateKey ? privateKey: '...' }}</em>
+      <div class="form-group">
+    <b>Private Key</b>
+    <input type="text" class="form-control" value="{{ wallet.privateKey }}">
+
+        </div>
   </pre>
-                    <div>
-                        <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />
-                        <button (click)="getKey()">Show Private key </button>
-                    </div>
-                    <br />
-                    <br />
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
                         <button class="hide" (click)="deleteWallet()">Delete Wallet</button>

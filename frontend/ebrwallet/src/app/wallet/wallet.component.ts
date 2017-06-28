@@ -42,6 +42,8 @@ export class WalletComponent implements OnInit {
   password: string
   qrSvg
   
+  slideClass : string = ''
+
   constructor(private walletService : WalletService, private authService : AuthService) { }
 
   ngOnInit(): void {
@@ -83,6 +85,7 @@ export class WalletComponent implements OnInit {
       .then(data => {
         this.wallet = data
         this.password = null
+        this.slideClass = 'slide'
         toastr.success('Created!', "Wallet Creation")
         this.showQr()
       })
@@ -129,11 +132,11 @@ export class WalletComponent implements OnInit {
 
   deleteWallet() : void {
     this.wallet = null;
-    this.file = null
-    this.password = null
-    this.privateKey = null
-    this.filePassword = null
     this.qrSvg = null
+    this.password = null
+    // this.privateKey = null
+    // this.file = null
+    // this.filePassword = null
   }
 
 }
