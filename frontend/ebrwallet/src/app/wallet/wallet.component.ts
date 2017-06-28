@@ -44,6 +44,8 @@ export class WalletComponent implements OnInit {
   
   slideClass : string = ''
   passphraseType : string = 'password'
+  passphraseButton : string = 'Show Passphrase'
+
   constructor(private walletService : WalletService, private authService : AuthService) { }
 
   ngOnInit(): void {
@@ -62,8 +64,12 @@ export class WalletComponent implements OnInit {
 
   passphraseToggle() {
     this.passphraseType === 'password' 
-      ? this.passphraseType = 'text' 
+      ? this.passphraseType = 'text'
       : this.passphraseType = 'password'
+
+    this.passphraseButton === 'Show Passphrase'
+      ? this.passphraseButton = 'Hide Passphrase'
+      : this.passphraseButton = 'Show Passphrase'
   }
 
   // Decrypt private key from wallet keystore file
