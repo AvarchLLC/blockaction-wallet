@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { AuthService } from '../auth.service'
+
+import { AuthService } from '../../../services/auth.service'
 
 @Component({
   selector: 'app-register',
@@ -24,14 +24,18 @@ export class RegisterComponent implements OnInit {
                               Validators.minLength(2), 
                               Validators.maxLength(32)
                             ]);
-    // Password rule :  Password must be at least 6 characters, no more than 18 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit.
+    // Password rule :  Password must be  6 - 20 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit.
     var passwordValidator = Validators.compose([
-                              defaultValidator, 
-                              Validators.minLength(6), 
-                              Validators.pattern("^([a-zA-Z0-9@*#]{6,18})$")
-                              ])
+                              Validators.required,
+                              Validators.maxLength(20),
+                              Validators.pattern(/^.*(?=.{7,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/)
+                            ]);
     // Username rule: should be minimum 4 and maximum 15 characters. Alphanumeric characters are allowed. special characters ._ are allowed. No spaces are acceptable. The starting character should be alphabet.
-    var usernameValidator = Validators.compose([defaultValidator, Validators.pattern("[A-Za-z][A-Za-z0-9._]{3,14}")])
+    var usernameValidator = Validators.compose([
+                              Validators.required,
+                              Validators.pattern("[A-Za-z][A-Za-z0-9._]{3,14}")
+                            ]);
+
     this.form = fb.group({
     
       name : fb.group({
@@ -42,7 +46,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [ passwordValidator ]],
       confirmPassword: [''],
       username: ['', [ usernameValidator]],
-      country: ['', [ defaultValidator] ],
+      country: ['', [ Validators.required] ],
       city : ['', [ defaultValidator] ],
       phone: ['', [ defaultValidator] ]
     }, { validator : this.matchingPasswords('password', 'confirmPassword')})
@@ -83,7 +87,8 @@ export class RegisterComponent implements OnInit {
       .then(res => {
 
         if (res.error) {
-          this.error= res.err.errorMsg.reduce(function(msg,acc){
+          console.log(res.errorMsg)
+          this.error= res.errorMsg.reduce(function(acc,msg){
             return acc + msg
           }, '')
           return 
@@ -92,8 +97,8 @@ export class RegisterComponent implements OnInit {
       })
       .catch(err => {
         err = err.json();
-        this.error= err.errorMsg.reduce(function(msg,acc){
-          return acc + msg
+        this.error= err.errorMsg.reduce(function(acc,msg){
+          return acc + msg + '<br/>'
         }, '')}
       )
   }

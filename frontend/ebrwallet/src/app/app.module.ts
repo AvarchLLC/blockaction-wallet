@@ -3,39 +3,40 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppRoutingModule} from './app-routing.module'
-
 //Imports for loading & configuring the in-memory api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
-import { InMemoryDataService } from './in-memory-data.service'
+import { InMemoryDataService } from './services/in-memory-data.service'
 
+// Project Modules
+import { AppRoutingModule} from './app-routing.module'
+import { AuthModule } from './auth/auth.module'
+
+// Project Components
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
-import { RegisterComponent } from './register/register.component'
-
-import { WalletService } from './wallet.service';
-import { AuthService } from './auth.service';
-import { LoginComponent } from './login/login.component';
+import { WalletComponent } from './wallet/wallet.component'
 import { HomeComponent } from './home/home.component';
+
+// Project Services
+import { WalletService } from './services/wallet.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    RegisterComponent,
-    LoginComponent,
+    WalletComponent,
     HomeComponent,
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, {
       passThruUnknownUrl: true
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [ WalletService, AuthService],
   bootstrap: [ AppComponent ]

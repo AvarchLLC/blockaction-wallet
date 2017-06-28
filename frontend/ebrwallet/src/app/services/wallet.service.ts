@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Wallet } from './wallet'
+import { Wallet } from '../wallet'
 
 declare var EthJS : any;
 
@@ -21,6 +21,9 @@ export class WalletService {
         var wallet = EthJS.Wallet.generate(false)
         
         w.address = wallet.getAddressString()
+        w.privateKey = wallet.getPrivateKeyString()
+        w.fileName = wallet.getV3Filename()
+
         w.keystore = wallet.toV3(passsword, { kdf : 'scrypt'}) // Encrypts wallet object with scrypt
         
         wallet = null // Set the unencrypted wallet memory to null

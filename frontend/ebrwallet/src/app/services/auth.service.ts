@@ -38,7 +38,7 @@ export class AuthService {
     var data = `firstName=${body.firstName}&middleName=${body.middleName}&lastName=${body.lastName}&city=${body.city}&state=${body.state}&country=${body.country}&email=${body.email}&username=${body.username}&password=${body.password}&phone=${body.phone}`
     
     return this.http
-      .post(`${this.serverUrl}/register`, data, {headers: this.headers})
+      .post(`${this.serverUrl}/register`, data , {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
@@ -55,9 +55,7 @@ export class AuthService {
       .then(res => {
         return this.handleAuth(res)
       })
-      .catch(err => {
-        console.log('login error', err)
-      });
+      .catch(this.handleError);
   }
 
   handleAuth(authResult) : Promise<any> {
@@ -118,7 +116,7 @@ export class AuthService {
   }
   
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    // console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

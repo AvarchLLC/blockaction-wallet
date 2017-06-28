@@ -1,8 +1,12 @@
 <div class="fullPage">
     <div class="card card-center card-md-p">
         <div class="text-center">
-            <img class="logo-icon mg-btm-sm" src="../../assets/img/logo-icon.png" alt="logo" />
+            <a [routerLink]="['/']" routerLinkActive="active">
+                <img class="logo-icon mg-btm-sm" src="assets/img/logo-icon.png" alt="logo" />
+            </a>
         </div>
+        <div *ngIf="error"
+            class="alert alert-danger">{{ error }}</div>
         <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
             <input formControlName="username" type="text" class="form-control" name="u" placeholder="Username" required="required" />
             <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
@@ -12,7 +16,7 @@
                     <a class="forgotPass text-sm" href="#">Forgot Password?</a>
                 </div>
                 <div class="col-md-6">
-                    <p class="text-sm text-right">Don't have Account? <a href="#">Register</a></p>
+                    <p class="text-sm text-right">Don't have Account? <a [routerLink]="['/register']" routerLinkActive="active">Register</a></p>
                 </div>
             </div>
         </form>
