@@ -47,13 +47,15 @@
                     }
                 },
                 message: '{VALUE} is not a valid email address!'
-            }
+            },
+            
         },
         username: {
             type: String,
             required: true,
             trim: true,
-            lowercase: true
+            lowercase: true,
+            unique:true
         },
         password: {
             type: String,
