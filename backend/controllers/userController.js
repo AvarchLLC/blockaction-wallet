@@ -102,25 +102,35 @@
                     User.findOne({
                         username: req.userCredential.username
                     }).then((data)=>{
-                        passwordModule.generatePassword(req.userCredential.password,data.passwordSalt).then((response)=>{
-                            const token = tokenModule.generateJWT(data);
-                            if(response == data.password && (token && token.length)){
-                                req.cdata = {
-                                    success:1,
-                                    message:"User Authenticated Successfully",
-                                    token:token,
+                        if(data){
+                            passwordModule.generatePassword(req.userCredential.password,data.passwordSalt).then((response)=>{
+                                const token = tokenModule.generateJWT(data);
+                                if(response == data.password && (token && token.length)){
+                                    req.cdata = {
+                                        success:1,
+                                        message:"User Authenticated Successfully",
+                                        token:token,
+                                    }
+                                    next();
                                 }
-                                next();
-                            }
-                            else{
-                                req.cdata ={
-                                    success:0,
-                                    error:1,
-                                    message:"Username/Password Invalid",
+                                else{
+                                    req.cdata ={
+                                        success:0,
+                                        error:1,
+                                        message:"Username/Password Invalid",
+                                    }
+                                    next();
                                 }
-                                next();
+                            })
+                        }
+                        else{
+                            req.cdata ={
+                                success:0,
+                                error:1,
+                                message:"Username/Password Invalid",
                             }
-                        })
+                            next();
+                        }
                     })
 
             }
