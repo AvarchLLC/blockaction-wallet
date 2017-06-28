@@ -1,66 +1,82 @@
 <header>
-<div class="container">
-  <div class="logo">
-    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-  </div>
-    <nav>
-        <ul>
-          <li><a href="">Ethereum</a></li>
-          <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Wallet</a></li>
-          <li><a [routerLink]="['/login']" routerLinkActive="active">Sign In</a></li>
-          <li><a [routerLink]="['/register']" routerLinkActive="active">Sign Up</a></li>
-        </ul>
-    </nav>
-  </div>
-</header>
-
-<div *ngIf="!wallet" class="box">
-  <h2>Load a existing wallet </h2>
-  <form>
-    <input type="file" (change)="fileChangeListener($event)">
-  </form>
-  <br />
-</div>
-<div *ngIf="!wallet" class="box">  
-  <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
-    <button>Log Out</button>
-  </div>
-  
-  <h2> Create a new wallet </h2>
-  <br/>
-  <div>
-    <label>Wallet Password: </label>
-    <input [(ngModel)]="password" placeholder="Enter a password..." />
-  </div>
-  <br />
-  <button (click)="create()">Create</button>
-</div>
-
-
-<div *ngIf="wallet" class="box">
-  <br />
-  <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
-    <button>Log Out</button>
-  </div>
-  <h2> My Wallet </h2>
-  <pre>
-    <b>Ethers:     </b> <em>0.000{{ random }}</em>
-      
-    <b>Address:     </b> <em>{{ wallet.address }}</em>
-    <div>
-      <svg>
-        <path [attr.d]="qrSvg" style="transform:scale(3.5)"></path>
-      </svg>
+    <div class="container">
+        <div class="logo">
+            <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="">Ethereum</a></li>
+                <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Wallet</a></li>
+                <li><a [routerLink]="['/login']" routerLinkActive="active">Sign In</a></li>
+                <li><a [routerLink]="['/register']" routerLinkActive="active">Sign Up</a></li>
+            </ul>
+        </nav>
     </div>
-    <b>Private Key: </b> <em> {{ privateKey ? privateKey: '...' }}</em>
+</header>
+<div class="container-md bg-white">
+    <div class="box hide">
+        <h2>Load a existing wallet </h2>
+        <form>
+            <input type="file" (change)="fileChangeListener($event)">
+        </form>
+        <br />
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="block bg-blue">
+                <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
+                    <button>Log Out</button>
+                </div>
+                <h2> Create wallet </h2>
+                <br/>
+                <div>
+                    <input class="form-control input-lg" [(ngModel)]="password" placeholder="Enter Passphrase" />
+                    <div class="text-right"><a href="#">Show Passphrase </a>
+                    </div>
+                </div>
+                <br />
+                <button class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will need this password + your private key to unlock your wallet.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="block">
+                <div *ngIf="wallet">
+                    <br />
+                    <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
+                        <button>Log Out</button>
+                    </div>
+                    <h2>Wallet Ready!</h2>
+                    <pre>
+    <div class="hide"><b>Ethers:     </b> <em>0.000{{ random }}</em></div>
+      
+      <div class="form-group">
+    <b>Public Key (Address)</b>
+    <input type="text" class="form-control" value="{{ wallet.address }}">
+
+        </div>
+
+      <svg>
+        <path [attr.d]="qrSvg" style="transform:scale(.5)"></path>
+      </svg>
+    <label>Private Key: </label> <em> {{ privateKey ? privateKey: '...' }}</em>
   </pre>
-  <div> 
-    <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />
-    <button (click)="getKey()" >Show Private key </button>    
-  </div>
-  <br /><br />
-  <div class="inbetween">
-    <button (click)="saveWalletToFile()">Download Wallet</button>    
-    <button (click)="deleteWallet()">Delete Wallet</button>  
-  </div>
-</div>
+                    <div>
+                        <input [(ngModel)]="filePassword" placeholder="Enter wallet password..." />
+                        <button (click)="getKey()">Show Private key </button>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
+                        <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    

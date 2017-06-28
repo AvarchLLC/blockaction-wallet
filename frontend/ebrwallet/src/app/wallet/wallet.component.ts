@@ -29,8 +29,7 @@ toastr.options = {
 
 @Component({
   selector: 'app-wallet',
-  templateUrl: './wallet.component.html',
-  styleUrls: ['./wallet.component.css']
+  templateUrl: './wallet.component.html'
 })
 
 export class WalletComponent implements OnInit {

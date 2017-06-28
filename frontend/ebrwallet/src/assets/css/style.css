@@ -19,6 +19,12 @@ body {
     max-width: 500px;
 }
 
+.block h2 { text-transform: uppercase;
+font-family: "SourceSansPro-Bold";
+font-size: 36px;}
+
+.text-white { color:#fff; }
+
 .text-sm { font-size:90%; }
 .mg-btm-sm { margin-bottom:20px; }
 
@@ -46,22 +52,30 @@ src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
 font-style: normal;
 font-weight:lighter;
 }
+
 @font-face {
 font-family:'SourceSansPro-Regular';
 src: url(../fonts/SourceSansPro-Regular.ttf) format('truetype');
 font-style: normal;
 font-weight: 400;
 }
+
+
+@font-face {
+font-family:'SourceSansPro-Bold';
+src: url(../fonts/SourceSansPro-Bold.ttf) format('truetype');
+font-style: normal;
+font-weight: 400;
+}
+
+
 header{
   margin-top: 25px;
 
   max-height: 70px;
-  background:#a2a2a2;
-  background:-webkit-linear-gradient(#a2a2a2,#797979, #585858);
-  background:-moz-linear-gradient(#a2a2a2,#797979,#585858);
-  background:-o-linear-gradient(#a2a2a2,#797979,#585858);
-  background:linear-gradient(#a2a2a2,#797979,#585858);
-}
+  /* Rectangle 6: */
+/* Rectangle 6: */
+background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%, #000000 100%, #7F7F7F 100%);}
 .logo{
   margin-top: -30px;
   width: 250px;
@@ -73,7 +87,7 @@ nav{
   text-align: center;
 }
 nav ul {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 nav ul li{
   list-style: none;
@@ -148,7 +162,7 @@ float: right;
 .links ul li{
   list-style: none;
 }
-.links a, h3, h2{
+.links a {
 color: #fff;
 }
 .links p{
@@ -200,3 +214,20 @@ footer{
   outline:none;
 
 }
+
+.block { height: 100%; padding:40px; height:510px; position: relative; }
+.block .btn { text-transform: uppercase; font-family: "SourceSansPro-Bold";  }
+.container-md { width:1024px; margin:80px auto; }
+
+.bg-white { background:white; }
+
+.bg-blue { color:#fff;
+background-image: linear-gradient(90deg, #00D6F4 0%, #00ACE6 100%);}
+
+.bg-blue a, .bg-blue a:hover { color:#fff; font-family: "SourceSansPro-Bold";}
+
+.bg-blue .form-control { border-color: transparent; }
+
+.block p.text-sm { position: absolute; bottom:40px; left:40px; width: 90%;}
+
+
