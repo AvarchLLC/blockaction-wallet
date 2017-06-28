@@ -45,6 +45,7 @@ export class WalletComponent implements OnInit {
   slideClass : string = ''
   passphraseType : string = 'password'
   passphraseButton : string = 'Show Passphrase'
+  qrClass : string = ''
 
   constructor(private walletService : WalletService, private authService : AuthService) { }
 
@@ -62,6 +63,13 @@ export class WalletComponent implements OnInit {
     }
   }
 
+  qrToggle() {
+    this.qrClass ===  ''
+      ? this.qrClass = 'showQr'
+      : this.qrClass = ''
+
+    console.log(this.qrClass)
+  }
   passphraseToggle() {
     this.passphraseType === 'password' 
       ? this.passphraseType = 'text'

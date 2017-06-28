@@ -3397,6 +3397,7 @@ fieldset[disabled] .btn-danger.focus {
   font-weight: normal;
   color: #337ab7;
   border-radius: 0;
+  cursor: pointer;
 }
 .btn-link,
 .btn-link:active,
