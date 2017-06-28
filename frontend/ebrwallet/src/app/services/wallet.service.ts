@@ -109,7 +109,7 @@ export class WalletService {
     return new Promise((resolve, reject) => {
       
       try {
-        var fileName = "walletKeystore"
+        var fileName : string = w.fileName || "walletKeystore"
         var data = JSON.stringify(w.keystore)
         var blob = new Blob([data], {type: 'text/json'});
 

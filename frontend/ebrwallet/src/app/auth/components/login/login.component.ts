@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
 
   form : FormGroup;
  
-  message : string;
-
   error : string;
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private authService : AuthService, private router: Router ) {
@@ -40,6 +38,8 @@ export class LoginComponent implements OnInit {
 
   
 	onSubmit(formValue) {
+    this.error = null
+    
     var body = {
       username: formValue.username,
       password: formValue.password
@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
       .login(body)
       .then(res => {
         if(res.success) {
-          this.message = "Logged In"
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['/wallet'])
         } else {
           this.error = res.message
         }
@@ -60,7 +59,7 @@ export class LoginComponent implements OnInit {
 
 	ngOnInit() {
     if ( this.authService.authenticated ) {
-      this.router.navigate(['/dashboard'])      
+      this.router.navigate(['/wallet'])      
     }
   }
 }

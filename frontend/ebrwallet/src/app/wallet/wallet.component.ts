@@ -35,29 +35,17 @@ toastr.options = {
 
 export class WalletComponent implements OnInit {
 
-  file : any
+  // file : any
+  // filePassword: string
+  // privateKey: string
+  
   wallet : Wallet 
   password: string
-  privateKey: string
-  filePassword: string
   qrSvg
-  random: string = (Math.random() * 100).toString().split('.')[0];
-  isLoggedIn;
   
   constructor(private walletService : WalletService, private authService : AuthService) { }
 
   ngOnInit(): void {
-    // this.isLoggedIn = this.authService.authenticated;
-    // this.walletService
-    //   .loadWallet()
-    //   .then(wallet => {
-    //     if(wallet) {
-    //       this.wallet = wallet
-    //       this.showQr()
-    //       toastr.success('Wallet loaded successfully!', 'Wallet')
-    //     }
-    //   })
-    //   .catch(err => toastr.warning("Couldn't load local wallet", 'Wallet'))
     
   }
 
@@ -71,7 +59,8 @@ export class WalletComponent implements OnInit {
     }
   }
 
-  getKey() : void {
+  // Decrypt private key from wallet keystore file
+  // getKey() : void {
 
     // this.walletService
     //   .getPrivateKeyString(this.wallet ,this.filePassword)
@@ -85,23 +74,8 @@ export class WalletComponent implements OnInit {
     //     this.filePassword = null
     //     toastr.error('Incorrect Password', "Show Private Key")
     //   })
-  }
-
-  // // watch for wallet file upload
-  // fileChangeListener($event) : void {
-  //   this.readThis($event.target); 
   // }
 
-  // readThis(inputValue: any) : void {
-  //   var self = this;
-  //   var file:File = inputValue.files[0]; 
-  //   var myReader:FileReader = new FileReader();
-     
-  //   myReader.onloadend = function(e){
-  //     self.loadWalletFromString(myReader.result)
-  //   }
-  //   myReader.readAsText(file);
-  // }
 
 
   create(): void {
@@ -112,10 +86,6 @@ export class WalletComponent implements OnInit {
         this.password = null
         toastr.success('Created!', "Wallet Creation")
         this.showQr()
-        // this.walletService
-        //   .saveWallet(this.wallet)
-        //   .then()
-        //   .catch(err => console.log("Errors", err))
       })
       .catch(err => toastr.error("An Error Occurred", "Wallet Creation"))
   }
@@ -126,22 +96,37 @@ export class WalletComponent implements OnInit {
       .catch(err => toastr.error("An error occurred while downloading", "Wallet Download"))
   }
 
-  // loadWalletFromString(s: string): void {
-  //   try {
-  //     this.wallet  = {
-  //       keystore: JSON.parse(s),
-  //       address : JSON.parse(s).address
-  //     }
-  //   }catch(e){
-  //     toastr.error("Cannot read from wallet file.", "Load Wallet")
-  //   }
 
-  //   this.showQr();
-  //   this.walletService
-  //     .saveWallet(this.wallet)
-  //     .then()
-  //     .catch(err => console.error("errors", err))
-  // }
+  /*  Loading wallet by file upload 
+   *
+   *
+  fileChangeListener($event) : void {
+    this.readThis($event.target); 
+  }
+
+  readThis(inputValue: any) : void {
+    var self = this;
+    var file:File = inputValue.files[0]; 
+    var myReader:FileReader = new FileReader();
+     
+    myReader.onloadend = function(e){
+      self.loadWalletFromString(myReader.result)
+    }
+    myReader.readAsText(file);
+  }
+  loadWalletFromString(s: string): void {
+    try {
+      this.wallet  = {
+        keystore: JSON.parse(s),
+        address : JSON.parse(s).address
+      }
+    }catch(e){
+      toastr.error("Cannot read from wallet file.", "Load Wallet")
+    }
+
+    this.showQr();
+  }
+  */
 
   deleteWallet() : void {
     this.wallet = null;
@@ -150,11 +135,6 @@ export class WalletComponent implements OnInit {
     this.privateKey = null
     this.filePassword = null
     this.qrSvg = null
-    // localStorage.clear()
-  }
-
-  logout() : void {
-    this.authService.logout()
   }
 
 }
