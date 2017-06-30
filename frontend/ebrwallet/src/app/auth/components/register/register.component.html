@@ -35,7 +35,7 @@
       <div *ngIf="!form.get('email').valid && form.get('email').touched"
         class="alert alert-danger"> Email must be a valid one.</div>
 
-      
+
       <input formControlName="password" type="password" class="form-control" name="p" placeholder="Password" required="required" />
       <div *ngIf="!form.get('password').valid && form.get('password').touched"
         class="alert alert-danger">
@@ -45,13 +45,14 @@
           <li>Must include at lease one numeric digit.</li>
         </ul>
       </div>
-      
+
       <input formControlName="confirmPassword"  type="password" class="form-control" name="p" placeholder="Repeat Password" required="required" />
       <div *ngIf="form.errors?.mismatchedPasswords && form.get('confirmPassword').touched"
         class="alert alert-danger"> Passwords must match.</div>
 
       <!--<input formControlName="country" type="text" class="form-control" placeholder="Country" required="required" />-->
-      <select formControlName="country" placeholder="Country" id="country" name="country">
+      <select class="sl-country" formControlName="country" id="country" name="country">
+        <option value="" selected>Select your country</option>
         <option value="AF">Afghanistan</option>
         <option value="AX">Åland Islands</option>
         <option value="AL">Albania</option>
@@ -304,11 +305,11 @@
       </select>
       <div *ngIf="form.get('country').hasError('required') && form.get('country').touched"
         class="alert alert-danger"> Country is required.</div>
-      
+
       <input formControlName="city" type="text" class="form-control" placeholder="City" required="required" />
       <div *ngIf="form.get('city').hasError('required') && form.get('city').touched"
         class="alert alert-danger"> City is required.</div>
-      
+
       <input formControlName="phone" type="text" class="form-control" placeholder="Phone no" required="required" />
       <div *ngIf="form.get('phone').hasError('required') && form.get('phone').touched"
         class="alert alert-danger"> Phone is required.</div>
@@ -316,7 +317,7 @@
       <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-block btn-lg mg-btm-sm">Register</button>
 
 <p class="text-center">Alerady have account? <a [routerLink]="['/login']" routerLinkActive="active">Login</a></p>
-    
+
     </form>
 </div>
 </div>
