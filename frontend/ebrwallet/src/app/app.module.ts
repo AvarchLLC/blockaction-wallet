@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 // Project Services
 import { WalletService } from './services/wallet.service';
 import { AuthService } from './services/auth.service';
+import { TransactionComponent } from './transaction/transaction.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     WalletComponent,
     HomeComponent,
+    TransactionComponent,
   ],
   imports: [
     BrowserModule,

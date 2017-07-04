@@ -1,0 +1,17 @@
+<div class="fullPage"> 
+  <div class="card card-center card-md-p">
+    <div class="text-center">Send Money</div>
+
+    <form [formGroup]="sendMoney">
+      <input formControlName="receiveAddress" type="text" class="form-control"  placeholder="Send to Address..." required="required" />
+      <input formControlName="amount" type="text" class="form-control"  placeholder="Amount in Wei" required="required" />
+      
+      {{ message }}
+      <label class="btn btn-default btn-file">
+          Select wallet with sufficient funds <input type="file" (change)="fileChangeListener($event)" style="display: none;"> 
+      </label>
+
+      <button type="submit" [disabled]="!sendMoney.valid" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Money</button>
+    </form>
+  </div>
+</div>

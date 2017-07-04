@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Wallet } from '../wallet'
 
+import qrImage from 'qr-image'
+
 declare var EthJS : any;
 
 @Injectable()
@@ -73,36 +75,51 @@ export class WalletService {
     })
   }
 
-  // loadWallet ... loads wallet object saved in memory
-  loadWallet() : Promise<Wallet> {
+  // getQrCode ... create a svg string for qr code of wallet address
+  getQrCode(w : Wallet) : Promise<string> {
     return new Promise((resolve, reject) => {
       try {
-        var localWallet = localStorage.getItem('wallet')
-        if ( localStorage !== null ) {
-          var wallet: Wallet = JSON.parse(localWallet)
-          resolve(wallet)
-        } else {
-          resolve(false)
-        } 
+        var qrString = qrImage.imageSync(w.address, { type: 'svg' })
+        var index = qrString.toString().indexOf('d="')
+        var lastIndex = qrString.toString().indexOf('/>')
+        resolve(qrString.substring(index + 3, lastIndex - 1))
       }
-      catch(e) {
-        reject('Failed to load wallet from storage.')        
+      catch(e){
+        reject(e)
       }
     })
   }
+  
+  // // loadWallet ... loads wallet object saved in memory
+  // loadWallet() : Promise<Wallet> {
+  //   return new Promise((resolve, reject) => {
+  //     try {
+  //       var localWallet = localStorage.getItem('wallet')
+  //       if ( localStorage !== null ) {
+  //         var wallet: Wallet = JSON.parse(localWallet)
+  //         resolve(wallet)
+  //       } else {
+  //         resolve(false)
+  //       } 
+  //     }
+  //     catch(e) {
+  //       reject('Failed to load wallet from storage.')        
+  //     }
+  //   })
+  // }
 
-  // saveWallet ... saves wallet object to memory
-  saveWallet(w: Wallet) : Promise<any> {
-    return new Promise((resolve, reject) => {
-      try {
-        localStorage.setItem('wallet', JSON.stringify(w))
-        resolve(true)
-      }
-      catch(e) {
-        reject('Failed to save wallet to storage.')        
-      }
-    })
-  }
+  // // saveWallet ... saves wallet object to memory
+  // saveWallet(w: Wallet) : Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     try {
+  //       localStorage.setItem('wallet', JSON.stringify(w))
+  //       resolve(true)
+  //     }
+  //     catch(e) {
+  //       reject('Failed to save wallet to storage.')        
+  //     }
+  //   })
+  // }
 
   // saveWalletToFile ... saves the encrypted wallet object ( wallet keystore ) to disk
   saveWalletToFile(w: Wallet) : Promise<any> {
