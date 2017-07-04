@@ -1,17 +1,10 @@
 <header>
-    <div class="container">
-        <div class="logo">
-            <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="">Ethereum</a></li>
-                <li><a [routerLink]="['/dashboard']" routerLinkActive="active">Wallet</a></li>
-                <li><a [routerLink]="['/login']" routerLinkActive="active">Sign In</a></li>
-                <li><a [routerLink]="['/register']" routerLinkActive="active">Sign Up</a></li>
-            </ul>
-        </nav>
-    </div>
+<div class="container">
+  <div class="logo">
+    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
+  </div>
+    <nav-bar></nav-bar>
+  </div>
 </header>
 
 <div class="container-md {{ slideClass }}">
@@ -51,7 +44,7 @@
                     </div>
                     <h2>Wallet Ready!</h2>
     <div class="hide"><b>Ethers:     </b> <em>0.000{{ random }}</em></div>
-      
+
       <div class="form-group mg-top-sm">
     <b>Public Key (Address)</b>
     <div class="clearfix">
@@ -70,7 +63,7 @@
     <input type="text" class="form-control" value="{{ wallet.privateKey }}">
 
         </div>
-  
+
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
                         <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
@@ -80,6 +73,3 @@
         </div>
     </div>
     </div>
-
-
-    

@@ -1,0 +1,23 @@
+<nav id="nav" role="navigation" [class.open]='navOpen === true'>
+    <a id="nav-open-btn" (click)="navOpen=!navOpen">
+        <button class="hamburger" type="button"width="50" height="50">
+        <span class="hamburger-inner"></span>
+        <span class="hamburger-inner"></span>
+        <span class="hamburger-inner"></span>
+        </button>
+    </a>
+    <div class="navBar">
+        <div class="nav-block">
+            <div class="logo"></div>
+            <ul>
+                <li *ngFor="let menuItem of menuItems" [class.active]="menuItem.path === activeLink">
+                    <a [routerLink]="[menuItem.path]">
+                        {{menuItem.title}}
+                    </a>
+                </li>
+            </ul>
+            <a class="close-btn" id="nav-close-btn" href="#top"></a>
+        </div>
+    </div>
+
+</nav>

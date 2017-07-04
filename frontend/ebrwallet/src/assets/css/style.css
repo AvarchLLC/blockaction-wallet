@@ -4,49 +4,6 @@ body {
     font-size: 16px;
 }
 
-.fullPage {
-    background: #315F96 url(../img/bg.jpg) no-repeat center;
-    background-size:cover;
-    min-height: 100vh;
-    padding:10% 0;
-}
-
-.card {
-    padding: 40px;
-    background:#fff;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 500px;
-}
-
-.block h2 { text-transform: uppercase;
-font-family: "SourceSansPro-Bold";
-font-size: 32px;}
-
-.text-white { color:#fff; }
-
-.text-sm { font-size:90%; }
-.mg-top-sm { margin-top:20px }
-.mg-btm-sm { margin-bottom:20px; }
-
-.card .form-control, .card .btn { margin-top:20px; }
-
-.logo-icon { max-width:72px;}
-
-.card-center {
-  box-shadow: 0px 10px 22px 0px rgba(0,0,0,0.30);
-    margin:0 auto; }
-
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:focus {
-  text-transform: uppercase;
-    background-image: linear-gradient(-179deg, #32C1F0 0%, #076E90 100%);
-    border: 1px solid #00ACE6;
-    box-shadow: inset 0px 1px 0px 0px rgba(204, 242, 255, 0.69);
-    border-radius: 2px;
-}
-
 @font-face {
 font-family:"SourceSansPro-ExtraLight";
 src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
@@ -68,7 +25,61 @@ src: url(../fonts/SourceSansPro-Bold.ttf) format('truetype');
 font-style: normal;
 font-weight: 400;
 }
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?cp5yvy');
+  src:  url('../fonts/icomoon.eot?cp5yvy#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?cp5yvy') format('truetype'),
+    url('../fonts/icomoon.woff?cp5yvy') format('woff'),
+    url('../fonts/icomoon.svg?cp5yvy#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-google-plus, .icon-facebook, .icon-instagram, .icon-twitter, .icon-youtube, .icon-linkedin2:before {
+  font-size: 25px;
+  color: #444;
+  background: #fff;
+  border-radius:3px;
+  padding: 5px;
+}
+.icon-circle-up:before{
+  content: "\2bc5";
+  font-size: 50px;
+  color: #999;
+}
+.icon-google-plus:before {
+  content: "\ea8b";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
 
 header{
   margin-top: 25px;
@@ -82,10 +93,26 @@ background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%,
   width: 250px;
   float: left;
 }
+#nav button.hamburger{
+  display:block;
+  padding: 3px;
+  border: none;
+  border-radius:2px;
+  background: none;
+}
+span.hamburger-inner{
+  display: block;
+  background-color: #446ea0;
+  width: 30px;
+  height: 3px;
+  padding: 2px;
+  margin:5px 5px;
+}
 nav{
   height: 75px;
   float: right;
   text-align: center;
+
 }
 nav ul {
   margin-top: 20px;
@@ -97,13 +124,14 @@ nav ul li{
 }
 nav ul li a{
   text-align: center;
-  color: #fff;
   font-weight: 700;
+  color: #fff;
 }
 nav ul li a:hover{
   text-decoration: none;
   color:#00abe3;
 }
+nav ul li.active a{text-decoration: none; color:#00abe3;}
 .banner img{
 float: right;
 }
@@ -165,6 +193,7 @@ float: right;
 }
 .links ul li{
   list-style: none;
+  line-height: 1.6;
 }
 .links a {
 color: #fff;
@@ -181,16 +210,18 @@ color: #fff;
 }
 .links form{
   background: #fff;
-  width: 70%;
+  width: 72%;
   padding:4px 0px 6px 7px;
   border-radius: 3px;
+  display: inline;
 }
 .links button, input{
   border: none;
   outline:hidden;
   background: none;
+  margin-bottom: 20px;
 }
-.language{
+.copy-right{
   width: 80%;
   padding-top: 50px;
   margin: 0 auto;
@@ -203,27 +234,82 @@ footer{
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.socialbuttons{
+.social-btns{
   text-align: center;
   padding: 10px;
 }
-.socialbuttons img{
+.social-btns img{
   padding: 10px;
 }
-.socialbuttons p{
-  margin: 10px auto 10px;
+.social-btns p{
+  margin: 30px auto 10px;
   text-align: center;
+  text-transform: uppercase;
 }
-.socialbuttons button{
+.social-btns button{
   background:#2a2c2d;
   padding: 0;
   border:none;
   outline:none;
+}
+.social-btns ul li{
+  list-style: none;
+  display: inline;
+  margin: 20px;
+}
+.social-btns a:hover{
+text-decoration: none;
+}
+.sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-color: #d8d8d8; border-radius:2px;}
+
+/****************************************** login_page *********************************/
+
+.fullPage {
+    background: #315F96 url(../img/bg.jpg) no-repeat center;
+    background-size:cover;
+    min-height: 100vh;
+    padding:10% 0;
 
 }
-.sl-country{padding: 6px 12px; width: 100%; margin-top: 20px; color:#999; border-color: #d8d8d8; border-radius:2px;}
+.card {
+    padding: 40px;
+    background:#fff;
+    border-radius: 5px;
+    margin: 0 15px;
+}
 
-.block { height: 100%; padding:40px; height:510px; position: relative;
+.block h2 { text-transform: uppercase;
+font-family: "SourceSansPro-Bold";
+font-size: 32px;}
+
+.text-white { color:#fff; }
+
+.text-align{ text-align: left; margin-top: 10px;}
+
+.text-sm { font-size:100%; }
+.mg-top-sm { margin-top:20px }
+.mg-btm-sm { margin-bottom:20px; }
+
+.card .form-control, .card .btn { margin-top:20px; }
+
+.logo-icon { max-width:72px;}
+
+.card-center {
+  box-shadow: 0px 10px 22px 0px rgba(0,0,0,0.30);
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+  text-transform: uppercase;
+    background-image: linear-gradient(-179deg, #32C1F0 0%, #076E90 100%);
+    border: 1px solid #00ACE6;
+    box-shadow: inset 0px 1px 0px 0px rgba(204, 242, 255, 0.69);
+    border-radius: 2px;
+}
+
+.block {
+  height: 100%; padding:40px; height:510px; position: relative;border-radius: 5px;
 -webkit-transition:all .3s ease-in-out;
  -o-transition:all .3s ease-in-out;
  transition:all .3s ease-in-out; }
@@ -298,3 +384,15 @@ transform: scale(3); }
 .buttonWithLoader:active:before, .buttonWithLoader:focus:before { content: ""; background: url(../img/loadingicon.gif) no-repeat center; width:32px; height: 32px; position: absolute;
 left:50%; top:10px; }
 */
+/****************************************** responsive_laytout*********************************/
+@media screen and (min-width:480px) {
+  .card { width: 500px; margin: 0 auto; }
+
+  .text-align{ text-align: right; margin-top: 0;}
+  .text-sm { font-size: 90%; }
+}
+@media screen and (min-width: 768px) {
+  #nav-open-btn {
+       display: none;
+   }
+}

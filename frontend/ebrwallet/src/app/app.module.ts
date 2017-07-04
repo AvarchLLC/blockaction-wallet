@@ -19,13 +19,14 @@ import { HomeComponent } from './home/home.component';
 // Project Services
 import { WalletService } from './services/wallet.service';
 import { AuthService } from './services/auth.service';
-
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WalletComponent,
     HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

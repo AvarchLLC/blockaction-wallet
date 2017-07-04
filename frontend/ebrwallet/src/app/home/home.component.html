@@ -3,18 +3,11 @@
   <div class="logo">
     <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
   </div>
-    <nav>
-        <ul>
-          <li><a href="">Ethereum</a></li>
-          <li><a [routerLink]="['/wallet']" routerLinkActive="active">Wallet</a></li>
-          <li><a [routerLink]="['/login']" routerLinkActive="active">Sign In</a></li>
-          <li><a [routerLink]="['/register']" routerLinkActive="active">Sign Up</a></li>
-        </ul>
-    </nav>
+    <nav-bar></nav-bar>
   </div>
 </header>
 <!--+++++++++++++++++++++++++++++++++++++++Banner section++++++++++++++++++++-->
-      <div class="banner ">
+      <div class="banner">
             <img src="/assets/img/banner1.png" alt="banner image" class="img-responsive">
             <div class="container">
                 <div class="banner-content">
@@ -120,22 +113,24 @@
                 <p>Never misss any offer and news from us. <br>you'll never regret this subscription.</p>
             </div>
         </div>
-        <div class="language">
+        <div class="copy-right">
           <P>&copy; 2017 Block Chain</P>
         </div>
       </div>
       <!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++-->
     <footer>
         <div class="container ">
-          <div class="socialbuttons">
-              <a href=""><img src="../assets/img/slogo1.png" alt=""></a>
-              <a href=""><img src="../assets/img/slogo2.png" alt=""></a>
-              <a href=""><img src="../assets/img/slogo3.png" alt=""></a>
-              <a href=""><img src="../assets/img/slogo4.png" alt=""></a>
-              <a href=""><img src="../assets/img/slogo5.png" alt=""></a>
-              <a href=""><img src="../assets/img/slogo6.png" alt=""></a>
-              <P>&copy; 2017 PRIVACY POLICY</P>
-              <button type="button" name="up_arrow"><img src="../assets/img/uparrow.png"></button>
+          <div class="social-btns">
+            <ul>
+              <li><a href=""><span class="icon-google-plus"></span></a></li>
+              <li><a href=""><span class="icon-facebook"></span></a></li>
+              <li><a href=""><span class="icon-instagram"></span></a></li>
+              <li><a href=""><span class="icon-twitter"></span></a></li>
+              <li><a href=""><span class="icon-youtube"></span></a></li>
+              <li><a href=""><span class="icon-linkedin2"></span></a></li>
+            </ul>
+            <P>&copy; 2017 Privacy Policy</P>
+              <button type="button" name="up_arrow">  <span class="icon-circle-up"></span></button>
           </div>
         </div>
     </footer>
