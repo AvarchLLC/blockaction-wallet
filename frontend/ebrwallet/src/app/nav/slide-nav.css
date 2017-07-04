@@ -48,13 +48,50 @@
   #nav.open .nav-block a {
     color:#fff;
     font-weight:bold;
-    border-bottom:1px solid rgba(0,0,0,.2);
     display:block;
     padding:10px 0;
     font-size:18px;
+    width: 100%;
   }
 
   #nav.open .nav-block { transform: translateX(0px);}
 
   #nav.open #nav-open-btn { position: fixed;  left:calc(80vw + 30px)}
 }
+.dropdown{  position: relative; display: inline-block;}
+.dropdown-menuBar{
+display:none;
+position: absolute;
+min-width: 130px;
+
+background: #000;
+border-bottom-left-radius: 2px;
+border-bottom-right-radius: 2px;
+z-index: 1;
+margin:20px 0 0 -10px;
+padding-top: 20px;
+}
+.dropdown:hover .dropdown-menuBar{
+  display: inline-block;
+  text-align: left;
+}
+.dropdown:hover .dropdown-menuBar li {
+line-height: 1.6;
+margin-left:-30px;
+width:100%;
+display: inline-block;
+}
+.dropdown:hover .dropdown-menuBar li a {
+font-size: 14px;
+width: 140%;
+padding: 10px 10px;
+display: block;
+margin-left: -10px;
+position: relative;
+text-align: left;
+}
+.dropdown:hover .dropdown-menuBar li a:focus {
+text-decoration: none;
+}
+a.active {text-decoration: none; color:#00abe3;}
+.nav-block>.logo{ width:100%;}

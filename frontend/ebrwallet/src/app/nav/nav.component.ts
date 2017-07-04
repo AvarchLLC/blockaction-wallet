@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NAVROUTES } from './nav-routes.config';
+import { NAVROUTES, ETHROUTES } from './nav-routes.config';
 import { Router, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
 
@@ -24,6 +24,18 @@ export class NavComponent implements OnInit{
 
     ngOnInit(){
         this.menuItems = NAVROUTES.filter(menuItem => menuItem);
+    }
+
+    isActive(menuItem, activeLink) : boolean {
+      if (menuItem.routes) {
+        for(let route of menuItem.routes) {
+          if(route.path === activeLink){
+            return true
+          }
+        }
+      }else {
+        return menuItem.path === activeLink
+      }
     }
 
 }

@@ -10,9 +10,22 @@
         <div class="nav-block">
             <div class="logo"></div>
             <ul>
-                <li *ngFor="let menuItem of menuItems" [class.active]="menuItem.path === activeLink">
-                    <a [routerLink]="[menuItem.path]">
-                        {{menuItem.title}}
+                <li *ngFor="let menuItem of menuItems" >
+
+                    <div *ngIf="menuItem.subroutes" class="dropdown" >
+                      <ul class="dropdown-menuBar">
+                          <li *ngFor="let subroute of menuItem.routes" >
+                            <a [routerLink]="[subroute.path]">
+                                {{subroute.title}}
+                            </a>
+                          </li>
+                      </ul>
+                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem,activeLink)">
+                          {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
+                      </a>
+                    </div>
+                    <a *ngIf="!menuItem.subroutes" [routerLink]="[menuItem.path]" [class.active]="menuItem.path === activeLink">
+                        {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
                     </a>
                 </li>
             </ul>

@@ -92,6 +92,7 @@ background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%,
   margin-top: -30px;
   width: 250px;
   float: left;
+  margin-bottom: 20px;
 }
 #nav button.hamburger{
   display:block;
@@ -99,6 +100,7 @@ background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%,
   border: none;
   border-radius:2px;
   background: none;
+  margin-left: -20px;
 }
 span.hamburger-inner{
   display: block;
@@ -260,7 +262,7 @@ footer{
 .social-btns a:hover{
 text-decoration: none;
 }
-.sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-color: #d8d8d8; border-radius:2px;}
+.sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-radius:2px; border: 1px solid #d8d8d8;}
 
 /****************************************** login_page *********************************/
 
