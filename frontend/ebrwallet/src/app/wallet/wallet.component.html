@@ -23,17 +23,19 @@
                 </div>
                 <h2> Create wallet </h2>
                 <br/>
-                <div class="form-group">
-                    <input type="{{ passphraseType }}" class="form-control input-lg" [(ngModel)]="password" placeholder="Enter Passphrase" />
-                    <div class="text-right"><a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                <form [formGroup]="walletForm" (ngSubmit)="create()">
+                    <div class="form-group">
+                        <input type="{{ passphraseType }}" class="form-control input-lg" formControlName="password" placeholder="Enter Passphrase" />
+                        <div class="text-right"><a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                        </div>
                     </div>
-                </div>
 
-<div class="buttonWithLoader">
-                <button class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
-                </div>
-                <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will need this password + your private key to unlock your wallet.
-                </p>
+                    <div class="buttonWithLoader">
+                        <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                    </div>
+                    <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will need this password + your private key to unlock your wallet.
+                    </p>
+                </form>
             </div>
         </div>
         <div class="col-md-6">

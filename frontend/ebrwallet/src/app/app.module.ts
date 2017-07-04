@@ -19,14 +19,23 @@ import { HomeComponent } from './home/home.component';
 // Project Services
 import { WalletService } from './services/wallet.service';
 import { AuthService } from './services/auth.service';
+<<<<<<< HEAD
 import { NavComponent } from './nav/nav.component';
+=======
+import { TransactionComponent } from './transaction/transaction.component';
+
+>>>>>>> 124ff97bae4f625c00291a1465a412e6ff9b300a
 
 @NgModule({
   declarations: [
     AppComponent,
     WalletComponent,
     HomeComponent,
+<<<<<<< HEAD
     NavComponent
+=======
+    TransactionComponent,
+>>>>>>> 124ff97bae4f625c00291a1465a412e6ff9b300a
   ],
   imports: [
     BrowserModule,

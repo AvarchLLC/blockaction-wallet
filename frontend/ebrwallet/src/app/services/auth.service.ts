@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { tokenNotExpired } from 'angular2-jwt';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 import { Headers, Http } from '@angular/http';
 
@@ -79,9 +79,10 @@ export class AuthService {
     //   .toPromise()
     //   .then(res => res.json())
     //   .catch(this.handleError)
-    var profile = {
-      
-    }
+    var jwt = new JwtHelper()
+    var decoded = jwt.decodeToken(authResult.token)
+    var profile = decoded.data;
+    
     this._setSession(authResult, profile)
   }
 
