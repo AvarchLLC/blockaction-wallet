@@ -1,14 +1,15 @@
 <nav id="nav" role="navigation" [class.open]='navOpen === true'>
-    <a id="nav-open-btn" (click)="navOpen=!navOpen">
-        <button class="hamburger" type="button"width="50" height="50">
-        <span class="hamburger-inner"></span>
-        <span class="hamburger-inner"></span>
-        <span class="hamburger-inner"></span>
-        </button>
-    </a>
+    <div id="nav-open-btn" (click)="navOpen=!navOpen" >
+        <ul>
+          <li><a class="hamburger"  [class.active]="navOpen == true">
+                <span></span>
+              </a>
+          </li>
+        </ul>
+    </div>
     <div class="navBar">
         <div class="nav-block">
-            <div class="logo"></div>
+            <div class="slidenav-logo"></div>
             <ul>
                 <li *ngFor="let menuItem of menuItems" >
 
@@ -20,7 +21,7 @@
                             </a>
                           </li>
                       </ul>
-                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem,activeLink)">
+                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem,activeLink)" class="hide-menuitem">
                           {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
                       </a>
                     </div>

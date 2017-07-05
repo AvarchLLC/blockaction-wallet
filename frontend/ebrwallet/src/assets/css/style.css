@@ -82,33 +82,14 @@ font-weight: 400;
 }
 
 header{
-  margin-top: 25px;
-
-  max-height: 70px;
-  /* Rectangle 6: */
-/* Rectangle 6: */
-background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%, #000000 100%, #7F7F7F 100%);}
+  max-height: 88px;
+  background: #00ACE6;
+}
 .logo{
-  margin-top: -30px;
-  width: 250px;
-  float: left;
-  margin-bottom: 20px;
-}
-#nav button.hamburger{
-  display:block;
-  padding: 3px;
-  border: none;
-  border-radius:2px;
-  background: none;
-  margin-left: -20px;
-}
-span.hamburger-inner{
-  display: block;
-  background-color: #446ea0;
-  width: 30px;
-  height: 3px;
-  padding: 2px;
-  margin:5px 5px;
+  margin: 7px -28px 30px 0;
+  width: 208px;
+  float:right;
+
 }
 nav{
   height: 75px;
@@ -117,17 +98,17 @@ nav{
 
 }
 nav ul {
-  margin-top: 20px;
+  margin-top: 0;
 }
 nav ul li{
   list-style: none;
-  display: inline-block;
-  margin:0 30px;
+  margin:0;
 }
 nav ul li a{
   text-align: center;
   font-weight: 700;
   color: #fff;
+  padding: 10px;
 }
 nav ul li a:hover{
   text-decoration: none;
@@ -136,16 +117,20 @@ nav ul li a:hover{
 nav ul li.active a{text-decoration: none; color:#00abe3;}
 .banner img{
 float: right;
+margin-top: -32px;
+margin-bottom: 30px;
 }
 .banner-content{
   margin-top: 130px;
   z-index: 1000;
   color: #4a4a4a;
+  text-align: center;
 }
 .banner-content p{
   font-weight: 600;
   font-size: 16px;
   word-spacing: 2px;
+  margin: 30px 0;
 }
 .banner-text{
   font-family: "SourceSansPro-ExtraLight";
@@ -161,24 +146,38 @@ float: right;
   font-size: 20px;
   color: #fff;
   font-weight: 700;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 0px;
+  margin-top:0px;
 }
+.pd-none{ padding: 0;}
+
+.pd-top-sm { padding-top: 10px;}
+.pad-topbottom{ padding:40px 0;}
 .bg-dark{
   width: 100%;
-  background: #4a4a4a;
-  padding: 50px;
+  background: #4a4a4a; color:#fff;
+  padding: 0;
 }
+
+.pd-all-md { padding: 50px;}
+
+.bg-dark a { color:#fff;}
+
 .bg-dark p, h1{
   color: #fff;
   line-height: 1.6;
 }
-.services{
-  background: #fff;
-  padding-top: 100px;
-  text-align: center;
-  padding-bottom: 150px;
+.bg-light{
+padding-top: 40px;
+text-align: center;
+padding-bottom: 84px;
 }
+.bg-light img{
+padding-top: 30px;
+text-align: center;
+padding-bottom:20px;
+}
+.bg-light h3{color: #666;}
 .icon{
   vertical-align: middle;
 }
@@ -186,43 +185,45 @@ float: right;
   background:#f0f0f0;
   min-height: 300px;
 }
-.link-section{
-  background: #4a4a4a;
-  padding:100px;
+.links-footer{
+  padding:0;
+  text-align: center;
+  color: #fff;
 }
-.links ul{
+.links-footer ul{
   padding: 0;
 }
-.links ul li{
+.links-footer ul li{
   list-style: none;
   line-height: 1.6;
 }
-.links a {
+.links-footer a {
 color: #fff;
 }
-.links h2,h3{
-color: #fff;
+.links-footer h2,h3 {
+margin:40px auto 20px;
 }
-.links p{
-color: #fff;
+.links-footer p{
+
 }
-.links a:hover{
+.links-footer a:hover{
   color:#00abe3;
   text-decoration: none;
 }
-.links form{
+.links-footer form{
   background: #fff;
   width: 72%;
   padding:4px 0px 6px 7px;
   border-radius: 3px;
   display: inline;
 }
-.links button, input{
+.links-footer button, input{
   border: none;
   outline:hidden;
   background: none;
   margin-bottom: 20px;
 }
+
 .copy-right{
   width: 80%;
   padding-top: 50px;
@@ -388,13 +389,57 @@ left:50%; top:10px; }
 */
 /****************************************** responsive_laytout*********************************/
 @media screen and (min-width:480px) {
-  .card { width: 500px; margin: 0 auto; }
+header{
+    margin-top: 25px;
+    max-height: 70px;
+    /* Rectangle 6: */
+    /* Rectangle 6: */
+    background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%, #000000 100%, #7F7F7F 100%);
+}
+nav ul {
+  margin-top: 20px;
+}
+nav ul li{
+  list-style: none;
+  display: inline-block;
+  margin:0 30px;
+}
+.logo{
+    margin-top: -30px;
+    width: 250px;
+    float: left;
+    margin-bottom: 20px;
+}
+.card { width: 500px; margin: 0 auto; }
 
-  .text-align{ text-align: right; margin-top: 0;}
-  .text-sm { font-size: 90%; }
+.text-align{ text-align: right; margin-top: 0;}
+
+.text-sm { font-size: 90%; }
 }
 @media screen and (min-width: 768px) {
   #nav-open-btn {
        display: none;
+   }
+   .banner img{
+   float: right;
+   margin:0 auto;
+   }
+   .banner-content{
+     text-align:left;
+   }
+   .banner-content button{
+     margin-top: 20px;
+   }
+   .bg-dark{
+     width: 100%;
+     background: #4a4a4a;
+     padding: 50px;
+   }
+   .bg-light{
+     padding-top: 100px;
+     padding-bottom: 150px;
+   }
+   .links-footer{
+     text-align:left;
    }
 }
