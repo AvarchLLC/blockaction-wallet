@@ -159,7 +159,7 @@ margin-bottom: 30px;
   padding: 0;
 }
 
-.pd-all-md { padding: 50px;}
+.pd-all-md { padding: 25px;}
 
 .bg-dark a { color:#fff;}
 
@@ -167,17 +167,18 @@ margin-bottom: 30px;
   color: #fff;
   line-height: 1.6;
 }
-.bg-light{
+.bg-light{ background: #fff;}
+.four-col-box {
 padding-top: 40px;
 text-align: center;
 padding-bottom: 84px;
 }
-.bg-light img{
+.four-col-box  img{
 padding-top: 30px;
 text-align: center;
 padding-bottom:20px;
 }
-.bg-light h3{color: #666;}
+.four-col-box h3{color: #666;}
 .icon{
   vertical-align: middle;
 }
@@ -211,17 +212,16 @@ margin:40px auto 20px;
   text-decoration: none;
 }
 .links-footer form{
-  background: #fff;
-  width: 72%;
-  padding:4px 0px 6px 7px;
+  color: #666;
+  width:100%;
+  padding:5px;
   border-radius: 3px;
-  display: inline;
+
 }
 .links-footer button, input{
   border: none;
   outline:hidden;
   background: none;
-  margin-bottom: 20px;
 }
 
 .copy-right{
@@ -239,11 +239,9 @@ footer{
 }
 .social-btns{
   text-align: center;
-  padding: 10px;
+  padding: 0px;
 }
-.social-btns img{
-  padding: 10px;
-}
+
 .social-btns p{
   margin: 30px auto 10px;
   text-align: center;
@@ -255,10 +253,12 @@ footer{
   border:none;
   outline:none;
 }
+
+.social-btns ul{ margin-left:-37px;}
 .social-btns ul li{
   list-style: none;
   display: inline;
-  margin: 20px;
+  margin: 2px ;
 }
 .social-btns a:hover{
 text-decoration: none;
@@ -417,29 +417,48 @@ nav ul li{
 .text-sm { font-size: 90%; }
 }
 @media screen and (min-width: 768px) {
-  #nav-open-btn {
+.pd-all-md { padding: 50px;}
+
+#nav-open-btn {
        display: none;
    }
-   .banner img{
+.banner img{
    float: right;
    margin:0 auto;
    }
-   .banner-content{
+.banner-content{
      text-align:left;
    }
-   .banner-content button{
+.banner-content button{
      margin-top: 20px;
    }
-   .bg-dark{
+.bg-dark{
      width: 100%;
      background: #4a4a4a;
      padding: 50px;
    }
-   .bg-light{
+.pad-tp-btm{
      padding-top: 100px;
      padding-bottom: 150px;
    }
-   .links-footer{
+.links-footer{
      text-align:left;
+
    }
+.links-footer form{
+     background: #fff;
+     width: 72%;
+     padding:4px 0px 6px 7px;
+     border-radius: 3px;
+     display: inline;
+}
+.links-footer button, input{
+       margin-bottom: 20px;
+  }
+.social-btns {
+    padding: 10px;
+  }
+  .social-btns ul li{
+    margin: 20px;
+  }
 }
