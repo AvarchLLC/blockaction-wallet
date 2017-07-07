@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="270px" height="110px" viewBox="0 0 270 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>key-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M39.8024691,209.222222 L39.8024691,219.185185 L20.8944591,219.185185 C20.3463906,219.185185 19.9012346,219.630419 19.9012346,220.179642 L19.9012346,248.079617 C19.9012346,248.628366 20.3459163,249.074074 20.8944591,249.074074 L39.8024691,249.074074 L39.8024691,265.999877 C39.8024691,267.659608 41.145162,269 42.8014575,269 L66.6553326,269 C68.3136558,269 69.654321,267.656799 69.654321,265.999877 L69.654321,107.529936 C92.6253687,101.024829 109.45679,79.878596 109.45679,54.7962963 C109.45679,24.5331375 84.954053,0 54.7283951,0 C24.5027371,0 0,24.5331375 0,54.7962963 C0,79.878596 16.8314214,101.024829 39.8024691,107.529936 L39.8024691,179.333333 L20.8944591,179.333333 C20.3463906,179.333333 19.9012346,179.778567 19.9012346,180.32779 L19.9012346,208.227765 C19.9012346,208.776514 20.3459163,209.222222 20.8944591,209.222222 L39.8024691,209.222222 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="109.45679" height="269" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M54.7283951,79.7037037 C68.4673305,79.7037037 79.6049383,68.5522776 79.6049383,54.7962963 C79.6049383,41.040315 68.4673305,29.8888889 54.7283951,29.8888889 C40.9894596,29.8888889 29.8518519,41.040315 29.8518519,54.7962963 C29.8518519,68.5522776 40.9894596,79.7037037 54.7283951,79.7037037 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="49.7530864" height="49.8148148" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="privacy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Landscape" transform="translate(-505.000000, -255.000000)" stroke="#585858" stroke-width="2">
+            <g id="key-icon" transform="translate(640.000000, 309.500000) rotate(-90.000000) translate(-640.000000, -309.500000) translate(585.000000, 175.000000)">
+                <use id="Combined-Shape" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                <use id="Oval-42" mask="url(#mask-4)" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>
