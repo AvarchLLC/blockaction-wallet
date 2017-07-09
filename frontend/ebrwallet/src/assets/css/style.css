@@ -268,7 +268,19 @@ text-decoration: none;
 .sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-radius:2px; border: 1px solid #d8d8d8; background: none;}
 
 /****************************************** wallet create page *********************************/
-
+.request-modal {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    background-size: cover;
+    min-height: 100vh;    
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10% 0;
+    z-index: 1000;
+    overflow: visible;
+}
 form textarea {
   resize: none;
 }
@@ -288,6 +300,50 @@ form textarea {
 .request-modal .card {
     margin-bottom: 100px;
 }
+.converter-box{
+  display: flex;
+  flex-direction: row;
+}
+span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;}
+.input-group {border: 1px solid #ccc; width: 47%; }
+.bdr-none{border:none !important;}
+
+
+.input-group .form-input {
+    display: block;
+    width: 100%;
+    height: 65px;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: none;
+    border-left: 1px solid #D8D8D8;
+    border-radius: 2px;
+    margin: 0;
+    outline: none;
+}
+.input-group .input-group-addon {
+    padding: 0;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0px;
+    
+}
+.input-group input { font-size: 24px; font-weight: bold; }
+
+.input-group-addon h4{font-size:14px; margin: 0; text-transform: uppercase;}
+.base-txt img{width: 20px;margin-top: 3px;}
+.base-txt { height: 30px; display: flex; justify-content: center; align-items: center; }
+.base-txt h4 {font-size: 28px ; font-weight: bolder;}
+.super-txt{border-bottom:1px solid #999; padding: 2px 6px; height: 20px; max-height: 20px; }
 /****************************************** login_page *********************************/
 
 .fullPage {
@@ -422,19 +478,7 @@ transform: scale(3); }
 .block .form-group { margin-bottom: 40px; }
 
 
-.request-modal {
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    background-size: cover;
-    min-height: 100vh;    
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    padding: 10% 0;
-    z-index: 1000;
-    overflow: visible;
-}
+
 /*
 
 .buttonWithLoader button:focus, .buttonWithLoader button:active { color:transparent;  }

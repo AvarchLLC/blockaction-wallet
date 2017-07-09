@@ -90,8 +90,23 @@
                 <!--<input class="form-control withQr" style="margin:0;margin-right:5px;" type="text" value="{{wallet.address}}" disabled>
                 <img width="40" height="40" src='data:image/png;base64,{{ identicon }}' id='iconImage' style="display: block;">-->
                 <input class="form-control" formControlName="email" type="email" placeholder="Email...">
-                <input class="form-control" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number">
-                <input class="form-control" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number">                
+                <div class="converter-box">
+                    <div class="input-group">
+                        <div class="input-group-addon bdr-none flex-box">
+                            <div class="super-txt "><h4><b>eth</b></h4></div>
+                            <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
+                        </div>
+                        <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number">
+                    </div>
+                    <span><h2>=</h2></span>
+                    <div class="input-group">
+                        <div class="input-group-addon bdr-none flex-box">
+                            <div class="super-txt"><h4><b>usd</b></h4></div>
+                            <div class="base-txt"><h4>$</h4></div>
+                        </div>
+                        <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number">                
+                    </div>
+                </div>
                 <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
             </form>
         </div>
