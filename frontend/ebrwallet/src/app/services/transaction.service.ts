@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import  Transaction  from 'ethereumjs-tx'
+import { Headers, Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
 import { Buffer } from 'buffer'
+import  Transaction  from 'ethereumjs-tx'
 
 declare var EthJS : any
 declare var Web3 : any
@@ -12,7 +15,7 @@ export class TransactionService {
   web3: any
   url : string = 'http://localhost:8545'
 
-  constructor() {
+  constructor(private http: Http) {
 
     this.web3 = new Web3(new Web3.providers.HttpProvider(this.url));
 
@@ -107,6 +110,23 @@ export class TransactionService {
   // getTransacionDetails ... get the details of transaction from transaction hash  
   getTransactionDetails(transactionHash : string) {
 
+  }
+
+  getPrice() : Promise<any> {
+    return this.http
+      .get('https://api.etherscan.io/api?module=stats&action=ethprice')
+      .toPromise()
+      .then(res => res.json())
+      .then(res => res.result)
+      /*
+        Sample Response:
+        {
+          ethbtc: "0.09634",
+          ethbtc_timestamp: "1499590928",
+          ethusd: "244.27",
+          ethusd_timestamp: "1499590943"
+        }
+      */
   }
 
 

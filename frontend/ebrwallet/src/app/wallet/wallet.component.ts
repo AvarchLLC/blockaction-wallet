@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WalletService } from '../services/wallet.service'
 import { AuthService } from '../services/auth.service'
+import { TransactionService } from '../services/transaction.service'
 
 import { Wallet } from '../wallet'
 
@@ -42,19 +43,19 @@ export class WalletComponent implements OnInit {
 
   wallet     : Wallet  // Wallet object
   qrSvg      : string  // QrCode SVG string
-
+  ethusd     : any
 
   disabled        : boolean = false // disable "create wallet" button
   slideClass      : string  = ''
   passphraseType  : string  = 'password'
   passphraseButton: string  = 'Show Passphrase'
   qrClass         : string  = ''
-  modalVisible    : boolean = false
+  modalVisible    : boolean = true
 
   identicon       : any
-  ready           : boolean = false
+  ready           : boolean = true
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService, private transactionService: TransactionService) {
     var passwordValidator = Validators.compose([
                               Validators.required,
                               Validators.maxLength(20),
@@ -67,13 +68,36 @@ export class WalletComponent implements OnInit {
 
     this.requestEtherForm = fb.group({
       email: ['', Validators.email],
-      amount: [''],
+      amount_ether: ['0'],
+      amount_usd: ['0'],
       comment : ['']
     })
   }
 
   ngOnInit(): void {
 
+  }
+
+  etherAmountChanged(e) {
+    let ether_value = parseFloat(e.target.value)
+    if(e.target.value.length > ether_value.toString().length ) {
+      e.target.value = ether_value;
+    }
+    if(!isNaN(ether_value)  && ether_value){
+      let amount_in_usd = ether_value * 244.27 //this.ethusd.value
+      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd)
+    }
+  }
+
+  usdAmountChanged(e) {
+    let usd_value = parseFloat(e.target.value)
+    if(e.target.value.length > usd_value.toString().length ) {
+      e.target.value = usd_value;
+    }
+    if(!isNaN(usd_value)  && usd_value){
+      let amount_in_ether = usd_value / 244.27 //this.ethusd.value
+      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether)
+    }
   }
 
   get isDisabled() {
@@ -208,12 +232,23 @@ export class WalletComponent implements OnInit {
       win.document.getElementById('privQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.privQrCodeData))
       win.document.getElementById('addrQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.addrQrCodeData))      
       win.document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ data.identiconData)            
-    }).catch(err => toastr.error(err))
+      setTimeout(function(){
+        win.print()
+      }, 3000)
+  }).catch(err => toastr.error(err))
   }
 
   requestEther() {
     this.modalVisible = false;
 
+    this.transactionService
+      .getPrice()
+      .then(res => {
+        this.ethusd = {
+          value: res.ethusd,
+          time : res.ethusd_timestamp
+        }
+      })
     let em = this.requestEtherForm.controls.email.value;
     let am = this.requestEtherForm.controls.amount.value;
     let str = `Ether request sent to ${em} for ${am} ether.`

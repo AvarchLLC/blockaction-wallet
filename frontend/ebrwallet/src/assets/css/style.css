@@ -267,6 +267,27 @@ text-decoration: none;
 }
 .sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-radius:2px; border: 1px solid #d8d8d8; background: none;}
 
+/****************************************** wallet create page *********************************/
+
+form textarea {
+  resize: none;
+}
+
+.request-modal .card h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.button-space {
+    display: flex;
+    flex: 1;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.request-modal .card {
+    margin-bottom: 100px;
+}
 /****************************************** login_page *********************************/
 
 .fullPage {
@@ -412,6 +433,7 @@ transform: scale(3); }
     right: 0px;
     padding: 10% 0;
     z-index: 1000;
+    overflow: visible;
 }
 /*
 

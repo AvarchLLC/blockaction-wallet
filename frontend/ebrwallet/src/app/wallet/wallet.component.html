@@ -67,8 +67,9 @@
                         </div>
                         <div class="text-center">
                             <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
-                            <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
-                            <button class="btn btn-primary btn-lg" (click)="showModal()">Request Ether</button>
+                            <br />
+                            <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                            <button class="btn btn-link btn-lg" (click)="showModal()">Request Ether</button>
                             <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                         </div>
                     </div>
@@ -82,19 +83,21 @@
 <div class="request-modal" *ngIf="modalVisible">
     <div class="card card-center card-md-p">
         <div class="text-center">
-            <a [routerLink]="['/']" routerLinkActive="active">
-                <img class="logo-icon mg-btm-sm" src="assets/img/logo-icon.png" alt="logo" />
-            </a>
+
             <h2>Request Ether</h2>
+            <br />
             <form [formGroup]="requestEtherForm">
-                <input class="form-control" type="text" value="{{wallet.address}}" disabled>
-                <img width="32" height="32" style="border-radius: 50%;" src='data:image/png;base64,{{ identicon }}' id='iconImage' style="display: block;">
+                <!--<input class="form-control withQr" style="margin:0;margin-right:5px;" type="text" value="{{wallet.address}}" disabled>
+                <img width="40" height="40" src='data:image/png;base64,{{ identicon }}' id='iconImage' style="display: block;">-->
                 <input class="form-control" formControlName="email" type="email" placeholder="Email...">
-                <input class="form-control" formControlName="amount" type="text" placeholder="Amount in Ethers...">
+                <input class="form-control" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number">
+                <input class="form-control" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number">                
                 <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
             </form>
         </div>
-        <button (click)="requestEther()">Request</button>
-        <button (click)="cancelModal()">Cancel</button>
+        <div class="button-space">
+            <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+            <button class="btn btn-link btn-lg" (click)="cancelModal()">CANCEL</button>
+        </div>
     </div>
 </div>
