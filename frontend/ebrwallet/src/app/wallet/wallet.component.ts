@@ -50,10 +50,10 @@ export class WalletComponent implements OnInit {
   passphraseType  : string  = 'password'
   passphraseButton: string  = 'Show Passphrase'
   qrClass         : string  = ''
-  modalVisible    : boolean = true
+  modalVisible    : boolean = false
 
   identicon       : any
-  ready           : boolean = true
+  ready           : boolean = false
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService, private transactionService: TransactionService) {
     var passwordValidator = Validators.compose([
