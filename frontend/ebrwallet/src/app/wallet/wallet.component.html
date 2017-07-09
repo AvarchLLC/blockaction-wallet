@@ -1,98 +1,99 @@
-<header>
-<div class="container">
-  <div class="logo">
-    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-  </div>
-    <nav-bar></nav-bar>
-  </div>
-</header>
-
-<div class="container-md {{ slideClass }}">
-    <div class="box hide">
-        <h2>Load a existing wallet </h2>
-        <form>
-            <input type="file" (change)="fileChangeListener($event)">
-        </form>
-        <br />
+<!-- Wallet Creation Info  -->
+<div class="fullPage" *ngIf="!ready">
+    <div class="pop-alert-box card-center card-md-p align-center">
+        <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
+        <div class="pop-alert">
+            <h1 class="color-black txt-scale"><b>We don't store your keys</b></h1>
+            <p p-font-size>We believe in user and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>
+            <button type="button" name="ok_go_it" class="btn-marg btn-blue text-white"> <b>Ok, Got it</b></button>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="block block-center bg-blue">
-                <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
-                    <button>Log Out</button>
+</div>
+
+<!-- Wallet Creation Page -->
+<div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
+            </div>
+            <nav-bar></nav-bar>
+        </div>
+    </header>
+    <div class="container-md {{ slideClass }}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block block-center bg-blue">
+                    <h2> Create wallet </h2>
+                    <br/>
+                    <form [formGroup]="walletForm" (ngSubmit)="create()">
+                        <div class="form-group">
+                            <input type="{{ passphraseType }}" class="form-control input-lg" formControlName="password" placeholder="Enter Passphrase"
+                            />
+                            <div class="text-right">
+                                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                            </div>
+                        </div>
+
+                        <div class="buttonWithLoader">
+                            <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                        </div>
+
+                        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+                            need this password + your private key to unlock your wallet.
+                        </p>
+                    </form>
                 </div>
-                <h2> Create wallet </h2>
-                <br/>
-                <form [formGroup]="walletForm" (ngSubmit)="create()">
-                    <div class="form-group">
-                        <input type="{{ passphraseType }}" class="form-control input-lg" formControlName="password" placeholder="Enter Passphrase" />
-                        <div class="text-right"><a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+            </div>
+            <div class="col-md-6">
+                <div class="block bg-gray">
+                    <div *ngIf="wallet">
+                        <h2>Wallet Ready!</h2>
+                        <div class="form-group mg-top-sm">
+                            <b>Public Key (Address)</b>
+                            <div class="clearfix">
+                                <input type="text" class="form-control withQr" value="{{ wallet.address }}">
+
+                                <span class="{{ qrClass }}" (click)="qrToggle()">
+                                    <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
+                                        <path [attr.d]="qrSvg"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <b>Private Key</b>
+                            <input type="text" class="form-control" value="{{ wallet.privateKey }}"> b
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
+                            <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                            <button class="btn btn-primary btn-lg" (click)="showModal()">Request Ether</button>
+                            <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                         </div>
                     </div>
-
-                    <div class="buttonWithLoader">
-                        <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
-                    </div>
-                    <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will need this password + your private key to unlock your wallet.
-                    </p>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="block bg-gray">
-                <div *ngIf="wallet">
-                    <div *ngIf="isLoggedIn" (click)="logout()" class="logout">
-                        <button>Log Out</button>
-                    </div>
-                    <h2>Wallet Ready!</h2>
-    <div class="hide"><b>Ethers:     </b> <em>0.000{{ random }}</em></div>
-
-      <div class="form-group mg-top-sm">
-    <b>Public Key (Address)</b>
-    <div class="clearfix">
-    <input type="text" class="form-control withQr" value="{{ wallet.address }}">
-
-<span class="{{ qrClass }}" (click)="qrToggle()">
-      <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
-        <path [attr.d]="qrSvg"></path>
-      </svg>
-      </span>
-      </div>
-
-        </div>
-      <div class="form-group">
-    <b>Private Key</b>
-    <input type="text" class="form-control" value="{{ wallet.privateKey }}">
-b
-        </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
-                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
-                        <button class="btn btn-primary btn-lg" (click)="showModal()">Request Ether</button>
-
-                        <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
+
+<!--- Ether Request Modal -->
 <div class="request-modal" *ngIf="modalVisible">
-     <div class="card card-center card-md-p">
+    <div class="card card-center card-md-p">
         <div class="text-center">
             <a [routerLink]="['/']" routerLinkActive="active">
                 <img class="logo-icon mg-btm-sm" src="assets/img/logo-icon.png" alt="logo" />
             </a>
             <h2>Request Ether</h2>
             <form [formGroup]="requestEtherForm">
-                <input class="form-control" type="text" value="{{wallet.address}}" disabled>                
+                <input class="form-control" type="text" value="{{wallet.address}}" disabled>
                 <input class="form-control" formControlName="email" type="email" placeholder="Email...">
                 <input class="form-control" formControlName="amount" type="text" placeholder="Amount in Ethers...">
                 <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
             </form>
         </div>
-        <button (click)="requestEther()">Request</button>        
+        <button (click)="requestEther()">Request</button>
         <button (click)="cancelModal()">Cancel</button>
-     </div>
+    </div>
 </div>

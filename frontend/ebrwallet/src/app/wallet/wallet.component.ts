@@ -51,13 +51,15 @@ export class WalletComponent implements OnInit {
   qrClass         : string  = ''
   modalVisible    : boolean = false
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService) { 
+  ready           : boolean = false
+
+  constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService) {
     var passwordValidator = Validators.compose([
                               Validators.required,
                               Validators.maxLength(20),
                               Validators.pattern(/^.*(?=.{7,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/)
                             ]);
-    
+
     this.walletForm = fb.group({
       password: ['', [ passwordValidator ]],
     })
@@ -107,7 +109,7 @@ export class WalletComponent implements OnInit {
 
   // this.walletService
   //   .getPrivateKeyString(this.wallet ,this.filePassword)
-  //   .then(key => { 
+  //   .then(key => {
   //     this.privateKey= key;
   //     this.filePassword = null;
   //     toastr.success('Wallet decrypted', "Show Private Key")
@@ -151,18 +153,18 @@ export class WalletComponent implements OnInit {
   }
 
 
-  /*  Loading wallet by file upload 
+  /*  Loading wallet by file upload
    *
    *
   fileChangeListener($event) : void {
-    this.readThis($event.target); 
+    this.readThis($event.target);
   }
 
   readThis(inputValue: any) : void {
     var self = this;
-    var file:File = inputValue.files[0]; 
+    var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
-     
+
     myReader.onloadend = function(e){
       self.loadWalletFromString(myReader.result)
     }
