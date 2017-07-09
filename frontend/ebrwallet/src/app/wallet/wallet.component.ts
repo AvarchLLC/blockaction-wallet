@@ -51,6 +51,7 @@ export class WalletComponent implements OnInit {
   qrClass         : string  = ''
   modalVisible    : boolean = false
 
+  identicon       : any
   ready           : boolean = false
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService) {
@@ -86,7 +87,10 @@ export class WalletComponent implements OnInit {
           .then(qrCode => this.qrSvg = qrCode)
     }
   }
-
+  
+  isReady() {
+    this.ready = true;
+  }
   qrToggle() {
     this.qrClass === ''
       ? this.qrClass = 'showQr'
@@ -132,14 +136,18 @@ export class WalletComponent implements OnInit {
         .createWallet(this.walletForm.value.password)
         .then(data => {
           this.wallet = data
-          // this.walletForm.controls.password.setValue('')
+          this.walletForm.controls.password.setValue('')
           this.slideClass = 'slide'
           toastr.success('Created!', "Wallet Creation")
           this.showQr()
+          this.identicon = this.walletService.getIdenticon(this.wallet);    
+          // document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ this.identicon)            
+          
           this.disabled = false
         })
         .catch(err => {
-          toastr.error("An Error Occurred", "Wallet Creation")
+          console.error(err)
+          // toastr.error("An Error Occurred", "Wallet Creation")
           this.disabled = false
         })
     }.bind(this), 1000)
@@ -194,7 +202,7 @@ export class WalletComponent implements OnInit {
   }
 
   printPaperWallets(strJson) {
-    this.walletService.getPaperWallet(this.wallet,this.walletForm.controls.password.value ).then(data => {
+    this.walletService.getPaperWallet(this.wallet).then(data => {
       var win = window.open("about:blank", "rel='noopener'", "_blank");
       win.document.write(data.paperHTML)
       win.document.getElementById('privQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.privQrCodeData))
@@ -205,6 +213,7 @@ export class WalletComponent implements OnInit {
 
   requestEther() {
     this.modalVisible = false;
+
     let em = this.requestEtherForm.controls.email.value;
     let am = this.requestEtherForm.controls.amount.value;
     let str = `Ether request sent to ${em} for ${am} ether.`

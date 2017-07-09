@@ -92,22 +92,13 @@ export class WalletService {
   }
 
   getIdenticon(w: Wallet) : Promise<string> {
-    return
+    return new Identicon(w.address, 420).toString();
   }
 
-  getPaperWallet(w : Wallet, password : string) : Promise<any> {
+  getPaperWallet(w : Wallet) : Promise<any> {
 
     return new Promise((resolve,reject) => {
       try {
-      
-      // var options = {
-      //   // foreground: [0, 0, 0, 255],               // rgba black
-      //   // background: [255, 255, 255, 255],         // rgba white
-      //   margin: 0.2,                              // 20% margin
-      //   size: 420,                                // 420px square
-      //   format: 'svg'                             // use SVG instead of PNG
-      // };
-      // var identiconData = new Identicon(w.address, options).toString();
       // create a base64 encoded PNG
       var identiconData = new Identicon(w.address, 420).toString();
 
@@ -183,38 +174,6 @@ export class WalletService {
     })
   }
   
-  
-  // // loadWallet ... loads wallet object saved in memory
-  // loadWallet() : Promise<Wallet> {
-  //   return new Promise((resolve, reject) => {
-  //     try {
-  //       var localWallet = localStorage.getItem('wallet')
-  //       if ( localStorage !== null ) {
-  //         var wallet: Wallet = JSON.parse(localWallet)
-  //         resolve(wallet)
-  //       } else {
-  //         resolve(false)
-  //       } 
-  //     }
-  //     catch(e) {
-  //       reject('Failed to load wallet from storage.')        
-  //     }
-  //   })
-  // }
-
-  // // saveWallet ... saves wallet object to memory
-  // saveWallet(w: Wallet) : Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //     try {
-  //       localStorage.setItem('wallet', JSON.stringify(w))
-  //       resolve(true)
-  //     }
-  //     catch(e) {
-  //       reject('Failed to save wallet to storage.')        
-  //     }
-  //   })
-  // }
-
   // saveWalletToFile ... saves the encrypted wallet object ( wallet keystore ) to disk
   saveWalletToFile(w: Wallet) : Promise<any> {
     return new Promise((resolve, reject) => {

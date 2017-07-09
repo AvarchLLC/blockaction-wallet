@@ -11,7 +11,7 @@ export const ETHROUTES : NavRouteInfo[] =[
 export const NAVROUTES : NavRouteInfo[] =[
         { path: '/home', title: 'Home' , subroutes : false, routes : null},
         { path: '#', title: 'Ethereum' , subroutes : true, routes : ETHROUTES},
-        { path: '/login', title: 'Sign In' , subroutes : false, routes : null},
-        { path: '/register', title: 'Sign Up' ,subroutes : false, routes : null}
+        // { path: '/login', title: 'Sign In' , subroutes : false, routes : null},
+        // { path: '/register', title: 'Sign Up' ,subroutes : false, routes : null}
 
 ];
