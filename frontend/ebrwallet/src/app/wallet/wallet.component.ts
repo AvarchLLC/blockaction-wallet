@@ -75,29 +75,15 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-  }
-
-  etherAmountChanged(e) {
-    let ether_value = parseFloat(e.target.value)
-    if(e.target.value.length > ether_value.toString().length ) {
-      e.target.value = ether_value;
-    }
-    if(!isNaN(ether_value)  && ether_value){
-      let amount_in_usd = ether_value * 244.27 //this.ethusd.value
-      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd)
-    }
-  }
-
-  usdAmountChanged(e) {
-    let usd_value = parseFloat(e.target.value)
-    if(e.target.value.length > usd_value.toString().length ) {
-      e.target.value = usd_value;
-    }
-    if(!isNaN(usd_value)  && usd_value){
-      let amount_in_ether = usd_value / 244.27 //this.ethusd.value
-      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether)
-    }
+    this.transactionService
+      .getPrice()
+      .then(res => {
+        this.ethusd = {
+          value: res.ethusd,
+          time : new Date(res.ethusd_timestamp * 1000)
+        }
+      })
+      .catch(err=> toastr.error('Couldn\'t get exchange rate'))
   }
 
   get isDisabled() {
@@ -119,8 +105,6 @@ export class WalletComponent implements OnInit {
     this.qrClass === ''
       ? this.qrClass = 'showQr'
       : this.qrClass = ''
-
-    console.log(this.qrClass)
   }
   passphraseToggle() {
     this.passphraseType === 'password'
@@ -238,19 +222,45 @@ export class WalletComponent implements OnInit {
   }).catch(err => toastr.error(err))
   }
 
+  etherAmountChanged(e) {
+    let ether_value = parseFloat(e.target.value)
+    if(ether_value !== 0 && e.target.value.length > ether_value.toString().length ) {
+      e.target.value = ether_value;
+    }
+    if(ether_value && !isNaN(ether_value)  &&  ether_value >  0){
+      let amount_in_usd = ether_value * this.ethusd.value
+      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd)
+    }
+  }
+
+  usdAmountChanged(e) {
+    let usd_value = parseFloat(e.target.value)
+    if(usd_value !== 0 && e.target.value.length > usd_value.toString().length ) {
+      e.target.value = usd_value;
+    }
+    if(usd_value && !isNaN(usd_value) &&  usd_value > 0){
+      let amount_in_ether = usd_value / this.ethusd.value
+      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether)
+    }
+  }
+
   requestEther() {
     this.modalVisible = false;
 
-    this.transactionService
+    if(!this.ethusd){
+      this.transactionService
       .getPrice()
       .then(res => {
         this.ethusd = {
           value: res.ethusd,
-          time : res.ethusd_timestamp
+          time : new Date(res.ethusd_timestamp * 1000)
         }
       })
+      .catch(err=> toastr.error('Couldn\'t get exchange rate'))
+    }
+    
     let em = this.requestEtherForm.controls.email.value;
-    let am = this.requestEtherForm.controls.amount.value;
+    let am = this.requestEtherForm.controls.amount_ether.value;
     let str = `Ether request sent to ${em} for ${am} ether.`
     toastr.success(str, 'Request Ether')
   }

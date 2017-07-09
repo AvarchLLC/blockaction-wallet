@@ -106,66 +106,130 @@ export class WalletService {
       let addrQrCodeData = qrImage.imageSync(w.address, { type: 'svg' });
             
       let paperHTML = `
-        <!doctype html>
         <html>
         <head>
           <link rel="stylesheet" href="/assets/css/style.css">
           <style>
-            .container {
-              display : flex;
+            .containers {
+              display: flex;
               flex: 1;
-              flex-direction : column;
+              margin: 0;
+              flex-direction: column;
             }
+
             .codes {
-              display : flex;              
-              flex-direction: row;              
+              height: 600px;
+              border: 1px solid #555;
+              align-content: flex-start;
+              display: flex;
+              flex-direction:column;
+              margin: 0 auto;
+
             }
+            .head-logo{ background: #00ACE6; color:#fff; text-align: center; padding:30px;}
+            .head-logo img{width: 250px; height: 60px;}
+            .Qr-width{width: 250px;}
+            .Qr-width h3{margin:5px;}
+            .pad-left{padding-left:20px;}
             .qrImages {
-              display : flex;              
+              color:#0A7FA7;
+              margin:0 10px  0 -10px;
+              display: flex;
+              flex-direction: row;
               flex: 4;
               justify-content: center;
               align-items: center;
             }
-            #paperwalletidenticon {
+            .bdr-rad{border-radius:10px; padding: 5px;}
+
+            #wallet-icon {
               flex: 1;
-              justify-content: center;
-              align-items: center;    
-            }
-            .print-address-container {
               justify-content: center;
               align-items: center;
             }
+            .flex-dr{display: inherit;
+              flex-direction: column-reverse;
+              align-items: center;
+            }
+            .print-address-container {
+              font-size: 17px;
+              color:#fff;
+              background: #00ACE6;
+              justify-content: center;
+              align-items: center;
+            }
+            .bg-img{ background-image: url("/assets/img/ba_logo.svg");
+              background-repeat:no-repeat;
+              min-height: 50px;
+              width:250px;
+              align-self: center;
+              }
+            .head-logo {
+              display: flex; flex-direction: column; 
+              flex:1; 
+              flex-grow: row wrap; 
+              align-content: center;
+              justify-content: center; 
+              color: #fff;
+            }
+            .head-logo a{ padding:3px 0; margin-top: 10px; font-size:17px;color: #fff; text-decoration:none; }
+            
+            .bg-img img{display: none;}
+            @media print{
+                  
+              .bg-img{ background-image:none;
+                background-repeat:no-repeat;
+                height: 50px;
+                }
+                
+              .bg-img img{display: inline;}
+              .head-logo a{color: #000;}
+            }
           </style>
         </head>
+
         <body>
-        <div class="container">
-          <div class="codes">
+          <div class="containers">
+            <div class="codes">
+            <div class="head-logo">
+              <div class="bg-img">
+                  <img src="/assets/img/bg_logo.svg" alt="">
+              </div>
+              <a href="">www.blockaction.com</a>
+            </div>
             <div class="qrImages">
-              <div id="paperwalletprivqr">
-                <img width="192" height="192" id='privQrImage' style="display: block;">
+              <div id="paperwalletprivqr" class="Qr-width flex-dr">
+                  <img width="192" height="192" id="privQrImage" style="display: block;" >
+                  <h3 class="txt-dr"> Private Key</h3>
               </div>
-              <div id="paperwalletaddrqr">
-                <img width="192" height="192" id='addrQrImage' style="display: block;">
+              <div id="paperwalletaddrqr" class=" Qr-width flex-dr ">
+                  <img width="192" height="192" id="addrQrImage" style="display: block;" >
+                  <h3 class="txt-dr"> Address</h3>
+              </div>
+
+              <div id="wallet-icon" class="bdr-rad flex-dr">
+                <img  class="bdr-rad" width="50" height="50" id="iconImage" style="display: block;">
+                <h3 class="txt-dr">Wallet Icon</h3>
               </div>
             </div>
-            <div id="paperwalletidenticon">
-              <img width="192" height="192" id='iconImage' style="display: block;">
+            <div class="print-address-container pad-left">
+              <p>
+                <strong>Your Private Key:</strong>
+                <br><span id="paperwalletpriv">${w.address}</span>
+              </p>
+              <p>
+                <strong>Your Address:</strong>
+                <br><span id="paperwalletadd">${w.privateKey}</span>
+              </p>
+
             </div>
-          </div>
-          <div class="print-address-container">
-            <p>
-              <strong>Your Address:</strong>
-              <br><span id="paperwalletadd">${w.address}</span>
-            </p>
-            <p>
-              <strong>Your Private Key:</strong>
-            <br><span id="paperwalletpriv">${w.privateKey}</span>
-            </p>
-          </div>
         </div>
+
+          </div>
         </body>
         </html>
-      `
+
+        `
         resolve({paperHTML,identiconData, privQrCodeData, addrQrCodeData})
       } catch(e){
         console.error(e)
@@ -204,3 +268,5 @@ export class WalletService {
     })
   }
 }
+
+

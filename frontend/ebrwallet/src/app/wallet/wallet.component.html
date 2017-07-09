@@ -52,7 +52,7 @@
                         <div class="form-group mg-top-sm">
                             <b>Public Key (Address)</b>
                             <div class="clearfix">
-                                <input type="text" class="form-control withQr" value="{{ wallet.address }}">
+                                <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
 
                                 <span class="{{ qrClass }}" (click)="qrToggle()">
                                     <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <b>Private Key</b>
-                            <input type="text" class="form-control" value="{{ wallet.privateKey }}">
+                            <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
                         </div>
                         <div class="text-center">
                             <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
@@ -85,7 +85,6 @@
         <div class="text-center">
 
             <h2>Request Ether</h2>
-            <br />
             <form [formGroup]="requestEtherForm">
                 <!--<input class="form-control withQr" style="margin:0;margin-right:5px;" type="text" value="{{wallet.address}}" disabled>
                 <img width="40" height="40" src='data:image/png;base64,{{ identicon }}' id='iconImage' style="display: block;">-->
@@ -96,17 +95,18 @@
                             <div class="super-txt "><h4><b>eth</b></h4></div>
                             <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
                         </div>
-                        <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number">
+                        <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number" min="0">
                     </div>
-                    <span><h2>=</h2></span>
+                    <span><h2> = </h2></span>
                     <div class="input-group">
                         <div class="input-group-addon bdr-none flex-box">
                             <div class="super-txt"><h4><b>usd</b></h4></div>
                             <div class="base-txt"><h4>$</h4></div>
                         </div>
-                        <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number">                
+                        <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">                
                     </div>
                 </div>
+                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
                 <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
             </form>
         </div>
@@ -114,5 +114,6 @@
             <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
             <button class="btn btn-link btn-lg" (click)="cancelModal()">CANCEL</button>
         </div>
+        <br />
     </div>
 </div>

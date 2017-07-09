@@ -4,9 +4,26 @@
 
     <form [formGroup]="sendMoney">
       <input formControlName="receiveAddress" type="text" class="form-control"  placeholder="Send to Address..." required="required" />
-      Ether: <input style="width:auto;" formControlName="amount" type="text" class="form-control"  placeholder="Amount in Wei" required="required" />
-      USD: <input style="width:auto;" formControlName="usd" type="text" class="form-control"  placeholder="Amount in Wei" required="required" />
-      {{ message }}
+      <br />
+      <div class="converter-box">
+        <div class="input-group">
+            <div class="input-group-addon bdr-none flex-box">
+                <div class="super-txt "><h4><b>eth</b></h4></div>
+                <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
+            </div>
+            <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number" min="0" >
+        </div>
+        <span><h2> = </h2></span>
+        <div class="input-group">
+            <div class="input-group-addon bdr-none flex-box">
+                <div class="super-txt"><h4><b>usd</b></h4></div>
+                <div class="base-txt"><h4>$</h4></div>
+            </div>
+            <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">                
+        </div>
+    </div>
+    <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
+                
       <div class="text-center">Select my wallet: </div>
       
       <label class="btn btn-default btn-file">
