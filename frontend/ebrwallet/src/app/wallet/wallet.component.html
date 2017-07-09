@@ -63,11 +63,14 @@
       <div class="form-group">
     <b>Private Key</b>
     <input type="text" class="form-control" value="{{ wallet.privateKey }}">
-
+b
         </div>
 
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
+                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                        <button class="btn btn-primary btn-lg" (click)="showModal()">Request Ether</button>
+
                         <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                     </div>
                 </div>
@@ -75,3 +78,21 @@
         </div>
     </div>
     </div>
+<div class="request-modal" *ngIf="modalVisible">
+     <div class="card card-center card-md-p">
+        <div class="text-center">
+            <a [routerLink]="['/']" routerLinkActive="active">
+                <img class="logo-icon mg-btm-sm" src="assets/img/logo-icon.png" alt="logo" />
+            </a>
+            <h2>Request Ether</h2>
+            <form [formGroup]="requestEtherForm">
+                <input class="form-control" type="text" value="{{wallet.address}}" disabled>                
+                <input class="form-control" formControlName="email" type="email" placeholder="Email...">
+                <input class="form-control" formControlName="amount" type="text" placeholder="Amount in Ethers...">
+                <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
+            </form>
+        </div>
+        <button (click)="requestEther()">Request</button>        
+        <button (click)="cancelModal()">Cancel</button>
+     </div>
+</div>

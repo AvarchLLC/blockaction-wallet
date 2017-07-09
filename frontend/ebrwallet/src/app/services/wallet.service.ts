@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Wallet } from '../wallet'
 
 import qrImage from 'qr-image'
+import Identicon from 'identicon.js'
 
 declare var EthJS : any;
 
@@ -89,6 +90,99 @@ export class WalletService {
       }
     })
   }
+
+  getIdenticon(w: Wallet) : Promise<string> {
+    return
+  }
+
+  getPaperWallet(w : Wallet, password : string) : Promise<any> {
+
+    return new Promise((resolve,reject) => {
+      try {
+      
+      // var options = {
+      //   // foreground: [0, 0, 0, 255],               // rgba black
+      //   // background: [255, 255, 255, 255],         // rgba white
+      //   margin: 0.2,                              // 20% margin
+      //   size: 420,                                // 420px square
+      //   format: 'svg'                             // use SVG instead of PNG
+      // };
+      // var identiconData = new Identicon(w.address, options).toString();
+      // create a base64 encoded PNG
+      var identiconData = new Identicon(w.address, 420).toString();
+
+      let privQrCodeData = qrImage.imageSync(w.privateKey, { type: 'svg' });
+      let addrQrCodeData = qrImage.imageSync(w.address, { type: 'svg' });
+            
+      let paperHTML = `
+        <!doctype html>
+        <html>
+        <head>
+          <link rel="stylesheet" href="/assets/css/style.css">
+          <style>
+            .container {
+              display : flex;
+              flex: 1;
+              flex-direction : column;
+            }
+            .codes {
+              display : flex;              
+              flex-direction: row;              
+            }
+            .qrImages {
+              display : flex;              
+              flex: 4;
+              justify-content: center;
+              align-items: center;
+            }
+            #paperwalletidenticon {
+              flex: 1;
+              justify-content: center;
+              align-items: center;    
+            }
+            .print-address-container {
+              justify-content: center;
+              align-items: center;
+            }
+          </style>
+        </head>
+        <body>
+        <div class="container">
+          <div class="codes">
+            <div class="qrImages">
+              <div id="paperwalletprivqr">
+                <img width="192" height="192" id='privQrImage' style="display: block;">
+              </div>
+              <div id="paperwalletaddrqr">
+                <img width="192" height="192" id='addrQrImage' style="display: block;">
+              </div>
+            </div>
+            <div id="paperwalletidenticon">
+              <img width="192" height="192" id='iconImage' style="display: block;">
+            </div>
+          </div>
+          <div class="print-address-container">
+            <p>
+              <strong>Your Address:</strong>
+              <br><span id="paperwalletadd">${w.address}</span>
+            </p>
+            <p>
+              <strong>Your Private Key:</strong>
+            <br><span id="paperwalletpriv">${w.privateKey}</span>
+            </p>
+          </div>
+        </div>
+        </body>
+        </html>
+      `
+        resolve({paperHTML,identiconData, privQrCodeData, addrQrCodeData})
+      } catch(e){
+        console.error(e)
+        reject('Couldn\'t generate paper wallet')
+      }
+    })
+  }
+  
   
   // // loadWallet ... loads wallet object saved in memory
   // loadWallet() : Promise<Wallet> {

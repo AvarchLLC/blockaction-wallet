@@ -4,6 +4,8 @@ body {
     font-size: 16px;
 }
 
+
+
 @font-face {
 font-family:"SourceSansPro-ExtraLight";
 src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
@@ -263,7 +265,7 @@ footer{
 .social-btns a:hover{
 text-decoration: none;
 }
-.sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-radius:2px; border: 1px solid #d8d8d8;}
+.sl-country{padding: 6px 12px; width: 100%; margin-top: 0; color:#999; border-radius:2px; border: 1px solid #d8d8d8; background: none;}
 
 /****************************************** login_page *********************************/
 
@@ -378,6 +380,20 @@ transform: scale(3); }
 .block .form-group b { text-transform: uppercase; font-family: "SourceSansPro-Bold"; }
 
 .block .form-group { margin-bottom: 40px; }
+
+
+.request-modal {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    background-size: cover;
+    min-height: 100vh;    
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10% 0;
+    z-index: 1000;
+}
 /*
 
 .buttonWithLoader button:focus, .buttonWithLoader button:active { color:transparent;  }

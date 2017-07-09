@@ -1,9 +1,13 @@
 import { Component, OnInit,Inject } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { WalletService } from '../services/wallet.service'
+import { TransactionService } from '../services/transaction.service' 
 
 declare var toastr: any;
+declare var EthJS : any;
 
 @Component({
   selector: 'app-transaction',
@@ -13,24 +17,38 @@ declare var toastr: any;
 export class TransactionComponent implements OnInit {
 
   sendMoney: FormGroup;
-
   message = ''  
   error = ''
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder,) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder, private route: ActivatedRoute, private transactionService: TransactionService, private walletService: WalletService) {
 
     this.sendMoney = fb.group({
       receiveAddress: ['', Validators.required],
       amount: ['', Validators.required] ,
+      privatekey : ['']
     })
   }
 
   onSubmit() {
-    
   }
   
+  // checkAddressValidity(publicAddr : string , privateAddr: string) {
+  //   if (EthJS.Util.isValidPublicAddress(publicAddr) && (this.sendMoney.controls.privatekey!=='' || EthJS.Util.isValidPrivateAddress )) {
+  //     return true
+  //   }
+  // }
+
   ngOnInit() {
-  
+    this.route.queryParams
+      .filter(params => params.to || params.value) 
+      .subscribe(params => {
+        this.sendMoney.setValue({ 
+          receiveAddress: params.to, 
+          amount: params.value,
+          privatekey: ''
+        })        
+        console.log(this.transactionService.createTransaction('0x2324434242',params.to,{ value: params.value }))
+      });
   }
 
   /*  Loading wallet by file upload 
@@ -54,6 +72,7 @@ export class TransactionComponent implements OnInit {
   loadWalletFromString(s: string): void {
     try {
       // throw "err"
+      
       toastr.success("Valid wallet file", "Wallet")
     }
     catch(e){
@@ -61,7 +80,6 @@ export class TransactionComponent implements OnInit {
     }
 
   }
-  // *//
   
 
 }

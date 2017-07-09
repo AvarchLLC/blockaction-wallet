@@ -13,14 +13,15 @@ import { AuthModule } from './auth/auth.module'
 
 // Project Components
 import { AppComponent } from './app.component';
-import { WalletComponent } from './wallet/wallet.component'
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { WalletComponent } from './wallet/wallet.component'
 
 // Project Services
 import { WalletService } from './services/wallet.service';
 import { AuthService } from './services/auth.service';
-import { NavComponent } from './nav/nav.component';
-import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionService } from './services/transaction.service' 
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     AppRoutingModule,
     AuthModule
   ],
-  providers: [ WalletService, AuthService],
+  providers: [ WalletService, AuthService, TransactionService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

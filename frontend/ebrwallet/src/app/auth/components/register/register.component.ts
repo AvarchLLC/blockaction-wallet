@@ -44,12 +44,14 @@ export class RegisterComponent implements OnInit {
       }),
       email: ['', [Validators.email, defaultValidator]],
       password: ['', [ passwordValidator ]],
-      confirmPassword: [''],
-      username: ['', [ usernameValidator]],
+      // confirmPassword: [''],
+      // username: ['', [ usernameValidator]],
       country: ['', [ Validators.required] ],
       city : ['', [ defaultValidator] ],
       phone: ['', [ defaultValidator] ]
-    }, { validator : this.matchingPasswords('password', 'confirmPassword')})
+    }, 
+    // { validator : this.matchingPasswords('password', 'confirmPassword')}
+    )
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {

@@ -38,6 +38,7 @@ export class WalletComponent implements OnInit {
   // filePassword: string
   // privateKey: string
   walletForm : FormGroup; 
+  requestEtherForm : FormGroup;
 
   wallet     : Wallet  // Wallet object
   qrSvg      : string  // QrCode SVG string
@@ -48,6 +49,7 @@ export class WalletComponent implements OnInit {
   passphraseType  : string  = 'password'
   passphraseButton: string  = 'Show Passphrase'
   qrClass         : string  = ''
+  modalVisible    : boolean = false
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService) { 
     var passwordValidator = Validators.compose([
@@ -58,6 +60,12 @@ export class WalletComponent implements OnInit {
     
     this.walletForm = fb.group({
       password: ['', [ passwordValidator ]],
+    })
+
+    this.requestEtherForm = fb.group({
+      email: ['', Validators.email],
+      amount: [''],
+      comment : ['']
     })
   }
 
@@ -122,7 +130,7 @@ export class WalletComponent implements OnInit {
         .createWallet(this.walletForm.value.password)
         .then(data => {
           this.wallet = data
-          this.walletForm.controls.password.setValue('')
+          // this.walletForm.controls.password.setValue('')
           this.slideClass = 'slide'
           toastr.success('Created!', "Wallet Creation")
           this.showQr()
@@ -183,4 +191,28 @@ export class WalletComponent implements OnInit {
     // this.filePassword = null
   }
 
+  printPaperWallets(strJson) {
+    this.walletService.getPaperWallet(this.wallet,this.walletForm.controls.password.value ).then(data => {
+      var win = window.open("about:blank", "rel='noopener'", "_blank");
+      win.document.write(data.paperHTML)
+      win.document.getElementById('privQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.privQrCodeData))
+      win.document.getElementById('addrQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.addrQrCodeData))      
+      win.document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ data.identiconData)            
+    }).catch(err => toastr.error(err))
+  }
+
+  requestEther() {
+    this.modalVisible = false;
+    let em = this.requestEtherForm.controls.email.value;
+    let am = this.requestEtherForm.controls.amount.value;
+    let str = `Ether request sent to ${em} for ${am} ether.`
+    toastr.success(str, 'Request Ether')
+  }
+  showModal() {
+    this.modalVisible = true;
+  }
+
+  cancelModal() {
+    this.modalVisible = false;
+  }
 }

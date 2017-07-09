@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import  Transaction  from 'ethereumjs-tx'
+import { Buffer } from 'buffer'
 
 declare var EthJS : any
 declare var Web3 : any
+
 
 @Injectable()
 export class TransactionService {
@@ -15,31 +18,62 @@ export class TransactionService {
 
   }
 
-  // sendTransaction ... send transactions from an address to another address
+  // createTransaction ... create transactions from an address to another address
   /*
-   * sendTransaction(from : string, to : string, opts : object)
-   *    - from : address from which transaction  is being made
-   *    - to   : address to which transaction is being sent
+   * createTransaction(from : string, to : string, opts : object)
+   *    - from : address from which transaction is sent
+   *    - to   : address to which transaction is sent
    *    - opts : optional data to send (object)
-   *             - transaction ID   (integer)
    *             - transaction data (string)
    *             - value / amount to send (number)
    *             - 
    */
-  sendTransaction(from : string, to : string, opts : any) {
+  createTransaction(from: string, to : string, opts : any) : Transaction {
+    let nonce = this.web3.eth.getTransactionCount(from)
+    const nonceHex = this.web3.toHex(nonce);
+  
+
     var rawTx = {
-      nonce: '00',
-      gasPrice: '09184e72a000',
-      gasLimit: '2710',
-      from,
+      gas: 4712388,
+      gasPrice: 100000000000,
+      nonce: nonceHex,
+      // gasLimit: '2710',
       to,
       value: opts.value || 0 ,
-      data: '7f7465737432000000000000000000000000000000000000000000000000000000600057',
+      data: opts.data,
     };
-    // var tx = new Transaction(rawTx);
+    var tx = new Transaction()
+    return tx;
   }
 
+  // signTransaction ... signs transaction with a provate key
+  signAndSerializeTransaction(tx : Transaction , privkey : string) : Promise<any> {
+    return new Promise((resolve,reject) => {
+      try {
+        tx.sign(Buffer.from(privkey, 'hex'))
+        resolve(tx.serialize().toString('hex'))
+      }catch(e){
+        reject('Error signing transaction. Private key is invalid.')
+      }
+    })
+  }
 
+  // sendTransaction ... send a serialized transaction to a ethereum node
+  sendTransaction(serialTx: string) : Promise<any> {
+    return new Promise((resolve,reject) => {
+      try {
+        this.web3.sendRawTransaction('0x' + serialTx)
+        resolve(true)
+      }catch(e){
+        console.log(e)
+        reject('Transaction failed.')
+      }
+    })
+  }
+  // getTransactionCost ... get the total cost for processing transaction
+  getTransactionCost(tx: Transaction) : string {
+    return tx.getUpfrontCost().toString(10)
+  }
   // sendMoney ... send money in transaction
   /*
    * sendMoney(from : string, to : string, value: number, opts : object)
@@ -51,7 +85,17 @@ export class TransactionService {
    *             - transaction data (string data)
    *             - 
   */
-  sendMoney(from : string, to: string, value: number, opts: object) {
+  sendMoney(from : string, to: string, value: number, opts: object, privateKey: string) {
+    return new Promise((resolve, reject) => {
+      try{
+        let tx = this.createTransaction(from,to,{ value: value})
+        this.signAndSerializeTransaction(tx, privateKey )
+            .then(serialTx => this.sendTransaction(serialTx).then(resolve).catch(reject))
+            .catch(reject)
+      }catch(e){
+        reject(e)
+      }
+    })
 
   }
 

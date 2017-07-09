@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo:'/home', pathMatch:'full'},
   { path: 'home', component: HomeComponent },
   { path: 'wallet', component: WalletComponent },
-  { path: 'transaction', component: TransactionComponent },
+  { path: 'send-ether', component: TransactionComponent },
   
 ];
 
