@@ -63,11 +63,14 @@ export class WalletService {
     
     return new Promise((resolve,reject) => {
       try {
+        if(w.keystore['Crypto']){
+          w.keystore['crypto'] = w.keystore['Crypto']
+        }
         var wallet = EthJS.Wallet.fromV3(w.keystore, password)
         var key = wallet.getPrivateKeyString()
 
-        wallet = null  // Set the unencrypted wallet memory to null
-        password = null
+        // wallet = null  // Set the unencrypted wallet memory to null
+        // password = null
         resolve(key)
       }
       catch(e) {

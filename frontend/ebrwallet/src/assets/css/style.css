@@ -301,9 +301,9 @@ form textarea {
     justify-content: flex-start;
 }
 
-.request-modal .card {
+/*.request-modal .card {
     margin-bottom: 100px;
-}
+}*/
 .converter-box{
   display: flex;
   flex-direction: row;

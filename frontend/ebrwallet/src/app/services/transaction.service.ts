@@ -53,7 +53,7 @@ export class TransactionService {
   signAndSerializeTransaction(tx : Transaction , privkey : string) : Promise<any> {
     return new Promise((resolve,reject) => {
       try {
-        tx.sign(Buffer.from(privkey, 'hex'))
+        tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey)))
         resolve(tx.serialize().toString('hex'))
       }catch(e){
         reject('Error signing transaction. Private key is invalid.')

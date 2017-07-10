@@ -1,38 +1,72 @@
-<div class="fullPage"> 
-  <div class="card card-center card-md-p">
-    <div class="text-center">Send Money To: </div>
+<div class="fullPage">
+    <div class="card card-center card-md-p send-ether">
+        <div class="text-center">
+            <h3><b>Send Ether To: </b></h3>
+        </div>
 
-    <form [formGroup]="sendMoney">
-      <input formControlName="receiveAddress" type="text" class="form-control"  placeholder="Send to Address..." required="required" />
-      <br />
-      <div class="converter-box">
-        <div class="input-group">
-            <div class="input-group-addon bdr-none flex-box">
-                <div class="super-txt "><h4><b>eth</b></h4></div>
-                <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
+        <form [formGroup]="sendEther">
+            <div class="{{ sendEther.errors?.invalidAddress && sendEther.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendEther.errors?.invalidAddress && sendEther.get('receiveAddress').touched ? 'has-success' : ''}}">
+                <input formControlName="receiveAddress" type="text" class="form-control" placeholder="Send to Address..." required="required" />
             </div>
-            <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number" min="0" >
-        </div>
-        <span><h2> = </h2></span>
-        <div class="input-group">
-            <div class="input-group-addon bdr-none flex-box">
-                <div class="super-txt"><h4><b>usd</b></h4></div>
-                <div class="base-txt"><h4>$</h4></div>
+            <br />
+            <div class="converter-box">
+                <div class="input-group">
+                    <div class="input-group-addon bdr-none flex-box">
+                        <div class="super-txt ">
+                            <h4><b>eth</b></h4>
+                        </div>
+                        <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
+                    </div>
+                    <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number" min="0">
+                </div>
+                <span><h2> = </h2></span>
+                <div class="input-group">
+                    <div class="input-group-addon bdr-none flex-box">
+                        <div class="super-txt">
+                            <h4><b>usd</b></h4>
+                        </div>
+                        <div class="base-txt">
+                            <h4>$</h4>
+                        </div>
+                    </div>
+                    <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">
+                </div>
             </div>
-            <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">                
-        </div>
+            <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
+
+            <div class="text-center">
+                <h3><b>Select my wallet: </b></h3>
+            </div>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" formControlName="selection" value="wallet">
+                    Wallet File
+                </label>
+                <label>
+                    <input type="radio" formControlName="selection" value="privateKey">
+                    Private Key
+                </label>
+            </div>
+            <label class="btn btn-default btn-file" *ngIf="sendEther.controls['selection'].value === 'wallet'">
+                Select wallet with sufficient funds <input type="file" (change)="fileChangeListener($event)" style="display: none;"> 
+            </label>
+            <div *ngIf="wallet && sendEther.controls['selection'].value === 'wallet'">
+                <input class="form-control" type="walletPassword" placeholder="Wallet password..." formControlName="walletPassword" />
+            </div>
+            <div *ngIf="sendEther.controls['selection'].value === 'privateKey'">
+                <input formControlName="privateKey" type="text" class="form-control" placeholder="Enter private key" />
+            </div>
+            <div *ngIf="(wallet && sendEther.controls['walletPassword'].value.length && sendEther.controls['selection'].value === 'wallet') || (!sendEther.errors?.invalidPrivateKey && sendEther.controls['selection'].value === 'privateKey')">
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
+            </div>
+        </form>
     </div>
-    <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
-                
-      <div class="text-center">Select my wallet: </div>
-      
-      <label class="btn btn-default btn-file">
-          Select wallet with sufficient funds <input type="file" (change)="fileChangeListener($event)" style="display: none;"> 
-      </label>
-      <div class="text-center">-OR-</div>
-      <input formControlName="privatekey" type="text" class="form-control"  placeholder="Enter private key" />
-      
-      <button type="submit" [disabled]="!sendMoney.valid" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Money</button>
-    </form>
-  </div>
 </div>
+
+
+<style>
+    .send-ether h3 {
+        text-transform: uppercase;
+    }
+</style>

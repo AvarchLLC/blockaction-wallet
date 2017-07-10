@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WalletService } from '../services/wallet.service'
 import { TransactionService } from '../services/transaction.service' 
 
+import { Buffer } from 'buffer'
 declare var toastr: any;
 declare var EthJS : any;
 
@@ -16,41 +17,81 @@ declare var EthJS : any;
 })
 export class TransactionComponent implements OnInit {
 
-  sendMoney: FormGroup;
+  sendEther: FormGroup;
   message = ''  
   error = ''
   ethusd : any
+  wallet : any
+  ready : boolean = false
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private route: ActivatedRoute, private transactionService: TransactionService, private walletService: WalletService) {
 
-    this.sendMoney = fb.group({
+    this.sendEther = fb.group({
       receiveAddress: ['', Validators.required],
       amount_ether: ['0', Validators.required] ,
       amount_usd: ['0', Validators.required],
-      privatekey : ['']
-    })
+      privateKey : [''],
+      walletPassword: [''],
+      selection: ''
+    },
+    { validator : this.checkAddressValidity()}
+    )
 
     this.route.queryParams
       .filter(params => params.to || params.value) 
       .subscribe(params => {
-        this.sendMoney.setValue({ 
+        this.sendEther.setValue({ 
           receiveAddress: params.to, 
           amount_ether: params.value,
           amount_usd: 0,
-          privatekey: ''
+          privateKey: '',
+          walletPassword: '',
+          selection: ''
         })        
         // console.log(this.transactionService.createTransaction('0x2324434242',params.to,{ value: params.value }))
       });
   }
 
   onSubmit() {
+    if(this.sendEther.controls.selection.value === 'wallet'){
+      console.log('do tx by wallet')
+      this.walletService
+        .getPrivateKeyString(this.wallet,this.sendEther.controls.walletPassword.value)
+        .then(privkey => {
+            console.log(privkey)
+        })
+        .catch(err => toastr.error(err))
+    }else {
+      console.log('do tx by priv key')
+    }
   }
   
-  // checkAddressValidity(publicAddr : string , privateAddr: string) {
-  //   if (EthJS.Util.isValidPublicAddress(publicAddr) && (this.sendMoney.controls.privatekey!=='' || EthJS.Util.isValidPrivateAddress )) {
-  //     return true
-  //   }
-  // }
+  checkAddressValidity() {
+    // if (EthJS.Util.isValidPublicAddress(publicAddr) && (this.sendEther.controls.privatekey!=='' || EthJS.Util.isValidPrivateAddress )) {
+    //   return true
+    // }
+    let invalidPrivateKey = true, 
+        invalidAddress = true
+
+    return (group: FormGroup): {[key: string]: any} => {
+      try{
+        invalidPrivateKey = !EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(group.controls.privateKey.value)))
+      }catch(e){
+        invalidPrivateKey = true
+      }
+      try{
+        invalidAddress = !EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(group.controls.receiveAddress.value))
+      }
+      catch(e){
+        invalidAddress = true
+      }
+    
+      return {
+        invalidPrivateKey,
+        invalidAddress
+      }
+    }
+  }
 
   ngOnInit() {
 
@@ -62,8 +103,8 @@ export class TransactionComponent implements OnInit {
           time : new Date(res.ethusd_timestamp * 1000)
         }
         
-        let ether_val = parseFloat(this.sendMoney.controls.amount_ether.value)
-        this.sendMoney.controls.amount_usd.setValue(ether_val * this.ethusd.value )
+        let ether_val = parseFloat(this.sendEther.controls.amount_ether.value)
+        this.sendEther.controls.amount_usd.setValue(ether_val * this.ethusd.value )
       })
       .catch(err=>{
         console.log(err);
@@ -78,8 +119,10 @@ export class TransactionComponent implements OnInit {
     }
     if(ether_value && !isNaN(ether_value)  &&  ether_value >  0){
       let amount_in_usd = ether_value * this.ethusd.value
-      this.sendMoney.controls.amount_usd.setValue(amount_in_usd)
+      this.sendEther.controls.amount_usd.setValue(amount_in_usd)
     }
+    console.log(this.sendEther)
+    console.log(this.sendEther.controls['selection'].value === "wallet")
   }
 
   usdAmountChanged(e) {
@@ -89,7 +132,7 @@ export class TransactionComponent implements OnInit {
     }
     if(usd_value && !isNaN(usd_value) &&  usd_value > 0){
       let amount_in_ether = usd_value / this.ethusd.value
-      this.sendMoney.controls.amount_ether.setValue(amount_in_ether)
+      this.sendEther.controls.amount_ether.setValue(amount_in_ether)
     }
   }
 
@@ -114,11 +157,16 @@ export class TransactionComponent implements OnInit {
   loadWalletFromString(s: string): void {
     try {
       // throw "err"
-      
-      toastr.success("Valid wallet file", "Wallet")
+      let wallet = JSON.parse(s)
+      if(!wallet.address || !wallet.version || wallet.version!== 3){
+        throw true;
+      }
+      this.wallet = {}
+      this.wallet['keystore'] = wallet
+      toastr.success('Valid wallet file.')
     }
     catch(e){
-      toastr.error("Cannot read from wallet file.", "Wallet")
+      toastr.error("Invalid wallet file.", "Wallet")
     }
 
   }
