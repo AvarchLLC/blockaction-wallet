@@ -9,6 +9,7 @@ import { Wallet } from '../wallet'
 
 
 declare var toastr: any;
+declare var ga : any;
 
 toastr.options = {
   "closeButton": true,
@@ -59,12 +60,13 @@ export class WalletComponent implements OnInit {
     var passwordValidator = Validators.compose([
                               Validators.required,
                               Validators.maxLength(20),
-                              Validators.pattern(/^.*(?=.{7,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/)
+                              Validators.pattern(/^.*(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/)
                             ]);
 
     this.walletForm = fb.group({
       password: ['', [ passwordValidator ]],
-    })
+    }
+    )
 
     this.requestEtherForm = fb.group({
       email: ['', Validators.email],
@@ -72,6 +74,42 @@ export class WalletComponent implements OnInit {
       amount_usd: ['0'],
       comment : ['']
     })
+  }
+
+  passwordCheck(password: string) {
+    let passwordLength = false;
+    let passwordLowercase = false;
+    let passwordUppercase = false;
+    let passwordNumber = false;    
+    let passwordSpecialchar = false;    
+    
+    if(/^.*(?=.{8,20})[a-zA-Z0-9@#$%^&+=]*$/.test(password)) {
+      passwordLength = true;
+    }
+    if(/^.*(?=.*[a-z])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
+      passwordLowercase = true;
+    }
+    
+    if(/^.*(?=.*[A-Z])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
+      passwordUppercase = true;
+    }
+
+    if(/^.*(?=.*[0-9])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
+      passwordNumber = true;
+    }
+
+    if(/^.*(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
+      passwordSpecialchar = true;
+    }
+
+    return {
+      passwordLength,
+      passwordLowercase,
+      passwordUppercase,
+      passwordNumber,
+      passwordSpecialchar,
+      all : passwordLength && passwordLowercase && passwordUppercase && passwordNumber && passwordSpecialchar
+    }
   }
 
   ngOnInit(): void {
@@ -136,6 +174,14 @@ export class WalletComponent implements OnInit {
 
 
   create(): void {
+
+     ga('send', 'event', {
+      eventCategory: 'Wallet',
+      eventLabel: 'Wallet Creation',
+      eventAction: 'Button Clicked',
+      eventValue: true
+    });
+
 
     this.disabled = true
 

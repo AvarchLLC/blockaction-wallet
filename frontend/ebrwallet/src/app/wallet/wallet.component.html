@@ -34,11 +34,25 @@
                                 <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
                             </div>
                         </div>
-
+                        <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
+                            <ul>
+                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordLowercase ? 'text-muted': '' }}">One lowercase character</li>
+                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordUppercase ? 'text-muted': '' }}">One uppercase character</li>
+                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordNumber ? 'text-muted': '' }}">One number</li>
+                            </ul>
+                        </div>
+                        <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">                        
+                            <ul>
+                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordSpecialchar ? 'text-muted': '' }}">One special character</li>
+                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordLength ? 'text-muted': '' }}">8 characters minimum</li>                                     
+                            </ul>
+                        </div>
+                        <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
+                            Your password is secure and you'll all set! 
+                        </div>
                         <div class="buttonWithLoader">
                             <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
                         </div>
-
                         <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
                             need this password + your private key to unlock your wallet.
                         </p>
@@ -117,3 +131,44 @@
         <br />
     </div>
 </div>
+
+<style>
+    .list-left {
+        float: left;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .list-right {
+        float : right;
+        text-align: left;
+        margin-bottom: 20px;
+        
+    }
+
+    .text-muted {
+        color: #fff;
+        opacity: 1;
+        
+        /*list-style-image: '&#10003';*/
+    }
+
+    li { 
+        opacity: 0.5;
+        
+    }
+
+    li.text-muted {
+        list-style: none; 
+        margin-left: -18px;
+         
+    }
+    li.text-muted:before{    
+        
+        content: '\2713';
+        margin: 0 8px 0 0;
+        
+    }
+
+    ul
+</style>
