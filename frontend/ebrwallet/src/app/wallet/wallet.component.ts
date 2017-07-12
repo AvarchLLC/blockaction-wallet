@@ -55,6 +55,7 @@ export class WalletComponent implements OnInit {
 
   identicon       : any
   ready           : boolean = false
+  showSpinner     : boolean = false
 
   constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService, private transactionService: TransactionService) {
     var passwordValidator = Validators.compose([
@@ -184,7 +185,7 @@ export class WalletComponent implements OnInit {
 
 
     this.disabled = true
-
+    this.showSpinner = true;
     setTimeout(function () {
       this.walletService
         .createWallet(this.walletForm.value.password)
@@ -196,7 +197,7 @@ export class WalletComponent implements OnInit {
           this.showQr()
           this.identicon = this.walletService.getIdenticon(this.wallet);    
           // document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ this.identicon)            
-          
+          this.showSpinner = false;
           this.disabled = false
         })
         .catch(err => {

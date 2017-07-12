@@ -34,18 +34,19 @@ export class TransactionService {
   createTransaction(from: string, to : string, opts : any) : Transaction {
     let nonce = this.web3.eth.getTransactionCount(from)
     const nonceHex = this.web3.toHex(nonce);
-  
-
+    
     var rawTx = {
-      gas: 4712388,
-      gasPrice: 100000000000,
       nonce: nonceHex,
-      // gasLimit: '2710',
-      to,
-      value: opts.value || 0 ,
-      data: opts.data,
-    };
-    var tx = new Transaction()
+      to,//: '0xc787be952a82544713e31890e114569e67bf3e3b',
+      value: 100,
+      data: 'Payment'
+    }
+
+    rawTx['gas'] = this.web3.eth.estimateGas(rawTx)
+    rawTx['gasLimit'] = this.web3.eth.estimateGas(rawTx) 
+
+    var tx = new Transaction(rawTx)
+
     return tx;
   }
 
@@ -53,7 +54,9 @@ export class TransactionService {
   signAndSerializeTransaction(tx : Transaction , privkey : string) : Promise<any> {
     return new Promise((resolve,reject) => {
       try {
-        tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey)))
+        tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey), 'hex'))
+          // tx.sign(Buffer.from('b7aa234e7fa851682e8e52755606b35d0cd37669e43dccb4f9e51311f780ea78','hex'))
+
         resolve(tx.serialize().toString('hex'))
       }catch(e){
         reject('Error signing transaction. Private key is invalid.')
@@ -65,7 +68,7 @@ export class TransactionService {
   sendTransaction(serialTx: string) : Promise<any> {
     return new Promise((resolve,reject) => {
       try {
-        this.web3.sendRawTransaction('0x' + serialTx)
+        this.web3.eth.sendRawTransaction('0x' + serialTx)
         resolve(true)
       }catch(e){
         console.log(e)
@@ -77,6 +80,7 @@ export class TransactionService {
   getTransactionCost(tx: Transaction) : string {
     return tx.getUpfrontCost().toString(10)
   }
+
   // sendMoney ... send money in transaction
   /*
    * sendMoney(from : string, to : string, value: number, opts : object)
@@ -88,9 +92,12 @@ export class TransactionService {
    *             - transaction data (string data)
    *             - 
   */
-  sendMoney(from : string, to: string, value: number, opts: object, privateKey: string) {
+  sendMoney(to: string, value: number, privateKey: string) {
     return new Promise((resolve, reject) => {
       try{
+        let wei_value = this.web3.toWei(value, 'ether')
+        let from = EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(EthJS.Util.addHexPrefix(privateKey)))
+        
         let tx = this.createTransaction(from,to,{ value: value})
         this.signAndSerializeTransaction(tx, privateKey )
             .then(serialTx => this.sendTransaction(serialTx).then(resolve).catch(reject))

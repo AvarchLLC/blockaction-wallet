@@ -63,6 +63,13 @@ export class TransactionComponent implements OnInit {
         .catch(err => toastr.error(err))
     }else {
       console.log('do tx by priv key')
+      this.transactionService
+          .sendMoney(
+            this.sendEther.controls.receiveAddress.value,
+            this.sendEther.controls.amount_ether.value,
+            this.sendEther.controls.privateKey.value)
+            .then(ok => console.log('successs', ok))
+          .catch(err => console.error(err))
     }
   }
   
