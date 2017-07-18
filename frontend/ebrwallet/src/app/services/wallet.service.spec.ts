@@ -1,41 +1,36 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject, async } from '@angular/core/testing';
 
 import { WalletService } from './wallet.service';
 
 describe('WalletService', () => {
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ ],
       providers: [WalletService]
     });
-  });
+  }));
 
-  it('should ...', inject([WalletService], (service: WalletService) => {
+  it('should work', inject([WalletService], (service: WalletService) => {
     expect(service).toBeTruthy();
   }));
 
-  describe('wallet creation',inject([WalletService], (service: WalletService) => {
+  it('should complete wallet creation', inject([WalletService], (service: WalletService) => {
 
-    var password = 'test'
-    var wallet;
-    it('should create a new wallet', () => {
+    const password = 'test';
+    let wallet;
+    it('should create a new wallet', async () => {
 
-      service
-        .createWallet(password)
-        .then(data => {
-          wallet = data;
-          expect(data).toBeTruthy();
-        })
-        .catch(err => console.error("errors", err))
-    })
+      wallet = await service.createWallet(password);
 
-    it('should decrypt private key', () => {
+      expect(wallet).toBeTruthy();
+   });
 
-      service
-        .getPrivateKeyString(wallet,password)
-        .then(key => {
-          expect(key).toBeTruthy();
-        })
-    })
+    it('should decrypt private key', async () => {
+
+      const privkey = service.getPrivateKeyString(wallet, password);
+
+      expect(privkey).toBeTruthy();
+    });
 
   }));
 

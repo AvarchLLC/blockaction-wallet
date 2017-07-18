@@ -10,7 +10,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
-  
+
   private headers = new Headers({
     'Content-Type': 'application/x-www-form-urlencoded'
   });
@@ -34,22 +34,22 @@ export class AuthService {
     this.loggedIn = value;
   }
 
-  register(body) : Promise<any> {
-    var data = `firstName=${body.firstName}&middleName=${body.middleName}&lastName=${body.lastName}&city=${body.city}&state=${body.state}&country=${body.country}&email=${body.email}&username=${body.username}&password=${body.password}&phone=${body.phone}`
-    
+  register(body): Promise<any> {
+    const data = `firstName=${body.firstName}&middleName=${body.middleName}&lastName=${body.lastName}&city=${body.city}&state=${body.state}&country=${body.country}&email=${body.email}&username=${body.username}&password=${body.password}&phone=${body.phone}`;
+
     return this.http
-      .post(`${this.serverUrl}/register`, data , {headers: this.headers})
+      .post(`${this.serverUrl}/register`, data, { headers: this.headers })
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
   }
-	
-  login(body) : Promise<any> {
 
-    var data = `username=${body.username}&password=${body.password}`
+  login(body): Promise<any> {
 
-	  return this.http
-      .post(`${this.serverUrl}/login`, data, {headers: this.headers})
+    const data = `username=${body.username}&password=${body.password}`;
+
+    return this.http
+      .post(`${this.serverUrl}/login`, data, { headers: this.headers })
       .toPromise()
       .then(res => res.json())
       .then(res => {
@@ -58,7 +58,7 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  handleAuth(authResult) : Promise<any> {
+  handleAuth(authResult): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
         if (authResult.success && authResult.token) {
@@ -66,23 +66,17 @@ export class AuthService {
           this._getProfile(authResult);
         }
         resolve(authResult)
-      }catch(e) {
+      } catch (e) {
         reject(e)
       }
     })
   }
 
   private _getProfile(authResult) {
-    // Use access token to retrieve user's profile and set session
-    // return this.http
-    //   .get(`${this.serverUrl}/profile`)
-    //   .toPromise()
-    //   .then(res => res.json())
-    //   .catch(this.handleError)
-    var jwt = new JwtHelper()
-    var decoded = jwt.decodeToken(authResult.token)
-    var profile = decoded.data;
-    
+    const jwt = new JwtHelper()
+    const decoded = jwt.decodeToken(authResult.token)
+    const profile = decoded.data;
+
     this._setSession(authResult, profile)
   }
 
@@ -95,9 +89,8 @@ export class AuthService {
         localStorage.setItem('profile', JSON.stringify(profile));
         this.setLoggedIn(true);
         resolve(true)
-      }
-      catch(err){
-        reject(err)
+      } catch (err) {
+        reject(err);
       }
     })
   }
@@ -105,7 +98,6 @@ export class AuthService {
   logout() {
     // Remove tokens and profile and update login status subject
     localStorage.removeItem('token');
-    // localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
     this.router.navigate(['/']);
     this.setLoggedIn(false);
@@ -115,7 +107,7 @@ export class AuthService {
     // Check if there's an unexpired access token
     return tokenNotExpired('token');
   }
-  
+
   private handleError(error: any): Promise<any> {
     // console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

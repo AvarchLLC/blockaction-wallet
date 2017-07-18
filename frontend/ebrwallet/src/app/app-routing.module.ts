@@ -4,14 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { WalletComponent } from './wallet/wallet.component';
 import { HomeComponent } from './home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
-
+import { WalletInfoComponent } from './wallet-info/wallet-info.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'/home', pathMatch:'full'},
-  { path: 'home', component: HomeComponent },
+  // { path: '*', redirectTo: '', pathMatch: 'full'},
+  { path: '', component: HomeComponent },
   { path: 'wallet', component: WalletComponent },
   { path: 'send-ether', component: TransactionComponent },
-  
+  { path: 'wallet-info', component: WalletInfoComponent }
 ];
 
 @NgModule({

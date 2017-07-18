@@ -1,5 +1,14 @@
+<div [style.max-height]="showSpinner ? '100vh' :  ''" [style.overflow]="showSpinner ? 'hidden' :  'auto'">
+<header [style.hide]="!ready">
+    <div class="container">
+        <div class="logo">
+            <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
+        </div>
+        <app-nav-bar></app-nav-bar>
+    </div>
+</header>
 <!-- Wallet Creation Info  -->
-<div class="fullPage" *ngIf="!ready">
+<div class="fullPage pt-2" *ngIf="!ready">
     <div class="pop-alert-box card-center card-md-p align-center">
         <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
         <div class="pop-alert">
@@ -11,24 +20,16 @@
 </div>
 
 <!-- Wallet Creation Page -->
-<div *ngIf="ready" class="{{ showSpinner || modalVisible ? 'overflow-hidden' : ''}} ">
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-            </div>
-            <nav-bar></nav-bar>
-        </div>
-    </header>
-    <div class="container-md {{ slideClass }}">
+<div *ngIf="ready">
+    <div class="container-md" [class.slide]="this.wallet">
         <div class="row">
             <div class="col-md-6">
                 <div class="block block-center bg-blue">
                     <h2> Create wallet </h2>
                     <br/>
-                    <form [formGroup]="walletForm" (ngSubmit)="create()">
+                    <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
                         <div class="form-group">
-                            <input type="{{ passphraseType }}" class="form-control input-lg" formControlName="password" placeholder="Enter Passphrase"
+                            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"
                             />
                             <div class="text-right">
                                 <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
@@ -36,15 +37,20 @@
                         </div>
                         <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
                             <ul>
-                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordLowercase ? 'text-muted': '' }}">One lowercase character</li>
-                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordUppercase ? 'text-muted': '' }}">One uppercase character</li>
-                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordNumber ? 'text-muted': '' }}">One number</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>
                             </ul>
                         </div>
                         <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
                             <ul>
+<<<<<<< Updated upstream
                                 <li class="{{ passwordCheck(walletForm.controls.password.value).passwordSpecialchar ? 'text-muted': '' }}">One special character</li>
                                 <li class="{{ passwordCheck(walletForm.controls.password.value).passwordLength ? 'text-muted': '' }}">8 characters minimum</li>
+=======
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>
+>>>>>>> Stashed changes
                             </ul>
                         </div>
                         <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
@@ -64,7 +70,7 @@
                     <div *ngIf="wallet">
                         <h2>Wallet Ready!</h2>
                         <div class="form-group mg-top-sm">
-                            <b>Public Key (Address)</b>
+                            <b>Address</b>
                             <div class="clearfix">
                                 <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
 
@@ -94,7 +100,7 @@
 </div>
 
 <!--- Ether Request Modal -->
-<div class="request-modal modal-open" style="overflow:none;" *ngIf="modalVisible">
+<div *ngIf="wallet">
     <div class="card card-center card-md-p">
         <div class="text-center">
 
@@ -120,8 +126,8 @@
                         <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">
                     </div>
                 </div>
-                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
-                <textarea class="form-control" formControlName="comment" placeholder="Comment"></textarea>
+                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
+                <textarea class="form-control" formControlName="comment"></textarea>
             </form>
         </div>
         <div class="button-space">
@@ -132,6 +138,8 @@
     </div>
 </div>
 
-<div *ngIf="showSpinner" class="spinner-overlay" style="overflow:none;display:flex;flex:1;justify-content:center;align-items:center;">
+<div *ngIf="showSpinner" class="spinner-overlay">
     <img width="100" height="100" src="/assets/img/logo-icon.png"/>
+</div>
+
 </div>

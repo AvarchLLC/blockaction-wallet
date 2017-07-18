@@ -2,22 +2,22 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Buffer } from 'buffer'
-import  Transaction  from 'ethereumjs-tx'
+import { Buffer } from 'buffer';
+import Transaction from 'ethereumjs-tx';
 
-declare var EthJS : any
-declare var Web3 : any
+declare var EthJS: any;
+declare var Web3: any;
 
 
 @Injectable()
 export class TransactionService {
 
-  web3: any
-  url : string = 'http://localhost:8545'
+  web3: any;
+  url = 'http://localhost:8545';
 
   constructor(private http: Http) {
 
-    this.web3 = new Web3(new Web3.providers.HttpProvider(this.url));
+    // this.web3 = new Web3(new Web3.providers.HttpProvider(this.url));
 
   }
 
@@ -29,56 +29,56 @@ export class TransactionService {
    *    - opts : optional data to send (object)
    *             - transaction data (string)
    *             - value / amount to send (number)
-   *             - 
+   *             -
    */
-  createTransaction(from: string, to : string, opts : any) : Transaction {
-    let nonce = this.web3.eth.getTransactionCount(from)
+  createTransaction(from: string, to: string, opts: any): Transaction {
+    const nonce = this.web3.eth.getTransactionCount(from);
     const nonceHex = this.web3.toHex(nonce);
-    
-    var rawTx = {
+
+    const rawTx = {
       nonce: nonceHex,
-      to,//: '0xc787be952a82544713e31890e114569e67bf3e3b',
+      to, // : '0xc787be952a82544713e31890e114569e67bf3e3b',
       value: 100,
       data: 'Payment'
-    }
+    };
 
-    rawTx['gas'] = this.web3.eth.estimateGas(rawTx)
-    rawTx['gasLimit'] = this.web3.eth.estimateGas(rawTx) 
+    rawTx['gas'] = this.web3.eth.estimateGas(rawTx);
+    rawTx['gasLimit'] = this.web3.eth.estimateGas(rawTx);
 
-    var tx = new Transaction(rawTx)
+    const tx = new Transaction(rawTx);
 
     return tx;
   }
 
   // signTransaction ... signs transaction with a provate key
-  signAndSerializeTransaction(tx : Transaction , privkey : string) : Promise<any> {
-    return new Promise((resolve,reject) => {
+  signAndSerializeTransaction(tx: Transaction, privkey: string): Promise<any> {
+    return new Promise((resolve, reject) => {
       try {
-        tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey), 'hex'))
-          // tx.sign(Buffer.from('b7aa234e7fa851682e8e52755606b35d0cd37669e43dccb4f9e51311f780ea78','hex'))
+        tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey), 'hex'));
+        // tx.sign(Buffer.from('b7aa234e7fa851682e8e52755606b35d0cd37669e43dccb4f9e51311f780ea78','hex'))
 
-        resolve(tx.serialize().toString('hex'))
-      }catch(e){
-        reject('Error signing transaction. Private key is invalid.')
+        resolve(tx.serialize().toString('hex'));
+      } catch (e) {
+        reject('Error signing transaction. Private key is invalid.');
       }
-    })
+    });
   }
 
   // sendTransaction ... send a serialized transaction to a ethereum node
-  sendTransaction(serialTx: string) : Promise<any> {
-    return new Promise((resolve,reject) => {
+  sendTransaction(serialTx: string): Promise<any> {
+    return new Promise((resolve, reject) => {
       try {
-        this.web3.eth.sendRawTransaction('0x' + serialTx)
-        resolve(true)
-      }catch(e){
-        console.log(e)
-        reject('Transaction failed.')
+        this.web3.eth.sendRawTransaction('0x' + serialTx);
+        resolve(true);
+      } catch (e) {
+        console.log(e);
+        reject('Transaction failed.');
       }
-    })
+    });
   }
   // getTransactionCost ... get the total cost for processing transaction
-  getTransactionCost(tx: Transaction) : string {
-    return tx.getUpfrontCost().toString(10)
+  getTransactionCost(tx: Transaction): string {
+    return tx.getUpfrontCost().toString(10);
   }
 
   // sendMoney ... send money in transaction
@@ -86,26 +86,28 @@ export class TransactionService {
    * sendMoney(from : string, to : string, value: number, opts : object)
    *    - from : address from which transaction  is being made
    *    - to   : address to which transaction is being sent
-   *    - value: amount of tokens to be send in transaction(default is "Wei")  
+   *    - value: amount of tokens to be send in transaction(default is "Wei")
    *    - opts : optional data to send (object)
    *             - transaction ID   (integer data)
    *             - transaction data (string data)
-   *             - 
+   *             -
   */
   sendMoney(to: string, value: number, privateKey: string) {
     return new Promise((resolve, reject) => {
-      try{
-        let wei_value = this.web3.toWei(value, 'ether')
-        let from = EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(EthJS.Util.addHexPrefix(privateKey)))
-        
-        let tx = this.createTransaction(from,to,{ value: value})
-        this.signAndSerializeTransaction(tx, privateKey )
-            .then(serialTx => this.sendTransaction(serialTx).then(resolve).catch(reject))
-            .catch(reject)
-      }catch(e){
-        reject(e)
+      try {
+        const wei_value = this.web3.toWei(value, 'ether');
+        const from = EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(EthJS.Util.addHexPrefix(privateKey)));
+
+        const tx = this.createTransaction(from, to, { value: value });
+
+        this.signAndSerializeTransaction(tx, privateKey)
+          .then(serialTx => this.sendTransaction(serialTx).then(resolve).catch(reject))
+          .catch(reject);
+
+      } catch (e) {
+        reject(e);
       }
-    })
+    });
 
   }
 
@@ -114,26 +116,26 @@ export class TransactionService {
 
   }
 
-  // getTransacionDetails ... get the details of transaction from transaction hash  
-  getTransactionDetails(transactionHash : string) {
+  // getTransacionDetails ... get the details of transaction from transaction hash
+  getTransactionDetails(transactionHash: string) {
 
   }
 
-  getPrice() : Promise<any> {
+  getPrice(): Promise<any> {
     return this.http
       .get('https://api.etherscan.io/api?module=stats&action=ethprice')
       .toPromise()
       .then(res => res.json())
-      .then(res => res.result)
-      /*
-        Sample Response:
-        {
-          ethbtc: "0.09634",
-          ethbtc_timestamp: "1499590928",
-          ethusd: "244.27",
-          ethusd_timestamp: "1499590943"
-        }
-      */
+      .then(res => res.result);
+    /*
+      Sample Response:
+      {
+        ethbtc: "0.09634",
+        ethbtc_timestamp: "1499590928",
+        ethusd: "244.27",
+        ethusd_timestamp: "1499590943"
+      }
+    */
   }
 
 

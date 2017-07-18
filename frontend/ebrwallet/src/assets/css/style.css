@@ -283,8 +283,9 @@ text-decoration: none;
     right: 0px;
     padding: 10% 0;
     z-index: 1000;
-    overflow: visible;
+    overflow: auto;
 }
+
 form textarea {
   resize: none;
 }
@@ -367,6 +368,11 @@ span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;text-align: center;
     padding:5% 15px;
 
 }
+
+.pt-2 {
+  padding: 2% 15px;
+}
+
 .card {
     padding: 40px;
     background:#fff;
@@ -707,6 +713,8 @@ nav ul li{
   font-size: 32px;}
     .block {width: 100%; margin: 0 auto;}
 
+}
+
 @media screen and (min-width: 1024px) {
 
     .container-md { width:1024px; margin:80px auto; }
@@ -715,4 +723,5 @@ nav ul li{
     -ms-transform: translateX(50%);
     -o-transform: translateX(50%);
     transform: translateX(50%);
+  }
 }

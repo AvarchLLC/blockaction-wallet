@@ -1,33 +1,19 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { WalletService } from '../services/wallet.service'
-import { AuthService } from '../services/auth.service'
-import { TransactionService } from '../services/transaction.service'
+import { WalletService } from '../services/wallet.service';
+import { AuthService } from '../services/auth.service';
+import { TransactionService } from '../services/transaction.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
-import { Wallet } from '../wallet'
+import { Wallet } from '../wallet';
 
+import { Config } from '../config';
+const config = new Config();
 
-declare var toastr: any;
-declare var ga : any;
+declare const toastr: any;
 
-toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": true,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
+// toastr.options = config.toastr;
 
 @Component({
   selector: 'app-wallet',
@@ -36,220 +22,168 @@ toastr.options = {
 
 export class WalletComponent implements OnInit {
 
-  // file : any
-  // filePassword: string
-  // privateKey: string
-  walletForm : FormGroup; 
-  requestEtherForm : FormGroup;
+  walletForm: FormGroup;
+  requestEtherForm: FormGroup;
 
-  wallet     : Wallet  // Wallet object
-  qrSvg      : string  // QrCode SVG string
-  ethusd     : any
+  wallet: Wallet;  // Wallet object
+  qrSvg: string;   // QrCode SVG string
+  ethusd: any;
 
-  disabled        : boolean = false // disable "create wallet" button
-  slideClass      : string  = ''
-  passphraseType  : string  = 'password'
-  passphraseButton: string  = 'Show Passphrase'
-  qrClass         : string  = ''
-  modalVisible    : boolean = false
+  disabled = false; // disable "create wallet" button
+  passphraseType = 'password';
+  passphraseButton = 'Show Passphrase';
+  qrClass = '';
+  modalVisible = false;
 
-  identicon       : any
-  ready           : boolean = false
-  showSpinner     : boolean = false
+  identicon: any;
+  ready = false;
+  showSpinner = false;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder, private walletService: WalletService, private authService: AuthService, private transactionService: TransactionService) {
-    var passwordValidator = Validators.compose([
-                              Validators.required,
-                              Validators.maxLength(20),
-                              Validators.pattern(/^.*(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/)
-                            ]);
+  constructor( @Inject(FormBuilder) fb: FormBuilder,
+    private walletService: WalletService,
+    private authService: AuthService,
+    private transactionService: TransactionService,
+    private googleAnalyticsService: GoogleAnalyticsService
+  ) {
+
+    const passwordValidator = Validators.compose([
+      Validators.required
+    ]);
 
     this.walletForm = fb.group({
-      password: ['', [ passwordValidator ]],
-    }
-    )
+      password: ['', [passwordValidator]],
+    });
 
     this.requestEtherForm = fb.group({
       email: ['', Validators.email],
-      amount_ether: ['0'],
+      amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
-      comment : ['']
-    })
+      comment: ['', Validators.required]
+    });
   }
 
   passwordCheck(password: string) {
-    let passwordLength = false;
-    let passwordLowercase = false;
-    let passwordUppercase = false;
-    let passwordNumber = false;    
-    let passwordSpecialchar = false;    
-    
-    if(/^.*(?=.{8,20})[a-zA-Z0-9@#$%^&+=]*$/.test(password)) {
-      passwordLength = true;
-    }
-    if(/^.*(?=.*[a-z])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
-      passwordLowercase = true;
-    }
-    
-    if(/^.*(?=.*[A-Z])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
-      passwordUppercase = true;
-    }
 
-    if(/^.*(?=.*[0-9])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
-      passwordNumber = true;
-    }
+    const checked = {
+      passwordLength: password.length >= 8 && password.length <= 20 ,
+      passwordLowercase: /[a-z]/.test(password),
+      passwordUppercase: /[A-Z]/.test(password),
+      passwordNumber: /[0-9]/.test(password),
+      passwordSpecialchar : /[@#$%^&+=!*]/.test(password),
+      invalidChar: /[^a-zA-Z0-9@#$%^&+=!*]/.test(password)
+    };
 
-    if(/^.*(?=.*[@#$%^&+=])[a-zA-Z0-9@#$%^&+=]*$/.test(password)){
-      passwordSpecialchar = true;
-    }
+    checked['all'] =
+      checked.passwordLength &&
+      checked.passwordLowercase &&
+      checked.passwordUppercase &&
+      checked.passwordNumber &&
+      checked.passwordSpecialchar;
 
-    return {
-      passwordLength,
-      passwordLowercase,
-      passwordUppercase,
-      passwordNumber,
-      passwordSpecialchar,
-      all : passwordLength && passwordLowercase && passwordUppercase && passwordNumber && passwordSpecialchar
-    }
+    return checked;
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
+      this.ready = true;
+    }
+
+    // const message = `Request for ethers to address ${ this.wallet ? this.wallet.address : '' }`;
+    // this.requestEtherForm.controls.comment.setValue(message);
     this.transactionService
       .getPrice()
       .then(res => {
         this.ethusd = {
           value: res.ethusd,
-          time : new Date(res.ethusd_timestamp * 1000)
-        }
+          time: new Date(res.ethusd_timestamp * 1000)
+        };
       })
-      .catch(err=> toastr.error('Couldn\'t get exchange rate'))
+      .catch(err => toastr.error('Couldn\'t get exchange rate'));
   }
 
   get isDisabled() {
-    return this.disabled || !this.walletForm.valid
+    return this.disabled || !this.walletForm.valid || !this.passwordCheck(this.walletForm.controls.password.value)['all'];
   }
 
   showQr(): void {
     if (this.wallet) {
       this.walletService
-          .getQrCode(this.wallet)
-          .then(qrCode => this.qrSvg = qrCode)
+        .getQrCode(this.wallet)
+        .then(qrCode => this.qrSvg = qrCode);
     }
   }
-  
+
   isReady() {
+    this.googleAnalyticsService
+      .emitEvent('Wallet Page', 'Button Clicked', 'Ok, Got It');
     this.ready = true;
+    const messageExpiry = new Date()
+    messageExpiry.setHours(messageExpiry.getHours() + 1)
+    localStorage.setItem('messageShown', messageExpiry.toString());
   }
+
   qrToggle() {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Show Qr');
+
     this.qrClass === ''
       ? this.qrClass = 'showQr'
-      : this.qrClass = ''
+      : this.qrClass = '';
   }
+
   passphraseToggle() {
+    this.googleAnalyticsService
+      .emitEvent('Wallet Form', 'Show Passphrase Toggle');
+
     this.passphraseType === 'password'
       ? this.passphraseType = 'text'
-      : this.passphraseType = 'password'
+      : this.passphraseType = 'password';
 
     this.passphraseButton === 'Show Passphrase'
       ? this.passphraseButton = 'Hide Passphrase'
-      : this.passphraseButton = 'Show Passphrase'
+      : this.passphraseButton = 'Show Passphrase';
   }
-
-  // Decrypt private key from wallet keystore file
-  // getKey() : void {
-
-  // this.walletService
-  //   .getPrivateKeyString(this.wallet ,this.filePassword)
-  //   .then(key => {
-  //     this.privateKey= key;
-  //     this.filePassword = null;
-  //     toastr.success('Wallet decrypted', "Show Private Key")
-
-  //   })
-  //   .catch(err => {
-  //     this.filePassword = null
-  //     toastr.error('Incorrect Password', "Show Private Key")
-  //   })
-  // }
-
-
 
   create(): void {
 
-     ga('send', 'event', {
-      eventCategory: 'Wallet',
-      eventLabel: 'Wallet Creation',
-      eventAction: 'Button Clicked',
-      eventValue: true
-    });
+    this.googleAnalyticsService
+      .emitEvent('Wallet Creation', 'Button Clicked');
 
-
-    this.disabled = true
+    this.disabled = true;
     this.showSpinner = true;
     setTimeout(function () {
       this.walletService
         .createWallet(this.walletForm.value.password)
         .then(data => {
-          this.wallet = data
-          this.walletForm.controls.password.setValue('')
-          this.slideClass = 'slide'
-          toastr.success('Created!', "Wallet Creation")
-          this.showQr()
-          this.identicon = this.walletService.getIdenticon(this.wallet);    
-          // document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ this.identicon)            
+          this.wallet = data;
+          this.walletForm.controls.password.setValue('');
+          toastr.success('Created!', 'Wallet Creation');
+          this.showQr();
+          this.identicon = this.walletService.getIdenticon(this.wallet);
           this.showSpinner = false;
-          this.disabled = false
+          this.disabled = false;
         })
         .catch(err => {
-          console.error(err)
-          // toastr.error("An Error Occurred", "Wallet Creation")
-          this.disabled = false
-        })
-    }.bind(this), 1000)
+          // console.error(err);
+          toastr.error('An Error Occurred', 'Wallet Creation');
+          this.disabled = false;
+        });
+    }.bind(this), 1000);
 
   }
 
   saveWalletToFile(): void {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Download Wallet');
+
     this.walletService
       .saveWalletToFile(this.wallet)
-      .catch(err => toastr.error("An error occurred while downloading", "Wallet Download"))
+      .catch(err => toastr.error('An error occurred while downloading', 'Wallet Download'));
   }
-
-
-  /*  Loading wallet by file upload
-   *
-   *
-  fileChangeListener($event) : void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any) : void {
-    var self = this;
-    var file:File = inputValue.files[0];
-    var myReader:FileReader = new FileReader();
-
-    myReader.onloadend = function(e){
-      self.loadWalletFromString(myReader.result)
-    }
-    myReader.readAsText(file);
-  }
-  loadWalletFromString(s: string): void {
-    try {
-      this.wallet  = {
-        keystore: JSON.parse(s),
-        address : JSON.parse(s).address
-      }
-    }catch(e){
-      toastr.error("Cannot read from wallet file.", "Load Wallet")
-    }
-
-    this.showQr();
-  }
-  */
 
   deleteWallet(): void {
     this.wallet = null;
-    this.qrSvg = null
+    this.qrSvg = null;
     // this.password = null
     // this.privateKey = null
     // this.file = null
@@ -257,61 +191,75 @@ export class WalletComponent implements OnInit {
   }
 
   printPaperWallets(strJson) {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Print Wallet');
+
     this.walletService.getPaperWallet(this.wallet).then(data => {
-      var win = window.open("about:blank", "rel='noopener'", "_blank");
-      win.document.write(data.paperHTML)
-      win.document.getElementById('privQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.privQrCodeData))
-      win.document.getElementById('addrQrImage').setAttribute('src','data:image/svg+xml;base64,'+ window.btoa(data.addrQrCodeData))      
-      win.document.getElementById('iconImage').setAttribute('src','data:image/png;base64,'+ data.identiconData)            
-      setTimeout(function(){
-        win.print()
-      }, 3000)
-  }).catch(err => toastr.error(err))
+      const win = window.open('about:blank', 'rel="noopener"', '_blank');
+      win.document.write(data.paperHTML);
+      win.document.getElementById('privQrImage').setAttribute('src', 'data:image/svg+xml;base64,' + window.btoa(data.privQrCodeData));
+      win.document.getElementById('addrQrImage').setAttribute('src', 'data:image/svg+xml;base64,' + window.btoa(data.addrQrCodeData));
+      win.document.getElementById('iconImage').setAttribute('src', 'data:image/png;base64,' + data.identiconData);
+      setTimeout(function () {
+        win.print();
+      }, 3000);
+    }).catch(err => toastr.error(err));
   }
 
   etherAmountChanged(e) {
-    let ether_value = parseFloat(e.target.value)
-    if(ether_value !== 0 && e.target.value.length > ether_value.toString().length ) {
+    const ether_value = parseFloat(e.target.value);
+    if (ether_value !== 0 && e.target.value.length > ether_value.toString().length) {
       e.target.value = ether_value;
     }
-    if(ether_value && !isNaN(ether_value)  &&  ether_value >  0){
-      let amount_in_usd = ether_value * this.ethusd.value
-      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd)
+    if (ether_value && !isNaN(ether_value) && ether_value > 0) {
+      const amount_in_usd = ether_value * this.ethusd.value;
+      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd);
     }
   }
 
   usdAmountChanged(e) {
-    let usd_value = parseFloat(e.target.value)
-    if(usd_value !== 0 && e.target.value.length > usd_value.toString().length ) {
+    const usd_value = parseFloat(e.target.value);
+    if (usd_value !== 0 && e.target.value.length > usd_value.toString().length) {
       e.target.value = usd_value;
     }
-    if(usd_value && !isNaN(usd_value) &&  usd_value > 0){
-      let amount_in_ether = usd_value / this.ethusd.value
-      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether)
+    if (usd_value && !isNaN(usd_value) && usd_value > 0) {
+      const amount_in_ether = usd_value / this.ethusd.value;
+      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether);
     }
   }
 
   requestEther() {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Request Ether');
+
     this.modalVisible = false;
 
-    if(!this.ethusd){
-      this.transactionService
-      .getPrice()
-      .then(res => {
-        this.ethusd = {
-          value: res.ethusd,
-          time : new Date(res.ethusd_timestamp * 1000)
-        }
+    const email = this.requestEtherForm.controls.email.value;
+    const amount = this.requestEtherForm.controls.amount_ether.value;
+    const str = `Ether request sent to ${email} for ${amount} ether.`;
+
+    this.walletService
+      .requestEther(this.wallet.address,email,amount)
+      .then(ok => {
+
       })
-      .catch(err=> toastr.error('Couldn\'t get exchange rate'))
-    }
-    
-    let em = this.requestEtherForm.controls.email.value;
-    let am = this.requestEtherForm.controls.amount_ether.value;
-    let str = `Ether request sent to ${em} for ${am} ether.`
-    toastr.success(str, 'Request Ether')
+
+    toastr.success(str, 'Request Ether');
   }
+
   showModal() {
+    // if (!this.ethusd) {
+    //   this.transactionService
+    //     .getPrice()
+    //     .then(res => {
+    //       this.ethusd = {
+    //         value: res.ethusd,
+    //         time: new Date(res.ethusd_timestamp * 1000)
+    //       };
+    //     })
+    //     .catch(err => toastr.error('Couldn\'t get exchange rate'));
+    // }
+
     this.modalVisible = true;
   }
 

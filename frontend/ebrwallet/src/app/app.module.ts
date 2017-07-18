@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-//Imports for loading & configuring the in-memory api
+// Imports for loading & configuring the in-memory api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataService } from './services/in-memory-data.service'
 
@@ -21,16 +21,18 @@ import { WalletComponent } from './wallet/wallet.component'
 // Project Services
 import { WalletService } from './services/wallet.service';
 import { AuthService } from './services/auth.service';
-import { TransactionService } from './services/transaction.service' 
-
+import { TransactionService } from './services/transaction.service'; 
+import { GoogleAnalyticsService } from './services/google-analytics.service';
+import { WalletInfoComponent } from './wallet-info/wallet-info.component';
 
 @NgModule({
   declarations: [
+    NavComponent,
     AppComponent,
     WalletComponent,
     HomeComponent,
-    NavComponent,
     TransactionComponent,
+    WalletInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ import { TransactionService } from './services/transaction.service'
     AppRoutingModule,
     AuthModule
   ],
-  providers: [ WalletService, AuthService, TransactionService ],
+  providers: [ WalletService, AuthService, TransactionService, GoogleAnalyticsService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -16,16 +16,16 @@
                     <div *ngIf="menuItem.subroutes" class="dropdown" >
                       <ul class="dropdown-menuBar">
                           <li *ngFor="let subroute of menuItem.routes" >
-                            <a [routerLink]="[subroute.path]">
+                            <a [routerLink]="[subroute.path]" [class.active]="isActive(subroute)">
                                 {{subroute.title}}
                             </a>
                           </li>
                       </ul>
-                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem,activeLink)" class="hide-menuitem">
+                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)" class="hide-menuitem">
                           {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
                       </a>
                     </div>
-                    <a *ngIf="!menuItem.subroutes" [routerLink]="[menuItem.path]" [class.active]="menuItem.path === activeLink">
+                    <a *ngIf="!menuItem.subroutes" [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)">
                         {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
                     </a>
                 </li>

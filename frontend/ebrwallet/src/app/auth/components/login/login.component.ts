@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
  
   error : string;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder, private authService : AuthService, private router: Router ) {
-    
+  constructor(@Inject(FormBuilder) fb: FormBuilder, 
+    private authService: AuthService,
+    private router: Router ) {
+
     var usernameValidator = Validators.compose([
                               Validators.required, 
                               Validators.pattern("[A-Za-z][A-Za-z0-9._]{3,14}")

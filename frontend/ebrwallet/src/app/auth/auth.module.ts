@@ -24,7 +24,7 @@ import { AuthService } from '../services/auth.service';
     HttpModule,
     AuthRoutingModule
   ],
-  providers: [ AuthService],
+  providers: [ AuthService ],
   bootstrap: [ LoginComponent ]
 })
 
