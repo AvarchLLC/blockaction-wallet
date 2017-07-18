@@ -510,22 +510,21 @@ transform: scale(3); }
 
 }
 
-.text-muted {
-    color: #fff;
+#walletform .text-muted li {
     opacity: 1;
 
     /*list-style-image: '&#10003';*/
 }
-
-li {
-    opacity: 0.5;
+#walletform li {
+  opacity: 0.5;
 
 }
 
-li.text-muted {
+#walletform li.text-muted {
+    color: #fff;
+    opacity: 1;
     list-style: none;
     margin-left: -18px;
-
 }
 li.text-muted:before{
 
@@ -545,6 +544,9 @@ li.text-muted:before{
     right: 0px;
     z-index: 1500;
     overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner-overlay img {

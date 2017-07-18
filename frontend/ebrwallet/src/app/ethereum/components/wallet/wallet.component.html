@@ -1,4 +1,4 @@
-<div [style.max-height]="showSpinner ? '100vh' :  ''" [style.overflow]="showSpinner ? 'hidden' :  'auto'">
+<div [class.overflow-hidden]="showSpinner">
 <header [style.hide]="!ready">
     <div class="container">
         <div class="logo">
@@ -10,7 +10,7 @@
 <!-- Wallet Creation Info  -->
 <div class="fullPage pt-2" *ngIf="!ready">
     <div class="pop-alert-box card-center card-md-p align-center">
-        <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
+        <img src="../../../../assets/img/key-icon.svg" alt="key" class="img-responsive">
         <div class="pop-alert">
             <h1 class="color-black txt-scale"><b>We don't store your keys</b></h1>
             <p p-font-size>We believe in user and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>
@@ -23,7 +23,12 @@
 <div *ngIf="ready">
     <div class="container-md" [class.slide]="this.wallet">
         <div class="row">
-            <div class="col-md-6">
+          <div *ngIf="wallet" class="col-md-6">
+            <div class="block block-center bg-blue">
+              <app-transaction></app-transaction>
+            </div>
+          </div>
+          <div *ngIf="!wallet" class="col-md-6">
                 <div class="block block-center bg-blue">
                     <h2> Create wallet </h2>
                     <br/>
@@ -44,13 +49,8 @@
                         </div>
                         <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
                             <ul>
-<<<<<<< Updated upstream
-                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordSpecialchar ? 'text-muted': '' }}">One special character</li>
-                                <li class="{{ passwordCheck(walletForm.controls.password.value).passwordLength ? 'text-muted': '' }}">8 characters minimum</li>
-=======
                                 <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>
                                 <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>
->>>>>>> Stashed changes
                             </ul>
                         </div>
                         <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
@@ -100,7 +100,7 @@
 </div>
 
 <!--- Ether Request Modal -->
-<div *ngIf="wallet">
+<div *ngIf="false">
     <div class="card card-center card-md-p">
         <div class="text-center">
 
@@ -138,8 +138,9 @@
     </div>
 </div>
 
+</div>
+
 <div *ngIf="showSpinner" class="spinner-overlay">
     <img width="100" height="100" src="/assets/img/logo-icon.png"/>
 </div>
 
-</div>

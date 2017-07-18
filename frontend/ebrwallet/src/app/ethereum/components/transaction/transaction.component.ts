@@ -4,11 +4,11 @@ import 'rxjs/add/operator/filter';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { WalletService } from '../services/wallet.service';
-import { TransactionService } from '../services/transaction.service';
+import { WalletService } from '../../../services/wallet.service';
+import { TransactionService } from '../../../services/transaction.service';
 
 import { Buffer } from 'buffer';
-import { Config } from '../config';
+import { Config } from '../../../config';
 const config = new Config();
 
 declare var toastr;

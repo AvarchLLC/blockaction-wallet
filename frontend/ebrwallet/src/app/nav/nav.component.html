@@ -14,7 +14,7 @@
                 <li *ngFor="let menuItem of menuItems" >
 
                     <div *ngIf="menuItem.subroutes" class="dropdown" >
-                      <ul class="dropdown-menuBar">
+                      <ul class="dropdown-menuBar hide">
                           <li *ngFor="let subroute of menuItem.routes" >
                             <a [routerLink]="[subroute.path]" [class.active]="isActive(subroute)">
                                 {{subroute.title}}
@@ -22,7 +22,7 @@
                           </li>
                       </ul>
                       <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)" class="hide-menuitem">
-                          {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
+                          {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret hide"></span>
                       </a>
                     </div>
                     <a *ngIf="!menuItem.subroutes" [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)">

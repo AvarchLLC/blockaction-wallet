@@ -6,8 +6,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { WalletService } from '../services/wallet.service';
-import { TransactionService } from '../services/transaction.service';
+import { WalletService } from '../../../services/wallet.service';
+import { TransactionService } from '../../../services/transaction.service';
 
 describe('TransactionComponent', () => {
   let component: TransactionComponent;

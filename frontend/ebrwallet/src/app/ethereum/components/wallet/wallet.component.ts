@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { WalletService } from '../services/wallet.service';
-import { AuthService } from '../services/auth.service';
-import { TransactionService } from '../services/transaction.service';
-import { GoogleAnalyticsService } from '../services/google-analytics.service';
+import { WalletService } from '../../../services/wallet.service';
+import { AuthService } from '../../../services/auth.service';
+import { TransactionService } from '../../../services/transaction.service';
+import { GoogleAnalyticsService } from '../../../services/google-analytics.service';
 
-import { Wallet } from '../wallet';
+import { Wallet } from '../../../wallet';
 
-import { Config } from '../config';
+import { Config } from '../../../config';
 const config = new Config();
 
 declare const toastr: any;
@@ -117,8 +117,8 @@ export class WalletComponent implements OnInit {
     this.googleAnalyticsService
       .emitEvent('Wallet Page', 'Button Clicked', 'Ok, Got It');
     this.ready = true;
-    const messageExpiry = new Date()
-    messageExpiry.setHours(messageExpiry.getHours() + 1)
+    const messageExpiry = new Date();
+    messageExpiry.setHours(messageExpiry.getHours() + 1);
     localStorage.setItem('messageShown', messageExpiry.toString());
   }
 
@@ -239,10 +239,10 @@ export class WalletComponent implements OnInit {
     const str = `Ether request sent to ${email} for ${amount} ether.`;
 
     this.walletService
-      .requestEther(this.wallet.address,email,amount)
+      .requestEther(this.wallet.address, email, amount)
       .then(ok => {
 
-      })
+      });
 
     toastr.success(str, 'Request Ether');
   }

@@ -1,13 +1,13 @@
-<header>
-    <div class="container">
-        <div class="logo">
-            <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-        </div>
-        <app-nav-bar></app-nav-bar>
-    </div>
-</header>
-<div class="fullPage">
-    <div class="card card-center card-md-p send-ether">
+<!--<header>-->
+    <!--<div class="container">-->
+        <!--<div class="logo">-->
+            <!--<img src="../assets/img/logo.png" alt="logo" class="img-responsive">-->
+        <!--</div>-->
+        <!--<app-nav-bar></app-nav-bar>-->
+    <!--</div>-->
+<!--</header>-->
+<!--<div class="fullPage">-->
+    <!--<div class="card card-center card-md-p send-ether">-->
         <div class="text-center">
             <h3><b>Send Ether To: </b></h3>
         </div>
@@ -57,7 +57,7 @@
                 </label>
             </div>
             <label class="btn btn-default btn-file" *ngIf="sendEther.controls['selection'].value === 'wallet'">
-                Select wallet with sufficient funds <input type="file" (change)="fileChangeListener($event)" style="display: none;"> 
+                Select wallet with sufficient funds <input type="file" (change)="fileChangeListener($event)" style="display: none;">
             </label>
             <div *ngIf="wallet && sendEther.controls['selection'].value === 'wallet'">
                 <input class="form-control" type="walletPassword" placeholder="Wallet password..." formControlName="walletPassword" />
@@ -69,8 +69,8 @@
                 <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
             </div>
         </form>
-    </div>
-</div>
+    <!--</div>-->
+<!--</div>-->
 
 
 <style>

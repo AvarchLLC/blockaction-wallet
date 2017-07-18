@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { WalletComponent } from './wallet/wallet.component';
+import { WalletComponent } from './ethereum/components/wallet/wallet.component';
 import { HomeComponent } from './home/home.component';
-import { TransactionComponent } from './transaction/transaction.component';
-import { WalletInfoComponent } from './wallet-info/wallet-info.component';
+import { TransactionComponent } from './ethereum/components/transaction/transaction.component';
+import { WalletInfoComponent } from './ethereum/components/wallet-info/wallet-info.component';
 
 const routes: Routes = [
   // { path: '*', redirectTo: '', pathMatch: 'full'},

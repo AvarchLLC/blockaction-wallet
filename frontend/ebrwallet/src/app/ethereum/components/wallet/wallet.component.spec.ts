@@ -7,10 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { WalletComponent } from './wallet.component';
 
-import { WalletService } from '../services/wallet.service';
-import { AuthService } from '../services/auth.service';
-import { TransactionService } from '../services/transaction.service'; 
-import { GoogleAnalyticsService } from '../services/google-analytics.service';
+import { WalletService } from '../../../services/wallet.service';
+import { AuthService } from '../../../services/auth.service';
+import { TransactionService } from '../../../services/transaction.service'; 
+import { GoogleAnalyticsService } from '../../../services/google-analytics.service';
 
 describe('WalletComponent', () => {
   let component: WalletComponent;
