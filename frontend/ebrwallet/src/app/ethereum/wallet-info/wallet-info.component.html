@@ -1,0 +1,13 @@
+<div>
+    <h2>THIS IS CARD VIEW</h2>
+    <div>
+        Balance : {{ balance }}
+    </div>
+    <div>
+        Transactions: {{ transactions }}
+    </div>
+    <button (click)="showModal('request')">Request Ether</button>
+    <button (click)="showModal('send')">Send Ether</button>
+    <app-ethereum-transaction [mode]="modalType"></app-ethereum-transaction>
+    <!--<pre>{{ wallet | json }}</pre>-->
+</div>

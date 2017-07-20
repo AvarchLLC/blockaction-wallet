@@ -1,0 +1,962 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ebrwallet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	    <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ebrwallet documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="./index.html">ebrwallet documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                         href="./overview.html" 
+                                        
+                                         href="./overview.html" 
+                                         class="active" >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="./modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/AuthModule.html" >AuthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/AuthRoutingModule.html" >AuthRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/CoreModule.html" >CoreModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/EthereumModule.html" >EthereumModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/EthereumRoutingModule.html" >EthereumRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/SharedModule.html" >SharedModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="./components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/EthereumComponent.html" >EthereumComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/HomeComponent.html" >HomeComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/NavComponent.html" >NavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/RegisterComponent.html" >RegisterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/TransactionComponent.html" >TransactionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WalletComponent.html" >WalletComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/WalletInfoComponent.html" >WalletInfoComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="./classes/Config.html" >Config</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/EbrwalletPage.html" >EbrwalletPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/InMemoryDataService.html" >InMemoryDataService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./classes/Wallet.html" >Wallet</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="./injectables/AuthService.html" >AuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/TransactionService.html" >TransactionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/WalletService.html" >WalletService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/NavRouteInfo.html" >NavRouteInfo</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="./index.html">ebrwallet documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                                href="./overview.html" 
+                                               
+                                                href="./overview.html" 
+                                                class="active" >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="./modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/AuthModule.html" >AuthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/AuthRoutingModule.html" >AuthRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/CoreModule.html" >CoreModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/EthereumModule.html" >EthereumModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/EthereumRoutingModule.html" >EthereumRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/SharedModule.html" >SharedModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="./components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/EthereumComponent.html" >EthereumComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/HomeComponent.html" >HomeComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/NavComponent.html" >NavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/RegisterComponent.html" >RegisterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/TransactionComponent.html" >TransactionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WalletComponent.html" >WalletComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/WalletInfoComponent.html" >WalletInfoComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="./classes/Config.html" >Config</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/EbrwalletPage.html" >EbrwalletPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/InMemoryDataService.html" >InMemoryDataService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./classes/Wallet.html" >Wallet</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="./injectables/AuthService.html" >AuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/TransactionService.html" >TransactionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/WalletService.html" >WalletService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/NavRouteInfo.html" >NavRouteInfo</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content overview">
+                   <div class="content-data">
+
+
+<h3>Overview</h3>
+<div class="text-center">
+    <div id="module-graph-svg">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: dependencies Pages: 1 -->
+<svg width="1606pt" height="436pt"
+ viewBox="0.00 0.00 1606.00 436.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 432)">
+<title>dependencies</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-432 1602,-432 1602,4 -4,4"/>
+<text text-anchor="start" x="778.0091" y="-42.4" font-family="sans-serif" font-weight="bold" font-size="14.00" fill="#000000">Legend</text>
+<polygon fill="#ffffb3" stroke="transparent" points="565,-10 565,-30 585,-30 585,-10 565,-10"/>
+<text text-anchor="start" x="588.629" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Declarations</text>
+<polygon fill="#8dd3c7" stroke="transparent" points="678,-10 678,-30 698,-30 698,-10 678,-10"/>
+<text text-anchor="start" x="701.7251" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Module</text>
+<polygon fill="#80b1d3" stroke="transparent" points="764,-10 764,-30 784,-30 784,-10 764,-10"/>
+<text text-anchor="start" x="787.7812" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Bootstrap</text>
+<polygon fill="#fdb462" stroke="transparent" points="861,-10 861,-30 881,-30 881,-10 861,-10"/>
+<text text-anchor="start" x="884.6732" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Providers</text>
+<polygon fill="#fb8072" stroke="transparent" points="957,-10 957,-30 977,-30 977,-10 957,-10"/>
+<text text-anchor="start" x="980.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
+<g id="clust1" class="cluster">
+<title>cluster_AppModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="8,-146 8,-420 794,-420 794,-146 8,-146"/>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_AppModule_imports</title>
+<polygon fill="none" stroke="#000000" points="16,-154 16,-282 786,-282 786,-154 16,-154"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_AppModule_bootstrap</title>
+<polygon fill="none" stroke="#000000" points="491,-360 491,-412 615,-412 615,-360 491,-360"/>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_AppRoutingModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="1254,-146 1254,-214 1590,-214 1590,-146 1254,-146"/>
+</g>
+<g id="clust9" class="cluster">
+<title>cluster_AppRoutingModule_imports</title>
+<polygon fill="none" stroke="#000000" points="1388,-154 1388,-206 1582,-206 1582,-154 1388,-154"/>
+</g>
+<g id="clust10" class="cluster">
+<title>cluster_AppRoutingModule_exports</title>
+<polygon fill="none" stroke="#000000" points="1262,-154 1262,-206 1380,-206 1380,-154 1262,-154"/>
+</g>
+<g id="clust13" class="cluster">
+<title>cluster_AuthModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="723,-70 723,-138 1265,-138 1265,-70 723,-70"/>
+</g>
+<g id="clust15" class="cluster">
+<title>cluster_AuthModule_imports</title>
+<polygon fill="none" stroke="#000000" points="731,-78 731,-130 1257,-130 1257,-78 731,-78"/>
+</g>
+<g id="clust25" class="cluster">
+<title>cluster_CoreModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="282,-70 282,-138 674,-138 674,-70 282,-70"/>
+</g>
+<g id="clust27" class="cluster">
+<title>cluster_CoreModule_imports</title>
+<polygon fill="none" stroke="#000000" points="422,-78 422,-130 666,-130 666,-78 422,-78"/>
+</g>
+<g id="clust28" class="cluster">
+<title>cluster_CoreModule_exports</title>
+<polygon fill="none" stroke="#000000" points="290,-78 290,-130 414,-130 414,-78 290,-78"/>
+</g>
+<g id="clust31" class="cluster">
+<title>cluster_EthereumModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="938,-146 938,-214 1246,-214 1246,-146 938,-146"/>
+</g>
+<g id="clust33" class="cluster">
+<title>cluster_EthereumModule_imports</title>
+<polygon fill="none" stroke="#000000" points="946,-154 946,-206 1238,-206 1238,-154 946,-154"/>
+</g>
+<g id="clust43" class="cluster">
+<title>cluster_SharedModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="802,-222 802,-290 1232,-290 1232,-222 802,-222"/>
+</g>
+<g id="clust46" class="cluster">
+<title>cluster_SharedModule_exports</title>
+<polygon fill="none" stroke="#000000" points="810,-230 810,-282 1224,-282 1224,-230 810,-230"/>
+</g>
+<!-- BrowserModule -->
+<g id="node1" class="node">
+<title>BrowserModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="778.4734,-198 775.4734,-202 754.4734,-202 751.4734,-198 671.5266,-198 671.5266,-162 778.4734,-162 778.4734,-198"/>
+<text text-anchor="middle" x="725" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">BrowserModule</text>
+</g>
+<!-- AuthModule -->
+<g id="node5" class="node">
+<title>AuthModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="777.5482,-274 774.5482,-278 753.5482,-278 750.5482,-274 690.4518,-274 690.4518,-238 777.5482,-238 777.5482,-274"/>
+<text text-anchor="middle" x="734" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthModule</text>
+</g>
+<!-- BrowserModule&#45;&gt;AuthModule -->
+<g id="edge10" class="edge">
+<title>BrowserModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M707.7359,-198.0109C707.7359,-198.0109 707.7359,-227.855 707.7359,-227.855"/>
+<polygon fill="#000000" stroke="#000000" points="704.236,-227.8549 707.7359,-237.855 711.236,-227.855 704.236,-227.8549"/>
+</g>
+<!-- AppModule -->
+<g id="node7" class="node">
+<title>AppModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="594.6571,-339 591.6571,-343 570.6571,-343 567.6571,-339 511.3429,-339 511.3429,-303 594.6571,-303 594.6571,-339"/>
+<text text-anchor="middle" x="553" y="-316.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+</g>
+<!-- BrowserModule&#45;&gt;AppModule -->
+<g id="edge1" class="edge">
+<title>BrowserModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M680.8699,-198.1446C680.8699,-236.2265 680.8699,-321 680.8699,-321 680.8699,-321 604.8694,-321 604.8694,-321"/>
+<polygon fill="#000000" stroke="#000000" points="604.8694,-317.5001 594.8694,-321 604.8694,-324.5001 604.8694,-317.5001"/>
+</g>
+<!-- CoreModule -->
+<g id="node2" class="node">
+<title>CoreModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="522.2619,-198 519.2619,-202 498.2619,-202 495.2619,-198 435.7381,-198 435.7381,-162 522.2619,-162 522.2619,-198"/>
+<text text-anchor="middle" x="479" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">CoreModule</text>
+</g>
+<!-- CoreModule&#45;&gt;AppModule -->
+<g id="edge2" class="edge">
+<title>CoreModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M518.6445,-198.1446C518.6445,-198.1446 518.6445,-292.925 518.6445,-292.925"/>
+<polygon fill="#000000" stroke="#000000" points="515.1446,-292.925 518.6445,-302.925 522.1446,-292.925 515.1446,-292.925"/>
+</g>
+<!-- RouterModule  -->
+<g id="node10" class="node">
+<title>RouterModule </title>
+<polygon fill="#fb8072" stroke="#000000" points="1371.6523,-198 1270.3477,-198 1270.3477,-162 1371.6523,-162 1371.6523,-198"/>
+<text text-anchor="middle" x="1321" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">RouterModule </text>
+</g>
+<!-- CoreModule&#45;&gt;RouterModule  -->
+<g id="edge20" class="edge">
+<title>CoreModule&#45;&gt;RouterModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M514.9081,-198.2434C514.9081,-205.4297 514.9081,-212 514.9081,-212 514.9081,-212 1321,-212 1321,-212 1321,-212 1321,-208.2434 1321,-208.2434"/>
+<polygon fill="#000000" stroke="#000000" points="1324.5001,-208.2434 1321,-198.2434 1317.5001,-208.2434 1324.5001,-208.2434"/>
+</g>
+<!-- NavComponent  -->
+<g id="node17" class="node">
+<title>NavComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="406.1537,-122 297.8463,-122 297.8463,-86 406.1537,-86 406.1537,-122"/>
+<text text-anchor="middle" x="352" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">NavComponent </text>
+</g>
+<!-- CoreModule&#45;&gt;NavComponent  -->
+<g id="edge19" class="edge">
+<title>CoreModule&#45;&gt;NavComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M435.4911,-180C428.6473,-180 423.7805,-180 423.7805,-180 423.7805,-180 423.7805,-104 423.7805,-104 423.7805,-104 416.4044,-104 416.4044,-104"/>
+<polygon fill="#000000" stroke="#000000" points="416.4045,-100.5001 406.4044,-104 416.4044,-107.5001 416.4045,-100.5001"/>
+</g>
+<!-- InMemoryWebApiModule.forRoot(args) -->
+<g id="node3" class="node">
+<title>InMemoryWebApiModule.forRoot(args)</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="270.037,-198 267.037,-202 246.037,-202 243.037,-198 23.963,-198 23.963,-162 270.037,-162 270.037,-198"/>
+<text text-anchor="middle" x="147" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">InMemoryWebApiModule.forRoot(args)</text>
+</g>
+<!-- InMemoryWebApiModule.forRoot(args)&#45;&gt;AppModule -->
+<g id="edge3" class="edge">
+<title>InMemoryWebApiModule.forRoot(args)&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M147,-198.0251C147,-237.2783 147,-327 147,-327 147,-327 501.0801,-327 501.0801,-327"/>
+<polygon fill="#000000" stroke="#000000" points="501.0801,-330.5001 511.0801,-327 501.08,-323.5001 501.0801,-330.5001"/>
+</g>
+<!-- AppRoutingModule -->
+<g id="node4" class="node">
+<title>AppRoutingModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="417.2744,-198 414.2744,-202 393.2744,-202 390.2744,-198 288.7256,-198 288.7256,-162 417.2744,-162 417.2744,-198"/>
+<text text-anchor="middle" x="353" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppRoutingModule</text>
+</g>
+<!-- AppRoutingModule&#45;&gt;AppModule -->
+<g id="edge4" class="edge">
+<title>AppRoutingModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M353,-198.2067C353,-235.0559 353,-315 353,-315 353,-315 501.0734,-315 501.0734,-315"/>
+<polygon fill="#000000" stroke="#000000" points="501.0735,-318.5001 511.0734,-315 501.0734,-311.5001 501.0735,-318.5001"/>
+</g>
+<!-- AppRoutingModule&#45;&gt;RouterModule  -->
+<g id="edge9" class="edge">
+<title>AppRoutingModule&#45;&gt;RouterModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.617,-161.8903C413.617,-152.103 413.617,-142 413.617,-142 413.617,-142 1321,-142 1321,-142 1321,-142 1321,-151.8903 1321,-151.8903"/>
+<polygon fill="#000000" stroke="#000000" points="1317.5001,-151.8903 1321,-161.8903 1324.5001,-151.8904 1317.5001,-151.8903"/>
+</g>
+<!-- AuthModule&#45;&gt;AppModule -->
+<g id="edge5" class="edge">
+<title>AuthModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M690.1432,-256C643.557,-256 576.5566,-256 576.5566,-256 576.5566,-256 576.5566,-292.8939 576.5566,-292.8939"/>
+<polygon fill="#000000" stroke="#000000" points="573.0567,-292.8938 576.5566,-302.8939 580.0567,-292.8939 573.0567,-292.8938"/>
+</g>
+<!-- EthereumModule -->
+<g id="node6" class="node">
+<title>EthereumModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="653.9734,-198 650.9734,-202 629.9734,-202 626.9734,-198 540.0266,-198 540.0266,-162 653.9734,-162 653.9734,-198"/>
+<text text-anchor="middle" x="597" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">EthereumModule</text>
+</g>
+<!-- EthereumModule&#45;&gt;AppModule -->
+<g id="edge6" class="edge">
+<title>EthereumModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="#000000" d="M558.2849,-198.1446C558.2849,-198.1446 558.2849,-292.925 558.2849,-292.925"/>
+<polygon fill="#000000" stroke="#000000" points="554.785,-292.925 558.2849,-302.925 561.785,-292.925 554.785,-292.925"/>
+</g>
+<!-- AppComponent  -->
+<g id="node8" class="node">
+<title>AppComponent </title>
+<polygon fill="#80b1d3" stroke="#000000" points="607.439,-404 498.561,-404 498.561,-368 607.439,-368 607.439,-404"/>
+<text text-anchor="middle" x="553" y="-381.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppComponent </text>
+</g>
+<!-- AppModule&#45;&gt;AppComponent  -->
+<g id="edge7" class="edge">
+<title>AppModule&#45;&gt;AppComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" d="M553,-339.1061C553,-339.1061 553,-357.991 553,-357.991"/>
+<polygon fill="#000000" stroke="#000000" points="549.5001,-357.9909 553,-367.991 556.5001,-357.991 549.5001,-357.9909"/>
+</g>
+<!-- RouterModule.forRoot(args) -->
+<g id="node9" class="node">
+<title>RouterModule.forRoot(args)</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1573.8419,-198 1570.8419,-202 1549.8419,-202 1546.8419,-198 1396.1581,-198 1396.1581,-162 1573.8419,-162 1573.8419,-198"/>
+<text text-anchor="middle" x="1485" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">RouterModule.forRoot(args)</text>
+</g>
+<!-- RouterModule.forRoot(args)&#45;&gt;AppRoutingModule -->
+<g id="edge8" class="edge">
+<title>RouterModule.forRoot(args)&#45;&gt;AppRoutingModule</title>
+<path fill="none" stroke="#000000" d="M1514.5569,-161.8533C1514.5569,-148.2605 1514.5569,-132 1514.5569,-132 1514.5569,-132 409.8469,-132 409.8469,-132 409.8469,-132 409.8469,-151.8533 409.8469,-151.8533"/>
+<polygon fill="#000000" stroke="#000000" points="406.347,-151.8532 409.8469,-161.8533 413.347,-151.8533 406.347,-151.8532"/>
+</g>
+<!-- AuthRoutingModule -->
+<g id="node14" class="node">
+<title>AuthRoutingModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1249.1652,-122 1246.1652,-126 1225.1652,-126 1222.1652,-122 1116.8348,-122 1116.8348,-86 1249.1652,-86 1249.1652,-122"/>
+<text text-anchor="middle" x="1183" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthRoutingModule</text>
+</g>
+<!-- RouterModule.forRoot(args)&#45;&gt;AuthRoutingModule -->
+<g id="edge15" class="edge">
+<title>RouterModule.forRoot(args)&#45;&gt;AuthRoutingModule</title>
+<path fill="none" stroke="#000000" d="M1455.4431,-161.9891C1455.4431,-139.5148 1455.4431,-104 1455.4431,-104 1455.4431,-104 1259.2987,-104 1259.2987,-104"/>
+<polygon fill="#000000" stroke="#000000" points="1259.2987,-100.5001 1249.2987,-104 1259.2987,-107.5001 1259.2987,-100.5001"/>
+</g>
+<!-- EthereumRoutingModule -->
+<g id="node18" class="node">
+<title>EthereumRoutingModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1229.5912,-198 1226.5912,-202 1205.5912,-202 1202.5912,-198 1070.4088,-198 1070.4088,-162 1229.5912,-162 1229.5912,-198"/>
+<text text-anchor="middle" x="1150" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">EthereumRoutingModule</text>
+</g>
+<!-- RouterModule.forRoot(args)&#45;&gt;EthereumRoutingModule -->
+<g id="edge24" class="edge">
+<title>RouterModule.forRoot(args)&#45;&gt;EthereumRoutingModule</title>
+<path fill="none" stroke="#000000" d="M1485,-198.4218C1485,-207.2791 1485,-216 1485,-216 1485,-216 1222.5647,-216 1222.5647,-216 1222.5647,-216 1222.5647,-208.4218 1222.5647,-208.4218"/>
+<polygon fill="#000000" stroke="#000000" points="1226.0648,-208.4218 1222.5647,-198.4218 1219.0648,-208.4219 1226.0648,-208.4218"/>
+</g>
+<!-- FormsModule -->
+<g id="node11" class="node">
+<title>FormsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="936.8288,-122 933.8288,-126 912.8288,-126 909.8288,-122 841.1712,-122 841.1712,-86 936.8288,-86 936.8288,-122"/>
+<text text-anchor="middle" x="889" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
+</g>
+<!-- FormsModule&#45;&gt;AuthModule -->
+<g id="edge11" class="edge">
+<title>FormsModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M873.112,-122.0248C873.112,-154.8443 873.112,-221 873.112,-221 873.112,-221 725.2453,-221 725.2453,-221 725.2453,-221 725.2453,-227.68 725.2453,-227.68"/>
+<polygon fill="#000000" stroke="#000000" points="721.7454,-227.6799 725.2453,-237.68 728.7454,-227.68 721.7454,-227.6799"/>
+</g>
+<!-- SharedModule -->
+<g id="node19" class="node">
+<title>SharedModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1052.4231,-198 1049.4231,-202 1028.4231,-202 1025.4231,-198 953.5769,-198 953.5769,-162 1052.4231,-162 1052.4231,-198"/>
+<text text-anchor="middle" x="1003" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
+</g>
+<!-- FormsModule&#45;&gt;SharedModule -->
+<g id="edge27" class="edge">
+<title>FormsModule&#45;&gt;SharedModule</title>
+<path fill="none" stroke="#000000" d="M904.888,-122.0109C904.888,-144.4852 904.888,-180 904.888,-180 904.888,-180 943.6566,-180 943.6566,-180"/>
+<polygon fill="#000000" stroke="#000000" points="943.6566,-183.5001 953.6566,-180 943.6565,-176.5001 943.6566,-183.5001"/>
+</g>
+<!-- ReactiveFormsModule -->
+<g id="node12" class="node">
+<title>ReactiveFormsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1099.3047,-122 1096.3047,-126 1075.3047,-126 1072.3047,-122 954.6953,-122 954.6953,-86 1099.3047,-86 1099.3047,-122"/>
+<text text-anchor="middle" x="1027" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule</text>
+</g>
+<!-- ReactiveFormsModule&#45;&gt;AuthModule -->
+<g id="edge12" class="edge">
+<title>ReactiveFormsModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M1061.3328,-122.1149C1061.3328,-155.8699 1061.3328,-225 1061.3328,-225 1061.3328,-225 742.7547,-225 742.7547,-225 742.7547,-225 742.7547,-227.9672 742.7547,-227.9672"/>
+<polygon fill="#000000" stroke="#000000" points="739.2548,-227.9671 742.7547,-237.9672 746.2548,-227.9672 739.2548,-227.9671"/>
+</g>
+<!-- ReactiveFormsModule&#45;&gt;SharedModule -->
+<g id="edge28" class="edge">
+<title>ReactiveFormsModule&#45;&gt;SharedModule</title>
+<path fill="none" stroke="#000000" d="M1019.7567,-122.0109C1019.7567,-122.0109 1019.7567,-151.855 1019.7567,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="1016.2568,-151.8549 1019.7567,-161.855 1023.2568,-151.855 1016.2568,-151.8549"/>
+</g>
+<!-- HttpModule -->
+<g id="node13" class="node">
+<title>HttpModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="823.4387,-122 820.4387,-126 799.4387,-126 796.4387,-122 738.5613,-122 738.5613,-86 823.4387,-86 823.4387,-122"/>
+<text text-anchor="middle" x="781" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HttpModule</text>
+</g>
+<!-- HttpModule&#45;&gt;AuthModule -->
+<g id="edge13" class="edge">
+<title>HttpModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M798.2923,-122.0333C798.2923,-162.2965 798.2923,-256 798.2923,-256 798.2923,-256 787.5959,-256 787.5959,-256"/>
+<polygon fill="#000000" stroke="#000000" points="787.5959,-252.5001 777.5959,-256 787.5958,-259.5001 787.5959,-252.5001"/>
+</g>
+<!-- AuthRoutingModule&#45;&gt;AuthModule -->
+<g id="edge14" class="edge">
+<title>AuthRoutingModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M1236.1412,-122.0527C1236.1412,-156.8929 1236.1412,-230 1236.1412,-230 1236.1412,-230 760.2641,-230 760.2641,-230 760.2641,-230 760.2641,-230.7942 760.2641,-230.7942"/>
+<polygon fill="#000000" stroke="#000000" points="756.7642,-227.9421 760.2641,-237.9421 763.7642,-227.9422 756.7642,-227.9421"/>
+</g>
+<!-- AuthRoutingModule&#45;&gt;RouterModule  -->
+<g id="edge16" class="edge">
+<title>AuthRoutingModule&#45;&gt;RouterModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1242.7368,-122.0267C1242.7368,-142.7672 1242.7368,-174 1242.7368,-174 1242.7368,-174 1260.1095,-174 1260.1095,-174"/>
+<polygon fill="#000000" stroke="#000000" points="1260.1095,-177.5001 1270.1095,-174 1260.1094,-170.5001 1260.1095,-177.5001"/>
+</g>
+<!-- CommonModule -->
+<g id="node15" class="node">
+<title>CommonModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="657.6681,-122 654.6681,-126 633.6681,-126 630.6681,-122 546.3319,-122 546.3319,-86 657.6681,-86 657.6681,-122"/>
+<text text-anchor="middle" x="602" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule</text>
+</g>
+<!-- CommonModule&#45;&gt;CoreModule -->
+<g id="edge17" class="edge">
+<title>CommonModule&#45;&gt;CoreModule</title>
+<path fill="none" stroke="#000000" d="M546.0911,-104C538.8655,-104 533.9197,-104 533.9197,-104 533.9197,-104 533.9197,-180 533.9197,-180 533.9197,-180 532.2726,-180 532.2726,-180"/>
+<polygon fill="#000000" stroke="#000000" points="532.2727,-176.5001 522.2726,-180 532.2726,-183.5001 532.2727,-176.5001"/>
+</g>
+<!-- CommonModule&#45;&gt;EthereumModule -->
+<g id="edge21" class="edge">
+<title>CommonModule&#45;&gt;EthereumModule</title>
+<path fill="none" stroke="#000000" d="M582.1064,-122.0109C582.1064,-122.0109 582.1064,-151.855 582.1064,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="578.6065,-151.8549 582.1064,-161.855 585.6065,-151.855 578.6065,-151.8549"/>
+</g>
+<!-- CommonModule&#45;&gt;SharedModule -->
+<g id="edge26" class="edge">
+<title>CommonModule&#45;&gt;SharedModule</title>
+<path fill="none" stroke="#000000" d="M618.0465,-122.1467C618.0465,-135.7395 618.0465,-152 618.0465,-152 618.0465,-152 987.3022,-152 987.3022,-152 987.3022,-152 987.3022,-152.9793 987.3022,-152.9793"/>
+<polygon fill="#000000" stroke="#000000" points="983.8023,-151.793 987.3022,-161.793 990.8023,-151.7931 983.8023,-151.793"/>
+</g>
+<!-- RouterModule -->
+<g id="node16" class="node">
+<title>RouterModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="527.6528,-122 524.6528,-126 503.6528,-126 500.6528,-122 430.3472,-122 430.3472,-86 527.6528,-86 527.6528,-122"/>
+<text text-anchor="middle" x="479" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">RouterModule</text>
+</g>
+<!-- RouterModule&#45;&gt;CoreModule -->
+<g id="edge18" class="edge">
+<title>RouterModule&#45;&gt;CoreModule</title>
+<path fill="none" stroke="#000000" d="M479,-122.0109C479,-122.0109 479,-151.855 479,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="475.5001,-151.8549 479,-161.855 482.5001,-151.855 475.5001,-151.8549"/>
+</g>
+<!-- EthereumRoutingModule&#45;&gt;EthereumModule -->
+<g id="edge22" class="edge">
+<title>EthereumRoutingModule&#45;&gt;EthereumModule</title>
+<path fill="none" stroke="#000000" d="M1076.4343,-198.1592C1076.4343,-203.0433 1076.4343,-207 1076.4343,-207 1076.4343,-207 622.9752,-207 622.9752,-207 622.9752,-207 622.9752,-206.1159 622.9752,-206.1159"/>
+<polygon fill="#000000" stroke="#000000" points="626.4754,-208.1591 622.9752,-198.1592 619.4754,-208.1592 626.4754,-208.1591"/>
+</g>
+<!-- EthereumRoutingModule&#45;&gt;RouterModule  -->
+<g id="edge25" class="edge">
+<title>EthereumRoutingModule&#45;&gt;RouterModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1229.7426,-186C1229.7426,-186 1260.1799,-186 1260.1799,-186"/>
+<polygon fill="#000000" stroke="#000000" points="1260.18,-189.5001 1270.1799,-186 1260.1799,-182.5001 1260.18,-189.5001"/>
+</g>
+<!-- SharedModule&#45;&gt;EthereumModule -->
+<g id="edge23" class="edge">
+<title>SharedModule&#45;&gt;EthereumModule</title>
+<path fill="none" stroke="#000000" d="M957.8267,-198.1223C957.8267,-200.9729 957.8267,-203 957.8267,-203 957.8267,-203 638.481,-203 638.481,-203 638.481,-203 638.481,-202.5122 638.481,-202.5122"/>
+<polygon fill="#000000" stroke="#000000" points="641.9812,-208.1222 638.481,-198.1223 634.9812,-208.1224 641.9812,-208.1222"/>
+</g>
+<!-- CommonModule  -->
+<g id="node20" class="node">
+<title>CommonModule </title>
+<polygon fill="#fb8072" stroke="#000000" points="1215.6677,-274 1100.3323,-274 1100.3323,-238 1215.6677,-238 1215.6677,-274"/>
+<text text-anchor="middle" x="1158" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule </text>
+</g>
+<!-- SharedModule&#45;&gt;CommonModule  -->
+<g id="edge29" class="edge">
+<title>SharedModule&#45;&gt;CommonModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1029.336,-198.2819C1029.336,-213.9478 1029.336,-234 1029.336,-234 1029.336,-234 1158,-234 1158,-234 1158,-234 1158,-234.3832 1158,-234.3832"/>
+<polygon fill="#000000" stroke="#000000" points="1154.5003,-227.832 1158,-237.8321 1161.5003,-227.8322 1154.5003,-227.832"/>
+</g>
+<!-- FormsModule  -->
+<g id="node21" class="node">
+<title>FormsModule </title>
+<polygon fill="#fb8072" stroke="#000000" points="1082.3283,-274 983.6717,-274 983.6717,-238 1082.3283,-238 1082.3283,-274"/>
+<text text-anchor="middle" x="1033" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule </text>
+</g>
+<!-- SharedModule&#45;&gt;FormsModule  -->
+<g id="edge30" class="edge">
+<title>SharedModule&#45;&gt;FormsModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1006.461,-198.0109C1006.461,-198.0109 1006.461,-227.855 1006.461,-227.855"/>
+<polygon fill="#000000" stroke="#000000" points="1002.9611,-227.8549 1006.461,-237.855 1009.9611,-227.855 1002.9611,-227.8549"/>
+</g>
+<!-- ReactiveFormsModule  -->
+<g id="node22" class="node">
+<title>ReactiveFormsModule </title>
+<polygon fill="#fb8072" stroke="#000000" points="965.8045,-274 818.1955,-274 818.1955,-238 965.8045,-238 965.8045,-274"/>
+<text text-anchor="middle" x="892" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule </text>
+</g>
+<!-- SharedModule&#45;&gt;ReactiveFormsModule  -->
+<g id="edge31" class="edge">
+<title>SharedModule&#45;&gt;ReactiveFormsModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M961.8644,-198.0109C961.8644,-198.0109 961.8644,-227.855 961.8644,-227.855"/>
+<polygon fill="#000000" stroke="#000000" points="958.3645,-227.8549 961.8644,-237.855 965.3645,-227.855 958.3645,-227.8549"/>
+</g>
+</g>
+</svg>
+
+    </div>
+    <div class="btn-group">
+        <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
+        <button id="reset" class="btn btn-default btn-sm">Reset</button>
+        <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
+    </div>
+</div>
+<div class="container-fluid overview">
+    <div class="row">
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-archive"></span></h4>
+                        <p class="card-text">
+                            <a href="./modules.html">8 modules</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-cogs"></span></h4>
+                        <p class="card-text">9 components</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
+                        <p class="card-text">4 injectables</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-file-code-o"></span></h4>
+                        <p class="card-text">4 classes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-info"></span></h4>
+                        <p class="card-text">1 interface</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
+                        <p class="card-text">
+                            <a href="./routes.html">4 routes</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script src="js/libs/svg-pan-zoom.min.js"></script>
+<script src="js/svg-pan-zoom.controls.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 0;</script>
+
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+       <script src="./js/search/search_index.js"></script>
+
+    </body>
+</html>

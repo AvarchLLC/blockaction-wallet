@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { WalletComponent } from './components/wallet/wallet.component';
-// import { RegisterComponent } from './components/register/register.component';
+import { EthereumComponent} from './ethereum.component';
 
 const routes: Routes = [
-  { path: 'wallet', component: WalletComponent },
-  // { path: 'register', component: RegisterComponent },
-
+  { path: 'ethereum', component: EthereumComponent },
 ];
 
 @NgModule({
@@ -15,4 +12,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class AuthRoutingModule {}
+export class EthereumRoutingModule {}

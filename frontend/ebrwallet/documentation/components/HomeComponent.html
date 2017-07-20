@@ -1,0 +1,819 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ebrwallet documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ebrwallet documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">ebrwallet documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AuthModule.html" >AuthModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/AuthRoutingModule.html" >AuthRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CoreModule.html" >CoreModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/EthereumModule.html" >EthereumModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/EthereumRoutingModule.html" >EthereumRoutingModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EthereumComponent.html" >EthereumComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/HomeComponent.html"  data-type="entity-link" class="active" >HomeComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NavComponent.html" >NavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TransactionComponent.html" >TransactionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WalletComponent.html" >WalletComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/WalletInfoComponent.html" >WalletInfoComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/Config.html" >Config</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EbrwalletPage.html" >EbrwalletPage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Wallet.html" >Wallet</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AuthService.html" >AuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TransactionService.html" >TransactionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/WalletService.html" >WalletService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/NavRouteInfo.html" >NavRouteInfo</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">ebrwallet documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AuthModule.html" >AuthModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/AuthRoutingModule.html" >AuthRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CoreModule.html" >CoreModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/EthereumModule.html" >EthereumModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/EthereumRoutingModule.html" >EthereumRoutingModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EthereumComponent.html" >EthereumComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/HomeComponent.html"  data-type="entity-link" class="active" >HomeComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NavComponent.html" >NavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/RegisterComponent.html" >RegisterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TransactionComponent.html" >TransactionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WalletComponent.html" >WalletComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/WalletInfoComponent.html" >WalletInfoComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/Config.html" >Config</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EbrwalletPage.html" >EbrwalletPage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Wallet.html" >Wallet</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AuthService.html" >AuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TransactionService.html" >TransactionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/WalletService.html" >WalletService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/NavRouteInfo.html" >NavRouteInfo</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/home/home.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>home.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor()</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/home/home.component.ts:8</a></div>
+                                </td>
+                            </tr>
+    
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngOnInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/home/home.component.ts:12</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+</div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;app-home&#x27;,
+  templateUrl: &#x27;./home.component.html&#x27;,
+  styleUrls: [&#x27;./home.component.css&#x27;]
+})
+export class HomeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;header id&#x3D;&quot;page-top&quot;&gt;
+&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;div class&#x3D;&quot;logo&quot;&gt;
+    &lt;img src&#x3D;&quot;../assets/img/logo.png&quot; alt&#x3D;&quot;logo&quot; class&#x3D;&quot;img-responsive&quot;&gt;
+  &lt;/div&gt;
+    &lt;app-nav-bar&gt;&lt;/app-nav-bar&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+&lt;!--+++++++++++++++++++++++++++++++++++++++Banner section++++++++++++++++++++--&gt;
+      &lt;div class&#x3D;&quot;banner&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/banner1.png&quot; alt&#x3D;&quot;banner image&quot; class&#x3D;&quot;img-responsive&quot;&gt;
+            &lt;div class&#x3D;&quot;container&quot;&gt;
+                &lt;div class&#x3D;&quot;banner-content&quot;&gt;
+                  &lt;p&gt;An easy and secured platform &lt;br&gt; to do transaction on&lt;br&gt; &lt;span class&#x3D;&quot;banner-text&quot;&gt;Ethereum Blockchain&lt;/span&gt;&lt;/p&gt;
+                  &lt;button type&#x3D;&quot;button&quot; name&#x3D;&quot;Join_now&quot;&gt;Join Now&lt;/button&gt;
+                  &lt;p&gt;New to Ethereum?&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+&lt;!--++++++++++++++++++++++++++++++++++++++++We provide section++++++++++++++++++++--&gt;
+        &lt;div class&#x3D;&quot;bg-dark&quot;&gt;
+        &lt;div class&#x3D;&quot;container&quot;&gt;
+          &lt;div class&#x3D;&quot;col-lg-8 pad-none&quot;&gt;
+          &lt;h1&gt;We provide an extremly low price&lt;/h1&gt;
+            &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters. &lt;/p&gt;&lt;p&gt; As opposed to using &#x27;Content here, content here&#x27;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#x27;lorem ipsum&#x27; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-lg-4 pad-topbottom&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/video.png&quot; alt&#x3D;&quot;video image&quot; class&#x3D;&quot;img-responsive&quot;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+&lt;!--+++++++++++++++++++++++++++++++++++++++services section++++++++++++++++++++--&gt;
+&lt;div class&#x3D;&quot;four-col-box pad-tp-btm&quot;&gt;
+        &lt;div class&#x3D;&quot;container icon pad-none&quot;&gt;
+          &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/wallet.png&quot; alt&#x3D;&quot;Wallet Logo&quot;&gt;
+            &lt;h3&gt;Free Online Ethereum Wallet&lt;/h3&gt;
+              &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal  making it look like readable English.  infancy.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/transaction.png&quot; alt&#x3D;&quot;Wallet Logo&quot;&gt;
+            &lt;h3&gt;Secured Transactions&lt;/h3&gt;
+              &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less , making it look like readable English.  infancy.&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/wallet.png&quot; alt&#x3D;&quot;Wallet Logo&quot;&gt;
+            &lt;h3&gt;Full Control of Wallet&lt;/h3&gt;
+              &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less as opposed to using &#x27;Content here, content here&#x27;&lt;/p&gt;
+
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+            &lt;img src&#x3D;&quot;/assets/img/status.png&quot; alt&#x3D;&quot;Wallet Logo&quot;&gt;
+            &lt;h3&gt;Live Transaction Status&lt;/h3&gt;
+              &lt;p&gt;It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less  making it look like readable English.  infancy.&lt;/p&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;!--+++++++++++++++++++++++++++++++++++++++empty section++++++++++++++++++++--&gt;
+        &lt;div class&#x3D;&quot;empty-section&quot;&gt;
+          &lt;div class&#x3D;&quot;container&quot;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  &lt;!--+++++++++++++++++++++++++++++++++++++++links section++++++++++++++++++++--&gt;
+&lt;section class&#x3D;&quot;pd-all-md bg-dark&quot;&gt;
+        &lt;div class&#x3D;&quot;container links-footer pad-none&quot;&gt;
+            &lt;div class&#x3D;&quot;col-lg-8&quot;&gt;
+                &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                    &lt;h3&gt;Ethereum&lt;/h3&gt;
+                    &lt;ul&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Wallet&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Transaction&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Converter&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Status&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                    &lt;h3&gt;Help&lt;/h3&gt;
+                    &lt;ul&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Create Wallet&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Send/ Receive Ethereum&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Deploy contract&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Participate in ICO&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                    &lt;h3&gt;Company&lt;/h3&gt;
+                    &lt;ul&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Press&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Term and Privacy&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-lg-3&quot;&gt;
+                    &lt;h3&gt;Social&lt;/h3&gt;
+                    &lt;ul&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Community&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+                      &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-lg-4 links-footer &quot;&gt;
+                &lt;h2&gt;&lt;b&gt;Subscribe Newsletter&lt;/b&gt;&lt;/h2&gt;
+                &lt;form action&#x3D;&quot;&quot; class&#x3D;&quot;bg-light&quot;&gt;
+                &lt;input type&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; placeholder&#x3D;&quot;Type your email&quot;&gt;
+                &lt;button type&#x3D;&quot;submit&quot; name&#x3D;&quot;imIn&quot; class&#x3D;&quot;bg-light&quot;&gt;I&#x27;m In&lt;/button&gt;
+                &lt;/form&gt;
+                &lt;p&gt;Never misss any offer and news from us. &lt;br&gt;you&#x27;ll never regret this subscription.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;copy-right&quot;&gt;
+          &lt;P&gt;&amp;copy; 2017 Block Chain&lt;/P&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+      &lt;!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++--&gt;
+    &lt;footer&gt;
+        &lt;div class&#x3D;&quot;container &quot;&gt;
+          &lt;div class&#x3D;&quot;social-btns&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-google-plus&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-facebook&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-instagram&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-twitter&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-youtube&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href&#x3D;&quot;&quot;&gt;&lt;span class&#x3D;&quot;icon-linkedin2&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;P&gt;&amp;copy; 2017 Privacy Policy&lt;/P&gt;
+              &lt;button type&#x3D;&quot;button&quot; name&#x3D;&quot;up_arrow&quot;&gt;&lt;a href&#x3D;&quot;#page-top&quot;&gt;&lt;span class&#x3D;&quot;icon-circle-up&quot;&gt;&lt;/span&gt;&lt;/a&gt;&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><header id="page-top"><div class="container">  <div class="logo">    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">  </div>    <app-nav-bar></app-nav-bar>  </div></header><!--+++++++++++++++++++++++++++++++++++++++Banner section++++++++++++++++++++-->      <div class="banner">            <img src="/assets/img/banner1.png" alt="banner image" class="img-responsive">            <div class="container">                <div class="banner-content">                  <p>An easy and secured platform <br> to do transaction on<br> <span class="banner-text">Ethereum Blockchain</span></p>                  <button type="button" name="Join_now">Join Now</button>                  <p>New to Ethereum?</p>                </div>            </div>        </div><!--++++++++++++++++++++++++++++++++++++++++We provide section++++++++++++++++++++-->        <div class="bg-dark">        <div class="container">          <div class="col-lg-8 pad-none">          <h1>We provide an extremly low price</h1>            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters. </p><p> As opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>          </div>          <div class="col-lg-4 pad-topbottom">            <img src="/assets/img/video.png" alt="video image" class="img-responsive">          </div>        </div>        </div><!--+++++++++++++++++++++++++++++++++++++++services section++++++++++++++++++++--><div class="four-col-box pad-tp-btm">        <div class="container icon pad-none">          <div class="col-lg-3">            <img src="/assets/img/wallet.png" alt="Wallet Logo">            <h3>Free Online Ethereum Wallet</h3>              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal  making it look like readable English.  infancy.</p>          </div>          <div class="col-lg-3">            <img src="/assets/img/transaction.png" alt="Wallet Logo">            <h3>Secured Transactions</h3>              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less , making it look like readable English.  infancy.</p>          </div>          <div class="col-lg-3">            <img src="/assets/img/wallet.png" alt="Wallet Logo">            <h3>Full Control of Wallet</h3>              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less as opposed to using \'Content here, content here\'</p>          </div>          <div class="col-lg-3">            <img src="/assets/img/status.png" alt="Wallet Logo">            <h3>Live Transaction Status</h3>              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less  making it look like readable English.  infancy.</p>          </div>        </div>    </div><!--+++++++++++++++++++++++++++++++++++++++empty section++++++++++++++++++++-->        <div class="empty-section">          <div class="container">          </div>        </div>  <!--+++++++++++++++++++++++++++++++++++++++links section++++++++++++++++++++--><section class="pd-all-md bg-dark">        <div class="container links-footer pad-none">            <div class="col-lg-8">                <div class="col-lg-3">                    <h3>Ethereum</h3>                    <ul>                      <li><a href="">Wallet</a></li>                      <li><a href="">Transaction</a></li>                      <li><a href="">Converter</a></li>                      <li><a href="">Status</a></li>                    </ul>                </div>                <div class="col-lg-3">                    <h3>Help</h3>                    <ul>                      <li><a href="">Create Wallet</a></li>                      <li><a href="">Send/ Receive Ethereum</a></li>                      <li><a href="">Deploy contract</a></li>                      <li><a href="">Participate in ICO</a></li>                    </ul>                </div>                <div class="col-lg-3">                    <h3>Company</h3>                    <ul>                      <li><a href="">About Us</a></li>                      <li><a href="">Press</a></li>                      <li><a href="">Term and Privacy</a></li>                      <li><a href="">Contact Us</a></li>                    </ul>                </div>                <div class="col-lg-3">                    <h3>Social</h3>                    <ul>                      <li><a href="">Blog</a></li>                      <li><a href="">Community</a></li>                      <li><a href="">Twitter</a></li>                      <li><a href="">Facebook</a></li>                    </ul>                </div>            </div>            <div class="col-lg-4 links-footer ">                <h2><b>Subscribe Newsletter</b></h2>                <form action="" class="bg-light">                <input type="email" name="email" placeholder="Type your email">                <button type="submit" name="imIn" class="bg-light">I\'m In</button>                </form>                <p>Never misss any offer and news from us. <br>you\'ll never regret this subscription.</p>            </div>        </div>        <div class="copy-right">          <P>&copy; 2017 Block Chain</P>        </div>      </section>      <!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++-->    <footer>        <div class="container ">          <div class="social-btns">            <ul>              <li><a href=""><span class="icon-google-plus"></span></a></li>              <li><a href=""><span class="icon-facebook"></span></a></li>              <li><a href=""><span class="icon-instagram"></span></a></li>              <li><a href=""><span class="icon-twitter"></span></a></li>              <li><a href=""><span class="icon-youtube"></span></a></li>              <li><a href=""><span class="icon-linkedin2"></span></a></li>            </ul>            <P>&copy; 2017 Privacy Policy</P>              <button type="button" name="up_arrow"><a href="#page-top"><span class="icon-circle-up"></span></a></button>          </div>        </div>    </footer></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EthereumComponent', 'selector': 'app-ethereum'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavComponent', 'selector': 'app-nav-bar'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'TransactionComponent', 'selector': 'app-ethereum-transaction'},{'name': 'WalletComponent', 'selector': 'app-ethereum-wallet'},{'name': 'WalletInfoComponent', 'selector': 'app-ethereum-wallet-info'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<nav id="nav" role="navigation" [class.open]='navOpen === true'>
+    <div id="nav-open-btn" (click)="navOpen=!navOpen" >
+        <ul>
+          <li><a class="hamburger"  [class.active]="navOpen == true">
+                <span></span>
+              </a>
+          </li>
+        </ul>
+    </div>
+    <div class="navBar">
+        <div class="nav-block">
+            <div class="slidenav-logo"></div>
+            <ul>
+                <li *ngFor="let menuItem of menuItems">
+                    <a [routerLink]="[menuItem.path]" [class.active]="menuItem.path === activeLink">
+                        {{menuItem.title}}
+                    </a>
+                </li>
+            </ul>
+            <a class="close-btn" id="nav-close-btn" href="#top"></a>
+        </div>
+    </div>
+
+</nav>

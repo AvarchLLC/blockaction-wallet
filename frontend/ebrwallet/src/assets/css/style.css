@@ -545,6 +545,7 @@ li.text-muted:before{
     z-index: 1500;
     overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

@@ -1,0 +1,64 @@
+<!-- Wallet Create Form -->
+<div *ngIf="!wallet">
+    <h2> Create wallet </h2>
+    <br/>
+    <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
+        <div class="form-group">
+            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"
+            />
+            <div class="text-right">
+                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+            </div>
+        </div>
+        <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
+            <ul>
+                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>
+                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>
+                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>
+            </ul>
+        </div>
+        <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
+            <ul>
+                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>
+                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>
+            </ul>
+        </div>
+        <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
+            Your password is secure and you'll all set!
+        </div>
+        <div class="buttonWithLoader">
+            <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+        </div>
+        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+            need this password + your private key to unlock your wallet.
+        </p>
+    </form>
+</div>
+
+<!-- Wallet Post-Create Detail -->
+<div *ngIf="wallet">
+    <h2>Wallet Ready!</h2>
+    <div class="form-group mg-top-sm">
+        <b>Address</b>
+        <div class="clearfix">
+            <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+
+            <span class="{{ qrClass }}" (click)="qrToggle()">
+                <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
+                    <path [attr.d]="qrSvg"></path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <b>Private Key</b>
+        <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
+        <br />
+        <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+        <button class="btn btn-link btn-lg" (click)="showModal()">Request Ether</button>
+        <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
+    </div>
+</div>

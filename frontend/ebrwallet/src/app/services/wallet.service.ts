@@ -267,6 +267,14 @@ export class WalletService {
     });
   }
 
+  getBalance(address: string): Promise<any> {
+    return this.http
+      .get(`https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest`)
+      .toPromise()
+      .then(res => res.json())
+      .then(res => res.result);
+  }
+
   requestEther(address: string, email: string, value: number): Promise<any> {
     return this.http
       .post('${serverUrl}/api/requestEther', { address, email, value })

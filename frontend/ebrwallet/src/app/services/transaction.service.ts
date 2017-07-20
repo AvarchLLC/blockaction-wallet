@@ -18,7 +18,7 @@ export class TransactionService {
   constructor(private http: Http) {
 
     // this.web3 = new Web3(new Web3.providers.HttpProvider(this.url));
-
+    this.web3 = new Web3();
   }
 
   // createTransaction ... create transactions from an address to another address
@@ -32,18 +32,18 @@ export class TransactionService {
    *             -
    */
   createTransaction(from: string, to: string, opts: any): Transaction {
-    const nonce = this.web3.eth.getTransactionCount(from);
-    const nonceHex = this.web3.toHex(nonce);
+    // const nonce = this.web3.eth.getTransactionCount(from);
+    // const nonceHex = this.web3.toHex(nonce);
 
     const rawTx = {
-      nonce: nonceHex,
+      // nonce: nonceHex,
       to, // : '0xc787be952a82544713e31890e114569e67bf3e3b',
       value: 100,
       data: 'Payment'
     };
-
-    rawTx['gas'] = this.web3.eth.estimateGas(rawTx);
-    rawTx['gasLimit'] = this.web3.eth.estimateGas(rawTx);
+    //
+    // rawTx['gas'] = this.web3.eth.estimateGas(rawTx);
+    // rawTx['gasLimit'] = this.web3.eth.estimateGas(rawTx);
 
     const tx = new Transaction(rawTx);
 
@@ -68,7 +68,7 @@ export class TransactionService {
   sendTransaction(serialTx: string): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
-        this.web3.eth.sendRawTransaction('0x' + serialTx);
+        // this.web3.eth.sendRawTransaction('0x' + serialTx);
         resolve(true);
       } catch (e) {
         console.log(e);
@@ -111,14 +111,21 @@ export class TransactionService {
 
   }
 
-  // getTransactionHistory ... get all transaction information involving the given address
-  getTransactionHistory(address: string) {
-
+  // getTransactionDetails ... get the details of transaction from transaction hash
+  getTransactionDetails(transactionHash: string) {
+    return this.http
+      .get(`https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${transactionHash}`)
+      .toPromise()
+      .then(res => res.json());
   }
 
-  // getTransacionDetails ... get the details of transaction from transaction hash
-  getTransactionDetails(transactionHash: string) {
-
+  // getAllTransactions ... get all transaction information involving the given address
+  getAllTransactions(address: string): Promise<any> {
+    return this.http
+      .get(`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&tag=latest`)
+      .toPromise()
+      .then(res => res.json())
+      .then(res=> res.result);
   }
 
   getPrice(): Promise<any> {
