@@ -21,9 +21,11 @@
     "google-caja": "0.0.2",
     "grunt-env": "^0.4.4",
     "http-status": "^1.0.1",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.10.5",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "template-notify": "https://github.com/sazack/mail-template.git"
   },
   "devDependencies": {
     "chai": "^4.0.1",

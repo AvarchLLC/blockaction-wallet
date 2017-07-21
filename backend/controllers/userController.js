@@ -10,6 +10,7 @@
     const async = require('asyncawait/async');
     const await = require('asyncawait/await');
     const tokenModule = require('../lib/tokenGenerator');
+    const email = require('../lib/mailer');
 
 
     module.exports = {
@@ -134,5 +135,21 @@
                     })
 
             }
+        },
+        subscribe:(req,res,next)=>{
+            let options = {};
+            console.log(req.body)
+            options.template = 'subscribe';
+            options.receiver = req.body.receiver
+            email.sendMail(options,(error,response)=>{
+                if(error){
+                    console.log("=>",error)
+                }
+                else{
+                    console.log(response)
+                }
+            });
+
         }
+
     }
