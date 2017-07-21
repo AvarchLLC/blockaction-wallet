@@ -4,7 +4,7 @@
     <br/>
     <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
         <div class="form-group">
-            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"
+            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase" id="password"
             />
             <div class="text-right">
                 <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>

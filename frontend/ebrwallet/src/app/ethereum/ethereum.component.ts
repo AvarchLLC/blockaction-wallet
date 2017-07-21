@@ -120,6 +120,7 @@ export class EthereumComponent implements OnInit {
     if (this.wallet) {
       this.wallet = null;
       this.starterBox = true;
+      this.showDetail = false;
     }
 
     if (this.showCreate || this.showExisting) {

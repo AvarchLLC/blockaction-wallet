@@ -35,4 +35,13 @@ describe('WalletComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change password visibility', () => {
+    const app = fixture.nativeElement.componentInstance;
+    component.passphraseType = 'text';
+    expect(app.getElementById('password').type).toEqual('text');
+    component.passphraseType = 'password';
+    expect(app.getElementById('password').type).toEqual('password');
+
+  });
 });
