@@ -3,32 +3,32 @@
  */
 
 const econfig = require('../config/email.config');
-const emailTemplate = require('template-notify')(econfig, econfig.template);
+const NiceMail = require('nicemail');
+
+const nm = new NiceMail(econfig, econfig.template);
+
 const util = require('util');
 module.exports = {
     sendMail: (options,cb)=>{
+        
         if(options){
             let emailOptions = {
                 template: options.template,
                 subject: options.subject,
 
             }
-            if(options.url){
-                emailOptions.url = options.url;
-            }
+
             if(options.receiver) {
-                emailOptions.receiver = options.receiver
+                emailOptions.to = options.receiver  ;
             }
-            switch (emailOptions.template){
-                case 'etherrequest':
-                    emailOptions.url = util.format(options.url);
-                    break;
-                default:
+
+            if(options.content) {
+                emailOptions.content = options.content;
             }
-            emailTemplate.email.send(emailOptions.receiver,emailOptions,(err,response)=>{
-                if(err) cb(err);
-                cb(null,response);
-            })
+
+            nm.send(emailOptions)
+                .then( res => cb(null, res))
+                .catch( err => cb(err)); 
         }
 
         else{
