@@ -26,6 +26,17 @@ module.exports = {
                 emailOptions.content = options.content;
             }
 
+            switch(emailOptions.template){
+                case 'subscribe':
+                    emailOptions.subject = 'Subscription confirmation';
+                    break;
+                case 'requestether':
+                    emailOptions.subject = 'Ether request';
+                    break;
+
+                default:
+            }
+
             nm.send(emailOptions)
                 .then( res => cb(null, res))
                 .catch( err => cb(err)); 

@@ -10,7 +10,6 @@
     const async = require('asyncawait/async');
     const await = require('asyncawait/await');
     const tokenModule = require('../lib/tokenGenerator');
-    const email = require('../lib/mailer');
 
 
     module.exports = {
@@ -135,49 +134,6 @@
                     })
 
             }
-        },
-        subscribe:(req,res,next)=>{
-            let options = {};
-            console.log(req.body)
-            options.template = 'subscribe';
-            options.receiver = req.body.receiver;
-            options.subject = req.body.subject;
-
-            email.sendMail(options,(error,response)=>{
-                if(error){
-                    next(error);
-                }
-                else{
-                    req.cdata = response;
-                    next();
-                }
-            });
-
-        },
-
-        requestEther: (req, res, next) => {
-            let options = {};
-            console.log(req.body)
-            options.template = 'requestether';
-            options.receiver = req.body.receiver;
-            options.subject = req.body.subject;
-
-            try {
-                options.content = JSON.parse(req.body.content);
-            } catch (err) {
-                return next(err);
-            }
-
-            email.sendMail(options,(error,response)=>{
-                if(error){
-                    next(error);
-                }
-                else{
-                    req.cdata = response;
-                    next();
-                }
-            });
-
         },
 
     }
