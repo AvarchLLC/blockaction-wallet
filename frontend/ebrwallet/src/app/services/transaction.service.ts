@@ -5,9 +5,28 @@ import 'rxjs/add/operator/toPromise';
 import { Buffer } from 'buffer';
 import Transaction from 'ethereumjs-tx';
 
+
 declare var EthJS: any;
 declare var Web3: any;
 
+/*
+Methods:
+eth_gasPrice
+eth_getBalance
+eth_getTransactionCount
+eth_sendRawTransaction
+eth_estimateGas
+eth_getTransactionByHash
+
+Calling a method:
+$ curl -X POST \
+  -H "Content-Type: application/json" \
+  --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}' \
+  "https://mainnet.infura.io/"
+{"jsonrpc":"2.0","result":"0x27a2d3","id":1}
+
+
+*/
 
 @Injectable()
 export class TransactionService {
@@ -21,8 +40,8 @@ export class TransactionService {
     this.web3 = new Web3();
   }
 
-  // createTransaction ... create transactions from an address to another address
-  /*
+  /**
+   * createTransaction ... create transactions from an address to another address
    * createTransaction(from : string, to : string, opts : object)
    *    - from : address from which transaction is sent
    *    - to   : address to which transaction is sent
@@ -50,7 +69,9 @@ export class TransactionService {
     return tx;
   }
 
-  // signTransaction ... signs transaction with a provate key
+  /**
+   * signTransaction ... signs transaction with a private key
+   */
   signAndSerializeTransaction(tx: Transaction, privkey: string): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
@@ -64,7 +85,9 @@ export class TransactionService {
     });
   }
 
-  // sendTransaction ... send a serialized transaction to a ethereum node
+  /**
+  * sendTransaction ... send a serialized transaction to a ethereum node
+    */
   sendTransaction(serialTx: string): Promise<any> {
     return new Promise((resolve, reject) => {
       try {
@@ -76,13 +99,16 @@ export class TransactionService {
       }
     });
   }
-  // getTransactionCost ... get the total cost for processing transaction
+
+  /**
+   * getTransactionCost ... get the total cost for processing transaction
+    */
   getTransactionCost(tx: Transaction): string {
     return tx.getUpfrontCost().toString(10);
   }
 
-  // sendMoney ... send money in transaction
-  /*
+  /**
+   * sendMoney ... send money in transaction
    * sendMoney(from : string, to : string, value: number, opts : object)
    *    - from : address from which transaction  is being made
    *    - to   : address to which transaction is being sent
@@ -111,7 +137,9 @@ export class TransactionService {
 
   }
 
-  // getTransactionDetails ... get the details of transaction from transaction hash
+  /**
+   * getTransactionDetails ... get the details of transaction from transaction hash
+    */
   getTransactionDetails(transactionHash: string) {
     return this.http
       .get(`https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${transactionHash}`)
@@ -119,13 +147,15 @@ export class TransactionService {
       .then(res => res.json());
   }
 
-  // getAllTransactions ... get all transaction information involving the given address
+  /**
+   * getAllTransactions ... get all transaction information involving the given address
+    */
   getAllTransactions(address: string): Promise<any> {
     return this.http
       .get(`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&tag=latest`)
       .toPromise()
       .then(res => res.json())
-      .then(res=> res.result);
+      .then(res => res.result);
   }
 
   getPrice(): Promise<any> {

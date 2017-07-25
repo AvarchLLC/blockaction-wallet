@@ -154,6 +154,9 @@
                                     <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Transaction.html" >Transaction</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Wallet.html" >Wallet</a>
                                 </li>
                         </ul>
@@ -175,6 +178,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/TransactionService.html"  data-type="entity-link" class="active" >TransactionService</a>
@@ -366,6 +372,9 @@
                                            <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Transaction.html" >Transaction</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Wallet.html" >Wallet</a>
                                        </li>
                                </ul>
@@ -387,6 +396,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/TransactionService.html"  data-type="entity-link" class="active" >TransactionService</a>
@@ -518,9 +530,17 @@
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>createTransaction ... create transactions from an address to another address
+            createTransaction(from : string, to : string, opts : object)</p>
+            <pre class="line-numbers"><code class="language-none">- from : address from which transaction is sent
+            - to   : address to which transaction is sent
+            - opts : optional data to send (object)
+                     - transaction data (string)
+                     - value / amount to send (number)
+                     -</code></pre></div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Transaction</code>
+                                            <b>Returns : </b>    <code><a href="../classes/Transaction.html" target="_self" >Transaction</a></code>
             
                                         </div>
                                 </td>
@@ -536,19 +556,21 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>signAndSerializeTransaction(tx: Transaction, privkey: string)</code>
+            <code>signAndSerializeTransaction(tx: <a href="../classes/Transaction.html">Transaction</a>, privkey: string)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/services/transaction.service.ts:54</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/services/transaction.service.ts:56</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>signTransaction ... signs transaction with a private key</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
@@ -574,12 +596,14 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/services/transaction.service.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/services/transaction.service.ts:72</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>sendTransaction ... send a serialized transaction to a ethereum node</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
@@ -598,19 +622,21 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getTransactionCost(tx: Transaction)</code>
+            <code>getTransactionCost(tx: <a href="../classes/Transaction.html">Transaction</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/services/transaction.service.ts:80</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/services/transaction.service.ts:87</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>getTransactionCost ... get the total cost for processing transaction</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>string</code>
@@ -636,43 +662,21 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/services/transaction.service.ts:95</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/services/transaction.service.ts:102</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getTransactionHistory</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getTransactionHistory(address: string)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/services/transaction.service.ts:115</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
+                                        <div class="io-description"><p>sendMoney ... send money in transaction
+            sendMoney(from : string, to : string, value: number, opts : object)</p>
+            <pre class="line-numbers"><code class="language-none">- from : address from which transaction  is being made
+            - to   : address to which transaction is being sent
+            - value: amount of tokens to be send in transaction(default is &quot;Wei&quot;)
+            - opts : optional data to send (object)
+                     - transaction ID   (integer data)
+                     - transaction data (string data)
+                     -</code></pre></div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -698,15 +702,50 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/services/transaction.service.ts:120</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/services/transaction.service.ts:124</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>getTransactionDetails ... get the details of transaction from transaction hash</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> getAllTransactions</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>getAllTransactions(address: string)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/app/services/transaction.service.ts:134</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>getAllTransactions ... get all transaction information involving the given address</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
             
                                         </div>
                                 </td>
@@ -729,7 +768,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/services/transaction.service.ts:124</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/services/transaction.service.ts:142</a></div>
                                         </td>
                                     </tr>
             
@@ -827,39 +866,41 @@ export class TransactionService {
   constructor(private http: Http) {
 
     // this.web3 &#x3D; new Web3(new Web3.providers.HttpProvider(this.url));
-
+    this.web3 &#x3D; new Web3();
   }
 
-  // createTransaction ... create transactions from an address to another address
-  /*
+  /**
+   * createTransaction ... create transactions from an address to another address
    * createTransaction(from : string, to : string, opts : object)
-   *    - from : address from which send-ether is sent
-   *    - to   : address to which send-ether is sent
+   *    - from : address from which transaction is sent
+   *    - to   : address to which transaction is sent
    *    - opts : optional data to send (object)
-   *             - send-ether data (string)
+   *             - transaction data (string)
    *             - value / amount to send (number)
    *             -
    */
   createTransaction(from: string, to: string, opts: any): Transaction {
-    const nonce &#x3D; this.web3.eth.getTransactionCount(from);
-    const nonceHex &#x3D; this.web3.toHex(nonce);
+    // const nonce &#x3D; this.web3.eth.getTransactionCount(from);
+    // const nonceHex &#x3D; this.web3.toHex(nonce);
 
     const rawTx &#x3D; {
-      nonce: nonceHex,
+      // nonce: nonceHex,
       to, // : &#x27;0xc787be952a82544713e31890e114569e67bf3e3b&#x27;,
       value: 100,
       data: &#x27;Payment&#x27;
     };
-
-    rawTx[&#x27;gas&#x27;] &#x3D; this.web3.eth.estimateGas(rawTx);
-    rawTx[&#x27;gasLimit&#x27;] &#x3D; this.web3.eth.estimateGas(rawTx);
+    //
+    // rawTx[&#x27;gas&#x27;] &#x3D; this.web3.eth.estimateGas(rawTx);
+    // rawTx[&#x27;gasLimit&#x27;] &#x3D; this.web3.eth.estimateGas(rawTx);
 
     const tx &#x3D; new Transaction(rawTx);
 
     return tx;
   }
 
-  // signTransaction ... signs send-ether with a provate key
+  /**
+   * signTransaction ... signs transaction with a private key
+   */
   signAndSerializeTransaction(tx: Transaction, privkey: string): Promise&lt;any&gt; {
     return new Promise((resolve, reject) &#x3D;&gt; {
       try {
@@ -868,16 +909,18 @@ export class TransactionService {
 
         resolve(tx.serialize().toString(&#x27;hex&#x27;));
       } catch (e) {
-        reject(&#x27;Error signing send-ether. Private key is invalid.&#x27;);
+        reject(&#x27;Error signing transaction. Private key is invalid.&#x27;);
       }
     });
   }
 
-  // sendTransaction ... send a serialized send-ether to a ethereum node
+  /**
+  * sendTransaction ... send a serialized transaction to a ethereum node
+    */
   sendTransaction(serialTx: string): Promise&lt;any&gt; {
     return new Promise((resolve, reject) &#x3D;&gt; {
       try {
-        this.web3.eth.sendRawTransaction(&#x27;0x&#x27; + serialTx);
+        // this.web3.eth.sendRawTransaction(&#x27;0x&#x27; + serialTx);
         resolve(true);
       } catch (e) {
         console.log(e);
@@ -885,20 +928,23 @@ export class TransactionService {
       }
     });
   }
-  // getTransactionCost ... get the total cost for processing send-ether
+
+  /**
+   * getTransactionCost ... get the total cost for processing transaction
+    */
   getTransactionCost(tx: Transaction): string {
     return tx.getUpfrontCost().toString(10);
   }
 
-  // sendMoney ... send money in send-ether
-  /*
+  /**
+   * sendMoney ... send money in transaction
    * sendMoney(from : string, to : string, value: number, opts : object)
-   *    - from : address from which send-ether  is being made
-   *    - to   : address to which send-ether is being sent
-   *    - value: amount of tokens to be send in send-ether(default is &quot;Wei&quot;)
+   *    - from : address from which transaction  is being made
+   *    - to   : address to which transaction is being sent
+   *    - value: amount of tokens to be send in transaction(default is &quot;Wei&quot;)
    *    - opts : optional data to send (object)
-   *             - send-ether ID   (integer data)
-   *             - send-ether data (string data)
+   *             - transaction ID   (integer data)
+   *             - transaction data (string data)
    *             -
   */
   sendMoney(to: string, value: number, privateKey: string) {
@@ -920,14 +966,25 @@ export class TransactionService {
 
   }
 
-  // getTransactionHistory ... get all send-ether information involving the given address
-  getTransactionHistory(address: string) {
-
+  /**
+   * getTransactionDetails ... get the details of transaction from transaction hash
+    */
+  getTransactionDetails(transactionHash: string) {
+    return this.http
+      .get(&#x60;https://api.etherscan.io/api?module&#x3D;proxy&amp;action&#x3D;eth_getTransactionByHash&amp;txhash&#x3D;${transactionHash}&#x60;)
+      .toPromise()
+      .then(res &#x3D;&gt; res.json());
   }
 
-  // getTransacionDetails ... get the details of send-ether from send-ether hash
-  getTransactionDetails(transactionHash: string) {
-
+  /**
+   * getAllTransactions ... get all transaction information involving the given address
+    */
+  getAllTransactions(address: string): Promise&lt;any&gt; {
+    return this.http
+      .get(&#x60;https://api.etherscan.io/api?module&#x3D;account&amp;action&#x3D;txlist&amp;address&#x3D;${address}&amp;tag&#x3D;latest&#x60;)
+      .toPromise()
+      .then(res &#x3D;&gt; res.json())
+      .then(res&#x3D;&gt; res.result);
   }
 
   getPrice(): Promise&lt;any&gt; {

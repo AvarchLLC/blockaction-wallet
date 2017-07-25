@@ -30,7 +30,7 @@
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_AppModule_bootstrap</title>
-<polygon fill="none" stroke="#000000" points="491,-360 491,-412 615,-412 615,-360 491,-360"/>
+<polygon fill="none" stroke="#000000" points="504,-360 504,-412 628,-412 628,-360 504,-360"/>
 </g>
 <g id="clust7" class="cluster">
 <title>cluster_AppRoutingModule</title>
@@ -46,23 +46,23 @@
 </g>
 <g id="clust13" class="cluster">
 <title>cluster_AuthModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="723,-70 723,-138 1265,-138 1265,-70 723,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="780,-70 780,-138 1322,-138 1322,-70 780,-70"/>
 </g>
 <g id="clust15" class="cluster">
 <title>cluster_AuthModule_imports</title>
-<polygon fill="none" stroke="#000000" points="731,-78 731,-130 1257,-130 1257,-78 731,-78"/>
+<polygon fill="none" stroke="#000000" points="788,-78 788,-130 1314,-130 1314,-78 788,-78"/>
 </g>
 <g id="clust25" class="cluster">
 <title>cluster_CoreModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="282,-70 282,-138 674,-138 674,-70 282,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="380,-70 380,-138 772,-138 772,-70 380,-70"/>
 </g>
 <g id="clust27" class="cluster">
 <title>cluster_CoreModule_imports</title>
-<polygon fill="none" stroke="#000000" points="422,-78 422,-130 666,-130 666,-78 422,-78"/>
+<polygon fill="none" stroke="#000000" points="520,-78 520,-130 764,-130 764,-78 520,-78"/>
 </g>
 <g id="clust28" class="cluster">
 <title>cluster_CoreModule_exports</title>
-<polygon fill="none" stroke="#000000" points="290,-78 290,-130 414,-130 414,-78 290,-78"/>
+<polygon fill="none" stroke="#000000" points="388,-78 388,-130 512,-130 512,-78 388,-78"/>
 </g>
 <g id="clust31" class="cluster">
 <title>cluster_EthereumModule</title>
@@ -101,26 +101,26 @@
 <!-- AppModule -->
 <g id="node7" class="node">
 <title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="594.6571,-339 591.6571,-343 570.6571,-343 567.6571,-339 511.3429,-339 511.3429,-303 594.6571,-303 594.6571,-339"/>
-<text text-anchor="middle" x="553" y="-316.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="607.6571,-339 604.6571,-343 583.6571,-343 580.6571,-339 524.3429,-339 524.3429,-303 607.6571,-303 607.6571,-339"/>
+<text text-anchor="middle" x="566" y="-316.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppModule</text>
 </g>
 <!-- BrowserModule&#45;&gt;AppModule -->
 <g id="edge1" class="edge">
 <title>BrowserModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M680.8699,-198.1446C680.8699,-236.2265 680.8699,-321 680.8699,-321 680.8699,-321 604.8694,-321 604.8694,-321"/>
-<polygon fill="#000000" stroke="#000000" points="604.8694,-317.5001 594.8694,-321 604.8694,-324.5001 604.8694,-317.5001"/>
+<path fill="none" stroke="#000000" d="M680.8699,-198.1446C680.8699,-236.2265 680.8699,-321 680.8699,-321 680.8699,-321 617.7956,-321 617.7956,-321"/>
+<polygon fill="#000000" stroke="#000000" points="617.7957,-317.5001 607.7956,-321 617.7956,-324.5001 617.7957,-317.5001"/>
 </g>
 <!-- CoreModule -->
 <g id="node2" class="node">
 <title>CoreModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="522.2619,-198 519.2619,-202 498.2619,-202 495.2619,-198 435.7381,-198 435.7381,-162 522.2619,-162 522.2619,-198"/>
-<text text-anchor="middle" x="479" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">CoreModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="653.2619,-198 650.2619,-202 629.2619,-202 626.2619,-198 566.7381,-198 566.7381,-162 653.2619,-162 653.2619,-198"/>
+<text text-anchor="middle" x="610" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">CoreModule</text>
 </g>
 <!-- CoreModule&#45;&gt;AppModule -->
 <g id="edge2" class="edge">
 <title>CoreModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M518.6445,-198.1446C518.6445,-198.1446 518.6445,-292.925 518.6445,-292.925"/>
-<polygon fill="#000000" stroke="#000000" points="515.1446,-292.925 518.6445,-302.925 522.1446,-292.925 515.1446,-292.925"/>
+<path fill="none" stroke="#000000" d="M580.3555,-198.1446C580.3555,-198.1446 580.3555,-292.925 580.3555,-292.925"/>
+<polygon fill="#000000" stroke="#000000" points="576.8556,-292.925 580.3555,-302.925 583.8556,-292.925 576.8556,-292.925"/>
 </g>
 <!-- RouterModule  -->
 <g id="node10" class="node">
@@ -131,20 +131,20 @@
 <!-- CoreModule&#45;&gt;RouterModule  -->
 <g id="edge20" class="edge">
 <title>CoreModule&#45;&gt;RouterModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M514.9081,-198.2434C514.9081,-205.4297 514.9081,-212 514.9081,-212 514.9081,-212 1321,-212 1321,-212 1321,-212 1321,-208.2434 1321,-208.2434"/>
-<polygon fill="#000000" stroke="#000000" points="1324.5001,-208.2434 1321,-198.2434 1317.5001,-208.2434 1324.5001,-208.2434"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M650.3093,-161.8056C650.3093,-153.7218 650.3093,-146 650.3093,-146 650.3093,-146 1279.401,-146 1279.401,-146 1279.401,-146 1279.401,-151.8056 1279.401,-151.8056"/>
+<polygon fill="#000000" stroke="#000000" points="1275.9011,-151.8055 1279.401,-161.8056 1282.9011,-151.8056 1275.9011,-151.8055"/>
 </g>
 <!-- NavComponent  -->
 <g id="node17" class="node">
 <title>NavComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="406.1537,-122 297.8463,-122 297.8463,-86 406.1537,-86 406.1537,-122"/>
-<text text-anchor="middle" x="352" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">NavComponent </text>
+<polygon fill="#fb8072" stroke="#000000" points="504.1537,-122 395.8463,-122 395.8463,-86 504.1537,-86 504.1537,-122"/>
+<text text-anchor="middle" x="450" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">NavComponent </text>
 </g>
 <!-- CoreModule&#45;&gt;NavComponent  -->
 <g id="edge19" class="edge">
 <title>CoreModule&#45;&gt;NavComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M435.4911,-180C428.6473,-180 423.7805,-180 423.7805,-180 423.7805,-180 423.7805,-104 423.7805,-104 423.7805,-104 416.4044,-104 416.4044,-104"/>
-<polygon fill="#000000" stroke="#000000" points="416.4045,-100.5001 406.4044,-104 416.4044,-107.5001 416.4045,-100.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M586.3548,-161.9421C586.3548,-157.5055 586.3548,-154 586.3548,-154 586.3548,-154 469.5451,-154 469.5451,-154 469.5451,-154 469.5451,-132.0511 469.5451,-132.0511"/>
+<polygon fill="#000000" stroke="#000000" points="473.0451,-132.0511 469.5451,-122.0511 466.0451,-132.0512 473.0451,-132.0511"/>
 </g>
 <!-- InMemoryWebApiModule.forRoot(args) -->
 <g id="node3" class="node">
@@ -155,8 +155,8 @@
 <!-- InMemoryWebApiModule.forRoot(args)&#45;&gt;AppModule -->
 <g id="edge3" class="edge">
 <title>InMemoryWebApiModule.forRoot(args)&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M147,-198.0251C147,-237.2783 147,-327 147,-327 147,-327 501.0801,-327 501.0801,-327"/>
-<polygon fill="#000000" stroke="#000000" points="501.0801,-330.5001 511.0801,-327 501.08,-323.5001 501.0801,-330.5001"/>
+<path fill="none" stroke="#000000" d="M147,-198.0251C147,-237.2783 147,-327 147,-327 147,-327 514.2928,-327 514.2928,-327"/>
+<polygon fill="#000000" stroke="#000000" points="514.2929,-330.5001 524.2928,-327 514.2928,-323.5001 514.2929,-330.5001"/>
 </g>
 <!-- AppRoutingModule -->
 <g id="node4" class="node">
@@ -167,44 +167,44 @@
 <!-- AppRoutingModule&#45;&gt;AppModule -->
 <g id="edge4" class="edge">
 <title>AppRoutingModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M353,-198.2067C353,-235.0559 353,-315 353,-315 353,-315 501.0734,-315 501.0734,-315"/>
-<polygon fill="#000000" stroke="#000000" points="501.0735,-318.5001 511.0734,-315 501.0734,-311.5001 501.0735,-318.5001"/>
+<path fill="none" stroke="#000000" d="M353,-198.2067C353,-235.0559 353,-315 353,-315 353,-315 514.1722,-315 514.1722,-315"/>
+<polygon fill="#000000" stroke="#000000" points="514.1722,-318.5001 524.1722,-315 514.1722,-311.5001 514.1722,-318.5001"/>
 </g>
 <!-- AppRoutingModule&#45;&gt;RouterModule  -->
 <g id="edge9" class="edge">
 <title>AppRoutingModule&#45;&gt;RouterModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.617,-161.8903C413.617,-152.103 413.617,-142 413.617,-142 413.617,-142 1321,-142 1321,-142 1321,-142 1321,-151.8903 1321,-151.8903"/>
-<polygon fill="#000000" stroke="#000000" points="1317.5001,-151.8903 1321,-161.8903 1324.5001,-151.8904 1317.5001,-151.8903"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.2325,-161.9445C410.2325,-150.561 410.2325,-138 410.2325,-138 410.2325,-138 1288.3782,-138 1288.3782,-138 1288.3782,-138 1288.3782,-151.9445 1288.3782,-151.9445"/>
+<polygon fill="#000000" stroke="#000000" points="1284.8782,-151.9444 1288.3782,-161.9445 1291.8782,-151.9445 1284.8782,-151.9444"/>
 </g>
 <!-- AuthModule&#45;&gt;AppModule -->
 <g id="edge5" class="edge">
 <title>AuthModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M690.1432,-256C643.557,-256 576.5566,-256 576.5566,-256 576.5566,-256 576.5566,-292.8939 576.5566,-292.8939"/>
-<polygon fill="#000000" stroke="#000000" points="573.0567,-292.8938 576.5566,-302.8939 580.0567,-292.8939 573.0567,-292.8938"/>
+<path fill="none" stroke="#000000" d="M690.1161,-256C649.0856,-256 594.0919,-256 594.0919,-256 594.0919,-256 594.0919,-292.8939 594.0919,-292.8939"/>
+<polygon fill="#000000" stroke="#000000" points="590.592,-292.8938 594.0919,-302.8939 597.592,-292.8939 590.592,-292.8938"/>
 </g>
 <!-- EthereumModule -->
 <g id="node6" class="node">
 <title>EthereumModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="653.9734,-198 650.9734,-202 629.9734,-202 626.9734,-198 540.0266,-198 540.0266,-162 653.9734,-162 653.9734,-198"/>
-<text text-anchor="middle" x="597" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">EthereumModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="548.9734,-198 545.9734,-202 524.9734,-202 521.9734,-198 435.0266,-198 435.0266,-162 548.9734,-162 548.9734,-198"/>
+<text text-anchor="middle" x="492" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">EthereumModule</text>
 </g>
 <!-- EthereumModule&#45;&gt;AppModule -->
 <g id="edge6" class="edge">
 <title>EthereumModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="#000000" d="M558.2849,-198.1446C558.2849,-198.1446 558.2849,-292.925 558.2849,-292.925"/>
-<polygon fill="#000000" stroke="#000000" points="554.785,-292.925 558.2849,-302.925 561.785,-292.925 554.785,-292.925"/>
+<path fill="none" stroke="#000000" d="M542.783,-198.1446C542.783,-198.1446 542.783,-292.925 542.783,-292.925"/>
+<polygon fill="#000000" stroke="#000000" points="539.2831,-292.925 542.783,-302.925 546.2831,-292.925 539.2831,-292.925"/>
 </g>
 <!-- AppComponent  -->
 <g id="node8" class="node">
 <title>AppComponent </title>
-<polygon fill="#80b1d3" stroke="#000000" points="607.439,-404 498.561,-404 498.561,-368 607.439,-368 607.439,-404"/>
-<text text-anchor="middle" x="553" y="-381.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppComponent </text>
+<polygon fill="#80b1d3" stroke="#000000" points="620.439,-404 511.561,-404 511.561,-368 620.439,-368 620.439,-404"/>
+<text text-anchor="middle" x="566" y="-381.8" font-family="Times,serif" font-size="14.00" fill="#000000">AppComponent </text>
 </g>
 <!-- AppModule&#45;&gt;AppComponent  -->
 <g id="edge7" class="edge">
 <title>AppModule&#45;&gt;AppComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="1,5" d="M553,-339.1061C553,-339.1061 553,-357.991 553,-357.991"/>
-<polygon fill="#000000" stroke="#000000" points="549.5001,-357.9909 553,-367.991 556.5001,-357.991 549.5001,-357.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="1,5" d="M566,-339.1061C566,-339.1061 566,-357.991 566,-357.991"/>
+<polygon fill="#000000" stroke="#000000" points="562.5001,-357.9909 566,-367.991 569.5001,-357.991 562.5001,-357.9909"/>
 </g>
 <!-- RouterModule.forRoot(args) -->
 <g id="node9" class="node">
@@ -215,20 +215,20 @@
 <!-- RouterModule.forRoot(args)&#45;&gt;AppRoutingModule -->
 <g id="edge8" class="edge">
 <title>RouterModule.forRoot(args)&#45;&gt;AppRoutingModule</title>
-<path fill="none" stroke="#000000" d="M1514.5569,-161.8533C1514.5569,-148.2605 1514.5569,-132 1514.5569,-132 1514.5569,-132 409.8469,-132 409.8469,-132 409.8469,-132 409.8469,-151.8533 409.8469,-151.8533"/>
-<polygon fill="#000000" stroke="#000000" points="406.347,-151.8532 409.8469,-161.8533 413.347,-151.8533 406.347,-151.8532"/>
+<path fill="none" stroke="#000000" d="M1514.5569,-161.9489C1514.5569,-147.627 1514.5569,-130 1514.5569,-130 1514.5569,-130 403.0778,-130 403.0778,-130 403.0778,-130 403.0778,-151.9489 403.0778,-151.9489"/>
+<polygon fill="#000000" stroke="#000000" points="399.5779,-151.9488 403.0778,-161.9489 406.5779,-151.9489 399.5779,-151.9488"/>
 </g>
 <!-- AuthRoutingModule -->
 <g id="node14" class="node">
 <title>AuthRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="1249.1652,-122 1246.1652,-126 1225.1652,-126 1222.1652,-122 1116.8348,-122 1116.8348,-86 1249.1652,-86 1249.1652,-122"/>
-<text text-anchor="middle" x="1183" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthRoutingModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1306.1652,-122 1303.1652,-126 1282.1652,-126 1279.1652,-122 1173.8348,-122 1173.8348,-86 1306.1652,-86 1306.1652,-122"/>
+<text text-anchor="middle" x="1240" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthRoutingModule</text>
 </g>
 <!-- RouterModule.forRoot(args)&#45;&gt;AuthRoutingModule -->
 <g id="edge15" class="edge">
 <title>RouterModule.forRoot(args)&#45;&gt;AuthRoutingModule</title>
-<path fill="none" stroke="#000000" d="M1455.4431,-161.9891C1455.4431,-139.5148 1455.4431,-104 1455.4431,-104 1455.4431,-104 1259.2987,-104 1259.2987,-104"/>
-<polygon fill="#000000" stroke="#000000" points="1259.2987,-100.5001 1249.2987,-104 1259.2987,-107.5001 1259.2987,-100.5001"/>
+<path fill="none" stroke="#000000" d="M1455.4431,-161.9891C1455.4431,-139.5148 1455.4431,-104 1455.4431,-104 1455.4431,-104 1316.398,-104 1316.398,-104"/>
+<polygon fill="#000000" stroke="#000000" points="1316.398,-100.5001 1306.398,-104 1316.3979,-107.5001 1316.398,-100.5001"/>
 </g>
 <!-- EthereumRoutingModule -->
 <g id="node18" class="node">
@@ -237,22 +237,22 @@
 <text text-anchor="middle" x="1150" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">EthereumRoutingModule</text>
 </g>
 <!-- RouterModule.forRoot(args)&#45;&gt;EthereumRoutingModule -->
-<g id="edge24" class="edge">
+<g id="edge23" class="edge">
 <title>RouterModule.forRoot(args)&#45;&gt;EthereumRoutingModule</title>
-<path fill="none" stroke="#000000" d="M1485,-198.4218C1485,-207.2791 1485,-216 1485,-216 1485,-216 1222.5647,-216 1222.5647,-216 1222.5647,-216 1222.5647,-208.4218 1222.5647,-208.4218"/>
-<polygon fill="#000000" stroke="#000000" points="1226.0648,-208.4218 1222.5647,-198.4218 1219.0648,-208.4219 1226.0648,-208.4218"/>
+<path fill="none" stroke="#000000" d="M1485,-198.0449C1485,-205.749 1485,-213 1485,-213 1485,-213 1222.5647,-213 1222.5647,-213 1222.5647,-213 1222.5647,-208.0449 1222.5647,-208.0449"/>
+<polygon fill="#000000" stroke="#000000" points="1226.0648,-208.0448 1222.5647,-198.0449 1219.0648,-208.0449 1226.0648,-208.0448"/>
 </g>
 <!-- FormsModule -->
 <g id="node11" class="node">
 <title>FormsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="936.8288,-122 933.8288,-126 912.8288,-126 909.8288,-122 841.1712,-122 841.1712,-86 936.8288,-86 936.8288,-122"/>
-<text text-anchor="middle" x="889" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="993.8288,-122 990.8288,-126 969.8288,-126 966.8288,-122 898.1712,-122 898.1712,-86 993.8288,-86 993.8288,-122"/>
+<text text-anchor="middle" x="946" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
 </g>
 <!-- FormsModule&#45;&gt;AuthModule -->
 <g id="edge11" class="edge">
 <title>FormsModule&#45;&gt;AuthModule</title>
-<path fill="none" stroke="#000000" d="M873.112,-122.0248C873.112,-154.8443 873.112,-221 873.112,-221 873.112,-221 725.2453,-221 725.2453,-221 725.2453,-221 725.2453,-227.68 725.2453,-227.68"/>
-<polygon fill="#000000" stroke="#000000" points="721.7454,-227.6799 725.2453,-237.68 728.7454,-227.68 721.7454,-227.6799"/>
+<path fill="none" stroke="#000000" d="M926.0624,-122.0636C926.0624,-154.2085 926.0624,-218 926.0624,-218 926.0624,-218 725.2453,-218 725.2453,-218 725.2453,-218 725.2453,-227.8903 725.2453,-227.8903"/>
+<polygon fill="#000000" stroke="#000000" points="721.7454,-227.8903 725.2453,-237.8903 728.7454,-227.8904 721.7454,-227.8903"/>
 </g>
 <!-- SharedModule -->
 <g id="node19" class="node">
@@ -261,106 +261,100 @@
 <text text-anchor="middle" x="1003" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
 </g>
 <!-- FormsModule&#45;&gt;SharedModule -->
-<g id="edge27" class="edge">
+<g id="edge26" class="edge">
 <title>FormsModule&#45;&gt;SharedModule</title>
-<path fill="none" stroke="#000000" d="M904.888,-122.0109C904.888,-144.4852 904.888,-180 904.888,-180 904.888,-180 943.6566,-180 943.6566,-180"/>
-<polygon fill="#000000" stroke="#000000" points="943.6566,-183.5001 953.6566,-180 943.6565,-176.5001 943.6566,-183.5001"/>
+<path fill="none" stroke="#000000" d="M973.7265,-122.0109C973.7265,-122.0109 973.7265,-151.855 973.7265,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="970.2266,-151.8549 973.7265,-161.855 977.2266,-151.855 970.2266,-151.8549"/>
 </g>
 <!-- ReactiveFormsModule -->
 <g id="node12" class="node">
 <title>ReactiveFormsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="1099.3047,-122 1096.3047,-126 1075.3047,-126 1072.3047,-122 954.6953,-122 954.6953,-86 1099.3047,-86 1099.3047,-122"/>
-<text text-anchor="middle" x="1027" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1156.3047,-122 1153.3047,-126 1132.3047,-126 1129.3047,-122 1011.6953,-122 1011.6953,-86 1156.3047,-86 1156.3047,-122"/>
+<text text-anchor="middle" x="1084" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule</text>
 </g>
 <!-- ReactiveFormsModule&#45;&gt;AuthModule -->
 <g id="edge12" class="edge">
 <title>ReactiveFormsModule&#45;&gt;AuthModule</title>
-<path fill="none" stroke="#000000" d="M1061.3328,-122.1149C1061.3328,-155.8699 1061.3328,-225 1061.3328,-225 1061.3328,-225 742.7547,-225 742.7547,-225 742.7547,-225 742.7547,-227.9672 742.7547,-227.9672"/>
-<polygon fill="#000000" stroke="#000000" points="739.2548,-227.9671 742.7547,-237.9672 746.2548,-227.9672 739.2548,-227.9671"/>
+<path fill="none" stroke="#000000" d="M1061.3328,-122.0735C1061.3328,-155.3634 1061.3328,-223 1061.3328,-223 1061.3328,-223 742.7547,-223 742.7547,-223 742.7547,-223 742.7547,-227.9551 742.7547,-227.9551"/>
+<polygon fill="#000000" stroke="#000000" points="739.2548,-227.9551 742.7547,-237.9551 746.2548,-227.9552 739.2548,-227.9551"/>
 </g>
 <!-- ReactiveFormsModule&#45;&gt;SharedModule -->
-<g id="edge28" class="edge">
+<g id="edge27" class="edge">
 <title>ReactiveFormsModule&#45;&gt;SharedModule</title>
-<path fill="none" stroke="#000000" d="M1019.7567,-122.0109C1019.7567,-122.0109 1019.7567,-151.855 1019.7567,-151.855"/>
-<polygon fill="#000000" stroke="#000000" points="1016.2568,-151.8549 1019.7567,-161.855 1023.2568,-151.855 1016.2568,-151.8549"/>
+<path fill="none" stroke="#000000" d="M1032.0295,-122.0109C1032.0295,-122.0109 1032.0295,-151.855 1032.0295,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="1028.5295,-151.8549 1032.0295,-161.855 1035.5295,-151.855 1028.5295,-151.8549"/>
 </g>
 <!-- HttpModule -->
 <g id="node13" class="node">
 <title>HttpModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="823.4387,-122 820.4387,-126 799.4387,-126 796.4387,-122 738.5613,-122 738.5613,-86 823.4387,-86 823.4387,-122"/>
-<text text-anchor="middle" x="781" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HttpModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="880.4387,-122 877.4387,-126 856.4387,-126 853.4387,-122 795.5613,-122 795.5613,-86 880.4387,-86 880.4387,-122"/>
+<text text-anchor="middle" x="838" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HttpModule</text>
 </g>
 <!-- HttpModule&#45;&gt;AuthModule -->
 <g id="edge13" class="edge">
 <title>HttpModule&#45;&gt;AuthModule</title>
-<path fill="none" stroke="#000000" d="M798.2923,-122.0333C798.2923,-162.2965 798.2923,-256 798.2923,-256 798.2923,-256 787.5959,-256 787.5959,-256"/>
-<polygon fill="#000000" stroke="#000000" points="787.5959,-252.5001 777.5959,-256 787.5958,-259.5001 787.5959,-252.5001"/>
+<path fill="none" stroke="#000000" d="M806.9395,-122.0333C806.9395,-162.2965 806.9395,-256 806.9395,-256 806.9395,-256 787.6925,-256 787.6925,-256"/>
+<polygon fill="#000000" stroke="#000000" points="787.6925,-252.5001 777.6925,-256 787.6925,-259.5001 787.6925,-252.5001"/>
 </g>
 <!-- AuthRoutingModule&#45;&gt;AuthModule -->
 <g id="edge14" class="edge">
 <title>AuthRoutingModule&#45;&gt;AuthModule</title>
-<path fill="none" stroke="#000000" d="M1236.1412,-122.0527C1236.1412,-156.8929 1236.1412,-230 1236.1412,-230 1236.1412,-230 760.2641,-230 760.2641,-230 760.2641,-230 760.2641,-230.7942 760.2641,-230.7942"/>
-<polygon fill="#000000" stroke="#000000" points="756.7642,-227.9421 760.2641,-237.9421 763.7642,-227.9422 756.7642,-227.9421"/>
+<path fill="none" stroke="#000000" d="M1249.9848,-122.0307C1249.9848,-156.4218 1249.9848,-228 1249.9848,-228 1249.9848,-228 760.2641,-228 760.2641,-228 760.2641,-228 760.2641,-228.9793 760.2641,-228.9793"/>
+<polygon fill="#000000" stroke="#000000" points="756.7642,-227.793 760.2641,-237.793 763.7642,-227.7931 756.7642,-227.793"/>
 </g>
 <!-- AuthRoutingModule&#45;&gt;RouterModule  -->
 <g id="edge16" class="edge">
 <title>AuthRoutingModule&#45;&gt;RouterModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1242.7368,-122.0267C1242.7368,-142.7672 1242.7368,-174 1242.7368,-174 1242.7368,-174 1260.1095,-174 1260.1095,-174"/>
-<polygon fill="#000000" stroke="#000000" points="1260.1095,-177.5001 1270.1095,-174 1260.1094,-170.5001 1260.1095,-177.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1297.3553,-122.0109C1297.3553,-122.0109 1297.3553,-151.855 1297.3553,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="1293.8554,-151.8549 1297.3553,-161.855 1300.8554,-151.855 1293.8554,-151.8549"/>
 </g>
 <!-- CommonModule -->
 <g id="node15" class="node">
 <title>CommonModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="657.6681,-122 654.6681,-126 633.6681,-126 630.6681,-122 546.3319,-122 546.3319,-86 657.6681,-86 657.6681,-122"/>
-<text text-anchor="middle" x="602" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="755.6681,-122 752.6681,-126 731.6681,-126 728.6681,-122 644.3319,-122 644.3319,-86 755.6681,-86 755.6681,-122"/>
+<text text-anchor="middle" x="700" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule</text>
 </g>
 <!-- CommonModule&#45;&gt;CoreModule -->
 <g id="edge17" class="edge">
 <title>CommonModule&#45;&gt;CoreModule</title>
-<path fill="none" stroke="#000000" d="M546.0911,-104C538.8655,-104 533.9197,-104 533.9197,-104 533.9197,-104 533.9197,-180 533.9197,-180 533.9197,-180 532.2726,-180 532.2726,-180"/>
-<polygon fill="#000000" stroke="#000000" points="532.2727,-176.5001 522.2726,-180 532.2726,-183.5001 532.2727,-176.5001"/>
-</g>
-<!-- CommonModule&#45;&gt;EthereumModule -->
-<g id="edge21" class="edge">
-<title>CommonModule&#45;&gt;EthereumModule</title>
-<path fill="none" stroke="#000000" d="M582.1064,-122.0109C582.1064,-122.0109 582.1064,-151.855 582.1064,-151.855"/>
-<polygon fill="#000000" stroke="#000000" points="578.6065,-151.8549 582.1064,-161.855 585.6065,-151.855 578.6065,-151.8549"/>
+<path fill="none" stroke="#000000" d="M647.2377,-122.0109C647.2377,-122.0109 647.2377,-151.855 647.2377,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="643.7378,-151.8549 647.2377,-161.855 650.7378,-151.855 643.7378,-151.8549"/>
 </g>
 <!-- CommonModule&#45;&gt;SharedModule -->
-<g id="edge26" class="edge">
+<g id="edge25" class="edge">
 <title>CommonModule&#45;&gt;SharedModule</title>
-<path fill="none" stroke="#000000" d="M618.0465,-122.1467C618.0465,-135.7395 618.0465,-152 618.0465,-152 618.0465,-152 987.3022,-152 987.3022,-152 987.3022,-152 987.3022,-152.9793 987.3022,-152.9793"/>
-<polygon fill="#000000" stroke="#000000" points="983.8023,-151.793 987.3022,-161.793 990.8023,-151.7931 983.8023,-151.793"/>
+<path fill="none" stroke="#000000" d="M755.6766,-104C772.7534,-104 787.134,-104 787.134,-104 787.134,-104 787.134,-180 787.134,-180 787.134,-180 943.7465,-180 943.7465,-180"/>
+<polygon fill="#000000" stroke="#000000" points="943.7466,-183.5001 953.7465,-180 943.7465,-176.5001 943.7466,-183.5001"/>
 </g>
 <!-- RouterModule -->
 <g id="node16" class="node">
 <title>RouterModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="527.6528,-122 524.6528,-126 503.6528,-126 500.6528,-122 430.3472,-122 430.3472,-86 527.6528,-86 527.6528,-122"/>
-<text text-anchor="middle" x="479" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">RouterModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="625.6528,-122 622.6528,-126 601.6528,-126 598.6528,-122 528.3472,-122 528.3472,-86 625.6528,-86 625.6528,-122"/>
+<text text-anchor="middle" x="577" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">RouterModule</text>
 </g>
 <!-- RouterModule&#45;&gt;CoreModule -->
 <g id="edge18" class="edge">
 <title>RouterModule&#45;&gt;CoreModule</title>
-<path fill="none" stroke="#000000" d="M479,-122.0109C479,-122.0109 479,-151.855 479,-151.855"/>
-<polygon fill="#000000" stroke="#000000" points="475.5001,-151.8549 479,-161.855 482.5001,-151.855 475.5001,-151.8549"/>
+<path fill="none" stroke="#000000" d="M606.0905,-122.0109C606.0905,-122.0109 606.0905,-151.855 606.0905,-151.855"/>
+<polygon fill="#000000" stroke="#000000" points="602.5906,-151.8549 606.0905,-161.855 609.5906,-151.855 602.5906,-151.8549"/>
 </g>
 <!-- EthereumRoutingModule&#45;&gt;EthereumModule -->
-<g id="edge22" class="edge">
+<g id="edge21" class="edge">
 <title>EthereumRoutingModule&#45;&gt;EthereumModule</title>
-<path fill="none" stroke="#000000" d="M1076.4343,-198.1592C1076.4343,-203.0433 1076.4343,-207 1076.4343,-207 1076.4343,-207 622.9752,-207 622.9752,-207 622.9752,-207 622.9752,-206.1159 622.9752,-206.1159"/>
-<polygon fill="#000000" stroke="#000000" points="626.4754,-208.1591 622.9752,-198.1592 619.4754,-208.1592 626.4754,-208.1591"/>
+<path fill="none" stroke="#000000" d="M1076.4343,-198.207C1076.4343,-203.5549 1076.4343,-208 1076.4343,-208 1076.4343,-208 530.3755,-208 530.3755,-208 530.3755,-208 530.3755,-207.0207 530.3755,-207.0207"/>
+<polygon fill="#000000" stroke="#000000" points="533.8756,-208.2069 530.3755,-198.207 526.8756,-208.207 533.8756,-208.2069"/>
 </g>
 <!-- EthereumRoutingModule&#45;&gt;RouterModule  -->
-<g id="edge25" class="edge">
+<g id="edge24" class="edge">
 <title>EthereumRoutingModule&#45;&gt;RouterModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1229.7426,-186C1229.7426,-186 1260.1799,-186 1260.1799,-186"/>
-<polygon fill="#000000" stroke="#000000" points="1260.18,-189.5001 1270.1799,-186 1260.1799,-182.5001 1260.18,-189.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1229.7426,-180C1229.7426,-180 1260.1799,-180 1260.1799,-180"/>
+<polygon fill="#000000" stroke="#000000" points="1260.18,-183.5001 1270.1799,-180 1260.1799,-176.5001 1260.18,-183.5001"/>
 </g>
 <!-- SharedModule&#45;&gt;EthereumModule -->
-<g id="edge23" class="edge">
+<g id="edge22" class="edge">
 <title>SharedModule&#45;&gt;EthereumModule</title>
-<path fill="none" stroke="#000000" d="M957.8267,-198.1223C957.8267,-200.9729 957.8267,-203 957.8267,-203 957.8267,-203 638.481,-203 638.481,-203 638.481,-203 638.481,-202.5122 638.481,-202.5122"/>
-<polygon fill="#000000" stroke="#000000" points="641.9812,-208.1222 638.481,-198.1223 634.9812,-208.1224 641.9812,-208.1222"/>
+<path fill="none" stroke="#000000" d="M957.8267,-198.1223C957.8267,-200.9729 957.8267,-203 957.8267,-203 957.8267,-203 536.5793,-203 536.5793,-203 536.5793,-203 536.5793,-202.5122 536.5793,-202.5122"/>
+<polygon fill="#000000" stroke="#000000" points="540.0795,-208.1222 536.5793,-198.1223 533.0795,-208.1224 540.0795,-208.1222"/>
 </g>
 <!-- CommonModule  -->
 <g id="node20" class="node">
@@ -369,10 +363,10 @@
 <text text-anchor="middle" x="1158" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">CommonModule </text>
 </g>
 <!-- SharedModule&#45;&gt;CommonModule  -->
-<g id="edge29" class="edge">
+<g id="edge28" class="edge">
 <title>SharedModule&#45;&gt;CommonModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1029.336,-198.2819C1029.336,-213.9478 1029.336,-234 1029.336,-234 1029.336,-234 1158,-234 1158,-234 1158,-234 1158,-234.3832 1158,-234.3832"/>
-<polygon fill="#000000" stroke="#000000" points="1154.5003,-227.832 1158,-237.8321 1161.5003,-227.8322 1154.5003,-227.832"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1029.336,-198.2396C1029.336,-213.5706 1029.336,-233 1029.336,-233 1029.336,-233 1158,-233 1158,-233 1158,-233 1158,-233.4878 1158,-233.4878"/>
+<polygon fill="#000000" stroke="#000000" points="1154.5002,-227.8776 1158,-237.8777 1161.5002,-227.8778 1154.5002,-227.8776"/>
 </g>
 <!-- FormsModule  -->
 <g id="node21" class="node">
@@ -381,7 +375,7 @@
 <text text-anchor="middle" x="1033" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule </text>
 </g>
 <!-- SharedModule&#45;&gt;FormsModule  -->
-<g id="edge30" class="edge">
+<g id="edge29" class="edge">
 <title>SharedModule&#45;&gt;FormsModule </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1006.461,-198.0109C1006.461,-198.0109 1006.461,-227.855 1006.461,-227.855"/>
 <polygon fill="#000000" stroke="#000000" points="1002.9611,-227.8549 1006.461,-237.855 1009.9611,-227.855 1002.9611,-227.8549"/>
@@ -393,7 +387,7 @@
 <text text-anchor="middle" x="892" y="-251.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule </text>
 </g>
 <!-- SharedModule&#45;&gt;ReactiveFormsModule  -->
-<g id="edge31" class="edge">
+<g id="edge30" class="edge">
 <title>SharedModule&#45;&gt;ReactiveFormsModule </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M961.8644,-198.0109C961.8644,-198.0109 961.8644,-227.855 961.8644,-227.855"/>
 <polygon fill="#000000" stroke="#000000" points="958.3645,-227.8549 961.8644,-237.855 965.3645,-227.855 958.3645,-227.8549"/>

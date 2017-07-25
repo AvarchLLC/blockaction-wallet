@@ -154,6 +154,9 @@
                                     <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Transaction.html" >Transaction</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Wallet.html" >Wallet</a>
                                 </li>
                         </ul>
@@ -175,6 +178,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/TransactionService.html" >TransactionService</a>
@@ -366,6 +372,9 @@
                                            <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Transaction.html" >Transaction</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Wallet.html" >Wallet</a>
                                        </li>
                                </ul>
@@ -387,6 +396,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/TransactionService.html" >TransactionService</a>
@@ -476,6 +488,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -524,12 +542,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank">Router</a>)</code>
+                            <code>constructor(router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank">Router</a>, spinner: <a href="../injectables/SpinnerService.html">SpinnerService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/app.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/app.component.ts:15</a></div>
                                 </td>
                             </tr>
     
@@ -537,12 +555,69 @@
             </table>
     </section>
 
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> ngOnInit</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/app.component.ts:31</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         
             <h3 id="inputs">
                 Properties
             </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> busy</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>busy:     <code></code>
+    </bcode>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/app.component.ts:15</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -584,7 +659,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/app.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/app.component.ts:14</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -594,8 +669,9 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
 import {Router, NavigationEnd} from &#x27;@angular/router&#x27;;
+import {SpinnerService} from &quot;./services/spinner.service&quot;;
 
 declare var ga: any;
 
@@ -605,12 +681,16 @@ declare var ga: any;
   styleUrls: [&#x27;./app.component.css&#x27;]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title &#x3D; &#x27;Block Action&#x27;;
+  busy;
 
   constructor(
     public router: Router,
+    private spinner: SpinnerService
   ) {
+    this.busy &#x3D; false;
+
     this.router.events.subscribe(event &#x3D;&gt; {
       if (event instanceof NavigationEnd) {
         ga(&#x27;set&#x27;, &#x27;page&#x27;, event.urlAfterRedirects);
@@ -618,12 +698,33 @@ export class AppComponent {
       }
     });
   }
+
+  ngOnInit() {
+    this.spinner.spinnerStatus.subscribe((val: boolean) &#x3D;&gt; {
+      this.busy &#x3D; val;
+    });
+  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;fullPage pt-2&quot; style&#x3D;&quot;padding: 0.1px;&quot; [class.overflow-hidden]&#x3D;&quot;busy&quot;&gt;
+    &lt;header id&#x3D;&quot;page-top&quot;&gt;
+        &lt;div class&#x3D;&quot;container&quot;&gt;
+            &lt;div class&#x3D;&quot;logo&quot;&gt;
+                &lt;img src&#x3D;&quot;../assets/img/logo.png&quot; alt&#x3D;&quot;logo&quot; class&#x3D;&quot;img-responsive&quot;&gt;
+            &lt;/div&gt;
+            &lt;app-nav-bar&gt;&lt;/app-nav-bar&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;
+
+&lt;div *ngIf&#x3D;&quot;busy&quot; class&#x3D;&quot;spinner-overlay&quot;&gt;
+    &lt;img width&#x3D;&quot;100&quot; height&#x3D;&quot;100&quot; src&#x3D;&quot;/assets/img/logo-icon.png&quot;/&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -649,7 +750,7 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><router-outlet></router-outlet></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="fullPage pt-2" style="padding: 0.1px;" [class.overflow-hidden]="busy">    <header id="page-top">        <div class="container">            <div class="logo">                <img src="../assets/img/logo.png" alt="logo" class="img-responsive">            </div>            <app-nav-bar></app-nav-bar>        </div>    </header>    <router-outlet></router-outlet></div><div *ngIf="busy" class="spinner-overlay">    <img width="100" height="100" src="/assets/img/logo-icon.png"/></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EthereumComponent', 'selector': 'app-ethereum'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavComponent', 'selector': 'app-nav-bar'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'TransactionComponent', 'selector': 'app-ethereum-transaction'},{'name': 'WalletComponent', 'selector': 'app-ethereum-wallet'},{'name': 'WalletInfoComponent', 'selector': 'app-ethereum-wallet-info'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};

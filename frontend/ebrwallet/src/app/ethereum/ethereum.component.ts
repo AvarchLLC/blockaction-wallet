@@ -99,11 +99,6 @@ export class EthereumComponent implements OnInit {
     }
 
   }
-  //
-  // preventWalletClose() {
-  //   this.showDialog = true;
-  // }
-  //
 
   goBack() {
     if (this.showCreate && this.wallet) {
@@ -112,8 +107,6 @@ export class EthereumComponent implements OnInit {
           this.wallet = null;
           this.walletComponent.wallet = null;
       }
-      // if(this.preventWalletClose()){
-      // }
       return;
     }
 

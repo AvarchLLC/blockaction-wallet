@@ -154,6 +154,9 @@
                                     <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Transaction.html" >Transaction</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Wallet.html" >Wallet</a>
                                 </li>
                         </ul>
@@ -175,6 +178,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/TransactionService.html" >TransactionService</a>
@@ -366,6 +372,9 @@
                                            <a href="../classes/InMemoryDataService.html" >InMemoryDataService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Transaction.html" >Transaction</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Wallet.html" >Wallet</a>
                                        </li>
                                </ul>
@@ -387,6 +396,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SpinnerService.html" >SpinnerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/TransactionService.html" >TransactionService</a>
@@ -518,7 +530,68 @@
     </table>
 </section>
 
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>reset</code>
+                        </td>
+                        <td class="col-md-10">
+                            <p>
+                              <em>Default value: </em><code>true</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:29</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>on_card_show</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;boolean&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:30</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>on_wallet_creation</code>
+                        </td>
+                        <td class="col-md-10">
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/Wallet.html" target="_self" >EventEmitter&lt;Wallet&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:31</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         <h3 id="constructor">Constructor</h3>
@@ -526,12 +599,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(fb: <a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html" target="_blank">FormBuilder</a>, walletService: <a href="../injectables/WalletService.html">WalletService</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, transactionService: <a href="../injectables/TransactionService.html">TransactionService</a>, googleAnalyticsService: <a href="../injectables/GoogleAnalyticsService.html">GoogleAnalyticsService</a>)</code>
+                            <code>constructor(fb: <a href="https://angular.io/docs/ts/latest/api/forms/index/FormBuilder-class.html" target="_blank">FormBuilder</a>, walletService: <a href="../injectables/WalletService.html">WalletService</a>, authService: <a href="../injectables/AuthService.html">AuthService</a>, transactionService: <a href="../injectables/TransactionService.html">TransactionService</a>, googleAnalyticsService: <a href="../injectables/GoogleAnalyticsService.html">GoogleAnalyticsService</a>, spinner: <a href="../injectables/SpinnerService.html">SpinnerService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -548,6 +621,42 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> unloadHandler</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>unloadHandler(event: )</code>
+                        </td>
+                    </tr>
+    
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>HostListener</code>
+                            </td>
+                        </tr>
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:48</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b> passwordCheck</b>
                         </td>
                     </tr>
@@ -560,7 +669,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:77</a></div>
                                 </td>
                             </tr>
     
@@ -591,7 +700,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -622,38 +731,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:108</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> isReady</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>isReady()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:117</a></div>
                                 </td>
                             </tr>
     
@@ -684,7 +762,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:127</a></div>
                                 </td>
                             </tr>
     
@@ -715,7 +793,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:136</a></div>
                                 </td>
                             </tr>
     
@@ -746,7 +824,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:149</a></div>
                                 </td>
                             </tr>
     
@@ -777,7 +855,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:175</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:179</a></div>
                                 </td>
                             </tr>
     
@@ -808,7 +886,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:184</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:192</a></div>
                                 </td>
                             </tr>
     
@@ -839,69 +917,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:193</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> etherAmountChanged</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>etherAmountChanged(e: )</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:209</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> usdAmountChanged</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>usdAmountChanged(e: )</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:201</a></div>
                                 </td>
                             </tr>
     
@@ -932,69 +948,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:231</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> showModal</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>showModal()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:250</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> cancelModal</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>cancelModal()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:266</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:217</a></div>
                                 </td>
                             </tr>
     
@@ -1036,7 +990,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:37</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1062,7 +1016,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:35</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1088,7 +1042,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:43</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1108,7 +1062,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:113</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1133,7 +1087,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:41</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1158,7 +1112,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:39</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1183,7 +1137,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:38</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1203,7 +1157,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:40</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1229,32 +1183,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:29</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ready</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>ready:     <code></code>
-    </bcode>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Default value : </i><code>false</code>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:34</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1280,7 +1209,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:27</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1305,7 +1234,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:44</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1331,7 +1260,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:32</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1357,7 +1286,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/ethereum/wallet/wallet.component.ts:26</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1367,7 +1296,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 
 import { WalletService } from &#x27;../../services/wallet.service&#x27;;
@@ -1377,6 +1306,7 @@ import { GoogleAnalyticsService } from &#x27;../../services/google-analytics.ser
 
 import { Wallet } from &#x27;../../wallet&#x27;;
 
+import {SpinnerService} from &#x27;../../services/spinner.service&#x27;;
 import { Config } from &#x27;../../config&#x27;;
 const config &#x3D; new Config();
 
@@ -1394,7 +1324,11 @@ export class WalletComponent implements OnInit {
   walletForm: FormGroup;
   requestEtherForm: FormGroup;
 
-  wallet: Wallet;  // Wallet object
+  @Input() reset &#x3D; true; // Wallet object
+  @Output() on_card_show: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();  // Wallet object
+  @Output() on_wallet_creation: EventEmitter&lt;Wallet&gt; &#x3D; new EventEmitter();  // Wallet object
+  wallet: Wallet;
+
   qrSvg: string;   // QrCode SVG string
   ethusd: any;
 
@@ -1405,14 +1339,21 @@ export class WalletComponent implements OnInit {
   modalVisible &#x3D; false;
 
   identicon: any;
-  ready &#x3D; false;
   showSpinner &#x3D; false;
 
+
+  @HostListener(&#x27;window:beforeunload&#x27;, [&#x27;$event&#x27;])
+  unloadHandler(event) {
+    if (this.wallet) {
+      event.returnValue &#x3D; true;
+    }
+  }
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private walletService: WalletService,
     private authService: AuthService,
     private transactionService: TransactionService,
-    private googleAnalyticsService: GoogleAnalyticsService
+    private googleAnalyticsService: GoogleAnalyticsService,
+    private spinner: SpinnerService
   ) {
 
     const passwordValidator &#x3D; Validators.compose([
@@ -1453,9 +1394,6 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem(&#x27;messageShown&#x27;) &amp;&amp; new Date(localStorage.getItem(&#x27;messageShown&#x27;)) &gt; new Date() ) {
-      this.ready &#x3D; true;
-    }
 
     // const message &#x3D; &#x60;Request for ethers to address ${ this.wallet ? this.wallet.address : &#x27;&#x27; }&#x60;;
     // this.requestEtherForm.controls.comment.setValue(message);
@@ -1482,14 +1420,7 @@ export class WalletComponent implements OnInit {
     }
   }
 
-  isReady() {
-    this.googleAnalyticsService
-      .emitEvent(&#x27;Wallet Page&#x27;, &#x27;Button Clicked&#x27;, &#x27;Ok, Got It&#x27;);
-    this.ready &#x3D; true;
-    const messageExpiry &#x3D; new Date();
-    messageExpiry.setHours(messageExpiry.getHours() + 1);
-    localStorage.setItem(&#x27;messageShown&#x27;, messageExpiry.toString());
-  }
+
 
   qrToggle() {
     this.googleAnalyticsService
@@ -1518,8 +1449,8 @@ export class WalletComponent implements OnInit {
     this.googleAnalyticsService
       .emitEvent(&#x27;Wallet Creation&#x27;, &#x27;Button Clicked&#x27;);
 
+    this.spinner.displaySpiner(true);
     this.disabled &#x3D; true;
-    this.showSpinner &#x3D; true;
     setTimeout(function () {
       this.walletService
         .createWallet(this.walletForm.value.password)
@@ -1529,8 +1460,10 @@ export class WalletComponent implements OnInit {
           toastr.success(&#x27;Created!&#x27;, &#x27;Wallet Creation&#x27;);
           this.showQr();
           this.identicon &#x3D; this.walletService.getIdenticon(this.wallet);
-          this.showSpinner &#x3D; false;
           this.disabled &#x3D; false;
+          this.spinner.displaySpiner(false);
+          this.on_wallet_creation.emit(this.wallet);
+
         })
         .catch(err &#x3D;&gt; {
           // console.error(err);
@@ -1547,6 +1480,10 @@ export class WalletComponent implements OnInit {
 
     this.walletService
       .saveWalletToFile(this.wallet)
+      .then(ok &#x3D;&gt; {
+        console.log(&#x27;emitting card show object&#x27;);
+        this.on_card_show.emit(true);
+      })
       .catch(err &#x3D;&gt; toastr.error(&#x27;An error occurred while downloading&#x27;, &#x27;Wallet Download&#x27;));
   }
 
@@ -1575,28 +1512,6 @@ export class WalletComponent implements OnInit {
     }).catch(err &#x3D;&gt; toastr.error(err));
   }
 
-  etherAmountChanged(e) {
-    const ether_value &#x3D; parseFloat(e.target.value);
-    if (ether_value !&#x3D;&#x3D; 0 &amp;&amp; e.target.value.length &gt; ether_value.toString().length) {
-      e.target.value &#x3D; ether_value;
-    }
-    if (ether_value &amp;&amp; !isNaN(ether_value) &amp;&amp; ether_value &gt; 0) {
-      const amount_in_usd &#x3D; ether_value * this.ethusd.value;
-      this.requestEtherForm.controls.amount_usd.setValue(amount_in_usd);
-    }
-  }
-
-  usdAmountChanged(e) {
-    const usd_value &#x3D; parseFloat(e.target.value);
-    if (usd_value !&#x3D;&#x3D; 0 &amp;&amp; e.target.value.length &gt; usd_value.toString().length) {
-      e.target.value &#x3D; usd_value;
-    }
-    if (usd_value &amp;&amp; !isNaN(usd_value) &amp;&amp; usd_value &gt; 0) {
-      const amount_in_ether &#x3D; usd_value / this.ethusd.value;
-      this.requestEtherForm.controls.amount_ether.setValue(amount_in_ether);
-    }
-  }
-
   requestEther() {
     this.googleAnalyticsService
       .emitEvent(&#x27;Post Wallet Creation&#x27;, &#x27;Request Ether&#x27;);
@@ -1616,176 +1531,75 @@ export class WalletComponent implements OnInit {
     toastr.success(str, &#x27;Request Ether&#x27;);
   }
 
-  showModal() {
-    // if (!this.ethusd) {
-    //   this.transactionService
-    //     .getPrice()
-    //     .then(res &#x3D;&gt; {
-    //       this.ethusd &#x3D; {
-    //         value: res.ethusd,
-    //         time: new Date(res.ethusd_timestamp * 1000)
-    //       };
-    //     })
-    //     .catch(err &#x3D;&gt; toastr.error(&#x27;Couldn\&#x27;t get exchange rate&#x27;));
-    // }
-
-    this.modalVisible &#x3D; true;
-  }
-
-  cancelModal() {
-    this.modalVisible &#x3D; false;
-  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div [class.overflow-hidden]&#x3D;&quot;showSpinner&quot;&gt;
-&lt;header [style.hide]&#x3D;&quot;!ready&quot;&gt;
-    &lt;div class&#x3D;&quot;container&quot;&gt;
-        &lt;div class&#x3D;&quot;logo&quot;&gt;
-            &lt;img src&#x3D;&quot;../assets/img/logo.png&quot; alt&#x3D;&quot;logo&quot; class&#x3D;&quot;img-responsive&quot;&gt;
-        &lt;/div&gt;
-        &lt;app-nav-bar&gt;&lt;/app-nav-bar&gt;
-    &lt;/div&gt;
-&lt;/header&gt;
-&lt;!-- Wallet Creation Info  --&gt;
-&lt;!--&lt;div class&#x3D;&quot;fullPage pt-2&quot; *ngIf&#x3D;&quot;!ready&quot;&gt;--&gt;
-    &lt;div *ngIf&#x3D;&quot;!ready&quot; class&#x3D;&quot;pop-alert-box card-center card-md-p align-center&quot;&gt;
-        &lt;img src&#x3D;&quot;../../../assets/img/key-icon.svg&quot; alt&#x3D;&quot;key&quot; class&#x3D;&quot;img-responsive&quot;&gt;
-        &lt;div class&#x3D;&quot;pop-alert&quot;&gt;
-            &lt;h1 class&#x3D;&quot;color-black txt-scale&quot;&gt;&lt;b&gt;We don&#x27;t store your keys&lt;/b&gt;&lt;/h1&gt;
-            &lt;p p-font-size&gt;We believe in user and we regard ourself as &lt;span class&#x3D;&quot;color-blue&quot;&gt;Trusted&lt;/span&gt; place to make transactions&lt;/p&gt;
-            &lt;button (click)&#x3D;&quot;isReady()&quot; type&#x3D;&quot;button&quot; name&#x3D;&quot;ok_go_it&quot; class&#x3D;&quot;btn-marg btn-blue text-white&quot;&gt; &lt;b&gt;Ok, Got it&lt;/b&gt;&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;!--&lt;/div&gt;--&gt;
-
-&lt;!-- Wallet Creation Page --&gt;
-&lt;div *ngIf&#x3D;&quot;ready&quot;&gt;
-    &lt;div class&#x3D;&quot;container-md&quot; [class.slide]&#x3D;&quot;this.wallet&quot;&gt;
-        &lt;div class&#x3D;&quot;row&quot;&gt;
-            &lt;div *ngIf&#x3D;&quot;wallet&quot; class&#x3D;&quot;col-md-6&quot;&gt;
-            &lt;div class&#x3D;&quot;block block-center bg-blue&quot;&gt;
-            &lt;app-ethereum-transaction&gt;&lt;/app-ethereum-transaction&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Wallet Create Form --&gt;
+&lt;div *ngIf&#x3D;&quot;!wallet&quot;&gt;
+    &lt;h2&gt; Create wallet &lt;/h2&gt;
+    &lt;br/&gt;
+    &lt;form id&#x3D;&quot;walletform&quot; [formGroup]&#x3D;&quot;walletForm&quot; (ngSubmit)&#x3D;&quot;create()&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;input type&#x3D;&quot;{{ passphraseType }}&quot; class&#x3D;&quot;form-control input-lg&quot; [class.has-error]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).invalidChar&quot; formControlName&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Enter Passphrase&quot; id&#x3D;&quot;password&quot;
+            /&gt;
+            &lt;div class&#x3D;&quot;text-right&quot;&gt;
+                &lt;a class&#x3D;&quot;btn-link&quot; (click)&#x3D;&quot;passphraseToggle()&quot;&gt;{{ passphraseButton }}&lt;/a&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-            &lt;div *ngIf&#x3D;&quot;!wallet&quot; class&#x3D;&quot;col-md-6&quot;&gt;
-                &lt;div class&#x3D;&quot;block block-center bg-blue&quot;&gt;
-                    &lt;h2&gt; Create wallet &lt;/h2&gt;
-                    &lt;br/&gt;
-                    &lt;form id&#x3D;&quot;walletform&quot; [formGroup]&#x3D;&quot;walletForm&quot; (ngSubmit)&#x3D;&quot;create()&quot;&gt;
-                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                            &lt;input type&#x3D;&quot;{{ passphraseType }}&quot; class&#x3D;&quot;form-control input-lg&quot; [class.has-error]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).invalidChar&quot; formControlName&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Enter Passphrase&quot;
-                            /&gt;
-                            &lt;div class&#x3D;&quot;text-right&quot;&gt;
-                                &lt;a class&#x3D;&quot;btn-link&quot; (click)&#x3D;&quot;passphraseToggle()&quot;&gt;{{ passphraseButton }}&lt;/a&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;list-left&quot; *ngIf&#x3D;&quot;!passwordCheck(walletForm.controls.password.value).all&quot;&gt;
-                            &lt;ul&gt;
-                                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordLowercase&quot;&gt;One lowercase character&lt;/li&gt;
-                                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordUppercase&quot;&gt;One uppercase character&lt;/li&gt;
-                                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordNumber&quot;&gt;One number&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;list-right&quot; *ngIf&#x3D;&quot;!passwordCheck(walletForm.controls.password.value).all&quot;&gt;
-                            &lt;ul&gt;
-                                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordSpecialchar&quot;&gt;One special character&lt;/li&gt;
-                                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordLength&quot;&gt;8 - 20 characters&lt;/li&gt;
-                            &lt;/ul&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;alert alert-success&quot;*ngIf&#x3D;&quot;passwordCheck(walletForm.controls.password.value).all&quot;&gt;
-                            Your password is secure and you&#x27;ll all set!
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;buttonWithLoader&quot;&gt;
-                            &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;isDisabled&quot; class&#x3D;&quot;btn btn-primary btn-block btn-lg&quot; (click)&#x3D;&quot;create()&quot;&gt;Create Wallet&lt;/button&gt;
-                        &lt;/div&gt;
-                        &lt;p class&#x3D;&quot;text-sm&quot;&gt;This password encrypts your private key. This does not act as a seed to generate your keys. You will
-                            need this password + your private key to unlock your wallet.
-                        &lt;/p&gt;
-                    &lt;/form&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-md-6&quot;&gt;
-                &lt;div class&#x3D;&quot;block bg-gray&quot;&gt;
-                    &lt;div *ngIf&#x3D;&quot;wallet&quot;&gt;
-                        &lt;h2&gt;Wallet Ready!&lt;/h2&gt;
-                        &lt;div class&#x3D;&quot;form-group mg-top-sm&quot;&gt;
-                            &lt;b&gt;Address&lt;/b&gt;
-                            &lt;div class&#x3D;&quot;clearfix&quot;&gt;
-                                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control withQr&quot; value&#x3D;&quot;{{ wallet.address }}&quot; readonly&gt;
-
-                                &lt;span class&#x3D;&quot;{{ qrClass }}&quot; (click)&#x3D;&quot;qrToggle()&quot;&gt;
-                                    &lt;svg class&#x3D;&quot;qr&quot; width&#x3D;&quot;40px&quot; height&#x3D;&quot;40px&quot; viewBox&#x3D;&quot;0 0 40 40&quot;&gt;
-                                        &lt;path [attr.d]&#x3D;&quot;qrSvg&quot;&gt;&lt;/path&gt;
-                                    &lt;/svg&gt;
-                                &lt;/span&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
-                            &lt;b&gt;Private Key&lt;/b&gt;
-                            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; value&#x3D;&quot;{{ wallet.privateKey }}&quot; readonly&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;text-center&quot;&gt;
-                            &lt;button class&#x3D;&quot;btn btn-primary btn-lg&quot; (click)&#x3D;&quot;saveWalletToFile()&quot;&gt;Download Wallet&lt;/button&gt;
-                            &lt;br /&gt;
-                            &lt;button class&#x3D;&quot;btn btn-link btn-lg&quot; (click)&#x3D;&quot;printPaperWallets()&quot;&gt;Print Wallet&lt;/button&gt;
-                            &lt;button class&#x3D;&quot;btn btn-link btn-lg&quot; (click)&#x3D;&quot;showModal()&quot;&gt;Request Ether&lt;/button&gt;
-                            &lt;button class&#x3D;&quot;hide&quot; (click)&#x3D;&quot;deleteWallet()&quot;&gt;Delete Wallet&lt;/button&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
+        &lt;div class&#x3D;&quot;list-left&quot; *ngIf&#x3D;&quot;!passwordCheck(walletForm.controls.password.value).all&quot;&gt;
+            &lt;ul&gt;
+                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordLowercase&quot;&gt;One lowercase character&lt;/li&gt;
+                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordUppercase&quot;&gt;One uppercase character&lt;/li&gt;
+                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordNumber&quot;&gt;One number&lt;/li&gt;
+            &lt;/ul&gt;
         &lt;/div&gt;
-    &lt;/div&gt;
+        &lt;div class&#x3D;&quot;list-right&quot; *ngIf&#x3D;&quot;!passwordCheck(walletForm.controls.password.value).all&quot;&gt;
+            &lt;ul&gt;
+                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordSpecialchar&quot;&gt;One special character&lt;/li&gt;
+                &lt;li [class.text-muted]&#x3D;&quot;passwordCheck(walletForm.controls.password.value).passwordLength&quot;&gt;8 - 20 characters&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;alert alert-success&quot;*ngIf&#x3D;&quot;passwordCheck(walletForm.controls.password.value).all&quot;&gt;
+            Your password is secure and you&#x27;ll all set!
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;buttonWithLoader&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;isDisabled&quot; class&#x3D;&quot;btn btn-primary btn-block btn-lg&quot; (click)&#x3D;&quot;create()&quot;&gt;Create Wallet&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p class&#x3D;&quot;text-sm&quot;&gt;This password encrypts your private key. This does not act as a seed to generate your keys. You will
+            need this password + your private key to unlock your wallet.
+        &lt;/p&gt;
+    &lt;/form&gt;
 &lt;/div&gt;
 
-&lt;!--- Ether Request Modal --&gt;
-&lt;div *ngIf&#x3D;&quot;false&quot;&gt;
-    &lt;div class&#x3D;&quot;card card-center card-md-p&quot;&gt;
-        &lt;div class&#x3D;&quot;text-center&quot;&gt;
+&lt;!-- Wallet Post-Create Detail --&gt;
+&lt;div *ngIf&#x3D;&quot;wallet&quot;&gt;
+    &lt;h2&gt;Wallet Ready!&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;form-group mg-top-sm&quot;&gt;
+        &lt;b&gt;Address&lt;/b&gt;
+        &lt;div class&#x3D;&quot;clearfix&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control withQr&quot; value&#x3D;&quot;{{ wallet.address }}&quot; readonly&gt;
 
-            &lt;h2&gt;Request Ether&lt;/h2&gt;
-            &lt;form [formGroup]&#x3D;&quot;requestEtherForm&quot;&gt;
-                &lt;!--&lt;input class&#x3D;&quot;form-control withQr&quot; style&#x3D;&quot;margin:0;margin-right:5px;&quot; type&#x3D;&quot;text&quot; value&#x3D;&quot;{{wallet.address}}&quot; disabled&gt;
-                &lt;img width&#x3D;&quot;40&quot; height&#x3D;&quot;40&quot; src&#x3D;&#x27;data:image/png;base64,{{ identicon }}&#x27; id&#x3D;&#x27;iconImage&#x27; style&#x3D;&quot;display: block;&quot;&gt;--&gt;
-                &lt;input class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; type&#x3D;&quot;email&quot; placeholder&#x3D;&quot;Email...&quot;&gt;
-                &lt;div class&#x3D;&quot;converter-box&quot;&gt;
-                    &lt;div class&#x3D;&quot;input-group&quot;&gt;
-                        &lt;div class&#x3D;&quot;input-group-addon bdr-none flex-box&quot;&gt;
-                            &lt;div class&#x3D;&quot;super-txt &quot;&gt;&lt;h4&gt;&lt;b&gt;eth&lt;/b&gt;&lt;/h4&gt;&lt;/div&gt;
-                            &lt;div class&#x3D;&quot;base-txt&quot;&gt;&lt;img src&#x3D;&quot;assets/img/Ethereum.png&quot; alt&#x3D;&quot;&quot;&gt;&lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;input class&#x3D;&quot;form-input&quot; (input)&#x3D;&quot;etherAmountChanged($event)&quot; formControlName&#x3D;&quot;amount_ether&quot; type&#x3D;&quot;number&quot; min&#x3D;&quot;0&quot;&gt;
-                    &lt;/div&gt;
-                    &lt;span&gt;&lt;h2&gt; &#x3D; &lt;/h2&gt;&lt;/span&gt;
-                    &lt;div class&#x3D;&quot;input-group&quot;&gt;
-                        &lt;div class&#x3D;&quot;input-group-addon bdr-none flex-box&quot;&gt;
-                            &lt;div class&#x3D;&quot;super-txt&quot;&gt;&lt;h4&gt;&lt;b&gt;usd&lt;/b&gt;&lt;/h4&gt;&lt;/div&gt;
-                            &lt;div class&#x3D;&quot;base-txt&quot;&gt;&lt;h4&gt;$&lt;/h4&gt;&lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;input class&#x3D;&quot;form-input&quot; (input)&#x3D;&quot;usdAmountChanged($event)&quot; formControlName&#x3D;&quot;amount_usd&quot; type&#x3D;&quot;number&quot; min&#x3D;&quot;0&quot;&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;span *ngIf&#x3D;&quot;ethusd?.time&quot; style&#x3D;&quot;color:#bbb;font-size:14px;&quot;&gt;** The exchange rate is as of {{ ethusd?.time}}&lt;/span&gt;
-                &lt;textarea class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;comment&quot;&gt;&lt;/textarea&gt;
-            &lt;/form&gt;
+            &lt;span class&#x3D;&quot;{{ qrClass }}&quot; (click)&#x3D;&quot;qrToggle()&quot;&gt;
+                &lt;svg class&#x3D;&quot;qr&quot; width&#x3D;&quot;40px&quot; height&#x3D;&quot;40px&quot; viewBox&#x3D;&quot;0 0 40 40&quot;&gt;
+                    &lt;path [attr.d]&#x3D;&quot;qrSvg&quot;&gt;&lt;/path&gt;
+                &lt;/svg&gt;
+            &lt;/span&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;button-space&quot;&gt;
-            &lt;button class&#x3D;&quot;btn btn-primary btn-lg&quot;  (click)&#x3D;&quot;requestEther()&quot;&gt;Request&lt;/button&gt;
-            &lt;button class&#x3D;&quot;btn btn-link btn-lg&quot; (click)&#x3D;&quot;cancelModal()&quot;&gt;CANCEL&lt;/button&gt;
-        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;form-group&quot;&gt;
+        &lt;b&gt;Private Key&lt;/b&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; value&#x3D;&quot;{{ wallet.privateKey }}&quot; readonly&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;text-center&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-primary btn-lg&quot; (click)&#x3D;&quot;saveWalletToFile()&quot;&gt;Download Wallet&lt;/button&gt;
         &lt;br /&gt;
+        &lt;button class&#x3D;&quot;btn btn-link btn-lg&quot; (click)&#x3D;&quot;printPaperWallets()&quot;&gt;Print Wallet&lt;/button&gt;
+        &lt;button class&#x3D;&quot;btn btn-link btn-lg&quot; (click)&#x3D;&quot;showModal()&quot;&gt;Request Ether&lt;/button&gt;
+        &lt;button class&#x3D;&quot;hide&quot; (click)&#x3D;&quot;deleteWallet()&quot;&gt;Delete Wallet&lt;/button&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div *ngIf&#x3D;&quot;showSpinner&quot; class&#x3D;&quot;spinner-overlay&quot;&gt;
-    &lt;img width&#x3D;&quot;100&quot; height&#x3D;&quot;100&quot; src&#x3D;&quot;/assets/img/logo-icon.png&quot;/&gt;
-&lt;/div&gt;
-
 </code></pre>
     </div>
 
@@ -1812,7 +1626,7 @@ export class WalletComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [class.overflow-hidden]="showSpinner"><header [style.hide]="!ready">    <div class="container">        <div class="logo">            <img src="../assets/img/logo.png" alt="logo" class="img-responsive">        </div>        <app-nav-bar></app-nav-bar>    </div></header><!-- Wallet Creation Info  --><!--<div class="fullPage pt-2" *ngIf="!ready">-->    <div *ngIf="!ready" class="pop-alert-box card-center card-md-p align-center">        <img src="../../../assets/img/key-icon.svg" alt="key" class="img-responsive">        <div class="pop-alert">            <h1 class="color-black txt-scale"><b>We don\'t store your keys</b></h1>            <p p-font-size>We believe in user and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>            <button (click)="isReady()" type="button" name="ok_go_it" class="btn-marg btn-blue text-white"> <b>Ok, Got it</b></button>        </div>    </div><!--</div>--><!-- Wallet Creation Page --><div *ngIf="ready">    <div class="container-md" [class.slide]="this.wallet">        <div class="row">            <div *ngIf="wallet" class="col-md-6">            <div class="block block-center bg-blue">            <app-ethereum-transaction></app-ethereum-transaction>            </div>        </div>            <div *ngIf="!wallet" class="col-md-6">                <div class="block block-center bg-blue">                    <h2> Create wallet </h2>                    <br/>                    <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">                        <div class="form-group">                            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"                            />                            <div class="text-right">                                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>                            </div>                        </div>                        <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">                            <ul>                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>                            </ul>                        </div>                        <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">                            <ul>                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>                            </ul>                        </div>                        <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">                            Your password is secure and you\'ll all set!                        </div>                        <div class="buttonWithLoader">                            <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>                        </div>                        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will                            need this password + your private key to unlock your wallet.                        </p>                    </form>                </div>            </div>            <div class="col-md-6">                <div class="block bg-gray">                    <div *ngIf="wallet">                        <h2>Wallet Ready!</h2>                        <div class="form-group mg-top-sm">                            <b>Address</b>                            <div class="clearfix">                                <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>                                <span class="{{ qrClass }}" (click)="qrToggle()">                                    <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">                                        <path [attr.d]="qrSvg"></path>                                    </svg>                                </span>                            </div>                        </div>                        <div class="form-group">                            <b>Private Key</b>                            <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>                        </div>                        <div class="text-center">                            <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>                            <br />                            <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>                            <button class="btn btn-link btn-lg" (click)="showModal()">Request Ether</button>                            <button class="hide" (click)="deleteWallet()">Delete Wallet</button>                        </div>                    </div>                </div>            </div>        </div>    </div></div><!--- Ether Request Modal --><div *ngIf="false">    <div class="card card-center card-md-p">        <div class="text-center">            <h2>Request Ether</h2>            <form [formGroup]="requestEtherForm">                <!--<input class="form-control withQr" style="margin:0;margin-right:5px;" type="text" value="{{wallet.address}}" disabled>                <img width="40" height="40" src=\'data:image/png;base64,{{ identicon }}\' id=\'iconImage\' style="display: block;">-->                <input class="form-control" formControlName="email" type="email" placeholder="Email...">                <div class="converter-box">                    <div class="input-group">                        <div class="input-group-addon bdr-none flex-box">                            <div class="super-txt "><h4><b>eth</b></h4></div>                            <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>                        </div>                        <input class="form-input" (input)="etherAmountChanged($event)" formControlName="amount_ether" type="number" min="0">                    </div>                    <span><h2> = </h2></span>                    <div class="input-group">                        <div class="input-group-addon bdr-none flex-box">                            <div class="super-txt"><h4><b>usd</b></h4></div>                            <div class="base-txt"><h4>$</h4></div>                        </div>                        <input class="form-input" (input)="usdAmountChanged($event)" formControlName="amount_usd" type="number" min="0">                    </div>                </div>                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>                <textarea class="form-control" formControlName="comment"></textarea>            </form>        </div>        <div class="button-space">            <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>            <button class="btn btn-link btn-lg" (click)="cancelModal()">CANCEL</button>        </div>        <br />    </div></div></div><div *ngIf="showSpinner" class="spinner-overlay">    <img width="100" height="100" src="/assets/img/logo-icon.png"/></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- Wallet Create Form --><div *ngIf="!wallet">    <h2> Create wallet </h2>    <br/>    <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">        <div class="form-group">            <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase" id="password"            />            <div class="text-right">                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>            </div>        </div>        <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">            <ul>                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>            </ul>        </div>        <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">            <ul>                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>            </ul>        </div>        <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">            Your password is secure and you\'ll all set!        </div>        <div class="buttonWithLoader">            <button type="submit" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>        </div>        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will            need this password + your private key to unlock your wallet.        </p>    </form></div><!-- Wallet Post-Create Detail --><div *ngIf="wallet">    <h2>Wallet Ready!</h2>    <div class="form-group mg-top-sm">        <b>Address</b>        <div class="clearfix">            <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>            <span class="{{ qrClass }}" (click)="qrToggle()">                <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">                    <path [attr.d]="qrSvg"></path>                </svg>            </span>        </div>    </div>    <div class="form-group">        <b>Private Key</b>        <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>    </div>    <div class="text-center">        <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>        <br />        <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>        <button class="btn btn-link btn-lg" (click)="showModal()">Request Ether</button>        <button class="hide" (click)="deleteWallet()">Delete Wallet</button>    </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EthereumComponent', 'selector': 'app-ethereum'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavComponent', 'selector': 'app-nav-bar'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'TransactionComponent', 'selector': 'app-ethereum-transaction'},{'name': 'WalletComponent', 'selector': 'app-ethereum-wallet'},{'name': 'WalletInfoComponent', 'selector': 'app-ethereum-wallet-info'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WalletComponent'};

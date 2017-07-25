@@ -16,7 +16,7 @@ class Transaction {
 })
 export class WalletInfoComponent implements OnInit {
 
-  @Input() wallet: Wallet;
+  @Input() wallet = new Wallet;
 
   balance: string;
   transactions: Transaction[];

@@ -7,7 +7,7 @@
         Transactions: {{ transactions }}
     </div>
     <button (click)="showModal('request')">Request Ether</button>
-    <button (click)="showModal('send')">Send Ether</button>
+    <button (click)="showModal('send')" >Send Ether</button>
     <app-ethereum-transaction [mode]="modalType"></app-ethereum-transaction>
     <!--<pre>{{ wallet | json }}</pre>-->
 </div>

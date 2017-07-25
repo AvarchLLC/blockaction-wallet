@@ -180,13 +180,13 @@
                                     <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/SpinnerService.html" >SpinnerService</a>
+                                    <a href="../injectables/SpinnerService.html"  data-type="entity-link" class="active" >SpinnerService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/TransactionService.html" >TransactionService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/WalletService.html"  data-type="entity-link" class="active" >WalletService</a>
+                                    <a href="../injectables/WalletService.html" >WalletService</a>
                                 </li>
                         </ul>
                     </li>
@@ -398,13 +398,13 @@
                                            <a href="../injectables/GoogleAnalyticsService.html" >GoogleAnalyticsService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/SpinnerService.html" >SpinnerService</a>
+                                           <a href="../injectables/SpinnerService.html"  data-type="entity-link" class="active" >SpinnerService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/TransactionService.html" >TransactionService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/WalletService.html"  data-type="entity-link" class="active" >WalletService</a>
+                                           <a href="../injectables/WalletService.html" >WalletService</a>
                                        </li>
                                </ul>
                            </li>
@@ -460,7 +460,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>WalletService</li>
+  <li>SpinnerService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -480,28 +480,10 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/services/wallet.service.ts</code>
+            <code>src/app/services/spinner.service.ts</code>
         </p>
 
 
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>constructor(http: <a href="https://angular.io/docs/ts/latest/api/http/index/Http-class.html" target="_blank">Http</a>)</code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/wallet.service.ts:13</a></div>
-                                        </td>
-                                    </tr>
-            
-                        </tbody>
-                    </table>
-            </section>
 
             <section>
                 
@@ -512,19 +494,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> createWallet</b>
+                                    <b> displaySpiner</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>createWallet(passsword: string)</code>
+            <code>displaySpiner(value: boolean)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/wallet.service.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/spinner.service.ts:9</a></div>
                                         </td>
                                     </tr>
             
@@ -532,255 +514,7 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPrivateKey</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPrivateKey(w: <a href="../classes/Wallet.html">Wallet</a>, password: String)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/services/wallet.service.ts:44</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPrivateKeyString</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPrivateKeyString(w: <a href="../classes/Wallet.html">Wallet</a>, password: String)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/services/wallet.service.ts:62</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getQrCode</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getQrCode(w: <a href="../classes/Wallet.html">Wallet</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/services/wallet.service.ts:82</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getIdenticon</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getIdenticon(w: <a href="../classes/Wallet.html">Wallet</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/services/wallet.service.ts:95</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;string&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPaperWallet</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPaperWallet(w: <a href="../classes/Wallet.html">Wallet</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/services/wallet.service.ts:99</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> saveWalletToFile</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>saveWalletToFile(w: <a href="../classes/Wallet.html">Wallet</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/app/services/wallet.service.ts:243</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getBalance</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getBalance(address: string)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/app/services/wallet.service.ts:270</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> requestEther</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>requestEther(address: string, email: string, value: number)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="278" class="link-to-prism">src/app/services/wallet.service.ts:278</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -789,292 +523,52 @@
                     </table>
             </section>
 
+            <section>
+                
+                    <h3 id="inputs">
+                        Properties
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Public</span> spinnerStatus</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-"></span><code>spinnerStatus:     <code>BehaviorSubject&lt;boolean&gt;</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code>BehaviorSubject&lt;boolean&gt;</code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/services/spinner.service.ts:7</a></div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+            </section>
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
-import { Http } from &#x27;@angular/http&#x27;;
-import { Wallet } from &#x27;../wallet&#x27;;
-
-import qrImage from &#x27;qr-image&#x27;;
-import Identicon from &#x27;identicon.js&#x27;;
-import &#x27;rxjs/add/operator/toPromise&#x27;;
-
-declare var EthJS: any;
+import { BehaviorSubject } from &#x27;rxjs/BehaviorSubject&#x27;;
 
 @Injectable()
-export class WalletService {
+export class SpinnerService {
+  public spinnerStatus: BehaviorSubject&lt;boolean&gt; &#x3D; new BehaviorSubject&lt;boolean&gt;(false);
 
-  constructor(private http: Http) {
-
-  }
-
-  // creatWallet ... generates a new wallet object and returns encrypted object
-  createWallet(passsword: string): Promise&lt;Wallet&gt; {
-
-    const w: Wallet &#x3D; new Wallet;
-
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      try {
-        let wallet &#x3D; EthJS.Wallet.generate(false);
-
-        w.address &#x3D; wallet.getAddressString();
-        w.privateKey &#x3D; wallet.getPrivateKeyString();
-        w.fileName &#x3D; wallet.getV3Filename();
-
-        w.keystore &#x3D; wallet.toV3(passsword, { kdf: &#x27;scrypt&#x27; }); // Encrypts wallet object with scrypt
-
-        wallet &#x3D; null; // Set the unencrypted wallet memory to null
-
-        resolve(w);
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
-  // getPrivateKey ... decrypts wallet object and returns private key bytes ( not safe )
-  getPrivateKey(w: Wallet, password: String): Promise&lt;string&gt; {
-
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      try {
-        let wallet &#x3D; EthJS.Wallet.fromV3(w.keystore, password);
-        const key &#x3D; wallet.getPrivateKey();
-
-        wallet &#x3D; null;  // Set the unencrypted wallet memory to null
-        password &#x3D; null;
-        resolve(key);
-      } catch (e) {
-        reject(&#x27;Key derivation failed -- possibly wrong password&#x27;);
-      }
-    });
-  }
-
-
-  // getPrivateKey ... decrypts wallet object and returns private key string ( not safe )
-  getPrivateKeyString(w: Wallet, password: String): Promise&lt;string&gt; {
-
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      try {
-        if (w.keystore[&#x27;Crypto&#x27;]) {
-          w.keystore[&#x27;crypto&#x27;] &#x3D; w.keystore[&#x27;Crypto&#x27;];
-        }
-        const wallet &#x3D; EthJS.Wallet.fromV3(w.keystore, password);
-        const key &#x3D; wallet.getPrivateKeyString();
-
-        // wallet &#x3D; null  // Set the unencrypted wallet memory to null
-        // password &#x3D; null
-        resolve(key);
-      } catch (e) {
-        reject(&#x27;Key derivation failed -- possibly wrong password&#x27;);
-      }
-    });
-  }
-
-  // getQrCode ... create a svg string for qr code of wallet address
-  getQrCode(w: Wallet): Promise&lt;string&gt; {
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      try {
-        const qrString &#x3D; qrImage.imageSync(w.address, { type: &#x27;svg&#x27; });
-        const index &#x3D; qrString.toString().indexOf(&#x27;d&#x3D;&quot;&#x27;);
-        const lastIndex &#x3D; qrString.toString().indexOf(&#x27;/&gt;&#x27;);
-        resolve(qrString.substring(index + 3, lastIndex - 1));
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
-  getIdenticon(w: Wallet): Promise&lt;string&gt; {
-    return new Identicon(w.address, 420).toString();
-  }
-
-  getPaperWallet(w: Wallet): Promise&lt;any&gt; {
-
-    return new Promise((resolve, reject) &#x3D;&gt; {
-      try {
-        // create a base64 encoded PNG
-        const identiconData &#x3D; new Identicon(w.address, 420).toString();
-
-        const privQrCodeData &#x3D; qrImage.imageSync(w.privateKey, { type: &#x27;svg&#x27; });
-        const addrQrCodeData &#x3D; qrImage.imageSync(w.address, { type: &#x27;svg&#x27; });
-
-        const paperHTML &#x3D; &#x60;
-        &lt;html&gt;
-        &lt;head&gt;
-          &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;/assets/css/style.css&quot;&gt;
-          &lt;style&gt;
-            .containers {
-              display: flex;
-              flex: 1;
-              margin: 0;
-              flex-direction: column;
-            }
-
-            .codes {
-              height: 600px;
-              border: 1px solid #555;
-              align-content: flex-start;
-              display: flex;
-              flex-direction:column;
-              margin: 0 auto;
-
-            }
-            .head-logo{ background: #00ACE6; color:#fff; text-align: center; padding:30px;}
-            .head-logo img{width: 250px; height: 60px;}
-            .Qr-width{width: 250px;}
-            .Qr-width h3{margin:5px;}
-            .pad-left{padding-left:20px;}
-            .qrImages {
-              color:#0A7FA7;
-              margin:0 10px  0 -10px;
-              display: flex;
-              flex-direction: row;
-              flex: 4;
-              justify-content: center;
-              align-items: center;
-            }
-            .bdr-rad{border-radius:10px; padding: 5px;}
-
-            #wallet-icon {
-              flex: 1;
-              justify-content: center;
-              align-items: center;
-            }
-            .flex-dr{display: inherit;
-              flex-direction: column-reverse;
-              align-items: center;
-            }
-            .print-address-container {
-              font-size: 17px;
-              color:#fff;
-              background: #00ACE6;
-              justify-content: center;
-              align-items: center;
-            }
-            .bg-img{ background-image: url(&quot;/assets/img/ba_logo.svg&quot;);
-              background-repeat:no-repeat;
-              min-height: 50px;
-              width:250px;
-              align-self: center;
-              }
-            .head-logo {
-              display: flex; flex-direction: column; 
-              flex:1; 
-              flex-grow: row wrap; 
-              align-content: center;
-              justify-content: center; 
-              color: #fff;
-            }
-            .head-logo a{ padding:3px 0; margin-top: 10px; font-size:17px;color: #fff; text-decoration:none; }
-            
-            .bg-img img{display: none;}
-            @media print{
-                  
-              .bg-img{ background-image:none;
-                background-repeat:no-repeat;
-                height: 50px;
-                }
-                
-              .bg-img img{display: inline;}
-              .head-logo a{color: #000;}
-            }
-          &lt;/style&gt;
-        &lt;/head&gt;
-
-        &lt;body&gt;
-          &lt;div class&#x3D;&quot;containers&quot;&gt;
-            &lt;div class&#x3D;&quot;codes&quot;&gt;
-            &lt;div class&#x3D;&quot;head-logo&quot;&gt;
-              &lt;div class&#x3D;&quot;bg-img&quot;&gt;
-                  &lt;img src&#x3D;&quot;/assets/img/bg_logo.svg&quot; alt&#x3D;&quot;&quot;&gt;
-              &lt;/div&gt;
-              &lt;a href&#x3D;&quot;&quot;&gt;www.blockaction.io&lt;/a&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;qrImages&quot;&gt;
-              &lt;div id&#x3D;&quot;paperwalletprivqr&quot; class&#x3D;&quot;Qr-width flex-dr&quot;&gt;
-                  &lt;img width&#x3D;&quot;192&quot; height&#x3D;&quot;192&quot; id&#x3D;&quot;privQrImage&quot; style&#x3D;&quot;display: block;&quot; &gt;
-                  &lt;h3 class&#x3D;&quot;txt-dr&quot;&gt; Private Key&lt;/h3&gt;
-              &lt;/div&gt;
-              &lt;div id&#x3D;&quot;paperwalletaddrqr&quot; class&#x3D;&quot; Qr-width flex-dr &quot;&gt;
-                  &lt;img width&#x3D;&quot;192&quot; height&#x3D;&quot;192&quot; id&#x3D;&quot;addrQrImage&quot; style&#x3D;&quot;display: block;&quot; &gt;
-                  &lt;h3 class&#x3D;&quot;txt-dr&quot;&gt; Address&lt;/h3&gt;
-              &lt;/div&gt;
-
-              &lt;div id&#x3D;&quot;wallet-icon&quot; class&#x3D;&quot;bdr-rad flex-dr&quot;&gt;
-                &lt;img  class&#x3D;&quot;bdr-rad&quot; width&#x3D;&quot;50&quot; height&#x3D;&quot;50&quot; id&#x3D;&quot;iconImage&quot; style&#x3D;&quot;display: block;&quot;&gt;
-                &lt;h3 class&#x3D;&quot;txt-dr&quot;&gt;Wallet Icon&lt;/h3&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-            &lt;div class&#x3D;&quot;print-address-container pad-left&quot;&gt;
-              &lt;p&gt;
-                &lt;strong&gt;Your Address:&lt;/strong&gt;
-                &lt;br&gt;&lt;span id&#x3D;&quot;paperwalletpriv&quot;&gt;${w.address}&lt;/span&gt;
-              &lt;/p&gt;
-              &lt;p&gt;
-                &lt;strong&gt;Your Private Key:&lt;/strong&gt;
-                &lt;br&gt;&lt;span id&#x3D;&quot;paperwalletadd&quot;&gt;${w.privateKey}&lt;/span&gt;
-              &lt;/p&gt;
-
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-          &lt;/div&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;
-        &#x60;;
-
-        resolve({ paperHTML, identiconData, privQrCodeData, addrQrCodeData });
-      } catch (e) {
-        console.error(e);
-        reject(&#x27;Couldn\&#x27;t generate paper wallet&#x27;);
-      }
-    });
-  }
-
-  // saveWalletToFile ... saves the encrypted wallet object ( wallet keystore ) to disk
-  saveWalletToFile(w: Wallet): Promise&lt;any&gt; {
-    return new Promise((resolve, reject) &#x3D;&gt; {
-
-      try {
-        const fileName: string &#x3D; w.fileName || &#x27;walletKeystore&#x27;;
-        const data &#x3D; JSON.stringify(w.keystore);
-        const blob &#x3D; new Blob([data], { type: &#x27;text/json&#x27; });
-
-        if (window.navigator &amp;&amp; window.navigator.msSaveOrOpenBlob) {
-          window.navigator.msSaveOrOpenBlob(blob, fileName);
-        } else {
-          const e &#x3D; document.createEvent(&#x27;MouseEvents&#x27;),
-            a &#x3D; document.createElement(&#x27;a&#x27;);
-
-          a.download &#x3D; fileName;
-          a.href &#x3D; window.URL.createObjectURL(blob);
-          a.dataset.downloadurl &#x3D; [&#x27;text/json&#x27;, a.download, a.href].join(&#x27;:&#x27;);
-          e.initEvent(&#x27;click&#x27;, true, false);
-          a.dispatchEvent(e);
-        }
-        resolve(true);
-      } catch (e) {
-        reject(&#x27;Couldn\&#x27;t save wallet to disk&#x27;);
-      }
-    });
-  }
-
-  getBalance(address: string): Promise&lt;any&gt; {
-    return this.http
-      .get(&#x60;https://api.etherscan.io/api?module&#x3D;account&amp;action&#x3D;balance&amp;address&#x3D;${address}&amp;tag&#x3D;latest&#x60;)
-      .toPromise()
-      .then(res &#x3D;&gt; res.json())
-      .then(res &#x3D;&gt; res.result);
-  }
-
-  requestEther(address: string, email: string, value: number): Promise&lt;any&gt; {
-    return this.http
-      .post(&#x27;${serverUrl}/api/requestEther&#x27;, { address, email, value })
-      .toPromise()
-      .then(res &#x3D;&gt; res.json());
+  displaySpiner(value: boolean) {
+    this.spinnerStatus.next(value);
   }
 }
 </code></pre>

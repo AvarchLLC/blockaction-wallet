@@ -7,7 +7,7 @@
             <input type="{{ passphraseType }}" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase" id="password"
             />
             <div class="text-right">
-                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                <a class="btn-link" id="passphraseToggle" (click)="passphraseToggle()">{{ passphraseButton }}</a>
             </div>
         </div>
         <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
