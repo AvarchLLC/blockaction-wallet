@@ -9,6 +9,7 @@
   "author": "bitsbeat",
   "license": "ISC",
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "async": "^2.4.1",
     "asyncawait": "^1.0.6",
     "bcrypt": "^1.0.2",
@@ -21,8 +22,10 @@
     "google-caja": "0.0.2",
     "grunt-env": "^0.4.4",
     "http-status": "^1.0.1",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.10.5",
+    "nicemail": "^1.0.4",
     "supertest": "^3.0.0"
   },
   "devDependencies": {
