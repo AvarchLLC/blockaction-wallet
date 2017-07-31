@@ -28,4 +28,17 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.menuItems = NAVROUTES.filter(menuItem => menuItem);
   }
+
+  isActive(menuItem): boolean {
+    if (menuItem.routes) {
+      for (const route of menuItem.routes) {
+        if (route.path === this.activeLink) {
+          return true;
+        }
+      }
+    } else {
+      return menuItem.path === this.activeLink;
+    }
+  }
+
 }

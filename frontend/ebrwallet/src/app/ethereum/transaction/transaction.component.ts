@@ -1,11 +1,13 @@
+import { Wallet } from '../wallet';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import 'rxjs/add/operator/filter';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { WalletService } from '../../services/wallet.service';
-import { TransactionService } from '../../services/transaction.service';
+import { WalletService } from '../services/wallet.service';
+import { TransactionService } from '../services/transaction.service';
+import {SpinnerService} from '../../services/spinner.service';
 
 
 declare var toastr;
@@ -23,16 +25,21 @@ export class TransactionComponent implements OnInit {
   sendEther: FormGroup;
   requestEther: FormGroup;
 
+  keyInput: string;
+  wallet: Wallet;
+  walletPassword: string;
+  ethusd: any;
+
   message = '';
   error = '';
-  wallet: any;
-  ethusd: any;
   ready = false;
+  existing = 'wallet';
 
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private route: ActivatedRoute,
     private transactionService: TransactionService,
-    private walletService: WalletService
+    private walletService: WalletService,
+    private spinner: SpinnerService
   ) {
 
     this.sendEther = fb.group({
@@ -97,29 +104,29 @@ export class TransactionComponent implements OnInit {
       .then(ok => console.log('successs', ok))
       .catch(err => console.error(err));
   }
-  checkAddressValidity() {
-    // if (EthJS.Util.isValidPublicAddress(publicAddr) && (this.sendEther.controls.privatekey!=='' || EthJS.Util.isValidPrivateAddress )) {
-    //   return true
-    // }
-    let invalidPrivateKey = true,
-      invalidAddress = true;
 
+  isValidPrivateKey(privKey: string) {
+    let valid;
+    try {
+        valid = EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privKey)));
+    } catch (e) {
+        valid = false;
+    }
+    // console.log('Valid', valid)
+    return valid;
+  }
+
+  checkAddressValidity() {
     return (group: FormGroup): { [key: string]: any } => {
-      try {
-        invalidPrivateKey = !EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(group.controls.privateKey.value)));
-      } catch (e) {
-        invalidPrivateKey = true;
-      }
+      let invalidAddress = true;
+
       try {
         invalidAddress = !EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(group.controls.receiveAddress.value));
       } catch (e) {
         invalidAddress = true;
       }
 
-      return {
-        invalidPrivateKey,
-        invalidAddress
-      };
+      return { invalidAddress };
     };
   }
 
@@ -150,7 +157,6 @@ export class TransactionComponent implements OnInit {
     if (ether_value && !isNaN(ether_value) && ether_value > 0) {
       const amount_in_usd = ether_value * this.ethusd.value;
       form.controls.amount_usd.setValue(amount_in_usd);
-      // this.sendEther.controls.amount_usd.setValue(amount_in_usd);
     }
   }
 
@@ -162,43 +168,49 @@ export class TransactionComponent implements OnInit {
     if (usd_value && !isNaN(usd_value) && usd_value > 0) {
       const amount_in_ether = usd_value / this.ethusd.value;
       form.controls.amount_ether.setValue(amount_in_ether);
-      // this.sendEther.controls.amount_ether.setValue(amount_in_ether);
     }
   }
 
-  /*  Loading wallet by file upload
-   *
-   *
-   * */
+  showCardFromKey() {
+
+    const privKey = EthJS.Util.addHexPrefix(this.keyInput.trim());
+    if (EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(privKey))) {
+
+      this.wallet = new Wallet;
+      this.wallet.privateKey = privKey;
+      this.wallet.address = EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(privKey));
+      this.ready = true;
+    } else {
+      toastr.error('Not a valid key. Please enter another one.');
+    }
+  }
+
+  // Load wallet from uploaded file
   fileChangeListener($event): void {
-    this.readThis($event.target);
+    // this.readThis($event.target);
+    this.walletService
+      .readWalletFromFile($event.target)
+      .then(wallet => {
+        this.wallet = wallet;
+        toastr.success('Valid wallet file.');
+      })
+      .catch(err => toastr.error('Invalid wallet file.'));
   }
 
-  readThis(inputValue: any): void {
-    const self = this;
-    const file: File = inputValue.files[0];
-    const myReader: FileReader = new FileReader();
+  decryptWallet() {
+    this.spinner.displaySpiner(true);
 
-    myReader.onloadend = function (e) {
-      self.loadWalletFromString(myReader.result);
-    };
-
-    myReader.readAsText(file);
-  }
-  loadWalletFromString(s: string): void {
-    try {
-      // throw "err"
-      const wallet = JSON.parse(s);
-      if (!wallet.address || !wallet.version || wallet.version !== 3) {
-        throw true;
+    setTimeout(async function () {
+    // TODO: Get private key from wallet
+      try {
+        this.wallet.privateKey = await this.walletService.getPrivateKeyString(this.wallet, this.walletPassword);
+        this.ready = true;
+        this.spinner.displaySpiner(false);
+      }catch(e) {
+        this.spinner.displaySpiner(false);
+        toastr.error('Wrong wallet password.')
       }
-      this.wallet = {};
-      this.wallet['keystore'] = wallet;
-      toastr.success('Valid wallet file.');
-    } catch (e) {
-      toastr.error('Invalid wallet file.', 'Wallet');
-    }
-
+    }.bind(this), 1000);
   }
 
 

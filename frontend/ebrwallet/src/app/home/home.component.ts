@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+declare var toastr: any;
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  subscription : FormGroup;
+
+  constructor( @Inject(FormBuilder) fb: FormBuilder) {
+    this.subscription = fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])]
+    })
+  }
 
   ngOnInit() {
+  }
+
+  subscribe() {
+    toastr.success('Subscribed to newsletter.')
   }
 
 }

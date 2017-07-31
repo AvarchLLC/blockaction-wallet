@@ -4,7 +4,9 @@ import { Http } from '@angular/http';
 import { Wallet } from '../wallet';
 
 import qrImage from 'qr-image';
-import Identicon from 'identicon.js';
+// import Identicon from 'identicon.js';
+import Blockies from 'blockies';
+
 import 'rxjs/add/operator/toPromise';
 
 declare var EthJS: any;
@@ -92,8 +94,12 @@ export class WalletService {
     });
   }
 
-  getIdenticon(w: Wallet): Promise<string> {
-    return new Identicon(w.address, 420).toString();
+  getBlockie(w: Wallet): string {
+    return new Blockies({
+      seed: w.address.toLowerCase(),
+      size: 8,
+      scale: 16
+    }).toDataURL();
   }
 
   getPaperWallet(w: Wallet): Promise<any> {
@@ -101,7 +107,7 @@ export class WalletService {
     return new Promise((resolve, reject) => {
       try {
         // create a base64 encoded PNG
-        const identiconData = new Identicon(w.address, 420).toString();
+        const blockie = this.getBlockie(w);
 
         const privQrCodeData = qrImage.imageSync(w.privateKey, { type: 'svg' });
         const addrQrCodeData = qrImage.imageSync(w.address, { type: 'svg' });
@@ -141,8 +147,8 @@ export class WalletService {
               justify-content: center;
               align-items: center;
             }
-            .bdr-rad{border-radius:10px; padding: 5px;}
-
+            .bdr-rad{border-radius:25px; padding: 5px;}
+            .blockie-rad{border-radius:25px;}
             #wallet-icon {
               flex: 1;
               justify-content: center;
@@ -209,7 +215,7 @@ export class WalletService {
               </div>
 
               <div id="wallet-icon" class="bdr-rad flex-dr">
-                <img  class="bdr-rad" width="50" height="50" id="iconImage" style="display: block;">
+                <img  class="blockie-rad" width="50" height="50" id="iconImage" style="display: block;">
                 <h3 class="txt-dr">Wallet Icon</h3>
               </div>
             </div>
@@ -231,7 +237,7 @@ export class WalletService {
         </html>
         `;
 
-        resolve({ paperHTML, identiconData, privQrCodeData, addrQrCodeData });
+        resolve({ paperHTML, blockie , privQrCodeData, addrQrCodeData });
       } catch (e) {
         console.error(e);
         reject('Couldn\'t generate paper wallet');
@@ -264,6 +270,31 @@ export class WalletService {
       } catch (e) {
         reject('Couldn\'t save wallet to disk');
       }
+    });
+  }
+
+  readWalletFromFile(uploaded): Promise<Wallet> {
+    const wallet = new Wallet;
+
+    return new Promise((resolve, reject) => {
+      const file: File = uploaded.files[0];
+      const myReader: FileReader = new FileReader();
+
+      myReader.onloadend = function (e) {
+        try {
+          const res = JSON.parse(myReader.result);
+          if (!res.address || !res.version || res.version !== 3) {
+            throw true;
+          }
+          wallet.keystore = res;
+          wallet.address = EthJS.Util.addHexPrefix(res.address);
+          resolve(wallet);
+        } catch (e) {
+          reject(null);
+        }
+      };
+
+      myReader.readAsText(file);
     });
   }
 

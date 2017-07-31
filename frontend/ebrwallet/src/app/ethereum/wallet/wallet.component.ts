@@ -1,12 +1,12 @@
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { WalletService } from '../../services/wallet.service';
+import { WalletService } from '../services/wallet.service';
+import { TransactionService } from '../services/transaction.service';
 import { AuthService } from '../../services/auth.service';
-import { TransactionService } from '../../services/transaction.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
-import { Wallet } from '../../wallet';
+import { Wallet } from '../wallet';
 
 import {SpinnerService} from '../../services/spinner.service';
 import { Config } from '../../config';
@@ -40,9 +40,9 @@ export class WalletComponent implements OnInit {
   qrClass = '';
   modalVisible = false;
 
-  identicon: any;
+  blockie: any;
   showSpinner = false;
-
+  ready= false;
 
   @HostListener('window:beforeunload', ['$event'])
   unloadHandler(event) {
@@ -70,7 +70,7 @@ export class WalletComponent implements OnInit {
       email: ['', Validators.email],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
-      comment: ['', Validators.required]
+      message : ['', Validators.required]
     });
   }
 
@@ -97,8 +97,6 @@ export class WalletComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // const message = `Request for ethers to address ${ this.wallet ? this.wallet.address : '' }`;
-    // this.requestEtherForm.controls.comment.setValue(message);
     this.transactionService
       .getPrice()
       .then(res => {
@@ -108,6 +106,21 @@ export class WalletComponent implements OnInit {
         };
       })
       .catch(err => toastr.error('Couldn\'t get exchange rate'));
+
+    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
+      this.ready = true;
+    }
+  }
+
+  goBack() {
+    // if (this.showCreate && this.wallet) {
+    //   const confirmMsg = 'You haven\'t downloaded wallet yet. If you go back, you will lose your wallet.';
+    //   if (confirm(confirmMsg)) {
+    //       this.wallet = null;
+    //       this.walletComponent.wallet = null;
+    //   }
+    //   return;
+    // }
   }
 
   get isDisabled() {
@@ -146,6 +159,16 @@ export class WalletComponent implements OnInit {
       : this.passphraseButton = 'Show Passphrase';
   }
 
+
+  isReady() {
+    this.googleAnalyticsService
+      .emitEvent('Wallet Page', 'Button Clicked', 'Ok, Got It');
+    this.ready = true;
+    const messageExpiry = new Date();
+    messageExpiry.setHours(messageExpiry.getHours() + 1);
+    localStorage.setItem('messageShown', messageExpiry.toString());
+  }
+
   create(): void {
 
     this.googleAnalyticsService
@@ -161,7 +184,7 @@ export class WalletComponent implements OnInit {
           this.walletForm.controls.password.setValue('');
           toastr.success('Created!', 'Wallet Creation');
           this.showQr();
-          this.identicon = this.walletService.getIdenticon(this.wallet);
+          this.blockie = this.walletService.getBlockie(this.wallet);
           this.disabled = false;
           this.spinner.displaySpiner(false);
           this.on_wallet_creation.emit(this.wallet);
@@ -198,7 +221,7 @@ export class WalletComponent implements OnInit {
     // this.filePassword = null
   }
 
-  printPaperWallets(strJson) {
+  printPaperWallets() {
     this.googleAnalyticsService
       .emitEvent('Post Wallet Creation', 'Print Wallet');
 
@@ -207,7 +230,8 @@ export class WalletComponent implements OnInit {
       win.document.write(data.paperHTML);
       win.document.getElementById('privQrImage').setAttribute('src', 'data:image/svg+xml;base64,' + window.btoa(data.privQrCodeData));
       win.document.getElementById('addrQrImage').setAttribute('src', 'data:image/svg+xml;base64,' + window.btoa(data.addrQrCodeData));
-      win.document.getElementById('iconImage').setAttribute('src', 'data:image/png;base64,' + data.identiconData);
+      win.document.getElementById('iconImage').setAttribute('src', data.blockie);
+
       setTimeout(function () {
         win.print();
       }, 3000);
@@ -231,6 +255,32 @@ export class WalletComponent implements OnInit {
       });
 
     toastr.success(str, 'Request Ether');
+  }
+
+  toggleModal() {
+    this.modalVisible = !this.modalVisible;
+  }
+
+  etherAmountChanged(e, form) {
+    const ether_value = parseFloat(e.target.value);
+    if (ether_value !== 0 && e.target.value.length > ether_value.toString().length) {
+      e.target.value = ether_value;
+    }
+    if (ether_value && !isNaN(ether_value) && ether_value > 0) {
+      const amount_in_usd = ether_value * this.ethusd.value;
+      form.controls.amount_usd.setValue(amount_in_usd);
+    }
+  }
+
+  usdAmountChanged(e, form) {
+    const usd_value = parseFloat(e.target.value);
+    if (usd_value !== 0 && e.target.value.length > usd_value.toString().length) {
+      e.target.value = usd_value;
+    }
+    if (usd_value && !isNaN(usd_value) && usd_value > 0) {
+      const amount_in_ether = usd_value / this.ethusd.value;
+      form.controls.amount_ether.setValue(amount_in_ether);
+    }
   }
 
 }

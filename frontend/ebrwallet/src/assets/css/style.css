@@ -4,14 +4,14 @@ body {
     font-size: 16px;
 }
 
-
-
 @font-face {
 font-family:"SourceSansPro-ExtraLight";
 src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
 font-style: normal;
 font-weight:lighter;
 }
+
+.thin { font-family:"SourceSansPro-ExtraLight" !important; }
 
 @font-face {
 font-family:'SourceSansPro-Regular';
@@ -83,16 +83,10 @@ font-weight: 400;
   content: "\eaca";
 }
 
-header{
-  max-height: 88px;
-  background: #00ACE6;
-}
-.logo{
-  margin: 7px -15px 30px 0;
-  width: 208px;
-  float:right;
 
-}
+header { background-color:#f1f1f1; }
+
+
 nav{
   height: 75px;
   float: right;
@@ -106,12 +100,6 @@ nav ul li{
   list-style: none;
   margin:0;
 }
-nav ul li a{
-  text-align: center;
-  font-weight: 700;
-  color: #fff;
-  padding: 10px;
-}
 nav ul li a:hover{
   text-decoration: none;
   color:#00abe3;
@@ -123,36 +111,19 @@ margin-top: -32px;
 margin-bottom: 30px;
 }
 .banner-content{
-  margin-top: 130px;
-  z-index: 1000;
+  padding-top: 100px; padding-bottom:50px;
   color: #4a4a4a;
   text-align: center;
 }
-.banner-content p{
-  font-weight: 600;
-  font-size: 16px;
-  word-spacing: 2px;
-  margin: 30px 0;
-}
+.banner-content h1 { max-width:470px; display:inline-block; font-family: "SourceSansPro-ExtraLight"; color:#000; }
+.banner-content p { max-width:600px; display: inline-block; margin:30px 0;  }
+
 .banner-text{
   font-family: "SourceSansPro-ExtraLight";
   font-size: 50px;
   margin-top: 20px;
 }
-.banner-content button{
-  width: 180px;
-  background: #00ace6;
-  padding:10px;
-  border: none;
-  border-radius:3px;
-  font-size: 20px;
-  color: #fff;
-  font-weight: 700;
-  margin-bottom: 0px;
-  margin-top:0px;
-}
 .pd-none{ padding: 0;}
-
 .pd-top-sm { padding-top: 10px;}
 .pad-topbottom{ padding:40px 0;}
 .bg-dark{
@@ -165,10 +136,6 @@ margin-bottom: 30px;
 
 .bg-dark a { color:#fff;}
 
-.bg-dark p, h1{
-  color: #fff;
-  line-height: 1.6;
-}
 .bg-light{ background: #fff;}
 .four-col-box {
 padding-top: 40px;
@@ -176,11 +143,12 @@ text-align: center;
 padding-bottom: 84px;
 }
 .four-col-box  img{
-padding-top: 30px;
+margin-bottom: 30px;
 text-align: center;
-padding-bottom:20px;
+height:60px;
 }
-.four-col-box h3{color: #666;}
+.four-col-box h3{ font-size:18px; font-family:"SourceSansPro-Bold";  }
+.four-col-box p { margin-bottom: 60px; }
 .icon{
   vertical-align: middle;
 }
@@ -202,12 +170,6 @@ padding-bottom:20px;
 }
 .links-footer a {
 color: #fff;
-}
-.links-footer h2,h3 {
-margin:40px auto 20px;
-}
-.links-footer p{
-
 }
 .links-footer a:hover{
   color:#00abe3;
@@ -272,29 +234,46 @@ text-decoration: none;
      background-color: #fff;
 }
 /****************************************** rquest ether *********************************/
-.request-modal {
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    background-size: cover;
-    min-height: 100vh;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    padding: 10% 0;
-    z-index: 1000;
-    overflow: auto;
-}
+ .request-modal {
+  margin: 0;
+  padding: 0;
+  z-index: 900;
 
-form textarea {
-  resize: none;
 }
 .request-modal .card{
-  margin: 0 15px;
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  z-index: 900;  
+}
+
+#closeButton {
+  position: absolute;
+  top:15px;
+  left: 15px;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  border: none;
+  color: #000;  
+  background: none;
+  font-size: 24px;
+}
+input {
+    margin-bottom: 20px;
 }
 .request-modal .card h2 {
     font-weight: 600;
     text-transform: uppercase;
+}
+
+form textarea {
+  resize: none;
 }
 
 .button-space {
@@ -424,11 +403,8 @@ font-size: 29px;}
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus {
-  text-transform: uppercase;
-    background-image: linear-gradient(-179deg, #32C1F0 0%, #076E90 100%);
-    border: 1px solid #00ACE6;
-    box-shadow: inset 0px 1px 0px 0px rgba(204, 242, 255, 0.69);
-    border-radius: 2px;
+    text-transform: uppercase;
+    background:#1ED6E5;
 }
 
 .block {
@@ -506,8 +482,6 @@ transform: scale(3); }
     float : left;
     text-align: left;
     margin:-10px 0 20px ;
-
-
 }
 
 #walletform .text-muted li {
@@ -588,12 +562,6 @@ nav ul li{
   display: inline-block;
   margin:0 30px;
 }
-.logo{
-  margin: 7px -28px 30px 0;
-  width: 208px;
-  float:right;
-
-}
 
 .card { width: 500px; margin: 0 auto; }
 
@@ -624,9 +592,7 @@ nav ul li{
   border-bottom-left-radius: 0px;
 }
 /************* request ether responsive*****************/
-.request-modal .card{
-  margin: 0 auto;
-}
+
 .converter-box{
   display: flex;
   flex-direction: row;
@@ -639,34 +605,16 @@ nav ul li{
 
 }
 @media screen and (min-width: 768px) {
-  header{
-      margin-top: 25px;
-      max-height: 70px;
-      /* Rectangle 6: */
-      /* Rectangle 6: */
-      background-image: linear-gradient(-180deg, #737373 0%, #262626 48%, #000000 48%, #000000 100%, #7F7F7F 100%);
-  }
+
 .pd-all-md { padding: 50px;}
 
 #nav-open-btn {
        display: none;
    }
-   .logo{
-       margin-top: -30px;
-       width: 250px;
-       float: left;
-       margin-bottom: 20px;
+
+.banner{ background: url(../img/network.jpg) no-repeat center bottom; text-align: center;
    }
-.banner img{
-   float: right;
-   margin:0 auto;
-   }
-.banner-content{
-     text-align:left;
-   }
-.banner-content button{
-     margin-top: 20px;
-   }
+
 .bg-dark{
      width: 100%;
      background: #4a4a4a;
@@ -716,6 +664,37 @@ nav ul li{
   font-size: 32px;}
     .block {width: 100%; margin: 0 auto;}
 
+  .request-modal {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10% 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .request-modal .card{
+    min-height: 0;
+    min-width: 0;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 0 auto;
+
+  }
+  #closeButton {
+    display: none;
+  }
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -728,3 +707,8 @@ nav ul li{
     transform: translateX(50%);
   }
 }
+
+
+.features img { transform: scale(.5); position: relative; top:50px; }
+
+

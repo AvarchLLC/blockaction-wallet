@@ -9,15 +9,12 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { AppRoutingModule} from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 import { EthereumModule} from './ethereum/ethereum.module';
 
 // Project Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-
-
-// Project Services
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +24,7 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     CoreModule,
+    SharedModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, {
       passThruUnknownUrl: true
     }),

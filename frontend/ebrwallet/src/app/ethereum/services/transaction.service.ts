@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, URLSearchParams } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 import { Buffer } from 'buffer';
 import Transaction from 'ethereumjs-tx';
-
+import { ApiResponse } from './response';
 
 declare var EthJS: any;
 declare var Web3: any;
@@ -32,12 +34,41 @@ $ curl -X POST \
 export class TransactionService {
 
   web3: any;
-  url = 'http://localhost:8545';
+  // url = 'http://localhost:8545';
+  NETWORK = 'ropsten';
+  BASE_URL = `https://api.infura.io/v1/jsonrpc/${this.NETWORK}`;
 
   constructor(private http: Http) {
 
     // this.web3 = new Web3(new Web3.providers.HttpProvider(this.url));
     this.web3 = new Web3();
+  }
+
+  callApi(type, method, params): Promise<ApiResponse> {
+    if (type === 'get') {
+
+      const options = new URLSearchParams();
+      options.set('params', params);
+
+      return this.http
+        .get(`${this.BASE_URL}/${method}`, { search: options})
+        .map((res) => res.json() as ApiResponse)
+        .toPromise();
+
+    } else if ( type === 'post') {
+
+      const body = {
+        jsonrpc : '2.0',
+        id: 1,
+        method: method,
+        params: params
+      };
+
+      return this.http
+        .post(`${this.BASE_URL}`, body)
+        .map((res) => res.json() as ApiResponse)
+        .toPromise();
+    }
   }
 
   /**

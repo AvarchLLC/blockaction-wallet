@@ -1,6 +1,6 @@
-import { WalletService } from '../../services/wallet.service';
+import { WalletService } from '../services/wallet.service';
 import { HttpModule } from '@angular/http';
-import { TransactionService } from '../../services/transaction.service';
+import { TransactionService } from '../services/transaction.service';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 

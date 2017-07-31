@@ -1,10 +1,14 @@
+import { WalletInfoComponent } from './wallet-info/wallet-info.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EthereumComponent} from './ethereum.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [
-  { path: 'ethereum', component: EthereumComponent },
+  { path: 'ethereum/wallet', component: WalletComponent },
+  { path: 'ethereum/send', component: TransactionComponent },
+  { path: 'ethereum/info', component: WalletInfoComponent },
 ];
 
 @NgModule({
