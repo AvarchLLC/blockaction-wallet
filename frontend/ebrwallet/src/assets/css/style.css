@@ -234,29 +234,46 @@ text-decoration: none;
      background-color: #fff;
 }
 /****************************************** rquest ether *********************************/
-.request-modal {
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    background-size: cover;
-    min-height: 100vh;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    padding: 10% 0;
-    z-index: 1000;
-    overflow: auto;
-}
+ .request-modal {
+  margin: 0;
+  padding: 0;
+  z-index: 900;
 
-form textarea {
-  resize: none;
 }
 .request-modal .card{
-  margin: 0 15px;
+  min-height: 100vh;
+  min-width: 100vw;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  z-index: 900;  
+}
+
+#closeButton {
+  position: absolute;
+  top:15px;
+  left: 15px;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  border: none;
+  color: #000;  
+  background: none;
+  font-size: 24px;
+}
+input {
+    margin-bottom: 20px;
 }
 .request-modal .card h2 {
     font-weight: 600;
     text-transform: uppercase;
+}
+
+form textarea {
+  resize: none;
 }
 
 .button-space {
@@ -467,17 +484,21 @@ transform: scale(3); }
     margin:-10px 0 20px ;
 }
 
-.text-muted {
-    color: #fff;
+#walletform .text-muted li {
     opacity: 1;
 
     /*list-style-image: '&#10003';*/
 }
+#walletform li {
+  opacity: 0.5;
 
-li.text-muted {
+}
+
+#walletform li.text-muted {
+    color: #fff;
+    opacity: 1;
     list-style: none;
     margin-left: -18px;
-
 }
 li.text-muted:before{
 
@@ -497,6 +518,10 @@ li.text-muted:before{
     right: 0px;
     z-index: 1500;
     overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner-overlay img {
@@ -567,9 +592,7 @@ nav ul li{
   border-bottom-left-radius: 0px;
 }
 /************* request ether responsive*****************/
-.request-modal .card{
-  margin: 0 auto;
-}
+
 .converter-box{
   display: flex;
   flex-direction: row;
@@ -637,6 +660,37 @@ nav ul li{
   .block h2 {
   font-size: 32px;}
     .block {width: 100%; margin: 0 auto;}
+
+  .request-modal {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10% 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .request-modal .card{
+    min-height: 0;
+    min-width: 0;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin: 0 auto;
+
+  }
+  #closeButton {
+    display: none;
+  }
 
 }
 

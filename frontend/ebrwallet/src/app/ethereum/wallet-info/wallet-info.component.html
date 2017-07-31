@@ -1,0 +1,23 @@
+<!-- Existing Wallet Box -->
+<div *ngIf="!ready" class=" card walletSelectionBox">
+    <ul class="nav nav-tabs">
+        <li [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></li>
+        <li [class.active]="existing === 'key'"><a (click)="existing='key'">Address</a></li>
+    </ul>
+    <div *ngIf="existing === 'wallet'" class="nav nav-content">
+        <label class="btn btn-lg btn-primary">
+            Upload Wallet File <input type="file" (change)="fileChangeListener($event)" style="display: none;">
+        </label>
+    </div>
+    <div *ngIf="existing === 'key'" class="nav nav-content">
+        <input placeholder="Address" [(ngModel)]="keyInput">
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+    </div>
+</div>
+
+<!--- Wallet Info View -->
+<div *ngIf="ready">
+    <div class="card card-md-p">
+
+    </div>
+</div>

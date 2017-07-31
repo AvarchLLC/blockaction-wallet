@@ -1,0 +1,124 @@
+<!-- Wallet Creation Info  -->
+<div class="fullPage pt-2" *ngIf="!ready">
+    <div class="pop-alert-box card-center card-md-p align-center">
+        <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
+        <div class="pop-alert">
+            <h1 class="color-black"><b>We don't store your keys</b></h1>
+            <p p-font-size>We believe in user privacy and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>
+            <button (click)="isReady()" type="button" name="ok_go_it" class="btn-marg btn-cyan text-white"> <b>Ok, Got it</b></button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Wallet Creation Page -->
+<div *ngIf="ready">
+    <div class="container-md" [class.slide]="this.wallet">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block block-center bg-blue">
+                    <h2> Create wallet </h2>
+                    <br/>
+                    <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
+                        <div class="form-group">
+                            <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"
+                            />
+                            <div class="text-right">
+                                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                            </div>
+                        </div>
+                        <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
+                            <ul>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>
+                            </ul>
+                        </div>
+                        <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
+                            <ul>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>
+                                <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>
+                            </ul>
+                        </div>
+                        <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
+                            Your password is secure and you'll all set!
+                        </div>
+                        <div class="buttonWithLoader">
+                            <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                        </div>
+                        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+                            need this password + your private key to unlock your wallet.
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="block bg-gray">
+                    <div *ngIf="wallet">
+                        <h2>Wallet Ready!</h2>
+                        <div class="form-group mg-top-sm">
+                            <b>Address</b>
+                            <div class="clearfix">
+                                <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+
+                                <span class="{{ qrClass }}" (click)="qrToggle()">
+                                    <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
+                                        <path [attr.d]="qrSvg"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
+                        </div>
+                        <div class="form-group">
+                            <b>Private Key</b>
+                            <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
+                            <br />
+                            <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                            <button class="btn btn-link btn-lg" (click)="toggleModal()">Request Ether</button>
+                            <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--- Ether Request Modal -->
+<div *ngIf="modalVisible" class="request-modal">
+<div class="card">
+    
+    <h2>Request Ether</h2>
+    <form [formGroup]="requestEtherForm">
+        <input class="form-control" formControlName="email" type="email" placeholder="Email...">
+
+        <!-- Currency Converter Box Start -->
+        <div class="converter-box">
+            <div class="input-group">
+                <div class="input-group-addon bdr-none flex-box">
+                    <div class="super-txt "><h4><b>eth</b></h4></div>
+                    <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
+                </div>
+                 <input class="form-input" (input)="etherAmountChanged($event, requestEtherForm)" formControlName="amount_ether" type="number" min="0"> 
+            </div>
+            <span><h2> = </h2></span>
+            <div class="input-group">
+                <div class="input-group-addon bdr-none flex-box">
+                    <div class="super-txt"><h4><b>usd</b></h4></div>
+                    <div class="base-txt"><h4>$</h4></div>
+                </div>
+                 <input class="form-input" (input)="usdAmountChanged($event, requestEtherForm)" formControlName="amount_usd" type="number" min="0"> 
+            </div>
+        </div>
+        <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
+        <!-- Currency Converter Box End -->
+
+        <textarea class="form-control" formControlName="message"></textarea>
+    </form>
+    <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+    <button class="" id="closeButton" (click)="toggleModal()">x</button>
+    <button class="btn btn-link btn-lg" (click)="toggleModal()">Close</button>
+</div>
+</div>

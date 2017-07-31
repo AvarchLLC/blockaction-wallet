@@ -1,17 +1,10 @@
-<header id="page-top">
-<div class="container">
-  <div class="pull-left logo">
-    <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
-  </div>
-    <app-nav-bar class="pull-right"></app-nav-bar>
-  </div>
-</header>
+
 <!--+++++++++++++++++++++++++++++++++++++++Banner section++++++++++++++++++++-->
       <div class="banner">
             <div class="container">
                 <div class="banner-content">
-                  <div id="large-header">
-           <!-- <canvas id="demo-canvas"></canvas> -->
+                  <div>
+            <!-- <canvas id="demo-canvas"></canvas>  -->
                   <h1 class="thin">Secure and Simplified Solutions 
 for Blockchain Transactions</h1>
 <div>
@@ -139,15 +132,15 @@ for Blockchain Transactions</h1>
             </div>
             <div class="col-lg-4 links-footer ">
                 <h2><b>Subscribe Newsletter</b></h2>
-                <form action="" class="bg-light">
-                <input type="email" name="email" placeholder="Type your email">
-                <button type="submit" name="imIn" class="bg-light">I'm In</button>
+                <form action="" class="bg-light" [formGroup]="subscription">
+                <input type="email" formControlName="email" placeholder="Type your email">
+                <button (click)="subscribe()" class="bg-light">I'm In</button>
                 </form>
                 <p>Never misss any offer and news from us. <br>you'll never regret this subscription.</p>
             </div>
         </div>
         <div class="copy-right">
-          <P>&copy; 2017 Block Chain</P>
+          <P>&copy; 2017 Block Action</P>
         </div>
       </section>
       <!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++-->

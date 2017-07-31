@@ -1,15 +1,22 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
+
+import { SpinnerService } from './services/spinner.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports : [ RouterTestingModule ],
+      imports : [ RouterTestingModule, CoreModule ],
       declarations: [
         AppComponent
       ],
+      providers: [ SpinnerService ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     }).compileComponents();
   }));
 
@@ -22,7 +29,7 @@ describe('AppComponent', () => {
 
   // it(`should have as title 'app works!'`, async(() => {
   //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.debugElement.componentInstance;
+//   const app = fixture.debugElement.componentInstance;
   //   expect(app.title).toEqual('app works!');
   // }));
 
