@@ -369,7 +369,6 @@ font-size: 29px;}
 .mg-btm-sm { margin-bottom:20px; }
 
 .card .form-control, .card .btn { margin-top:20px; }
-.txt-scale{transform: scalex(1.2);}
 .logo-icon { max-width:72px;}
 
 .align-center{text-align: center;}
@@ -383,6 +382,7 @@ font-size: 29px;}
 }
 .btn-marg{margin: 20px;}
 .btn-blue{ background: #00ace6; text-align: center;padding:15px 50px; border: none;}
+.btn-cyan { background: #1ed6e5; color:#000; }
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus {
@@ -624,9 +624,6 @@ nav ul li{
   .pop-alert-box {
     width:45%;
     margin: 5% auto;
-  }
-  .txt-scale{
-    transform: scalex(1.3);
   }
   .pop-alert-box p{
       font-size:20px;
