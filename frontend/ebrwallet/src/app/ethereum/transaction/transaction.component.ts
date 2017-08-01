@@ -23,7 +23,6 @@ export class TransactionComponent implements OnInit {
   @Input() mode: string;
 
   sendEther: FormGroup;
-  requestEther: FormGroup;
 
   keyInput: string;
   wallet: Wallet;
@@ -35,8 +34,11 @@ export class TransactionComponent implements OnInit {
   ready = false;
   existing = 'wallet';
 
+  receipt: any;
+
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private transactionService: TransactionService,
     private walletService: WalletService,
     private spinner: SpinnerService
@@ -46,18 +48,7 @@ export class TransactionComponent implements OnInit {
       receiveAddress: ['', Validators.required],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0', Validators.required],
-      privateKey: [''],
-      walletPassword: [''],
-      selection: ''
-    },
-      { validator: this.checkAddressValidity() }
-    );
 
-    this.requestEther = fb.group({
-      email: ['', Validators.required],
-      amount_ether: ['0', Validators.required],
-      amount_usd: ['0', Validators.required],
-      message: ['', Validators.required]
     });
 
     this.route.queryParams
@@ -66,113 +57,75 @@ export class TransactionComponent implements OnInit {
         this.sendEther.setValue({
           receiveAddress: params.to,
           amount_ether: params.value,
-          amount_usd: 0,
-          privateKey: '',
-          walletPassword: '',
-          selection: ''
+          amount_usd: 0
         });
-        // console.log(this.transactionService.createTransaction('0x2324434242',params.to,{ value: params.value }))
       });
   }
 
   onSubmit() {
-    if (this.sendEther.controls.selection.value === 'wallet') {
-      // do transaction from wallet
-      this.walletService
-        .getPrivateKeyString(this.wallet, this.sendEther.controls.walletPassword.value)
-        .then(privkey => {
-          this.sendMoney(privkey);
-        })
-        .catch(err => toastr.error(err));
-    } else {
-      // do transaction from private key
-      this.sendMoney();
-    }
+    this.sendMoney();
   }
 
-  sendMoney(privkey: string = null) {
-    if (privkey === null) {
-      privkey = this.sendEther.controls.privateKey.value;
-    }
-
+  sendMoney() {
     this.transactionService
       .sendMoney(
+        this.wallet.address,
         this.sendEther.controls.receiveAddress.value,
         this.sendEther.controls.amount_ether.value,
-        privkey
+        this.wallet.privateKey
       )
-      .then(ok => console.log('successs', ok))
-      .catch(err => console.error(err));
+      .then(hash => {
+        this.router.navigate(['/ethereum/info'], {queryParams: { pending: hash, address: this.wallet.address}});
+        toastr.success('Transaction sent');
+      })
+      .catch(err => {
+        if (err.message.indexOf('funds') > -1) {
+          toastr.error('Insufficent Funds');
+        } else {
+          toastr.error('Couldn\'t send transaction.');
+        }
+      });
   }
 
   isValidPrivateKey(privKey: string) {
-    let valid;
     try {
-        valid = EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privKey)));
+        return EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privKey)));
     } catch (e) {
-        valid = false;
+        return false;
     }
-    // console.log('Valid', valid)
-    return valid;
   }
 
-  checkAddressValidity() {
-    return (group: FormGroup): { [key: string]: any } => {
-      let invalidAddress = true;
-
-      try {
-        invalidAddress = !EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(group.controls.receiveAddress.value));
-      } catch (e) {
-        invalidAddress = true;
-      }
-
-      return { invalidAddress };
-    };
+  isValidAddress(address: string) {
+    try {
+      return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
+    } catch (e) {
+      return false;
+    }
   }
 
   ngOnInit() {
-
     this.transactionService
-      .getPrice()
+      .getConversionRate('ethusd')
       .then(res => {
         this.ethusd = {
-          value: res.ethusd,
-          time: new Date(res.ethusd_timestamp * 1000)
+          value: res.bid,
+          time: new Date(res.timestamp * 1000)
         };
 
-        const ether_val = parseFloat(this.sendEther.controls.amount_ether.value);
-        this.sendEther.controls.amount_usd.setValue(ether_val * this.ethusd.value);
+        // const ether_val = parseFloat(this.sendEther.controls.amount_ether.value);
+        // this.sendEther.controls.amount_usd.setValue(ether_val * this.ethusd.value);
       })
       .catch(err => {
-        // console.log(err);
         toastr.error('Couldn\'t get exchange rate');
       });
   }
 
-  etherAmountChanged(e, form) {
-    const ether_value = parseFloat(e.target.value);
-    if (ether_value !== 0 && e.target.value.length > ether_value.toString().length) {
-      e.target.value = ether_value;
-    }
-    if (ether_value && !isNaN(ether_value) && ether_value > 0) {
-      const amount_in_usd = ether_value * this.ethusd.value;
-      form.controls.amount_usd.setValue(amount_in_usd);
-    }
-  }
-
-  usdAmountChanged(e, form) {
-    const usd_value = parseFloat(e.target.value);
-    if (usd_value !== 0 && e.target.value.length > usd_value.toString().length) {
-      e.target.value = usd_value;
-    }
-    if (usd_value && !isNaN(usd_value) && usd_value > 0) {
-      const amount_in_ether = usd_value / this.ethusd.value;
-      form.controls.amount_ether.setValue(amount_in_ether);
-    }
+  converter(data) {
+    this.sendEther.controls.amount_ether.setValue(data.baseValue);
+    this.sendEther.controls.amount_usd.setValue(data.quoteValue);
   }
 
   showCardFromKey() {
-
     const privKey = EthJS.Util.addHexPrefix(this.keyInput.trim());
     if (EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(privKey))) {
 
@@ -213,5 +166,32 @@ export class TransactionComponent implements OnInit {
     }.bind(this), 1000);
   }
 
+  /**
+   * Calculate transaction fee and total cost of transaction
+   */
+  makeReceipt() {
+    const from = this.wallet.address;
+    const to = this.sendEther.controls.receiveAddress.value;
+    const amount = this.sendEther.controls.amount_ether.value;
+    const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
 
+    let fee;
+
+    this.transactionService.getTransactionCost({ to, value})
+      .then(cost => {
+        fee = cost;
+        return this.transactionService.getBalance(from);
+      })
+      .then(balance => {
+        this.receipt = {
+          to,
+          from,
+          balance,
+          amount,
+          fee,
+          total : amount + fee
+        };
+      })
+      .catch(err => toastr.error('Error building transaction. Please try again.'));
+  }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConverterBoxComponent } from './converter-box/converter-box.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
@@ -8,7 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    ConverterBoxComponent
   ],
-  declarations: []
+  declarations: [ ConverterBoxComponent ]
 })
 export class SharedModule { }
