@@ -84,7 +84,10 @@ font-weight: 400;
 }
 
 
-header { background-color:#f1f1f1; }
+header { 
+  background-color:#f1f1f1; 
+  margin-bottom: 30px;
+}
 
 
 nav{

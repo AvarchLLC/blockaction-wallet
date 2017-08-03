@@ -1,5 +1,5 @@
 <!-- Wallet Creation Info  -->
-<div class="fullPage pt-2" *ngIf="!ready">
+<div class="" *ngIf="!ready">
     <div class="pop-alert-box card-center card-md-p align-center">
         <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
         <div class="pop-alert">
@@ -56,6 +56,7 @@
                 <div class="block bg-gray">
                     <div *ngIf="wallet">
                         <h2>Wallet Ready!</h2>
+                        <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
                         <div class="form-group mg-top-sm">
                             <b>Address</b>
                             <div class="clearfix">
@@ -67,7 +68,6 @@
                                     </svg>
                                 </span>
                             </div>
-                            <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
                         </div>
                         <div class="form-group">
                             <b>Private Key</b>
@@ -95,23 +95,8 @@
         <input class="form-control" formControlName="email" type="email" placeholder="Email...">
 
         <!-- Currency Converter Box Start -->
-        <div class="converter-box">
-            <div class="input-group">
-                <div class="input-group-addon bdr-none flex-box">
-                    <div class="super-txt "><h4><b>eth</b></h4></div>
-                    <div class="base-txt"><img src="assets/img/Ethereum.png" alt=""></div>
-                </div>
-                 <input class="form-input" (input)="etherAmountChanged($event, requestEtherForm)" formControlName="amount_ether" type="number" min="0"> 
-            </div>
-            <span><h2> = </h2></span>
-            <div class="input-group">
-                <div class="input-group-addon bdr-none flex-box">
-                    <div class="super-txt"><h4><b>usd</b></h4></div>
-                    <div class="base-txt"><h4>$</h4></div>
-                </div>
-                 <input class="form-input" (input)="usdAmountChanged($event, requestEtherForm)" formControlName="amount_usd" type="number" min="0"> 
-            </div>
-        </div>
+        <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+
         <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
         <!-- Currency Converter Box End -->
 

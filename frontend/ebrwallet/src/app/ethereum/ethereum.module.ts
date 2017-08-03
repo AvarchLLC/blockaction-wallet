@@ -3,6 +3,8 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { EthereumRoutingModule } from './ethereum-routing.module';
 import {SharedModule} from '../shared/shared.module';
 
+import {NgxPaginationModule} from 'ngx-pagination'; 
+
 import {WalletComponent} from './wallet/wallet.component';
 import {TransactionComponent} from './transaction/transaction.component';
 import {WalletInfoComponent} from './wallet-info/wallet-info.component';
@@ -13,7 +15,8 @@ import {TransactionService} from './services/transaction.service';
 @NgModule({
   imports: [
     EthereumRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
   declarations: [
     WalletComponent,

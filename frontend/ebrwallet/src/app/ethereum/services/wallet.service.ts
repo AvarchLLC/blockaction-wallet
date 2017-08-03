@@ -252,7 +252,7 @@ export class WalletService {
       try {
         const fileName: string = w.fileName || 'walletKeystore';
         const data = JSON.stringify(w.keystore);
-        const blob = new Blob([data], { type: 'text/json' });
+        const blob = new Blob([data], { type: 'binary' });
 
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
           window.navigator.msSaveOrOpenBlob(blob, fileName);
@@ -296,20 +296,5 @@ export class WalletService {
 
       myReader.readAsText(file);
     });
-  }
-
-  getBalance(address: string): Promise<any> {
-    return this.http
-      .get(`https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest`)
-      .toPromise()
-      .then(res => res.json())
-      .then(res => res.result);
-  }
-
-  requestEther(address: string, email: string, value: number): Promise<any> {
-    return this.http
-      .post('${serverUrl}/api/requestEther', { address, email, value })
-      .toPromise()
-      .then(res => res.json());
   }
 }

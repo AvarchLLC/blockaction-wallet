@@ -1,15 +1,22 @@
+import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import { ActivatedRoute, Route } from '@angular/router';
 import {Component, Input, OnInit} from '@angular/core';
+
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 import { Wallet} from '../wallet';
 import {TransactionService} from '../services/transaction.service';
 import {WalletService} from '../services/wallet.service';
 
+
+import { PaginationInstance } from 'ngx-pagination';
 declare var EthJS: any;
 declare var toastr: any;
 
-class Transaction {
 
-}
+
 @Component({
   selector: 'app-ethereum-wallet-info',
   templateUrl: './wallet-info.component.html',
@@ -17,39 +24,74 @@ class Transaction {
 })
 export class WalletInfoComponent implements OnInit {
 
-  wallet: Wallet;
-
-  keyInput: string;
-  balance: string;
-  transactions: Transaction[];
-
   ready= false;
-  existing = 'wallet';
+  existing = 'key';
+  keyInput: string;
 
-  constructor(private transactionService: TransactionService, private walletService: WalletService) {
+  wallet: Wallet;
+  balance: string;
+  transactions: any; // Transaction[];
 
+
+  qrSvg: string;
+  qrClass = '';
+  blockie: string;
+
+  page = 1 ;
+  total: number;  // total pages of transaction
+  loading: boolean;
+  public config: PaginationInstance = {
+    itemsPerPage: 10,
+    currentPage: this.page,
+    totalItems: this.total
+  };
+
+  pending: any; // Pending status
+  txhash: string;
+  private alive: boolean; // used to unsubscribe from the IntervalObservable
+                          // when OnDestroy is called.
+  private timer: Observable<number>;
+  private interval: number;
+
+  constructor(
+    private transactionService: TransactionService,
+    private walletService: WalletService,
+    private route: ActivatedRoute,
+    private googleAnalyticsService: GoogleAnalyticsService
+  ) {
+
+    this.alive = true;
+    this.interval = 10000;
+    this.timer = Observable.timer(0, this.interval);
+
+    this.route.queryParams
+      .filter(params => params.pending && params.address)
+      .subscribe(params => {
+        this.txhash = params.pending;
+        this.keyInput = params.address;
+        this.showCardFromKey();
+        if (this.txhash) {
+          this.checkPendingTransaction(this.txhash);
+        }
+      });
   }
 
-  ngOnInit() {
-    // this.walletService
-    //   .getBalance(this.wallet.address)
-    //   .then(balance => this.balance = balance)
-    //   .catch(err => toastr.error('Failed to retrieve wallet balance'));
+  ngOnInit() { }
 
-    // this.transactionService
-    //   .getAllTransactions(this.wallet.address)
-    //   .then(txns => this.transactions = txns)
-    //   .catch(err => toastr.error('Failed to retrieve wallet transactions'));
+  getDate(timeStamp) {
+    return new Date(timeStamp * 1000);
+  }
+
+  toEther(wei) {
+    return this.transactionService.weiToEther(wei);
   }
 
   isValidAddress(address: string) {
-    let valid;
     try {
-        valid = EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
+        return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
     } catch (e) {
-        valid = false;
+        return false;
     }
-    return valid;
   }
 
   fileChangeListener($event) {
@@ -57,7 +99,7 @@ export class WalletInfoComponent implements OnInit {
       .readWalletFromFile($event.target)
       .then(wallet => {
         this.wallet = wallet;
-        this.ready = true;
+        this.showInfo();
         toastr.success('Valid wallet file.');
       })
       .catch(err => toastr.error('Invalid wallet file.'));
@@ -66,6 +108,62 @@ export class WalletInfoComponent implements OnInit {
   showCardFromKey() {
     this.wallet = new Wallet;
     this.wallet.address = this.keyInput;
+    this.showInfo();
+  }
+
+  showInfo(){
     this.ready = true;
+    this.showQr();
+    this.blockie = this.walletService.getBlockie(this.wallet);
+
+    this.transactionService
+      .getBalance(this.wallet.address)
+      .then(balance => this.balance = balance)
+      .catch(err => toastr.error('Failed to retrieve wallet balance'));
+
+    this.transactionService
+      .getAllTransactions(this.wallet.address)
+      .then(txns => {
+        this.transactions = txns;
+        this.total = txns.length;
+        this.loading = false;
+      })
+      .catch(err => toastr.error('Failed to retrieve wallet transactions'));
+  }
+
+  showQr(): void {
+    if (this.wallet) {
+      this.walletService
+        .getQrCode(this.wallet)
+        .then(qrCode => this.qrSvg = qrCode);
+    }
+  }
+
+  qrToggle() {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Show Qr');
+
+    this.qrClass === ''
+      ? this.qrClass = 'showQr'
+      : this.qrClass = '';
+  }
+
+  checkPendingTransaction(txhash: string) {
+    // check transaction immediately when the info component loads
+    this.timer
+      .takeWhile(() => this.alive)
+      .subscribe(() => {
+        this.transactionService.getTransactionDetails(txhash)
+          .then(data => {
+            if (data && data.blockNumber) {
+              this.pending = 'Is processed';
+              this.alive = false;
+              // Fire transaction completed ...
+              // get transaction details ...
+            }else {
+              this.pending = 'Is not ready';
+            }
+          });
+      });
   }
 }

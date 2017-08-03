@@ -1,0 +1,55 @@
+
+.converter-box {
+    justify-content: space-around;
+    /* align-items: center; */
+}
+
+.money-input .amount-container {
+    color: #6c7378;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    font-size: 60px;
+    padding-top: 15px;
+}
+
+.money-input .amount-container .amount-currency {
+    display: inline-block;
+    font-family: Arial,sans-serif;
+    font-weight: 400;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: .4em;
+    line-height: 1.3em;
+    vertical-align: top;
+    padding-right: 4px;
+}
+.money-input .amount-container .amount-currency img{
+    height: 25px;
+    width: 15px
+}
+
+.amount-container input {
+    display: inline-block;
+    color: #6c7378;
+    font-family: Arial,sans-serif;
+    font-weight: 300;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    /* font-size: 1em; */
+     font-size: 0.7em; 
+    line-height: initial;
+    outline: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: bottom;
+    text-align: center;
+    width: 117px;
+    background-color: transparent;
+    margin-top: -.25em;
+    text-align: left;
+}
+
+.converter-box > span {
+        margin-top: 18px;
+}

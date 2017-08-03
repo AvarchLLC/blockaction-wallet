@@ -1,23 +1,101 @@
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class=" card walletSelectionBox">
     <ul class="nav nav-tabs">
-        <li [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></li>
         <li [class.active]="existing === 'key'"><a (click)="existing='key'">Address</a></li>
     </ul>
-    <div *ngIf="existing === 'wallet'" class="nav nav-content">
-        <label class="btn btn-lg btn-primary">
-            Upload Wallet File <input type="file" (change)="fileChangeListener($event)" style="display: none;">
-        </label>
-    </div>
     <div *ngIf="existing === 'key'" class="nav nav-content">
         <input placeholder="Address" [(ngModel)]="keyInput">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
     </div>
 </div>
 
-<!--- Wallet Info View -->
-<div *ngIf="ready">
-    <div class="card card-md-p">
+<div *ngIf="pending">
+    <pre> 
+        <h3> Tx Hash: {{ txhash }} </h3>
+        <p>Status {{ pending }}</p>
+    </pre>
+</div>
 
+<!--- Wallet Info View -->
+<div *ngIf="ready" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-8">
+            <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
+            <div class="form-group mg-top-sm">
+                <b>Address</b>
+                <div class="clearfix">
+                    <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+                    <span class="{{ qrClass }}" (click)="qrToggle()">
+                        <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
+                            <path [attr.d]="qrSvg"></path>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <b>{{ balance }} Ethers</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel-heading"><h3>Transactions</h3></div> 
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th>Block Number</th>
+                            <th>Tx Hash</th>
+                            <th>Time</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tx of transactions | paginate: config">
+                            <td>{{ tx.blockNumber }}</td>
+                            <td>{{ tx.hash }}</td>
+                            <td>{{ (tx.timeStamp*1000)  | date: 'dd-MM-yyyy' }}</td>
+                            <td>{{ tx.from }}</td>
+                            <td>{{ tx.to }}</td>
+                            <td>{{ toEther(tx.value) }}</td>
+                            <td>{{ (tx.isError === "0" ) ? 'Success': 'Error' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <pagination-template #p="paginationApi"
+                                [id]="config.id"
+                                (pageChange)="config.currentPage = $event">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li [class.disabled]="p.isFirstPage()">
+                            <a aria-label="Previous" (click)="p.previous()">
+                                <span  aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                            <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                                <span>{{ page.label }}</span>
+                            </a>
+                            <a [class.active]="p.getCurrent() === page.value"  *ngIf="p.getCurrent() === page.value">
+                                    <span>{{ page.label }}</span>
+                            </a>
+                        </li>
+                        <li [class.disabled]="p.isLastPage()">
+                            <a  (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>                
+            </div>
+        </div>
+        <div class="col-sm-3 box">
+            <div class="row"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i><a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg">SEND</a></div>
+            <div class="row"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i><button class="btn btn-link btn-lg">REQUEST</button></div>
+        </div>
     </div>
 </div>

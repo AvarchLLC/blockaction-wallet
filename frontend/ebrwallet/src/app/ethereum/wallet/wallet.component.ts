@@ -30,14 +30,14 @@ export class WalletComponent implements OnInit {
   @Output() on_card_show: EventEmitter<boolean> = new EventEmitter();  // Wallet object
   @Output() on_wallet_creation: EventEmitter<Wallet> = new EventEmitter();  // Wallet object
   wallet: Wallet;
+  ethusd: any;
 
   qrSvg: string;   // QrCode SVG string
-  ethusd: any;
+  qrClass = '';
 
   disabled = false; // disable "create wallet" button
   passphraseType = 'password';
   passphraseButton = 'Show Passphrase';
-  qrClass = '';
   modalVisible = false;
 
   blockie: any;
@@ -81,8 +81,8 @@ export class WalletComponent implements OnInit {
       passwordLowercase: /[a-z]/.test(password),
       passwordUppercase: /[A-Z]/.test(password),
       passwordNumber: /[0-9]/.test(password),
-      passwordSpecialchar : /[@#$%^&+=!*]/.test(password),
-      invalidChar: /[^a-zA-Z0-9@#$%^&+=!*]/.test(password)
+      passwordSpecialchar : /[@#$%^&+-=!*]/.test(password),
+      invalidChar: /[^a-zA-Z0-9@#$%^&+-=!*]/.test(password)
     };
 
     checked['all'] =
@@ -98,11 +98,11 @@ export class WalletComponent implements OnInit {
   ngOnInit(): void {
 
     this.transactionService
-      .getPrice()
+      .getConversionRate('ethusd')
       .then(res => {
         this.ethusd = {
-          value: res.ethusd,
-          time: new Date(res.ethusd_timestamp * 1000)
+          value: res.bid,
+          time: new Date(res.timestamp * 1000)
         };
       })
       .catch(err => toastr.error('Couldn\'t get exchange rate'));
@@ -110,17 +110,6 @@ export class WalletComponent implements OnInit {
     if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
       this.ready = true;
     }
-  }
-
-  goBack() {
-    // if (this.showCreate && this.wallet) {
-    //   const confirmMsg = 'You haven\'t downloaded wallet yet. If you go back, you will lose your wallet.';
-    //   if (confirm(confirmMsg)) {
-    //       this.wallet = null;
-    //       this.walletComponent.wallet = null;
-    //   }
-    //   return;
-    // }
   }
 
   get isDisabled() {
@@ -134,8 +123,6 @@ export class WalletComponent implements OnInit {
         .then(qrCode => this.qrSvg = qrCode);
     }
   }
-
-
 
   qrToggle() {
     this.googleAnalyticsService
@@ -248,7 +235,7 @@ export class WalletComponent implements OnInit {
     const amount = this.requestEtherForm.controls.amount_ether.value;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
 
-    this.walletService
+    this.transactionService
       .requestEther(this.wallet.address, email, amount)
       .then(ok => {
 
@@ -261,26 +248,9 @@ export class WalletComponent implements OnInit {
     this.modalVisible = !this.modalVisible;
   }
 
-  etherAmountChanged(e, form) {
-    const ether_value = parseFloat(e.target.value);
-    if (ether_value !== 0 && e.target.value.length > ether_value.toString().length) {
-      e.target.value = ether_value;
-    }
-    if (ether_value && !isNaN(ether_value) && ether_value > 0) {
-      const amount_in_usd = ether_value * this.ethusd.value;
-      form.controls.amount_usd.setValue(amount_in_usd);
-    }
-  }
-
-  usdAmountChanged(e, form) {
-    const usd_value = parseFloat(e.target.value);
-    if (usd_value !== 0 && e.target.value.length > usd_value.toString().length) {
-      e.target.value = usd_value;
-    }
-    if (usd_value && !isNaN(usd_value) && usd_value > 0) {
-      const amount_in_ether = usd_value / this.ethusd.value;
-      form.controls.amount_ether.setValue(amount_in_ether);
-    }
+  converter(data) {
+    this.requestEtherForm.controls.amount_ether.setValue(data.baseValue);
+    this.requestEtherForm.controls.amount_usd.setValue(data.quoteValue);
   }
 
 }
