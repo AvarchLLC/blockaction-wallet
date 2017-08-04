@@ -463,7 +463,7 @@ opacity: 1; }
 
 .green { color:#7ED321; position: relative; }
 .green:after {
-  top: 50%;
+  top: 20%;
   right:-15px;
   border: solid transparent;
   content: " ";
@@ -743,3 +743,26 @@ nav ul li{
 .bg-cyan.txt-white { color:#fff; }
 
 
+
+@keyframes spinner {
+  100% {
+    transform: rotate(2000deg);
+  }
+}
+
+.spinner-overlay .container {
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner-overlay .spinner {
+    width: 300px;
+    height: 300px;
+    align-self: center;
+    transform-origin: 50% 54.5%;
+    animation: spinner 7s infinite alternate ease-in-out;
+}

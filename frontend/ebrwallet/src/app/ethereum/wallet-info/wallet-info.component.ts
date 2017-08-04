@@ -107,7 +107,7 @@ export class WalletInfoComponent implements OnInit {
 
   showCardFromKey() {
     this.wallet = new Wallet;
-    this.wallet.address = this.keyInput;
+    this.wallet.address = EthJS.Util.addHexPrefix(this.keyInput);
     this.showInfo();
   }
 

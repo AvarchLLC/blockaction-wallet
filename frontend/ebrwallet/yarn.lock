@@ -251,6 +251,10 @@ angular2-jwt@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.2.3.tgz#54efdda3ceedba85f6a37b165f22ac22b8adf021"
 
+angular2-modal@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/angular2-modal/-/angular2-modal-3.0.1.tgz#626aa91b5f76e011462f135e0d5e6db142f8a252"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
@@ -923,7 +927,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-blockies@0.0.2:
+blockies@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/blockies/-/blockies-0.0.2.tgz#22ad58da4f6b382bc79bf4386c5820c70047e4ed"
 

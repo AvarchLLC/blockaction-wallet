@@ -208,4 +208,12 @@ export class TransactionComponent implements OnInit {
   cancelReceipt() {
     this.receipt = null;
   }
+
+  getBlockie(addr) {
+    if( EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(addr))) {
+      const w = new Wallet;
+      w.address = addr;
+      return this.walletService.getBlockie(w);
+    }
+  }
 }

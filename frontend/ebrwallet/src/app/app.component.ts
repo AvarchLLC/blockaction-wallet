@@ -56,7 +56,7 @@ export class AppComponent implements OnInit{
       .subscribe(() => {
         this.dataService.getCoinData('ethereum,bitcoin,ripple')
           .then(data =>  this.coins = data)
-          .catch(console.error);
+          .catch();
       })
   }
 
