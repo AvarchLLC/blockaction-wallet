@@ -11,7 +11,7 @@ import {SpinnerService} from '../../services/spinner.service';
 
 
 declare var toastr;
-
+declare var web3: any;
 declare var EthJS: any;
 
 @Component({
@@ -67,6 +67,7 @@ export class TransactionComponent implements OnInit {
   }
 
   sendMoney() {
+    this.spinner.displaySpiner(true);
     this.transactionService
       .sendMoney(
         this.wallet.address,
@@ -77,8 +78,10 @@ export class TransactionComponent implements OnInit {
       .then(hash => {
         this.router.navigate(['/ethereum/info'], {queryParams: { pending: hash, address: this.wallet.address}});
         toastr.success('Transaction sent');
+        this.spinner.displaySpiner(false);        
       })
       .catch(err => {
+        this.spinner.displaySpiner(false);        
         if (err.message.indexOf('funds') > -1) {
           toastr.error('Insufficent Funds');
         } else {
@@ -111,9 +114,6 @@ export class TransactionComponent implements OnInit {
           value: res.bid,
           time: new Date(res.timestamp * 1000)
         };
-
-        // const ether_val = parseFloat(this.sendEther.controls.amount_ether.value);
-        // this.sendEther.controls.amount_usd.setValue(ether_val * this.ethusd.value);
       })
       .catch(err => {
         toastr.error('Couldn\'t get exchange rate');
@@ -170,28 +170,42 @@ export class TransactionComponent implements OnInit {
    * Calculate transaction fee and total cost of transaction
    */
   makeReceipt() {
+    this.spinner.displaySpiner(true);
     const from = this.wallet.address;
     const to = this.sendEther.controls.receiveAddress.value;
     const amount = this.sendEther.controls.amount_ether.value;
+    const amount_usd = this.sendEther.controls.amount_usd.value;
     const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
 
     let fee;
 
-    this.transactionService.getTransactionCost({ to, value})
+    this.transactionService.getTransactionCost({ to: EthJS.Util.addHexPrefix(to), value })
       .then(cost => {
         fee = cost;
         return this.transactionService.getBalance(from);
       })
       .then(balance => {
+        let total = new web3.BigNumber(fee);
+        total = total.add(amount).toString();
+
         this.receipt = {
           to,
           from,
           balance,
           amount,
+          amount_usd,
           fee,
-          total : amount + fee
+          total
         };
+        this.spinner.displaySpiner(false);
       })
-      .catch(err => toastr.error('Error building transaction. Please try again.'));
+      .catch(err => {
+        this.spinner.displaySpiner(false);
+        toastr.error(err)//'Error building transaction. Please try again.')
+      })
+  }
+
+  cancelReceipt() {
+    this.receipt = null;
   }
 }

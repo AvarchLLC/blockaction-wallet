@@ -17,12 +17,15 @@ export class ConverterBoxComponent implements OnInit {
 
   @Output() on_change: EventEmitter<object> = new EventEmitter();
 
-  baseValue: string;
+  @Input() baseValue: string;
   quoteValue: string;
 
   constructor() { }
 
   ngOnInit() {
+    if(!this.baseValue) {
+      this.baseValue = '0';
+    }
     const quote_value = parseFloat(this.baseValue) * parseFloat(this.bid);
     this.quoteValue = quote_value.toString();
   }

@@ -1,4 +1,16 @@
 <div  [class.overflow-hidden]="busy">
+    <div *ngIf="coins" class="coins">
+        <div *ngFor="let coin of coins"  class='coin-info'>
+            {{ coin.name }}
+            Symbol {{ coin.symbol }}
+            Price  $ {{ coin.price_usd }} BTC {{ coin.price_usd }}
+            Price  $ {{ coin.price_usd }} BTC {{ coin.price_usd }}
+            Change 1h {{ coin.percent_change_1h }} 24h {{ coin.percent_change_24h }} 7d {{ coin.percent_change_7d}}
+            #coins {{ coin.total_supply }}
+            Market Cap $ {{ coin.market_cap_usd }}
+            24h Volume  $ {{ coin['24h_volume_usd'] }}
+        </div>
+    </div>
     <header id="page-top">
         <div class="container">
             <div class="pull-left logo">

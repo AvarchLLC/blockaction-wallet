@@ -30,7 +30,7 @@ export class WalletInfoComponent implements OnInit {
 
   wallet: Wallet;
   balance: string;
-  transactions: any; // Transaction[];
+  transactions: any = null; // Transaction[];
 
 
   qrSvg: string;
@@ -46,7 +46,7 @@ export class WalletInfoComponent implements OnInit {
     totalItems: this.total
   };
 
-  pending: any; // Pending status
+  pending: any; // Pending transaction
   txhash: string;
   private alive: boolean; // used to unsubscribe from the IntervalObservable
                           // when OnDestroy is called.
@@ -155,14 +155,19 @@ export class WalletInfoComponent implements OnInit {
       .subscribe(() => {
         this.transactionService.getTransactionDetails(txhash)
           .then(data => {
-            if (data && data.blockNumber) {
-              this.pending = 'Is processed';
-              this.alive = false;
-              // Fire transaction completed ...
-              // get transaction details ...
-            }else {
-              this.pending = 'Is not ready';
+            if(!data) {
+              this.pending = {
+                hash : this.txhash 
+              }; 
+            } else {
+              this.pending = data;
+              
+              if (data['blockNumber']) {
+                this.alive = false;
+                this.pending = null;
+              }
             }
+      
           });
       });
   }

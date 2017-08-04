@@ -1,6 +1,8 @@
+import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConverterBoxComponent } from './converter-box.component';
+
 
 describe('ConverterBoxComponent', () => {
   let component: ConverterBoxComponent;
@@ -8,6 +10,7 @@ describe('ConverterBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ FormsModule ],
       declarations: [ ConverterBoxComponent ]
     })
     .compileComponents();
