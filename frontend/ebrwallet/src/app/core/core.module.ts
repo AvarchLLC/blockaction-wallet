@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 
-import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { SpinnerService } from '../services/spinner.service';
 
 @NgModule({
@@ -19,7 +20,7 @@ import { SpinnerService } from '../services/spinner.service';
     RouterModule
   ],
   declarations: [NavComponent],
-  providers: [AuthService, GoogleAnalyticsService, SpinnerService]
+  providers: [AuthService, GoogleAnalyticsService, SpinnerService, DataService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

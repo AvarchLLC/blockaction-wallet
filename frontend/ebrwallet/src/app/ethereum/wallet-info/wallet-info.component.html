@@ -9,13 +9,6 @@
     </div>
 </div>
 
-<div *ngIf="pending">
-    <pre> 
-        <h3> Tx Hash: {{ txhash }} </h3>
-        <p>Status {{ pending }}</p>
-    </pre>
-</div>
-
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container-fluid">
     <div class="row">
@@ -39,12 +32,40 @@
     </div>
     <div class="row">
         <div class="col-sm-8">
+
+            <div *ngIf="pending">
+                <div class="panel-heading"><h3>Pending Transactions</h3></div>
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Block</th>
+                                <th>Tx Hash</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Value</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>??????</td>
+                                <td>{{ pending.hash }}</td>
+                                <td>{{ pending.from }}</td>
+                                <td>{{ pending.to }}</td>
+                                <td>{{ toEther(pending.value?.toString()) }}</td>
+                                <td>Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="panel-heading"><h3>Transactions</h3></div> 
             <div class="table-responsive">
                 <table class="table ">
                     <thead>
                         <tr>
-                            <th>Block Number</th>
+                            <th>Block</th>
                             <th>Tx Hash</th>
                             <th>Time</th>
                             <th>From</th>
@@ -62,6 +83,12 @@
                             <td>{{ tx.to }}</td>
                             <td>{{ toEther(tx.value) }}</td>
                             <td>{{ (tx.isError === "0" ) ? 'Success': 'Error' }}</td>
+                        </tr>
+                        <tr *ngIf="transactions === null">
+                            Loading Transactios
+                        </tr>
+                        <tr *ngIf="transactions && transactions.length === 0">
+                            No Transactions
                         </tr>
                     </tbody>
                 </table>

@@ -11,9 +11,9 @@ describe('WalletService', () => {
     });
   }));
 
-  it('should work', inject([WalletService], (service: WalletService) => {
-    expect(service).toBeTruthy();
-  }));
+  // it('should work', inject([WalletService], (service: WalletService) => {
+  //   expect(service).toBeTruthy();
+  // }));
 
 //   it('should complete multiple wallet creation', async(inject([WalletService], async (service: WalletService) => {
 
