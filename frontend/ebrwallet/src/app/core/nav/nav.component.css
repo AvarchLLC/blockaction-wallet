@@ -116,12 +116,16 @@ display:none;
 position: absolute;
 min-width: 250px;
 background: #fff;
+box-shadow: 0 0 20px rgba(0,0,0,.2); 
 z-index: 1;
 margin:0px 0 0 -50px;
-padding-top: 20px;
 right:0;
-top:0;
+top:60px;
+overflow: hidden;
 }
+
+.dropdown-menuBar a:hover { background:#f1f1f1; font-size: 16px; }
+
 
 .caret{display:inline-block;}
 .dropdown:hover .dropdown-menuBar{

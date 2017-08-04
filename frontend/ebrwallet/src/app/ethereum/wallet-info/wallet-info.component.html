@@ -10,7 +10,7 @@
 </div>
 
 <!--- Wallet Info View -->
-<div *ngIf="ready" class="container-fluid">
+<div *ngIf="ready" class="container">
     <div class="row">
         <div class="col-sm-8">
             <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
@@ -27,7 +27,15 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <b>{{ balance }} Ethers</b>
+                    <div class="box">
+            <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b>
+<br/>
+<br/>
+            <div class="row">
+    <div class="col-lg-6">
+            <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
+            <div class="col-lg-6"><button class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>REQUEST</button></div></div>
+        </div>
         </div>
     </div>
     <div class="row">
@@ -120,9 +128,6 @@
             </pagination-template>                
             </div>
         </div>
-        <div class="col-sm-3 box">
-            <div class="row"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i><a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg">SEND</a></div>
-            <div class="row"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i><button class="btn btn-link btn-lg">REQUEST</button></div>
-        </div>
+
     </div>
 </div>

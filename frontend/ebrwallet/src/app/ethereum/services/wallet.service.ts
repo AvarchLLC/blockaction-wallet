@@ -133,7 +133,7 @@ export class WalletService {
               margin: 0 auto;
 
             }
-            .head-logo{ background: #00ACE6; color:#fff; text-align: center; padding:30px;}
+            .head-logo{ background: #1ed6e5; color:#fff; text-align: center; padding:30px;}
             .head-logo img{width: 250px; height: 60px;}
             .Qr-width{width: 250px;}
             .Qr-width h3{margin:5px;}
@@ -161,7 +161,7 @@ export class WalletService {
             .print-address-container {
               font-size: 17px;
               color:#fff;
-              background: #00ACE6;
+              background: #1ed6e5;
               justify-content: center;
               align-items: center;
             }

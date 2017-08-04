@@ -85,9 +85,8 @@ font-weight: 400;
 
 
 header { 
-  background-color:#f1f1f1; 
-  margin-bottom: 30px;
-}
+  background-color:rgba(255,255,255,.7); border-top: 1px solid #eee; padding:10px 0; 
+ /*position: absolute; */width:100%;}
 
 
 nav{
@@ -184,11 +183,6 @@ color: #fff;
   padding:5px;
   border-radius: 3px;
 
-}
-.links-footer button, input{
-  border: none;
-  outline:hidden;
-  background: none;
 }
 
 .copy-right{
@@ -444,11 +438,44 @@ opacity: 1; }
 
 .bg-white { background:white; }
 
+.bg-cyan { background: #1ed6e5; }
+
 .bg-blue { color:#fff;background-image: linear-gradient(90deg, #00D6F4 0%, #00ACE6 100%);}
 
 .bg-blue a, .bg-blue a:hover { color:#fff; font-family: "SourceSansPro-Bold";}
 
 .bg-blue .form-control { border-color: transparent; }
+
+.red { color:#e32020; position: relative;}
+.red:after {
+  top: 50%;
+  right:-15px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(227, 32, 32, 0);
+  border-top-color: #e32020;
+  border-width: 5px;
+  margin-left: -5px;}
+
+.green { color:#7ED321; position: relative; }
+.green:after {
+  top: 50%;
+  right:-15px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(227, 32, 32, 0);
+  border-bottom-color: #7ED321;
+  border-width: 5px;
+  margin-left: -5px;}
+
 
 .block p.text-sm {bottom:40px; left:40px; padding-top: 20px;}
 
@@ -557,9 +584,6 @@ left:50%; top:10px; }
 /****************************************** responsive_laytout*********************************/
 @media screen and (min-width:480px) {
 
-nav ul {
-  margin-top: 20px;
-}
 nav ul li{
   list-style: none;
   display: inline-block;
@@ -632,7 +656,7 @@ nav ul li{
 
    }
 .links-footer form{
-     background: #fff;
+     background:none;
      width: 72%;
      padding:4px 0px 6px 7px;
      border-radius: 3px;
@@ -706,9 +730,16 @@ nav ul li{
     -o-transform: translateX(50%);
     transform: translateX(50%);
   }
-}
+
 
 
 .features img { transform: scale(.5); position: relative; top:50px; }
+
+.coins { padding:5px 0; }
+.coins p { margin-bottom: 2px; }
+
+.nav-block a { padding: 20px 10px; font-size: 18px; }
+
+.bg-cyan.txt-white { color:#fff; }
 
 

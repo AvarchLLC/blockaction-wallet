@@ -5,7 +5,7 @@
         <div class="pop-alert">
             <h1 class="color-black"><b>We don't store your keys</b></h1>
             <p p-font-size>We believe in user privacy and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>
-            <button (click)="isReady()" type="button" name="ok_go_it" class="btn-marg btn-cyan text-white"> <b>Ok, Got it</b></button>
+            <button (click)="isReady()" type="button" name="ok_go_it" class="btn  btn-primary"> <b>Ok, Got it</b></button>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="container-md" [class.slide]="this.wallet">
         <div class="row">
             <div class="col-md-6">
-                <div class="block block-center bg-blue">
+                <div class="block block-center bg-cyan">
                     <h2> Create wallet </h2>
                     <br/>
                     <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
@@ -44,7 +44,7 @@
                             Your password is secure and you'll all set!
                         </div>
                         <div class="buttonWithLoader">
-                            <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                            <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-info btn-block btn-lg" (click)="create()">Create Wallet</button>
                         </div>
                         <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
                             need this password + your private key to unlock your wallet.

@@ -1,14 +1,36 @@
-<div  [class.overflow-hidden]="busy">
-    <div *ngIf="coins" class="coins">
-        <div *ngFor="let coin of coins"  class='coin-info'>
-            {{ coin.name }}
-            Symbol {{ coin.symbol }}
-            Price  $ {{ coin.price_usd }} BTC {{ coin.price_usd }}
-            Price  $ {{ coin.price_usd }} BTC {{ coin.price_usd }}
-            Change 1h {{ coin.percent_change_1h }} 24h {{ coin.percent_change_24h }} 7d {{ coin.percent_change_7d}}
-            #coins {{ coin.total_supply }}
-            Market Cap $ {{ coin.market_cap_usd }}
-            24h Volume  $ {{ coin['24h_volume_usd'] }}
+<div [class.overflow-hidden]="busy">
+    <div *ngIf="coins" class="container coins">
+        <!-- <div *ngFor="let coin of coins"  class='coin-info'> -->
+        <div class="row">
+            <!-- {{ coins[0].name }} Symbol {{ coins[0].symbol }} -->
+            <div class="col-lg-1">
+            <img src="assets/img/Ethereum.png" style="max-height:30px; margin-top:5px;" />
+            <strong>ETH</strong>
+</div>
+            <div class="col-lg-3">
+
+                <p>Price</p>
+                <strong>  $ {{ coins[0].price_usd }} </strong> BTC {{ coins[0].price_btc }}</div>
+            <div class="col-lg-2">
+                <p>Change 1h </p>
+                <strong [ngClass]="coins[0].percent_change_1h < 0 ? 'red' : 'green'">{{ coins[0].percent_change_1h }}</strong>
+                </div>
+                <div class="col-lg-2">
+                    <p>24h</p>
+                    <strong>{{ coins[0].percent_change_24h }}</strong>
+                </div>
+                <!-- 7d {{ coins[0].percent_change_7d}} -->
+               <div class="col-lg-2"> <p>#coinss</p>
+                <strong>{{ coins[0].total_supply }}</strong>
+            </div>
+            <!-- <div class="col-lg-2">
+                <p>Market Cap</p>
+                <strong>$ {{ coins[0].market_cap_usd }}</strong>
+            </div> -->
+            <div class="col-lg-2">
+                <p>24h Volume</p>
+                <strong>$ {{ coins[0]['24h_volume_usd'] }}</strong>
+            </div>
         </div>
     </div>
     <header id="page-top">
@@ -22,5 +44,5 @@
     <router-outlet></router-outlet>
 </div>
 <div *ngIf="busy" class="spinner-overlay">
-    <img width="100" height="100" src="/assets/img/logo-icon.png"/>
+    <img width="100" height="100" src="/assets/img/logo-icon.png" />
 </div>
