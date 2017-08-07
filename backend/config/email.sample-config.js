@@ -14,7 +14,7 @@ const email ={
     },
     template:{
         dir: root +'/resources/templates/',
-        type:'jade'
+        type:'ejs'
     }
 
 }

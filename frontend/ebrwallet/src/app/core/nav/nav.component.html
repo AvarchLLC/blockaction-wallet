@@ -21,12 +21,12 @@
                             </a>
                           </li>
                       </ul>
-                      <a [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)" class="hide-menuitem">
+                      <a [class.active]="isActive(menuItem)" class="hide-menuitem">
                           {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
                       </a>
                     </div>
                     <a *ngIf="!menuItem.subroutes" [routerLink]="[menuItem.path]" [class.active]="isActive(menuItem)">
-                        {{menuItem.title}}  <span *ngIf="menuItem.subroutes" class="caret"></span>
+                        {{menuItem.title}}
                     </a>
                 </li>
             </ul>

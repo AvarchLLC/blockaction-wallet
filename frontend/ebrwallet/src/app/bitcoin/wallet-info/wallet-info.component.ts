@@ -12,20 +12,18 @@ import {WalletService} from '../services/wallet.service';
 
 
 import { PaginationInstance } from 'ngx-pagination';
-declare var EthJS: any;
 declare var toastr: any;
 
 
 
 @Component({
-  selector: 'app-ethereum-wallet-info',
+  selector: 'app-bitcoin-wallet-info',
   templateUrl: './wallet-info.component.html',
   styleUrls: ['./wallet-info.component.css']
 })
 export class WalletInfoComponent implements OnInit {
 
   ready= false;
-  existing = 'key';
   keyInput: string;
 
   wallet: Wallet;
@@ -40,11 +38,7 @@ export class WalletInfoComponent implements OnInit {
   page = 1 ;
   total: number;  // total pages of transaction
   loading: boolean;
-  public config: PaginationInstance = {
-    itemsPerPage: 10,
-    currentPage: this.page,
-    totalItems: this.total
-  };
+ 
 
   pending: any; // Pending transaction
   txhash: string;
@@ -70,9 +64,9 @@ export class WalletInfoComponent implements OnInit {
         this.txhash = params.pending;
         this.keyInput = params.address;
         this.showCardFromKey();
-        if (this.txhash) {
-          this.checkPendingTransaction(this.txhash);
-        }
+        // if (this.txhash) {
+        //   this.checkPendingTransaction(this.txhash);
+        // }
       });
   }
 
@@ -82,32 +76,22 @@ export class WalletInfoComponent implements OnInit {
     return new Date(timeStamp * 1000);
   }
 
-  toEther(wei) {
-    return this.transactionService.weiToEther(wei);
+  toBitcoin(satoshi) {
+    return (satoshi / 1e8).toString();
   }
 
   isValidAddress(address: string) {
-    try {
-        return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
-    } catch (e) {
-        return false;
-    }
-  }
-
-  fileChangeListener($event) {
-    this.walletService
-      .readWalletFromFile($event.target)
-      .then(wallet => {
-        this.wallet = wallet;
-        this.showInfo();
-        toastr.success('Valid wallet file.');
-      })
-      .catch(err => toastr.error('Invalid wallet file.'));
+    // try {
+    //     return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
+    // } catch (e) {
+    //     return false;
+    // }
+    return true;
   }
 
   showCardFromKey() {
     this.wallet = new Wallet;
-    this.wallet.address = EthJS.Util.addHexPrefix(this.keyInput);
+    this.wallet.address = this.keyInput;
     this.showInfo();
   }
 
@@ -117,19 +101,27 @@ export class WalletInfoComponent implements OnInit {
     this.blockie = this.walletService.getBlockie(this.wallet);
 
     this.transactionService
-      .getBalance(this.wallet.address)
-      .then(balance => this.balance = balance)
-      .catch(err => toastr.error('Failed to retrieve wallet balance'));
-
-    this.transactionService
-      .getAllTransactions(this.wallet.address)
-      .then(txns => {
-        this.transactions = txns;
-        this.total = txns.length;
-        this.loading = false;
+      .getAddressInfo(this.wallet.address, 1)
+      .then(res => {
+        this.balance = this.toBitcoin(res.final_balance);
+        this.total = res.n_tx;
+        console.log(this.total)
+        this.transactions  = res.txs;
       })
-      .catch(err => toastr.error('Failed to retrieve wallet transactions'));
+      .catch(err => toastr.error('Failed to retrieve wallet information'));
   }
+  
+  getPage(page: number) {
+    console.log(page)
+    this.transactionService
+      .getAddressInfo(this.wallet.address, page)
+      .then(res => {
+        this.transactions  = res.txs;
+        this.page = page;
+      })
+      .catch(err => toastr.error('Failed to retrieve wallet information'));
+  }
+
 
   showQr(): void {
     if (this.wallet) {
@@ -147,44 +139,7 @@ export class WalletInfoComponent implements OnInit {
       ? this.qrClass = 'showQr'
       : this.qrClass = '';
   }
-
-  checkPendingTransaction(txhash: string) {
-    // check transaction immediately when the info component loads
-    this.timer
-      .takeWhile(() => this.alive)
-      .subscribe(() => {
-        this.transactionService.getTransactionDetails(txhash)
-          .then(data => {
-            if(!data) {
-              this.pending = {
-                hash : this.txhash 
-              }; 
-            } else {
-              this.pending = data;
-
-              if (data['blockNumber']) {
-                this.alive = false;
-                this.pending = null;
-                this.transactionService
-                  .getAllTransactions(this.wallet.address)
-                  .then(txns => {
-                    this.transactions = txns;
-                    this.total = txns.length;
-                    this.loading = false;
-                  })
-                  .catch(err => toastr.error('Failed to refresh wallet transactions'));
-
-                  this.transactionService
-                  .getBalance(this.wallet.address)
-                  .then(balance => this.balance = balance)
-                  .catch(err => toastr.error('Failed to refresh wallet balance'));
-              }
-            }
-
-            });
-      });
-  }
-
+    
   ngOnDestroy() {
     this.alive = false;
   }

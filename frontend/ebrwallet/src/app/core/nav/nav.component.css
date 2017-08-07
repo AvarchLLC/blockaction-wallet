@@ -103,7 +103,7 @@
 }
 a.hide-menuitem { display: none;}
 
-.dropdown{  position: relative; display: inline-block;}
+.dropdown{  position: relative; display: inline-block; z-index: 1400;}
 
 @media screen and (min-width: 768px) {
 

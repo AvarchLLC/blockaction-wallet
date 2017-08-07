@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Wallet } from '../wallet';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import 'rxjs/add/operator/filter';
@@ -34,7 +35,9 @@ export class TransactionComponent implements OnInit {
   ready = false;
   existing = 'wallet';
 
+  network: any;
   receipt: any;
+  gasPrice: string;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private route: ActivatedRoute,
@@ -55,11 +58,13 @@ export class TransactionComponent implements OnInit {
       .filter(params => params.to || params.value)
       .subscribe(params => {
         this.sendEther.setValue({
-          receiveAddress: params.to,
+          receiveAddress: EthJS.Util.addHexPrefix(params.to),
           amount_ether: params.value,
           amount_usd: 0
         });
       });
+
+    this.network = environment.production ? '' : '( Test )';
   }
 
   onSubmit() {
@@ -73,15 +78,16 @@ export class TransactionComponent implements OnInit {
         this.wallet.address,
         this.sendEther.controls.receiveAddress.value,
         this.sendEther.controls.amount_ether.value,
+        this.gasPrice,
         this.wallet.privateKey
       )
       .then(hash => {
         this.router.navigate(['/ethereum/info'], {queryParams: { pending: hash, address: this.wallet.address}});
         toastr.success('Transaction sent');
-        this.spinner.displaySpiner(false);        
+        this.spinner.displaySpiner(false);
       })
       .catch(err => {
-        this.spinner.displaySpiner(false);        
+        this.spinner.displaySpiner(false);
         if (err.message.indexOf('funds') > -1) {
           toastr.error('Insufficent Funds');
         } else {
@@ -131,7 +137,7 @@ export class TransactionComponent implements OnInit {
 
       this.wallet = new Wallet;
       this.wallet.privateKey = privKey;
-      this.wallet.address = EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(privKey));
+      this.wallet.address = EthJS.Util.addHexPrefix(EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(privKey)));
       this.ready = true;
     } else {
       toastr.error('Not a valid key. Please enter another one.');
@@ -172,16 +178,17 @@ export class TransactionComponent implements OnInit {
   makeReceipt() {
     this.spinner.displaySpiner(true);
     const from = this.wallet.address;
-    const to = this.sendEther.controls.receiveAddress.value;
+    const to = EthJS.Util.addHexPrefix(this.sendEther.controls.receiveAddress.value);
     const amount = this.sendEther.controls.amount_ether.value;
     const amount_usd = this.sendEther.controls.amount_usd.value;
     const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
 
     let fee;
 
-    this.transactionService.getTransactionCost({ to: EthJS.Util.addHexPrefix(to), value })
-      .then(cost => {
-        fee = cost;
+    this.transactionService.getTransactionCost({ to, value })
+      .then(res => {
+        fee = res['cost'];
+        this.gasPrice = res['price'];
         return this.transactionService.getBalance(from);
       })
       .then(balance => {
@@ -210,7 +217,7 @@ export class TransactionComponent implements OnInit {
   }
 
   getBlockie(addr) {
-    if( EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(addr))) {
+    if (EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(addr))) {
       const w = new Wallet;
       w.address = addr;
       return this.walletService.getBlockie(w);

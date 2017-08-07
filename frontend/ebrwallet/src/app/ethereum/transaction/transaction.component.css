@@ -63,6 +63,14 @@ h4,
 p {
   margin: 0;
 } */
+
+.blockies {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+}
  
 .app > .center {
   text-align: center;

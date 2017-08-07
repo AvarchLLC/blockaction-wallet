@@ -16,10 +16,16 @@
   <script src="./assets/jquery-3.2.1.min.js"></script> 
   <script src="./assets/toastr.min.js"></script>
 </head>
+<style>
+  #large-header {
+    position: absolute;
+     transform: scale(2);
+  }
+</style>
 <body>
-   <!-- <div id="large-header">
+    <div id="large-header">
       <canvas id="demo-canvas"></canvas> 
-  </div>  -->
+  </div>  
   <app-root>
     <div *ngIf="busy" class="spinner-overlay">
       <!-- <img width="100" height="100" src="/assets/img/logo-icon.png" /> -->
@@ -56,7 +62,7 @@
   <script src="./assets/js/TweenLite.min.js"></script>
   <script src="./assets/js/EasePack.min.js"></script>
   <script src="./assets/js/rAF.js"></script>
-   <!-- <script src="./assets/js/demo.js"></script>  -->
+    <!-- <script src="./assets/js/demo.js"></script>   -->
    
 </body>
 </html>

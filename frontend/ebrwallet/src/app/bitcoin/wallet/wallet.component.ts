@@ -2,9 +2,6 @@ import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} fr
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WalletService } from '../services/wallet.service';
-import { TransactionService } from '../services/transaction.service';
-import { DataService } from '../../services/data.service';
-import { AuthService } from '../../services/auth.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
 import { Wallet } from '../wallet';
@@ -14,35 +11,25 @@ import { Config } from '../../config';
 const config = new Config();
 
 declare const toastr: any;
-declare var EthJS: any;
-// toastr.options = config.toastr;
+
 
 @Component({
-  selector: 'app-ethereum-wallet',
+  selector: 'app-bitcoin-wallet',
   templateUrl: './wallet.component.html'
 })
 
 export class WalletComponent implements OnInit {
 
-  walletForm: FormGroup;
-  requestEtherForm: FormGroup;
+  requestBitcoinForm: FormGroup;
 
-  @Input() reset = true; // Wallet object
-  @Output() on_card_show: EventEmitter<boolean> = new EventEmitter();  // Wallet object
-  @Output() on_wallet_creation: EventEmitter<Wallet> = new EventEmitter();  // Wallet object
   wallet: Wallet;
   ethusd: any;
 
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
 
-  disabled = false; // disable "create wallet" button
-  passphraseType = 'password';
-  passphraseButton = 'Show Passphrase';
   modalVisible = false;
-
   blockie: any;
-  showSpinner = false;
   ready= false;
 
   @HostListener('window:beforeunload', ['$event'])
@@ -53,22 +40,11 @@ export class WalletComponent implements OnInit {
   }
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private walletService: WalletService,
-    private authService: AuthService,
-    private transactionService: TransactionService,
-    private dataService: DataService,
     private googleAnalyticsService: GoogleAnalyticsService,
     private spinner: SpinnerService
   ) {
 
-    const passwordValidator = Validators.compose([
-      Validators.required
-    ]);
-
-    this.walletForm = fb.group({
-      password: ['', [passwordValidator]],
-    });
-
-    this.requestEtherForm = fb.group({
+    this.requestBitcoinForm = fb.group({
       email: ['', Validators.email],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
@@ -76,46 +52,21 @@ export class WalletComponent implements OnInit {
     });
   }
 
-  passwordCheck(password: string) {
-
-    const checked = {
-      passwordLength: password.length >= 8 && password.length <= 20 ,
-      passwordLowercase: /[a-z]/.test(password),
-      passwordUppercase: /[A-Z]/.test(password),
-      passwordNumber: /[0-9]/.test(password),
-      passwordSpecialchar : /[@#$%^&+-=!*]/.test(password),
-      invalidChar: /[^a-zA-Z0-9@#$%^&+-=!*]/.test(password)
-    };
-
-    checked['all'] =
-      checked.passwordLength &&
-      checked.passwordLowercase &&
-      checked.passwordUppercase &&
-      checked.passwordNumber &&
-      checked.passwordSpecialchar;
-
-    return checked;
-  }
-
   ngOnInit(): void {
 
-    this.transactionService
-      .getConversionRate('ethusd')
-      .then(res => {
-        this.ethusd = {
-          value: res.bid,
-          time: new Date(res.timestamp * 1000)
-        };
-      })
-      .catch(err => toastr.error('Couldn\'t get exchange rate'));
+    // this.transactionService
+    //   .getConversionRate('ethusd')
+    //   .then(res => {
+    //     this.ethusd = {
+    //       value: res.bid,
+    //       time: new Date(res.timestamp * 1000)
+    //     };
+    //   })
+    //   .catch(err => toastr.error('Couldn\'t get exchange rate'));
 
     if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
       this.ready = true;
     }
-  }
-
-  get isDisabled() {
-    return this.disabled || !this.walletForm.valid || !this.passwordCheck(this.walletForm.controls.password.value)['all'];
   }
 
   showQr(): void {
@@ -135,19 +86,6 @@ export class WalletComponent implements OnInit {
       : this.qrClass = '';
   }
 
-  passphraseToggle() {
-    this.googleAnalyticsService
-      .emitEvent('Wallet Form', 'Show Passphrase Toggle');
-
-    this.passphraseType === 'password'
-      ? this.passphraseType = 'text'
-      : this.passphraseType = 'password';
-
-    this.passphraseButton === 'Show Passphrase'
-      ? this.passphraseButton = 'Hide Passphrase'
-      : this.passphraseButton = 'Show Passphrase';
-  }
-
 
   isReady() {
     this.googleAnalyticsService
@@ -164,32 +102,22 @@ export class WalletComponent implements OnInit {
       .emitEvent('Wallet Creation', 'Button Clicked');
 
     this.spinner.displaySpiner(true);
-    this.disabled = true;
     setTimeout(function () {
       this.walletService
-        .createWallet(this.walletForm.value.password)
+        .createWallet()
         .then(data => {
           this.wallet = data;
-          this.walletForm.controls.password.setValue('');
           toastr.success('Created!', 'Wallet Creation');
           this.showQr();
-          this.blockie = this.walletService.getBlockie(this.wallet);
-          this.disabled = false;
           this.spinner.displaySpiner(false);
-          this.on_wallet_creation.emit(this.wallet);
 
         })
         .catch(err => {
-          // console.error(err);
           toastr.error('An Error Occurred', 'Wallet Creation');
-          this.disabled = false;
+          this.spinner.displaySpiner(false);          
         });
     }.bind(this), 1000);
 
-  }
-
-  toChecksum(address) {
-    return EthJS.Util.toChecksumAddress(address);
   }
 
   saveWalletToFile(): void {
@@ -200,7 +128,7 @@ export class WalletComponent implements OnInit {
       .saveWalletToFile(this.wallet)
       .then(ok => {
         console.log('emitting card show object');
-        this.on_card_show.emit(true);
+        // this.on_card_show.emit(true);
       })
       .catch(err => toastr.error('An error occurred while downloading', 'Wallet Download'));
   }
@@ -208,10 +136,6 @@ export class WalletComponent implements OnInit {
   deleteWallet(): void {
     this.wallet = null;
     this.qrSvg = null;
-    // this.password = null
-    // this.privateKey = null
-    // this.file = null
-    // this.filePassword = null
   }
 
   printPaperWallets() {
@@ -231,23 +155,17 @@ export class WalletComponent implements OnInit {
     }).catch(err => toastr.error(err));
   }
 
-  requestEther() {
+  requestBitcoin() {
     this.googleAnalyticsService
       .emitEvent('Post Wallet Creation', 'Request Ether');
 
     this.modalVisible = false;
 
-    const email = this.requestEtherForm.controls.email.value;
-    const amount = this.requestEtherForm.controls.amount_ether.value;
+    const email = this.requestBitcoinForm.controls.email.value;
+    const amount = this.requestBitcoinForm.controls.amount_ether.value;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
 
-    this.dataService
-      .requestEther(this.wallet.address, email, amount)
-      .then(ok => {
-        toastr.success(str, 'Request Ether');
-      })
-      .catch(err => toastr.error('Couldn\'t send request at the moment.'));
-
+    toastr.success(str, 'Request Ether');
   }
 
   toggleModal() {
@@ -255,8 +173,8 @@ export class WalletComponent implements OnInit {
   }
 
   converter(data) {
-    this.requestEtherForm.controls.amount_ether.setValue(data.baseValue);
-    this.requestEtherForm.controls.amount_usd.setValue(data.quoteValue);
+    this.requestBitcoinForm.controls.amount_ether.setValue(data.baseValue);
+    this.requestBitcoinForm.controls.amount_usd.setValue(data.quoteValue);
   }
 
 }

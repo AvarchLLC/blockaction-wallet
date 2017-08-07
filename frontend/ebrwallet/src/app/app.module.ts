@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { EthereumModule} from './ethereum/ethereum.module';
+import { BitcoinModule} from './bitcoin/bitcoin.module';
 
 // Project Components
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { HomeComponent } from './home/home.component';
     }),
     AppRoutingModule,
     AuthModule,
-    EthereumModule
+    EthereumModule,
+    BitcoinModule
   ],
   providers: [  ],
   bootstrap: [ AppComponent ]

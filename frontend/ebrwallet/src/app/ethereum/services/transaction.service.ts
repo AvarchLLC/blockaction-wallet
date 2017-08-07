@@ -3,8 +3,8 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../environments/environment';
 
-import { Buffer } from 'buffer';
 import Transaction from 'ethereumjs-tx';
 import { ApiResponse } from './response';
 import { TransactionResponse } from './transaction-response';
@@ -15,13 +15,13 @@ declare var Web3: any;
 @Injectable()
 export class TransactionService {
 
-  NETWORK = 'ropsten';
-  API_URL = `https://${this.NETWORK}.infura.io/`;
+
+  // API_URL =`http://localhost:8545`;
   serverUrl = '';
   web3: any;
 
-  constructor(private http: Http) { 
-    this.web3 = new Web3(new Web3.providers.HttpProvider(this.API_URL));  
+  constructor(private http: Http) {
+    this.web3 = new Web3(new Web3.providers.HttpProvider(environment.ETH_NODE_URL));
   }
 
   /**
@@ -61,35 +61,25 @@ export class TransactionService {
    * createTransaction ... create transactions from an address to another address
    */
   createTransaction(from: string, to: string, opts: any): Promise<Transaction> {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       this.web3.eth.getTransactionCount(from, (err, number) => {
-        if(err) reject(err);
+        if (err) {
+          reject(err);
+        }
         const rawTx = {
           from,
           nonce: this.web3.toHex(number),
           to,
           value: opts.value,
-          gasLimit: '0x27100'
+          gasLimit: '0x27100',
+          gasPrice : opts.gasPrice
         };
-        console.log('here', rawTx)
+        // console.log('here', rawTx)
         const tx = new Transaction(rawTx);
-        console.log('tx', tx)
+        // console.log('tx', tx)
         resolve(tx);
-      })
-    })
-    // return this.callApi('eth_getTransactionCount', [from, 'latest'])
-    //   .then(nonce => {
-    //     const rawTx = {
-    //       from,
-    //       nonce: nonce,
-    //       to,
-    //       value: opts.value,
-    //       gasLimit: '0x27100'
-    //     };
-    //     const tx = new Transaction(rawTx);
-    //     return tx;
-    //   })
-    //   .catch(err => Promise.reject({ message : 'Couldn\'t get transaction count.'}));
+      });
+    });
   }
 
   /**
@@ -112,50 +102,45 @@ export class TransactionService {
   sendTransaction(serialTx: string): Promise<any> {
     // return this.callApi('eth_sendRawTransaction', [serialTx]);
     return new Promise((resolve, reject) => {
-      console.log('sereialtx', serialTx)
       this.web3.eth.sendRawTransaction(serialTx, (err, hash) => {
-        if(err) reject(err);
+        if (err) {
+          reject(err);
+        }
         resolve(hash);
-      })
-    })
+      });
+    });
   }
 
   /**
    * getTransactionCost ... get the total cost for processing transaction
     */
-  getTransactionCost(tx: Transaction): Promise<number> {
+  getTransactionCost(tx: Transaction): Promise<object> {
     return new Promise((resolve, reject) => {
       this.web3.eth.estimateGas(tx, (err, gas) => {
-        if(err) reject(err);
-        this.web3.eth.getGasPrice((err, price) => {
-          if(err) reject(err);
-          resolve(price.div(1e18).mul(gas).toString())
-        })
-      })
-    })
-    // let gasUsed;
-    // return this.callApi('eth_estimateGas', [tx])
-    //   .then(gas => {
-    //     gasUsed = this.web3.toDecimal(gas);
-    //     return this.callApi('eth_gasPrice', ['latest']);
-    //   })
-    //   .then(price => {
-    //     const gasPrice = this.web3.toDecimal(this.web3.fromWei(this.web3.toDecimal(price), 'ether'));
-    //     const totalCost = gasUsed * gasPrice;
-    //     return totalCost;
-    //   });
+        if (err) {
+          reject(err);
+        }
+        this.web3.eth.getGasPrice((error, price) => {
+          if (error) {
+            reject(error);
+          }
+          resolve({ cost : price.div(1e18).mul(gas).toString(), price: price.toString() });
+        });
+      });
+    });
   }
 
   /**
    * sendMoney ... send money in transaction
   */
-  sendMoney(from: string, to: string, value: number, privateKey: string): Promise<string> {
+  sendMoney(from: string, to: string, value: number, gasPrice: string, privateKey: string): Promise<string> {
     const wei_value = this.web3.toWei(value, 'ether');
     const hexValue = this.web3.toHex(wei_value);
     from = EthJS.Util.addHexPrefix(from);
     to = EthJS.Util.addHexPrefix(to);
+    gasPrice = this.web3.toHex(gasPrice);
 
-    return this.createTransaction(from, to, { value: hexValue })
+    return this.createTransaction(from, to, { value: hexValue, gasPrice: gasPrice })
       .then(tx => this.signAndSerializeTransaction(tx, privateKey))
       .then(serialTx => this.sendTransaction(serialTx));
   }
@@ -166,8 +151,10 @@ export class TransactionService {
   getTransactionDetails(transactionHash: string) {
     // return this.callApi('eth_getTransactionByHash', [transactionHash]);
     return new Promise((resolve, reject) => {
-      this.web3.eth.getTransaction(transactionHash, (err,txn) => {
-        if(err) reject(err);
+      this.web3.eth.getTransaction(transactionHash, (err, txn) => {
+        if (err) {
+          reject(err);
+        }
         resolve(txn);
       });
     });
@@ -177,8 +164,11 @@ export class TransactionService {
    * getAllTransactions ... get all transaction information involving the given address
     */
   getAllTransactions(address: string): any {
-    let network = this.NETWORK;
-    if ( network === 'mainnet') { network = 'api'; }
+    let prod = environment.production;
+    let network = 'api';
+    if (!prod) { 
+      network = 'kovan'; 
+    }
 
     return this.http
     .get(`https://${network}.etherscan.io/api?module=account&action=txlist&address=${address}&tag=latest&sort=desc&startBlock=0&endBlock=latest`)
@@ -243,19 +233,7 @@ export class TransactionService {
   getBalance(address: string): Promise<any> {
     // return this.callApi('eth_getBalance', [address, 'latest'])
     //   .then(balanceHex => this.web3.fromWei(EthJS.Util.bufferToInt(balanceHex)));
-    return Promise.resolve(this.web3.eth.getBalance(address).toNumber());
-  }
-
-  /**
-   * Request Ether by email
-   * @param address address to receive
-   * @param email email to request
-   * @param value request amount in ether
-   */
-  requestEther(address: string, email: string, value: number): Promise<any> {
-    return this.http
-      .post(`${this.serverUrl}/api/requestEther`, { address, email, value })
-      .toPromise()
-      .then(res => res.json());
+    address = EthJS.Util.addHexPrefix(address);
+    return Promise.resolve(this.web3.fromWei(this.web3.eth.getBalance(address).toString(), 'ether'));
   }
 }

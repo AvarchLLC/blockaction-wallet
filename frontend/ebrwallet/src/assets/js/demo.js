@@ -8,8 +8,8 @@
     // addListeners();
 
     function initHeader() {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        width = 1280 //window.innerWidth;
+        height = 868 //window.innerHeight;
         target = {x: width/2, y: height/2};
 
         largeHeader = document.getElementById('large-header');
@@ -63,7 +63,7 @@
 
         // assign a circle to each point
         for(var i in points) {
-            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+            var c = new Circle(points[i], 4+Math.random()*4, 'rgba(255,255,255,0.3)');
             points[i].circle = c;
         }
     }
@@ -139,7 +139,7 @@
     }
 
     function shiftPoint(p) {
-        TweenLite.to(p, 10, {x:p.originX-50+Math.random()*100,
+        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
             y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
             onComplete: function() {
                 shiftPoint(p);

@@ -60,7 +60,7 @@
                         <div class="form-group mg-top-sm">
                             <b>Address</b>
                             <div class="clearfix">
-                                <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+                                <input type="text" class="form-control withQr" value="{{ toChecksum(wallet.address) }}" readonly>
 
                                 <span class="{{ qrClass }}" (click)="qrToggle()">
                                     <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
@@ -103,7 +103,7 @@
         <textarea class="form-control" formControlName="message"></textarea>
     </form>
     <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
-    <button class="" id="closeButton" (click)="toggleModal()">x</button>
-    <button class="btn btn-link btn-lg" (click)="toggleModal()">Close</button>
+    <i class="fa fa-times" id="closeButton" (click)="toggleModal()"></i>
+    <button class="btn btn-link btn-lg" id="closeButton2" (click)="toggleModal()">Close</button>
 </div>
 </div>

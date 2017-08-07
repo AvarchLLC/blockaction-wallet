@@ -4,12 +4,13 @@ import { Http } from '@angular/http';
 import { Wallet } from '../wallet';
 
 import qrImage from 'qr-image';
-// import Identicon from 'identicon.js';
 import Blockies from 'blockies';
 
-import 'rxjs/add/operator/toPromise';
+import BitcoinJS from 'bitcoinjs-lib';
+import BIP38 from 'bip38';
+import WIF from 'wif';
 
-declare var EthJS: any;
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class WalletService {
@@ -19,21 +20,24 @@ export class WalletService {
   }
 
   // creatWallet ... generates a new wallet object and returns encrypted object
-  createWallet(passsword: string): Promise<Wallet> {
+  createWallet(password: string): Promise<Wallet> {
 
     const w: Wallet = new Wallet;
 
     return new Promise((resolve, reject) => {
       try {
-        let wallet = EthJS.Wallet.generate(false);
+        // let wallet = EthJS.Wallet.generate(false);
+        const wallet = BitcoinJS.ECPair.makeRandom();
+        w.address = wallet.getAddress();
+        w.privateKey = wallet.toWIF();
+        // w.fileName = 'BTC-' + w.address;
 
-        w.address = wallet.getAddressString();
-        w.privateKey = wallet.getPrivateKeyString();
-        w.fileName = wallet.getV3Filename();
-        w.keystore = wallet.toV3(passsword, { kdf: 'scrypt' }); // Encrypts wallet object with scrypt
-
-        wallet = null; // Set the unencrypted wallet memory to null
-
+        // const decoded = WIF.decode(w.privateKey);
+        // const encryptedKey = BIP38.encrypt(decoded.privateKey, decoded.compressed, password);
+        // w.keystore = {
+        //   address_compressed : w.address,
+        //   wif_bip38: encryptedKey
+        // };
         resolve(w);
       } catch (e) {
         reject(e);
@@ -42,39 +46,16 @@ export class WalletService {
   }
 
   // getPrivateKey ... decrypts wallet object and returns private key bytes ( not safe )
-  getPrivateKey(w: Wallet, password: String): Promise<string> {
+  decryptPrivateKey(encryptedKey: string, password: string): Promise<string> {
 
     return new Promise((resolve, reject) => {
       try {
-        let wallet = EthJS.Wallet.fromV3(w.keystore, password);
-        const key = wallet.getPrivateKey();
+        const decryptedKey = BIP38.decrypt(encryptedKey, password);
+        decryptedKey.version = 128;
 
-        wallet = null;  // Set the unencrypted wallet memory to null
-        password = null;
-        resolve(key);
+        resolve(WIF.encode(decryptedKey));
       } catch (e) {
-        reject('Key derivation failed -- possibly wrong password');
-      }
-    });
-  }
-
-
-  // getPrivateKey ... decrypts wallet object and returns private key string ( not safe )
-  getPrivateKeyString(w: Wallet, password: String): Promise<string> {
-
-    return new Promise((resolve, reject) => {
-      try {
-        if (w.keystore['Crypto']) {
-          w.keystore['crypto'] = w.keystore['Crypto'];
-        }
-        const wallet = EthJS.Wallet.fromV3(w.keystore, password);
-        const key = wallet.getPrivateKeyString();
-
-        // wallet = null  // Set the unencrypted wallet memory to null
-        // password = null
-        resolve(key);
-      } catch (e) {
-        reject('Key derivation failed -- possibly wrong password');
+        reject(e);
       }
     });
   }
@@ -95,7 +76,7 @@ export class WalletService {
 
   getBlockie(w: Wallet): string {
     return new Blockies({
-      seed: EthJS.Util.addHexPrefix(w.address).toLowerCase(),
+      seed: w.address.toLowerCase(),
       size: 8,
       scale: 16
     }).toDataURL();
@@ -221,7 +202,7 @@ export class WalletService {
             <div class="print-address-container pad-left">
               <p>
                 <strong>Your Address:</strong>
-                <br><span id="paperwalletpriv">${EthJS.Util.toChecksumAddress(w.address)}</span>
+                <br><span id="paperwalletpriv">${w.address}</span>
               </p>
               <p>
                 <strong>Your Private Key:</strong>
@@ -286,7 +267,7 @@ export class WalletService {
             throw true;
           }
           wallet.keystore = res;
-          wallet.address = EthJS.Util.addHexPrefix(res.address);
+          wallet.address = res.address_compressed;
           resolve(wallet);
         } catch (e) {
           reject(null);

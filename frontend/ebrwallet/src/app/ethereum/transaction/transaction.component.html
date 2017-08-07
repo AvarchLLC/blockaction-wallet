@@ -23,7 +23,7 @@
 <div *ngIf="ready && !receipt">
     <div class="card card-md-p send-ether">
         <div class="text-center">
-            <h3><b>Send Ether: </b></h3>
+            <h3><b>Send Ether {{ network }}: </b></h3>
         </div>
 
         <div *ngIf="!receipt">
@@ -67,6 +67,11 @@
                     </g>
                 </g>
             </svg>
+            <div class="blockies">
+                <img width="50" height="50" style="border-radius: 25px;" src="{{ getBlockie(receipt.from) }}">
+                <i style="font-size:38px;" class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                <img width="50" height="50" style="border-radius: 25px;" src="{{ getBlockie(receipt.to) }}">                
+            </div>
         </div>
         <div class="cust-info">
             <h3>Are you sure?</h3>
@@ -76,7 +81,6 @@
     </header>
 
     <main>
-        <h3 class="center">Transaction :</h3>
         <ul>
         <li>Amount <span>{{receipt.amount}} Ether</span></li>
         <li>Transaction Fee<span>{{ receipt.fee}} Ether</span></li>

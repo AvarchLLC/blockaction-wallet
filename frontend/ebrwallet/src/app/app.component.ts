@@ -56,11 +56,17 @@ export class AppComponent implements OnInit{
       .subscribe(() => {
         this.dataService.getCoinData('ethereum,bitcoin,ripple')
           .then(data =>  this.coins = data)
-          .catch();
-      })
+          .catch(err => console.log('No internet connection.'));
+      });
+
+    console.log('%cBlock%cAction', 'color: #1ED6E5; font-size:50px; font-weight:900;', 'color: #000000; font-size:38px; font-weight: 900');
+    console.log('%cIf someone told you to paste some script here then', 'font-size: 16px;');
+    console.log('%cStop!', 'color: #f00; font-size:38px; font-weight: 700;');
+    console.log('%cThis is a browser feature for developers only. But it maybe used by people to steal your money.', 'font-size:22px;');
+    console.log();
   }
 
-  ngOnDestroy() {
+  OnDestroy () {
     this.alive = false;
   }
 }

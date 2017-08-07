@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Headers, Http } from '@angular/http';
 
+import { environment } from '../../environments/environment';
+
+declare var EthJS : any;
 const COIN_API_URL = 'https://api.coinmarketcap.com/v1/ticker';
 
 class CoinMarketData {
@@ -25,11 +28,35 @@ export class DataService {
   constructor(private http: Http) { }
 
   getCoinData(coins: string) {
-    const coinsArr = coins.split(',');    
-    return Promise.all(coinsArr.map(this.fetchData))
+    const coinsArr = coins.split(',');
+    return Promise.all(coinsArr.map(this.fetchData));
   }
 
   fetchData = ticker => this.http.get(`https://api.coinmarketcap.com/v1/ticker/${ticker}/`)
     .map(res => res.json()[0] as CoinMarketData)
-    .toPromise();
+    .toPromise()
+
+  /**
+   * Request Ether by email
+   * @param address address to receive
+   * @param email email to request
+   * @param value request amount in ether
+   */
+  requestEther(address: string, email: string, ether: number): Promise<any> {
+    address = EthJS.Util.addHexPrefix(address);
+    
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+    
+    const content = { 
+        address, 
+        ether
+    } 
+    const data = `receiver=${email}&content=${JSON.stringify(content)}`;
+
+    return this.http
+      .post(`${environment.API_URL}/request/ether`, data, { headers })
+      .toPromise()
+      .then(res => res.json());
+  }
 }
