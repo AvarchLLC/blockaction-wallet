@@ -1,5 +1,5 @@
 import { DataService } from './services/data.service';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
 import {SpinnerService} from "./services/spinner.service";
 
@@ -8,18 +8,22 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
+declare var $: any;
 declare var ga: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  host: {
+    '(window:scroll)':'onScroll()'
+  }
 })
 
 export class AppComponent implements OnInit{
   title = 'Block Action';
   busy;
-
+  sticky = false;
 
   coins: Array<object>;
   private alive: boolean; // used to unsubscribe from the IntervalObservable
@@ -30,7 +34,8 @@ export class AppComponent implements OnInit{
   constructor(
     public router: Router,
     private dataService: DataService,
-    private spinner: SpinnerService
+    private spinner: SpinnerService,
+    private element: ElementRef
   ) {
     this.busy = false;
 
@@ -64,7 +69,17 @@ export class AppComponent implements OnInit{
     console.log('%cStop!', 'color: #f00; font-size:38px; font-weight: 700;');
     console.log('%cThis is a browser feature for developers only. But it maybe used by people to steal your money.', 'font-size:22px;');
     console.log();
+
   }
+
+onScroll(){
+    if(this.element.nativeElement.getBoundingClientRect().top * -1  >= 54 ) {
+      this.sticky = true;
+    }else {
+      this.sticky = false;
+    }
+  }
+
 
   OnDestroy () {
     this.alive = false;

@@ -120,11 +120,11 @@ box-shadow: 0 0 20px rgba(0,0,0,.2);
 z-index: 1;
 margin:0px 0 0 -50px;
 right:0;
-top:60px;
+top:30px;
 overflow: hidden;
 }
 
-.dropdown-menuBar a:hover { background:#f1f1f1; font-size: 16px; }
+.dropdown-menuBar a:hover { background:#fff; font-size: 16px; }
 
 
 .caret{display:inline-block;}
@@ -150,6 +150,8 @@ text-align: left;
 .dropdown:hover .dropdown-menuBar li a:focus {
 text-decoration: none;
 }
-a.active {text-decoration: none; color:#00abe3;}
+.nav-block > ul > li > div > a.active {text-decoration: none; 
+  color:#000; background-color:#00ffcc; border-radius:5px; }
+
 .nav-block>.logo{ width:100%;}
 }

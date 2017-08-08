@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2">
+            <g id="Group-16" transform="translate(4.000000, 16.000000)">
+                <g id="Group-13">
+                    <rect id="Rectangle-4" fill="#000000" x="4.04494382" y="12.2033898" width="9.70786517" height="26.0338983"></rect>
+                    <rect id="Rectangle-9" fill="#000000" x="4.04494382" y="12.2033898" width="50.1573034" height="9.76271186"></rect>
+                    <g id="Group-15" transform="translate(42.455056, 22.296610) scale(-1, -1) translate(-42.455056, -22.296610) translate(16.955056, 8.796610)" fill="#79FCD6">
+                        <rect id="Rectangle-4-Copy" x="-2.39808173e-14" y="1.82964754e-13" width="9.70786517" height="26.0338983"></rect>
+                        <rect id="Rectangle-9-Copy" x="0" y="-1.04805054e-13" width="50.1573034" height="9.76271186"></rect>
+                    </g>
+                    <polyline id="Triangle-2" fill="#000000" points="8.8988764 48 17.7977528 38.2372881 0 38.2372881 8.8988764 48"></polyline>
+                    <polygon id="Triangle-2-Copy" fill="#79FCD6" points="63.1011236 0 72 9.76271186 54.2022472 9.76271186"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

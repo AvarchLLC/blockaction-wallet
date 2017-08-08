@@ -1,39 +1,42 @@
 <div [class.overflow-hidden]="busy">
-    <div *ngIf="coins" class="container coins">
+<div  *ngIf="coins" class="coins" id="top">
+    <div class="container">
         <!-- <div *ngFor="let coin of coins"  class='coin-info'> -->
-        <div class="row">
+        <div class="row" *ngFor="let coin of coins">
             <!-- {{ coins[0].name }} Symbol {{ coins[0].symbol }} -->
             <div class="col-lg-1">
                 <img src="assets/img/Ethereum.png" style="max-height:30px; margin-top:5px;" />
-                <strong>ETH</strong>
+                <strong>{{ coin.symbol}}</strong>
             </div>
             <div class="col-lg-3">
                 <p>Price</p>
-                <strong>  $ {{ coins[0].price_usd }} </strong> BTC {{ coins[0].price_btc }}</div>
+                <strong>  $ {{ coin.price_usd }} </strong> BTC {{ coin.price_btc }}</div>
             <div class="col-lg-2">
                 <p>Change 1h </p>
-                <strong [ngClass]="coins[0].percent_change_1h < 0 ? 'red' : 'green'">{{ coins[0].percent_change_1h }}</strong>
+                <strong [ngClass]="coin.percent_change_1h < 0 ? 'red' : 'green'">{{ coin.percent_change_1h }}</strong>
             </div>
             <div class="col-lg-2">
                 <p>Change 24h</p>
-                <strong [ngClass]="coins[0].percent_change_24h < 0 ? 'red' : 'green'">{{ coins[0].percent_change_24h }}</strong>
+                <strong [ngClass]="coin.percent_change_24h < 0 ? 'red' : 'green'">{{ coin.percent_change_24h }}</strong>
             </div>
-            <!-- 7d {{ coins[0].percent_change_7d}} -->
+            <!-- 7d {{ coin.percent_change_7d}} -->
             <div class="col-lg-2">
                 <p>#coins</p>
-                <strong>{{ coins[0].total_supply }}</strong>
+                <strong>{{ coin.total_supply }}</strong>
             </div>
             <!-- <div class="col-lg-2">
                 <p>Market Cap</p>
-                <strong>$ {{ coins[0].market_cap_usd }}</strong>
+                <strong>$ {{ coin.market_cap_usd }}</strong>
             </div> -->
             <div class="col-lg-2">
                 <p>24h Volume</p>
-                <strong>$ {{ coins[0]['24h_volume_usd'] }}</strong>
+                <strong>$ {{ coin['24h_volume_usd'] }}</strong>
             </div>
         </div>
     </div>
-    <header id="page-top">
+    </div>
+
+    <header id="page-top" [class.sticky]="sticky">
         <div class="container">
             <div class="pull-left logo">
                 <img src="../assets/img/logo.png" alt="logo" class="img-responsive">
@@ -48,15 +51,15 @@
     <div class="container">
         <main class="spinner">
         
-        <svg width="300" height="300" fill="#1ED6E5" viewBox="-5 -5 100 100" version="1.1" baseProfil="full" xmlns="http://www.w3.org/2000/svg">
+        <svg width="300" height="300" fill="#00ffcc" viewBox="-5 -5 100 100" version="1.1" baseProfil="full" xmlns="http://www.w3.org/2000/svg">
             <g>
             <path d="M89.5,61.3c-1-5.2-4.2-9-8.7-12.1c-3-1.6-6.9-2.4-11.5-2.5c-4-0.7-7.3-3.2-9.6-7.8c-1.6-3.6-1.3-7.3,0.3-11.3c1.5-2.3,2.3-4.9,2.5-7.6c0.4-6.5-1.4-12.4-8-17c-4.8-2.9-9.7-3.8-14.9-2.1c-4.9,1.4-8.9,4.8-11.2,9.3c-2.2,6.5-1.6,12.5,1.3,17.8c0.9,1.7,1.3,3.5,1.3,5.4c0.2,5.8-3.5,11.1-9,12.8c-2.4,0.5-4.8,0.8-7.2,0.9C10,48,5.9,50.7,2.6,55.3c-2.5,4.2-3.2,9.1-2.1,13.8c1.1,3.9,3.4,7.4,6.5,10c4,2.9,9,4,13.9,3.3c3.8-0.7,7.2-2.6,9.8-5.4c1.6-1.9,3.1-3.9,4.4-6c2.8-2.6,6.6-4,10.4-3.8c3.4,0.2,6.5,1.6,8.8,4.1l4,5.5c3.4,3.6,8.1,5.8,13.1,6c5.3,0.2,10.4-2,13.9-6C89,72.8,90.5,67.7,89.5,61.3zM17.5,77.7c-6.9,0-12.5-5.7-12.5-12.6c0-6.9,5.7-12.5,12.6-12.5c6.9,0,12.5,5.6,12.5,12.5C30.1,72,24.4,77.6,17.5,77.7L17.5,77.7zM44.8,5.4c6.9,0,12.6,5.6,12.6,12.6s-5.6,12.6-12.6,12.6c-6.9,0-12.6-5.6-12.6-12.6v0C32.3,11,37.9,5.4,44.8,5.4zM44.9,62.5c-7.2,0-13-5.8-13-12.9c0-7.2,5.8-13,12.9-13c7.2,0,13,5.8,13,12.9c0,0,0,0,0,0C57.8,56.7,52.1,62.5,44.9,62.5zM72.2,77.9c-6.9,0-12.6-5.6-12.6-12.5c0-6.9,5.6-12.6,12.5-12.6c6.9,0,12.6,5.6,12.6,12.5c0,0,0,0,0,0C84.7,72.2,79.1,77.9,72.2,77.9z" />
             <!-- top -->
-            <circle cx="44.8" cy="18" r="8.2" fill="none" stroke="#1ED6E5" stroke-width="6" />
+            <circle cx="44.8" cy="18" r="8.2" fill="none" stroke="#00ffcc" stroke-width="6" />
             <!-- left -->
-            <circle cx="17.7" cy="65" r="8.2" fill="none" stroke="#1ED6E5" stroke-width="6" />
+            <circle cx="17.7" cy="65" r="8.2" fill="none" stroke="#00ffcc" stroke-width="6" />
             <!-- right -->
-            <circle cx="72.2" cy="65.3" r="8.2" fill="none" stroke="#1ED6E5" stroke-width="6" />
+            <circle cx="72.2" cy="65.3" r="8.2" fill="none" stroke="#00ffcc" stroke-width="6" />
             <!-- center -->
             <circle cx="45" cy="49.5" r="11.5" />
             </g>
@@ -65,4 +68,3 @@
         </main>
     </div>
 </div>
-
