@@ -3411,7 +3411,7 @@ fieldset[disabled] .btn-link {
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #23527c;
+  color: #00ffcc;
   text-decoration: underline;
   background-color: transparent;
 }
