@@ -17,6 +17,5 @@ const toastr = {
 };
 
 export class Config {
-  gethUrl = 'http://localhost:8545';
   toastr = toastr;
 }

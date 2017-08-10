@@ -21,7 +21,12 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/web3.min.js",
+        "assets/js/ethereumjs_wallet.js",
+        "assets/js/jquery-3.2.1.min.js",
+        "assets/js/toastr.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

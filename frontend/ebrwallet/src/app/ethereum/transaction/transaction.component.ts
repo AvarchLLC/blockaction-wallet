@@ -12,7 +12,7 @@ import {SpinnerService} from '../../services/spinner.service';
 
 
 declare var toastr;
-declare var web3: any;
+declare var Web3: any;
 declare var EthJS: any;
 
 @Component({
@@ -21,7 +21,7 @@ declare var EthJS: any;
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit {
-  @Input() mode: string;
+  web3: any;
 
   sendEther: FormGroup;
 
@@ -46,6 +46,7 @@ export class TransactionComponent implements OnInit {
     private walletService: WalletService,
     private spinner: SpinnerService
   ) {
+    this.web3 = new Web3();
 
     this.sendEther = fb.group({
       receiveAddress: ['', Validators.required],
@@ -192,7 +193,7 @@ export class TransactionComponent implements OnInit {
         return this.transactionService.getBalance(from);
       })
       .then(balance => {
-        let total = new web3.BigNumber(fee);
+        let total = new this.web3.BigNumber(fee);
         total = total.add(amount).toString();
 
         this.receipt = {

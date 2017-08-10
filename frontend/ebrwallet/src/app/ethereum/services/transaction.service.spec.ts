@@ -13,7 +13,7 @@ describe('TransactionService', () => {
     TestBed.configureTestingModule({
       imports: [ HttpModule ],
       providers: [
-        { provide: API_URL, useValue: 'https://ropsten.infura.io' },
+        { provide: API_URL, useValue: 'https://kovan.infura.io' },
         TransactionService
       ]
     });
@@ -21,22 +21,10 @@ describe('TransactionService', () => {
 
   beforeEach(() => {
     (<any>window).ga = jasmine.createSpy('ga');
-    (<any>window).EthJS = jasmine.createSpy('EthJS');
-    (<any>window).toastr = jasmine.createSpy('toastr');
-    (<any>window).toastr.error = jasmine.createSpy('toastr.error');
-    (<any>window).web3 = web3;
-    // (<any>window).web3 = jasmine.createSpy('web3');
-    // (<any>window).web3.fromWei = jasmine.createSpy('web3.fromWei');
-    // (<any>window).web3.toWei = jasmine.createSpy('web3.toWei');
-    // (<any>window).web3.toDecimal = jasmine.createSpy('web3.toDecimal');
-    // (<any>window).web3.toHex = jasmine.createSpy('web3.toHex');
   });
 
   afterEach(() => {
     (<any>window).ga = undefined;
-    (<any>window).EthJS = undefined;
-    (<any>window).toastr = undefined;
-    (<any>window).web3 = undefined;
   });
 
   // let service;
