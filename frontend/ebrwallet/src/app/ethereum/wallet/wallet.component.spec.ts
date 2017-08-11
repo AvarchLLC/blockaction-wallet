@@ -10,9 +10,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { WalletComponent } from './wallet.component';
 
 import { WalletService } from '../services/wallet.service';
-import { AuthService } from '../../services/auth.service';
 import { TransactionService } from '../services/transaction.service';
+import { AuthService } from '../../services/auth.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import { DataService } from '../../services/data.service';
 
 describe('WalletComponent', () => {
   let component: WalletComponent;
@@ -22,7 +23,7 @@ describe('WalletComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule, RouterTestingModule, ReactiveFormsModule, FormsModule,],
       declarations: [WalletComponent],
-      providers: [AuthService, WalletService, TransactionService, GoogleAnalyticsService, SpinnerService],
+      providers: [AuthService, WalletService, TransactionService, GoogleAnalyticsService, SpinnerService, DataService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
@@ -30,9 +31,6 @@ describe('WalletComponent', () => {
 
   beforeEach(() => {
     (<any>window).ga = jasmine.createSpy('ga');
-    (<any>window).EthJS = jasmine.createSpy('EthJS');
-    (<any>window).toastr = jasmine.createSpy('toastr');
-    (<any>window).toastr.error = jasmine.createSpy('toastr.error');
 
     fixture = TestBed.createComponent(WalletComponent);
     component = fixture.componentInstance;
@@ -42,8 +40,6 @@ describe('WalletComponent', () => {
 
   afterEach(() => {
     (<any>window).ga = undefined;
-    (<any>window).EthJS = undefined;
-    (<any>window).toastr = undefined;
   })
 
   it('should create', () => {

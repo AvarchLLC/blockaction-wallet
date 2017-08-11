@@ -51,7 +51,7 @@
 </div>
 
 <div *ngIf="receipt" class="card app" [class.active]="receipt">
-    <header>
+    <div class="header">
         <div class="cust-num">
             <svg height="52" width="82" viewBox="0 0 64 64">
                 <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -78,7 +78,7 @@
             <p>You've about to send real money of amount ${{ receipt.amount_usd}}</p>
         </div>
 
-    </header>
+    </div>
 
     <main>
         <ul>
