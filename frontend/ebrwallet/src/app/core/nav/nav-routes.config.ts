@@ -9,7 +9,8 @@ export const ETHROUTES: NavRouteInfo[] =[
 
 export const BTCROUTES: NavRouteInfo[] =[
         { path: '/bitcoin/wallet', title: 'Create Wallet' , subroutes : false, routes : null},
-        { path: '/bitcoin/info', title: 'View Wallet' , subroutes : false, routes : null},
+        // { path: '/bitcoin/send', title: 'Send Bitcoin' , subroutes : false, routes : null},
+        // { path: '/bitcoin/info', title: 'View Wallet' , subroutes : false, routes : null},
 ];
 
 

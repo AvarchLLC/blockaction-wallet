@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        this.activeLink = event.url;
+        this.activeLink = event.url.split('?')[0];
         this.menuItems = NAVROUTES.filter(menuItem => menuItem);
 
       });

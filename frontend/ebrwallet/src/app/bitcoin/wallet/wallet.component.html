@@ -45,11 +45,9 @@
                             <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary btn-lg" [disabled]="true" (click)="saveWalletToFile()">Download Wallet</button>
-                            <br />
-                            <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                            <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                            <br>
                             <button class="btn btn-link btn-lg" [disabled]="true" (click)="toggleModal()">Request Bitcoin</button>
-                            <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                         </div>
                     </div>
                 </div>

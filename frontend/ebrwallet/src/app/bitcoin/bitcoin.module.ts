@@ -7,6 +7,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import {WalletComponent} from './wallet/wallet.component';
 import { WalletInfoComponent } from './wallet-info/wallet-info.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 
 import {WalletService} from './services/wallet.service';
@@ -20,7 +21,8 @@ import { TransactionService } from './services/transaction.service';
   ],
   declarations: [
     WalletComponent,
-    WalletInfoComponent
+    WalletInfoComponent,
+    TransactionComponent
   ],
   providers: [WalletService, TransactionService],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]

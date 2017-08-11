@@ -31,6 +31,12 @@ export class AppComponent implements OnInit{
   private timer: Observable<number>;
   private interval: number;
 
+  images = {
+    'ETH': 'assets/img/Ethereum.png',
+    'BTC': 'assets/img/Bitcoin.png',
+    'XRP': 'assets/img/Ripple.png'
+  };
+
   constructor(
     public router: Router,
     private dataService: DataService,
