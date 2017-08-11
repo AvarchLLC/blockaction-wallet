@@ -52,10 +52,9 @@
 }
 
 td {
-    max-width: 80px;
+    max-width: 180px;
     overflow: hidden;
-    padding: 30px;
-    text-align: right;
+    padding:10px;
 }  
 
 .box {

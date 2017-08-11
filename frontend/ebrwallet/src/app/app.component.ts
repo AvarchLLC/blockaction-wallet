@@ -73,7 +73,7 @@ export class AppComponent implements OnInit{
   }
 
 onScroll(){
-    if(this.element.nativeElement.getBoundingClientRect().top * -1  >= 54 ) {
+    if(this.element.nativeElement.getBoundingClientRect().top * -1  >= 50 ) {
       this.sticky = true;
     }else {
       this.sticky = false;

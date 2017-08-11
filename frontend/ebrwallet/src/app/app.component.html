@@ -4,13 +4,14 @@
         <!-- <div *ngFor="let coin of coins"  class='coin-info'> -->
         <div class="row" *ngFor="let coin of coins">
             <!-- {{ coins[0].name }} Symbol {{ coins[0].symbol }} -->
-            <div class="col-lg-1">
-                <img src="assets/img/Ethereum.png" style="max-height:30px; margin-top:5px;" />
+            <div class="col-lg-2"><!-- 
+                <img src="assets/img/Ethereum.png" style="max-height:30px; margin-top:5px;" /> -->
                 <strong>{{ coin.symbol}}</strong>
+                <div><a class="text-sm" href="http://coinmarketcap.com">By: CoinMarketCap</a></div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <p>Price</p>
-                <strong>  $ {{ coin.price_usd }} </strong> BTC {{ coin.price_btc }}</div>
+                <strong>  $ {{ coin.price_usd }} </strong></div>
             <div class="col-lg-2">
                 <p>Change 1h </p>
                 <strong [ngClass]="coin.percent_change_1h < 0 ? 'red' : 'green'">{{ coin.percent_change_1h }}</strong>

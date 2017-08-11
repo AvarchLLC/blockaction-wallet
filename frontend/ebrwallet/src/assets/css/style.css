@@ -65,7 +65,7 @@ font-weight: 400;
   font-size: 25px;
   color: #444;
   background: #fff;
-  border-radius:3px;
+  border-radius:0px;
   padding: 5px;
 }
 .icon-circle-up:before{
@@ -97,7 +97,7 @@ font-weight: 400;
 header { 
  padding:10px 0; 
  position: absolute; width:100%;
- margin-bottom:50px;
+ margin-bottom:50px; top:55px;
 }
 
 
@@ -195,7 +195,7 @@ color: #fff;
   color: #666;
   width:100%;
   padding:5px;
-  border-radius: 3px;
+  border-radius: 0px;
 
 }
 
@@ -769,28 +769,38 @@ left:50%; top:10px; }
 }
 
 @media screen and (min-width: 1200px) {
-  
-  .coins { display: block; background:#f2f2f2; height:54px; overflow: hidden;}
+
+
+  .coins { display: block; background:#f2f2f2; height:50px; overflow: hidden;
+    position: relative; margin-bottom:150px;}
 }
 
-.coins .row { position: absolute; opacity:0; width:100%; left:0; top:0; }
+.coins .container { position: absolute; left:50%;
 
-.coins .container { position: absolute; left:0; top:0; margin-top:0;
--webkit-animation: ticker .10s ease-in-out delay iteration-count direction fill-mode;
--o-animation: ticker .10s ease-in-out delay iteration-count direction fill-mode;
-animation: ticker .10s ease-in-out delay iteration-count direction fill-mode;
+-webkit-transform: translateX(-50%);
+-ms-transform: translateX(-50%);
+-o-transform: translateX(-50%);
+transform: translateX(-50%);
+ top:0; margin-top:0;
+-webkit-animation: ticker 10s ease-in-out infinite ;
+-o-animation: ticker 10s ease-in-out infinite;
+animation: ticker 10s ease-in-out infinite;
 
 }
+
+.coins:hover .container { animation-name:tickerr;}
 
 
 @keyframes ticker {
-  0% { opacity: 0; }
-  5% { opacity:1; }
-  95% { opacity: 1; }
-  to { opacity:0;  }
+  0% { top:0}
+  32% { top:0; }
+  33% { top:-46px; }
+  65% { top:-46px; }
+  66% {top: -92px; }
+  99% {top: -92px; }
+  to { top: 0 }
 }
 
-.coins .row:first-child {  }
 
 
 .coins { padding:5px 0; }
