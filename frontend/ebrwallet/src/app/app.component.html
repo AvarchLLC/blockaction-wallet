@@ -4,8 +4,8 @@
         <!-- <div *ngFor="let coin of coins"  class='coin-info'> -->
         <div class="row" *ngFor="let coin of coins">
             <!-- {{ coins[0].name }} Symbol {{ coins[0].symbol }} -->
-            <div class="col-lg-2"><!-- 
-                <img src="assets/img/Ethereum.png" style="max-height:30px; margin-top:5px;" /> -->
+            <div class="col-lg-2">
+                 <img src="{{images[coin.symbol]}}" style="max-height:15px;" />
                 <strong>{{ coin.symbol}}</strong>
                 <div><a class="text-sm" href="http://coinmarketcap.com">By: CoinMarketCap</a></div>
             </div>

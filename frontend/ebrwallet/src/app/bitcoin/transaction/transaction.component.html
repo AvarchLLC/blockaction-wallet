@@ -1,0 +1,87 @@
+<!-- Existing Wallet Box -->
+<div *ngIf="!ready" class=" card walletSelectionBox">
+    <ul class="nav nav-tabs">
+        <li class="active"><a (click)="existing='key'">Private Key</a></li>
+    </ul>
+    <div class="nav nav-content">
+        <input placeholder="Private Key" [(ngModel)]="keyInput">
+        <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+    </div>
+</div>
+
+<!--- Ether Send Modal -->
+<div *ngIf="ready && !receipt">
+    <div class="card card-md-p send-ether">
+        <div class="text-center">
+            <h3><b>Send Bitcoin: </b></h3>
+        </div>
+
+        <div *ngIf="!receipt">
+            <form [formGroup]="sendBitcoin">
+                        <div class="form-group mg-top-sm">
+            <b>From</b>
+            <div class="clearfix">
+                <input type="text" class="form-control" value="{{ wallet.address }}" readonly>
+            </div>
+            <b>To</b>
+            <div class="clearfix {{ sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-success' : ''}}">
+                <input class="form-control" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" />
+            </div>
+        </div>
+                <br />
+                <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
+
+                <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="receipt" class="card app" [class.active]="receipt">
+    <div class="header">
+        <div class="cust-num">
+            <svg height="52" width="82" viewBox="0 0 64 64">
+                <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Desktop-HD" transform="translate(-173.000000, -85.000000)">
+                        <g id="Group" transform="translate(-68.000000, 67.000000)">
+                            <g id="logo" transform="translate(241.000000, 18.000000)">
+                                <g id="Group-13">
+                                    <path d="M42.85965,51.2236111 L42.9944264,51.3583874 L73.873106,20.4797077 L78.3847763,24.991378 L79.7989899,5.19238816 L60,6.60660172 L64.3743687,10.9809704 L45.0814755,30.2738636 L34.6464466,19.8388348 L23,31.4852814 L42.7989899,51.2842712 L42.85965,51.2236111 Z" id="Combined-Shape" fill="#1ED6E5"></path>
+                                    <path d="M15.4662518,39.85965 L34.759145,20.5667568 L44.6923882,30.5 L55.8388348,19.3535534 L37.4852814,1 L37.4203102,1.06497116 L36.5278048,0.17246571 L6.1534361,30.5468344 L1.60660172,26 L0.192388155,45.7989899 L19.991378,44.3847763 L15.4662518,39.85965 Z" id="Combined-Shape" fill="#000000"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="cust-info">
+            <h3>Are you sure?</h3>
+            <p>You've about to send real money of amount ${{ receipt.amount_usd}}</p>
+        </div>
+
+    </div>
+
+    <main>
+        <ul>
+        <li>Amount <span>{{receipt.amount}} Ether</span></li>
+        <li>Transaction Fee<span>{{ receipt.fee}} Ether</span></li>
+        </ul>
+        <div class="total">
+        <p>Total Cost <span>{{receipt.total}} Ether</span></p>
+        </div>
+    </main>
+
+    <footer>
+        <button (click)="onSubmit()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Confirm</button>
+        <button (click)="cancelReceipt()" class="btn btn-block btn-link btn-lg mg-btm-sm">Cancel</button>
+    </footer>
+
+</div>
+
+<style>
+    .send-ether h3 {
+        text-transform: uppercase;
+    }
+</style>

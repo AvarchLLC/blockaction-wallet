@@ -52,9 +52,9 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div *ngIf="wallet" class="col-md-6">
                 <div class="block bg-vl-gray">
-                    <div *ngIf="wallet">
+                    <div>
                         <h2>Wallet Ready!</h2>
                         <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
                         <div class="form-group mg-top-sm">
