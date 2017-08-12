@@ -788,9 +788,6 @@ animation: ticker 10s ease-in-out infinite;
 
 }
 
-.coins:hover .container { animation-name:tickerr;}
-
-
 @keyframes ticker {
   0% { top:0}
   32% { top:0; }
