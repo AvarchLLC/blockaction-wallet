@@ -1,5 +1,6 @@
 body {
-    background: #fff /*url(../img/bg.png) no-repeat left bottom*/;
+    background: #fff url(../img/network.jpg) no-repeat center top;
+    background-size: 100% auto;
     font-family: "SourceSansPro-Regular", sans-serif;
     font-size: 16px;
 }
@@ -95,11 +96,13 @@ font-weight: 400;
 .coins { display: none;}
 
 header { 
- padding:10px 0; 
- position: absolute; width:100%;
- margin-bottom:50px; top:55px;
+ padding:20px 0; 
+ position: absolute; width:100%; height:100px;
+ top:50px; background:#fff;
+box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
 }
 
+h2, .h2, h1, .h1 { font-family: "at"; }
 
 nav{
   height: 75px;
@@ -116,9 +119,10 @@ nav ul li{
 }
 nav ul li a:hover{
   text-decoration: none;
-  color:#79fcd6;
+  color:#37D4B1;
 }
 nav ul li.active a{text-decoration: none; color:#00abe3;}
+
 .banner img{
 float: right;
 margin-top: -32px;
@@ -126,13 +130,12 @@ margin-bottom: 30px;
 }
 .banner-content{
   padding-top: 100px; padding-bottom:50px;
-  color: #4a4a4a;
   text-align: center;
 }
-.banner-content h1 { max-width:500px; display:inline-block; font-family: "at"; color:#000; font-size: 32px; }
+.banner-content h1 { max-width:500px; display:inline-block; font-family: "at"; font-size: 32px; }
 .banner-content p { max-width:600px; display: inline-block; margin:30px 0;  }
 
-header.sticky { position: fixed; width:100%; left:0; top:0; right:0; background: rgba(255,255,255,.9); z-index:100; border-bottom:1px solid #ccc; }
+header.sticky { position: fixed; width:100%; left:0; top:0; right:0; background:#fff; z-index:100; border-bottom:1px solid #ccc; }
 
 .banner-text{
   font-family: "SourceSansPro-ExtraLight";
@@ -362,7 +365,7 @@ span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;text-align: center;
 /****************************************** login_page *********************************/
 
 .fullPage {
-    background: #315F96 url(../img/bg.jpg) no-repeat center;
+    background: #315F96 url(../img/bg_teal.jpg) no-repeat center;
     background-size:cover;
     min-height: 100vh;
     padding:5% 15px;
@@ -383,8 +386,6 @@ span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;text-align: center;
 .pop-alert-box {
     width:100%;
     padding: 40px;
-    background:#fff;
-    font-size: 16px;
     border-radius: 5px;
     display:flex;
     justify-content: center;
@@ -420,12 +421,14 @@ font-size: 29px;}
 }*/
 .btn-marg{margin: 20px;}
 .btn-blue{ background: #00ace6; text-align: center;padding:15px 50px; border: none;}
-.btn-cyan { background: #79fcd6; color:#000; }
+.btn-cyan { background: #37D4B1; color:#000; }
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus {
     text-transform: uppercase;
-    background:#79fcd6;
+   /* Rectangle: */
+   padding:10px 25px; font-family: "SourceSansPro-Bold";
+background-image: linear-gradient(-179deg, #1ED6E5 0%, #50E3C2 100%);
 }
 
 .block {
@@ -463,7 +466,7 @@ opacity: 1; }
 
 .bg-white { background:white; }
 
-.bg-cyan { background: #79fcd6; }
+.bg-cyan { background: #37D4B1; }
 
 .bg-blue { color:#fff;background-image: linear-gradient(90deg, #00D6F4 0%, #00ACE6 100%);}
 
@@ -548,7 +551,7 @@ transform: scale(3); }
   opacity: 0.5; color:#fff;
 
 }
-.bg-teal { background-color:#00ffcc; }
+.bg-teal { background-color:#50E3C2; }
 .bg-light-teal { background-color:#ccfff5; }
 .bg-vl-teal { background-color:#e6fffa; }
 .bg-gray { background-color: #808080; }
@@ -619,7 +622,7 @@ left:50%; top:10px; }
 .nav-block > ul > li{
   list-style: none;
   display: inline-block;
-  margin:15px;
+  margin:5px 15px;
 }
 
 .card { width: 500px; margin: 0 auto; }
@@ -671,8 +674,11 @@ left:50%; top:10px; }
        display: none;
    }
  
-.banner{ background: url(../img/network.jpg) no-repeat center bottom; background-size:100% auto; text-align: center;
+.banner{ background: url(../img/bg_teal.jpg) no-repeat center bottom; 
+  background-size:cover; text-align: center; color:#fff;
+  height:calc(100vh - 150px);
    } 
+
 
 
    .bg-dark{
@@ -772,7 +778,7 @@ left:50%; top:10px; }
 
 
   .coins { display: block; background:#f2f2f2; height:50px; overflow: hidden;
-    position: relative; margin-bottom:150px;}
+    position: relative; margin-bottom:100px;}
 }
 
 .coins .container { position: absolute; left:50%;
@@ -782,9 +788,9 @@ left:50%; top:10px; }
 -o-transform: translateX(-50%);
 transform: translateX(-50%);
  top:0; margin-top:0;
--webkit-animation: ticker 10s ease-in-out infinite ;
--o-animation: ticker 10s ease-in-out infinite;
-animation: ticker 10s ease-in-out infinite;
+-webkit-animation: dticker 10s ease-in-out infinite ;
+-o-animation: dticker 10s ease-in-out infinite;
+animation: dticker 10s ease-in-out infinite;
 
 }
 
