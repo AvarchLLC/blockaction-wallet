@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="80px" height="52px" viewBox="0 0 80 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="65px" height="43px" viewBox="0 0 65 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 13</title>
+    <title>Group</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop-HD" transform="translate(-173.000000, -85.000000)">
-            <g id="Group" transform="translate(-68.000000, 67.000000)">
-                <g id="logo" transform="translate(241.000000, 18.000000)">
+        <g id="Desktop-HD" transform="translate(-167.000000, -68.000000)">
+            <g id="Group-16" transform="translate(167.000000, 68.000000)">
+                <g id="Group-14">
                     <g id="Group-13">
-                        <path d="M42.85965,51.2236111 L42.9944264,51.3583874 L73.873106,20.4797077 L78.3847763,24.991378 L79.7989899,5.19238816 L60,6.60660172 L64.3743687,10.9809704 L45.0814755,30.2738636 L34.6464466,19.8388348 L23,31.4852814 L42.7989899,51.2842712 L42.85965,51.2236111 Z" id="Combined-Shape" fill="#1ED6E5"></path>
-                        <path d="M15.4662518,39.85965 L34.759145,20.5667568 L44.6923882,30.5 L55.8388348,19.3535534 L37.4852814,1 L37.4203102,1.06497116 L36.5278048,0.17246571 L6.1534361,30.5468344 L1.60660172,26 L0.192388155,45.7989899 L19.991378,44.3847763 L15.4662518,39.85965 Z" id="Combined-Shape" fill="#000000"></path>
+                        <g id="Group">
+                            <rect id="Rectangle" fill="#4A4A4A" x="26.0695187" y="6.93548387" width="12.8609626" height="12.8306452"></rect>
+                            <polygon id="Rectangle-Copy-5" fill="#4A4A4A" points="3.47593583 36.0645161 3.47593583 19.766129 16.3368984 19.766129 16.3368984 36.0645161 21.0640698 36.1011783 9.73262032 43 0 36.0645161"></polygon>
+                            <rect id="Rectangle-Copy-2" fill="#4A4A4A" x="3.47593583" y="6.93548387" width="20.855615" height="12.8306452"></rect>
+                            <rect id="Rectangle-Copy" fill="#37D4B1" x="26.0695187" y="23.233871" width="12.8609626" height="12.8306452"></rect>
+                            <polygon id="Rectangle-Copy-4" fill="#37D4B1" points="48.6631016 6.93548387 44.8395722 6.93548387 55.2673797 0 65 6.93548387 61.5240642 6.93548387 61.5240642 23.233871 48.6631016 23.233871"></polygon>
+                            <polygon id="Rectangle-Copy-3" fill="#37D4B1" points="40.6684492 23.233871 61.5240642 23.233871 61.5240642 29.4758065 61.5240642 36.0645161 40.6684492 36.0645161"></polygon>
+                        </g>
                     </g>
                 </g>
             </g>

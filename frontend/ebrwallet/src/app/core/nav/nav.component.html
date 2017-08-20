@@ -16,7 +16,7 @@
                     <div *ngIf="menuItem.subroutes" class="dropdown" >
                       <ul class="dropdown-menuBar">
                           <li *ngFor="let subroute of menuItem.routes" >
-                            <a [routerLink]="[subroute.path]" [class.active]="isActive(subroute)">
+                            <a [routerLink]="[subroute.path]">
                                 {{subroute.title}}
                             </a>
                           </li>

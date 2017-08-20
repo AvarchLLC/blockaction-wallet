@@ -1,54 +1,25 @@
-.walletSelectionBox {
-    padding: 0;
-    margin-top: 10%;
-    
-    border: 1px solid #e9e9e9;
-    background-color: #e9e9e9; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
+.mg-top {
+  padding: 0;
+  margin-top:50px;
 }
 
-.walletSelectionBox .nav-tabs > li {
-    width : 200px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-
-    cursor: pointer; 
-    cursor: hand;
+.inputBox{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
-.walletSelectionBox .nav-content {
-     background-color: #fff; 
-     width: 100%; 
-     min-height: 200px;
-     padding: 20px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.walletSelectionBox .nav-content  input {
-    background-color: #fff;
-    width: 400px;
-    height: 50px;
-    font-size: 20px;
-    padding: 15px; 
-    /* margin: 15px; */
-    border: 1px solid #e9e9e9;
-    border-radius: 5px;
-}
-
-.walletSelectionBox .nav-content  button {
-    border: none;
-    margin-top: 0px;
-}
-
-.walletSelectionBox .nav-content > label {
-    border: none;
+input {
+  background-color: #fff;
+  width: 400px;
+  height: 50px;
+  font-size: 20px;
+  padding: 15px; 
+  /* margin: 15px; */
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
 }
 
 td {
@@ -60,8 +31,8 @@ td {
 
 .box {
     border: 1px solid #e9e9e9;
-    /* background-color: #f9f9f9; */
-    
+    background-color: #fff;
+    margin-top: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -69,3 +40,66 @@ td {
     padding:   30px;
     text-align: left;
 }
+
+.spinner-cube {
+    margin: 100px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+  }
+  
+  .cube1, .cube2 {
+    background-color: #333;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+    animation: sk-cubemove 1.8s infinite ease-in-out;
+  }
+  
+.cube2 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+  }
+  
+  @-webkit-keyframes sk-cubemove {
+    25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+    50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+    75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+    100% { -webkit-transform: rotate(-360deg) }
+  }
+  
+  @keyframes sk-cubemove {
+    25% { 
+      transform: translateX(42px) rotate(-90deg) scale(0.5);
+      -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+    } 50% { 
+      transform: translateX(42px) translateY(42px) rotate(-179deg);
+      -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+    } 50.1% { 
+      transform: translateX(42px) translateY(42px) rotate(-180deg);
+      -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+    } 75% { 
+      transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+      -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    } 100% { 
+      transform: rotate(-360deg);
+      -webkit-transform: rotate(-360deg);
+    }
+  }
+
+  .bg-light-gray{background-color: #f4f4f4 ; margin-top: 30px;}
+  .box-bdr{border: 1px solid #efefef ;}
+  .pad-rt-lt{padding:0 15px}
+  .pad-top-btm{padding: 15px 0;}
+  .pad-all{padding:10px;}
+  .text-box{background-color:#fff; text-align: center;}
+  .text-box a {  color:#1da3d4 ;  text-decoration: none;}
+  .marg-top{margin-top: 10px;}
+  .space-between {
+    display:flex;
+    justify-content: space-between;
+  }

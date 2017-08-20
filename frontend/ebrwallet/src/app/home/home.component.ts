@@ -25,4 +25,16 @@ export class HomeComponent implements OnInit {
     toastr.success('Subscribed to newsletter.')
   }
 
+  scrollTop() {
+    let x = window.innerHeight;
+    const clId = setInterval(() => {
+      window.scrollTo(0, x);
+      x -= 50;
+      if (x <= 0) {
+        window.scrollTo(0, 0);
+        clearInterval(clId);
+      }
+    }, 15);
+  }
+
 }

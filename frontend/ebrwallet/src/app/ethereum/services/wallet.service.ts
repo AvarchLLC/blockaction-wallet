@@ -164,12 +164,6 @@ export class WalletService {
               justify-content: center;
               align-items: center;
             }
-            .bg-img{ background-image: url("/assets/img/ba_logo.svg");
-              background-repeat:no-repeat;
-              min-height: 50px;
-              width:250px;
-              align-self: center;
-              }
             .head-logo {
               display: flex; flex-direction: column; 
               flex:1; 
@@ -179,16 +173,8 @@ export class WalletService {
               color: #fff;
             }
             .head-logo a{ padding:3px 0; margin-top: 10px; font-size:17px;color: #fff; text-decoration:none; }
-            
-            .bg-img img{display: none;}
+             
             @media print{
-                  
-              .bg-img{ background-image:none;
-                background-repeat:no-repeat;
-                height: 50px;
-                }
-                
-              .bg-img img{display: inline;}
               .head-logo a{color: #000;}
             }
           </style>
@@ -199,7 +185,7 @@ export class WalletService {
             <div class="codes">
             <div class="head-logo">
               <div class="bg-img">
-                  <img src="/assets/img/bg_logo.svg" alt="">
+                  <img src="/assets/img/logo.svg" alt="">
               </div>
               <a href="">www.blockaction.io</a>
             </div>

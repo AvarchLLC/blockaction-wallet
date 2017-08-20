@@ -1,13 +1,14 @@
 <!-- Existing Wallet Box -->
-<div *ngIf="!ready" class=" card walletSelectionBox">
-    <ul class="nav nav-tabs">
-        <li [class.active]="existing === 'key'"><a (click)="existing='key'">Address</a></li>
-    </ul>
-    <div *ngIf="existing === 'key'" class="nav nav-content">
-        <input placeholder="Address" [(ngModel)]="keyInput">
-        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+<div *ngIf="!ready" class="col-md-6 mg-top">
+        <div class="block block-center bg-dark-teal inputBox">
+            <h2 class="text-white">View Wallet</h2><br>
+            <input placeholder="Address" [(ngModel)]="keyInput">
+            <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+            <br><br>
+            <p class="text-white">Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+        </div>
     </div>
-</div>
+    
 
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container">
@@ -87,7 +88,6 @@
                             <th>From</th>
                             <th>To</th>
                             <th>Value</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -95,7 +95,7 @@
                             [class.in]="tx.to === wallet.address"
                             [class.out]="tx.from === wallet.address">
                             <td>{{ tx.blockNumber }}</td>
-                            <td><a (click)="showTxDetail(tx)">{{ tx.hash }}</a></td>
+                            <td><a (click)="showTxDetail(tx)" style="cursor:pointer;cursor:hand;">{{ tx.hash }}</a></td>
                             <td>{{ (tx.timeStamp * 1000) | date : 'mediumDate' }} {{ (tx.timeStamp * 1000) | date : 'shortTime' }}</td>
                             <td>
                                 <div *ngIf="tx.from !== wallet.address;else fromText" >
@@ -110,7 +110,6 @@
                                 <ng-template #toText>{{ tx.to }}</ng-template>
                             </td>
                             <td>{{ toEther(tx.value) }}</td>
-                            <td><img src="assets/img/{{tx.isError === '0' ? 'success' : 'failure'}}.png" style="max-height:25px"></td>
                         </tr>
                         <tr *ngIf="transactions === null">
                             Loading Transactios
@@ -152,7 +151,20 @@
 <!-- Transaction Detail Model -->
 <div *ngIf="modalVisible" class="request-modal">
     <div class="card card-md">
-        <pre> {{ selectedTx | json }}</pre>
-        <a class="btn btn-link" (click)="this.modalVisible = false;">Dismiss</a>  
+        <strong>Block Height: </strong>  {{ selectedTx.blockNumber }}   <br>
+        <strong>TimeStamp: </strong> {{ (selectedTx.timeStamp * 1000) | date }}  <br>
+        <strong>Transaction Hash: </strong> {{ selectedTx.hash }}  <br>
+        <strong>Nonce: </strong> {{ selectedTx.nonce }}  <br>
+        <strong>Block Hash: </strong> {{ selectedTx.blockHash }}  <br>
+        <strong>From :</strong>  {{ selectedTx.from }}  <br>
+        <strong>to :</strong>  {{ selectedTx.to }}  <br>
+        <strong>value :</strong>  {{ selectedTx.value }}  <br>
+        <strong>Gas :</strong>  {{ selectedTx.gas }}  <br>
+        <strong>Gas Price:</strong>  {{ selectedTx.gasPrice }}  <br>
+        <strong>Gas Used: </strong> {{ selectedTx.gasUsed }}  <br>
+        <strong>Transaction Fee: </strong> {{ getTransactionFee(selectedTx.gasUsed, selectedTx.gasPrice) }} Ethers  <br>
+        <strong>Confirmations: </strong> {{ selectedTx.confirmations }}  <br>
+        <!-- <pre> {{ selectedTx | json }}</pre> -->
+        <a class="btn btn-link btn-lg" (click)="this.modalVisible = false;">Dismiss</a>  
     </div>
 </div>

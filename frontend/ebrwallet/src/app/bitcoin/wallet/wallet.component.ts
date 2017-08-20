@@ -1,11 +1,12 @@
+import { DataService } from '../../services/data.service';
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { WalletService } from '../services/wallet.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import { TransactionService } from '../services/transaction.service';
 
 import { Wallet } from '../wallet';
-
 import {SpinnerService} from '../../services/spinner.service';
 import { Config } from '../../config';
 const config = new Config();
@@ -15,7 +16,8 @@ declare const toastr: any;
 
 @Component({
   selector: 'app-bitcoin-wallet',
-  templateUrl: './wallet.component.html'
+  templateUrl: './wallet.component.html',
+  styleUrls: ['./wallet.component.css']
 })
 
 export class WalletComponent implements OnInit {
@@ -27,6 +29,8 @@ export class WalletComponent implements OnInit {
 
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
+
+  btcusd: number;
 
   modalVisible = false;
   blockie: any;
@@ -41,7 +45,9 @@ export class WalletComponent implements OnInit {
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private walletService: WalletService,
     private googleAnalyticsService: GoogleAnalyticsService,
-    private spinner: SpinnerService
+    private transactionService: TransactionService,
+    private spinner: SpinnerService,
+    private dataService: DataService
   ) {
 
     this.requestBitcoinForm = fb.group({
@@ -53,16 +59,9 @@ export class WalletComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // this.transactionService
-    //   .getConversionRate('ethusd')
-    //   .then(res => {
-    //     this.ethusd = {
-    //       value: res.bid,
-    //       time: new Date(res.timestamp * 1000)
-    //     };
-    //   })
-    //   .catch(err => toastr.error('Couldn\'t get exchange rate'));
+    this.dataService.getCoinData('bitcoin')
+      .then(data => this.btcusd = parseFloat(data[0].price_usd))
+      .catch(err => toastr.error('Couldn\'t get exchange rate'));
 
     if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
       this.ready = true;
@@ -88,8 +87,6 @@ export class WalletComponent implements OnInit {
 
 
   isReady() {
-    this.googleAnalyticsService
-      .emitEvent('Wallet Page', 'Button Clicked', 'Ok, Got It');
     this.ready = true;
     const messageExpiry = new Date();
     messageExpiry.setHours(messageExpiry.getHours() + 1);
@@ -99,7 +96,7 @@ export class WalletComponent implements OnInit {
   create(): void {
 
     this.googleAnalyticsService
-      .emitEvent('Wallet Creation', 'Button Clicked');
+      .emitEvent('Bitcoin Wallet Creation', 'Created');
 
     this.spinner.displaySpiner(true);
     setTimeout(function () {
@@ -107,40 +104,21 @@ export class WalletComponent implements OnInit {
         .createWallet()
         .then(data => {
           this.wallet = data;
-          toastr.success('Created!', 'Wallet Creation');
           this.showQr();
+          toastr.success('Created!', 'Wallet Creation');
           this.spinner.displaySpiner(false);
-
         })
         .catch(err => {
           toastr.error('An Error Occurred', 'Wallet Creation');
-          this.spinner.displaySpiner(false);          
+          this.spinner.displaySpiner(false);
         });
     }.bind(this), 1000);
 
   }
 
-  saveWalletToFile(): void {
-    this.googleAnalyticsService
-      .emitEvent('Post Wallet Creation', 'Download Wallet');
-
-    this.walletService
-      .saveWalletToFile(this.wallet)
-      .then(ok => {
-        console.log('emitting card show object');
-        // this.on_card_show.emit(true);
-      })
-      .catch(err => toastr.error('An error occurred while downloading', 'Wallet Download'));
-  }
-
-  deleteWallet(): void {
-    this.wallet = null;
-    this.qrSvg = null;
-  }
-
   printPaperWallets() {
     this.googleAnalyticsService
-      .emitEvent('Post Wallet Creation', 'Print Wallet');
+      .emitEvent('Post Bitcoin Wallet Creation', 'Print Bitcoin Wallet');
 
     this.walletService.getPaperWallet(this.wallet).then(data => {
       const win = window.open('about:blank', 'rel="noopener"', '_blank');
@@ -157,15 +135,15 @@ export class WalletComponent implements OnInit {
 
   requestBitcoin() {
     this.googleAnalyticsService
-      .emitEvent('Post Wallet Creation', 'Request Ether');
+      .emitEvent('Post Bitcoin Wallet Creation', 'Request Bitcoin');
 
     this.modalVisible = false;
 
     const email = this.requestBitcoinForm.controls.email.value;
     const amount = this.requestBitcoinForm.controls.amount_ether.value;
-    const str = `Ether request sent to ${email} for ${amount} ether.`;
+    const str = `Bitcoin request sent to ${email} for ${amount} BTC.`;
 
-    toastr.success(str, 'Request Ether');
+    toastr.success(str, 'Request BTC');
   }
 
   toggleModal() {

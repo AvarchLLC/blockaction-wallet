@@ -1,11 +1,11 @@
 <!-- Existing Wallet Box -->
-<div *ngIf="!ready" class=" card walletSelectionBox">
-    <ul class="nav nav-tabs">
-        <li class="active"><a (click)="existing='key'">Private Key</a></li>
-    </ul>
-    <div class="nav nav-content">
+<div *ngIf="!ready" class="col-md-6 mg-top">
+    <div class="block block-center bg-dark-teal inputBox">
+        <h2 class="text-white">Send Bitcoin</h2><br>
         <input placeholder="Private Key" [(ngModel)]="keyInput">
         <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+        <br><br>
+        <p class="text-white">Enter private key in the above field to unlock your wallet and perform the transaction.</p>
     </div>
 </div>
 
@@ -13,7 +13,7 @@
 <div *ngIf="ready && !receipt">
     <div class="card card-md-p send-ether">
         <div class="text-center">
-            <h3><b>Send Bitcoin: </b></h3>
+            <h3><b>Send Bitcoin</b></h3>
         </div>
 
         <div *ngIf="!receipt">
@@ -29,10 +29,10 @@
             </div>
         </div>
                 <br />
-                <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+                <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Bitcoin.png"' [bid]='btcusd' baseName='btc' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
                 <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
 
-                <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
+                <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Bitcoin</button>
             </form>
         </div>
     </div>
@@ -65,11 +65,11 @@
 
     <main>
         <ul>
-        <li>Amount <span>{{receipt.amount}} Ether</span></li>
-        <li>Transaction Fee<span>{{ receipt.fee}} Ether</span></li>
+        <li>Amount <span>{{receipt.amount}} BTC</span></li>
+        <li>Transaction Fee<span>{{ receipt.fee}} BTC</span></li>
         </ul>
         <div class="total">
-        <p>Total Cost <span>{{receipt.total}} Ether</span></p>
+        <p>Total Cost <span>{{receipt.total}} BTC</span></p>
         </div>
     </main>
 
@@ -79,9 +79,3 @@
     </footer>
 
 </div>
-
-<style>
-    .send-ether h3 {
-        text-transform: uppercase;
-    }
-</style>

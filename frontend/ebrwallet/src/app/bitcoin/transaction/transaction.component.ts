@@ -1,6 +1,6 @@
-import { environment } from '../../../environments/environment';
-import { Wallet } from '../wallet';
 import { Component, OnInit, Inject, Input } from '@angular/core';
+import { DataService } from '../../services/data.service';
+import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/filter';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,10 +10,10 @@ import { WalletService } from '../services/wallet.service';
 import { TransactionService } from '../services/transaction.service';
 import {SpinnerService} from '../../services/spinner.service';
 
+import { Wallet } from '../wallet';
 
 declare var toastr;
-declare var Web3: any;
-declare var EthJS: any;
+declare var bitcore: any;
 
 @Component({
   selector: 'app-ethereum-transaction',
@@ -26,20 +26,22 @@ export class TransactionComponent implements OnInit {
 
   keyInput: string;
   wallet: Wallet;
-  ethusd: any;
+  btcusd: any;
 
   message = '';
   error = '';
   ready = false;
 
   receipt: any;
+  test: any;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private transactionService: TransactionService,
     private walletService: WalletService,
-    private spinner: SpinnerService
+    private spinner: SpinnerService,
+    private dataService: DataService
   ) {
 
     this.sendBitcoin = fb.group({
@@ -53,12 +55,11 @@ export class TransactionComponent implements OnInit {
       .filter(params => params.to || params.value)
       .subscribe(params => {
         this.sendBitcoin.setValue({
-          receiveAddress: EthJS.Util.addHexPrefix(params.to),
+          receiveAddress: params.to,
           amount_bitcoin: params.value,
           amount_usd: 0
         });
       });
-
   }
 
   onSubmit() {
@@ -67,49 +68,39 @@ export class TransactionComponent implements OnInit {
 
   sendMoney() {
     this.spinner.displaySpiner(true);
-    this.transactionService
-      .sendMoney(
-        this.wallet.address,
-        this.sendBitcoin.controls.receiveAddress.value,
-        this.sendBitcoin.controls.amount_bitcoin.value,
-        '100',
-        this.wallet.privateKey
-      )
-      .then(hash => {
-        this.router.navigate(['/bitcoin/info'], {queryParams: { pending: hash, address: this.wallet.address}});
-        toastr.success('Transaction sent');
+    const receiver = this.sendBitcoin.controls.receiveAddress.value;
+    const amount = parseFloat(this.sendBitcoin.controls.amount_bitcoin.value);
+
+    this.transactionService.createTransaction(this.wallet.address,receiver,amount.toString(),this.wallet.privateKey)
+      .then(res => {
+        this.router.navigate(['/bitcoin/info'], {queryParams: { pending: res.txid, address: this.wallet.address}});
         this.spinner.displaySpiner(false);
+        toastr.success(res);
       })
       .catch(err => {
         this.spinner.displaySpiner(false);
-        if (err.message.indexOf('funds') > -1) {
-          toastr.error('Insufficent Funds');
-        } else {
-          toastr.error('Couldn\'t send transaction.');
-        }
+        toastr.error(err)
       });
   }
 
   isValidPrivateKey(privKey: string) {
-    return true;
+    return bitcore.PrivateKey.isValid(privKey);
   }
 
   isValidAddress(address: string) {
-    return false;
+    if (environment.production) {
+      return bitcore.Address.isValid(address);
+    } else {
+      return bitcore.Address.isValid(address, bitcore.Networks.testnet);
+    }
   }
 
   ngOnInit() {
-    // this.transactionService
-    //   .getConversionRate('ethusd')
-    //   .then(res => {
-    //     this.ethusd = {
-    //       value: res.bid,
-    //       time: new Date(res.timestamp * 1000)
-    //     };
-    //   })
-    //   .catch(err => {
-    //     toastr.error('Couldn\'t get exchange rate');
-    //   });
+    this.dataService
+      .getCoinData('bitcoin')
+      .then(coinData => {
+        this.btcusd = coinData[0].price_usd;
+      });
   }
 
   converter(data) {
@@ -118,12 +109,23 @@ export class TransactionComponent implements OnInit {
   }
 
   showCardFromKey() {
-    if (this.keyInput) {
-      this.wallet = new Wallet;
-      this.wallet.privateKey = this.keyInput; //privKey;
-      this.wallet.address = 'true'; //EthJS.Util.addHexPrefix(EthJS.Util.bufferToHex(EthJS.Util.privateToAddress(privKey)));
+    this.wallet = new Wallet;
+    try {
+      if (environment.production) {
+
+        const privateKey = new bitcore.PrivateKey(this.keyInput);
+        this.wallet.privateKey = privateKey.toWIF();
+        this.wallet.address = privateKey.toAddress();
+      } else {
+
+        const privateKey = new bitcore.PrivateKey(this.keyInput);
+        this.wallet.privateKey = privateKey.toWIF(); // get private key in wallet imoprt format
+        this.wallet.address = privateKey.toAddress(bitcore.Networks.testnet);
+      }
+      this.spinner.displaySpiner(false);
       this.ready = true;
-    } else {
+    } catch (e) {
+      this.spinner.displaySpiner(false);
       toastr.error('Not a valid key. Please enter another one.');
     }
   }
@@ -132,40 +134,25 @@ export class TransactionComponent implements OnInit {
    * Calculate transaction fee and total cost of transaction
    */
   makeReceipt() {
-    // this.spinner.displaySpiner(true);
-    // const from = this.wallet.address;
-    // const to = EthJS.Util.addHexPrefix(this.sendBitcoin.controls.receiveAddress.value);
-    // const amount = this.sendBitcoin.controls.amount_bitcoin.value;
-    // const amount_usd = this.sendBitcoin.controls.amount_usd.value;
-    // const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
+    this.spinner.displaySpiner(true);
+    const from = this.wallet.address;
+    const to = this.sendBitcoin.controls.receiveAddress.value;
+    const amount = this.sendBitcoin.controls.amount_bitcoin.value;
+    const amount_usd = this.sendBitcoin.controls.amount_usd.value;
 
-    // let fee;
-
-    // this.transactionService.getTransactionCost({ to, value })
-    //   .then(res => {
-    //     fee = res['cost'];
-    //     this.gasPrice = res['price'];
-    //     return this.transactionService.getBalance(from);
-    //   })
-    //   .then(balance => {
-    //     let total = new this.web3.BigNumber(fee);
-    //     total = total.add(amount).toString();
-
-    //     this.receipt = {
-    //       to,
-    //       from,
-    //       balance,
-    //       amount,
-    //       amount_usd,
-    //       fee,
-    //       total
-    //     };
-    //     this.spinner.displaySpiner(false);
-    //   })
-    //   .catch(err => {
-    //     this.spinner.displaySpiner(false);
-    //     toastr.error(err)//'Error building transaction. Please try again.')
-    //   })
+    let fee = 0.000128;
+    let total = amount + fee;
+    let balance;
+    this.receipt = {
+      to,
+      from,
+      balance,
+      amount,
+      amount_usd,
+      fee,
+      total
+    };
+    this.spinner.displaySpiner(false);
   }
 
   cancelReceipt() {

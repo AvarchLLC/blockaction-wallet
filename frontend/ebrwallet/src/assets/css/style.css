@@ -1,17 +1,9 @@
 body {
-    background: #fff url(../img/network.jpg) no-repeat center top;
+    background: #fff url(../img/network.svg) no-repeat center top;
     background-size: 100% auto;
     font-family: "SourceSansPro-Regular", sans-serif;
     font-size: 16px;
 }
-
-@font-face {
-font-family:"SourceSansPro-ExtraLight";
-src: url(../fonts/SourceSansPro-ExtraLight.ttf) format('truetype');
-font-style: normal;
-font-weight:lighter;
-}
-
 
 @font-face {
 font-family:"at";
@@ -19,9 +11,6 @@ src: url(../fonts/at.ttf) format('truetype');
 font-style: normal;
 font-weight:lighter;
 }
-
-
-.thin { font-family:"SourceSansPro-ExtraLight" !important; }
 
 @font-face {
 font-family:'SourceSansPro-Regular';
@@ -137,11 +126,6 @@ margin-bottom: 30px;
 
 header.sticky { position: fixed; width:100%; left:0; top:0; right:0; background:#fff; z-index:100; border-bottom:1px solid #ccc; }
 
-.banner-text{
-  font-family: "SourceSansPro-ExtraLight";
-  font-size: 50px;
-  margin-top: 20px;
-}
 .pd-none{ padding: 0;}
 .pd-top-sm { padding-top: 10px;}
 .pad-topbottom{ padding:40px 0;}
@@ -362,10 +346,39 @@ span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;text-align: center;
 .super-txt{border-bottom:1px solid #999; padding: 2px 6px; height: 20px; max-height: 20px; }
 /****************************************** request-model page end *********************************/
 
+.spinner {
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  background-size: cover;
+  height: 100vh;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1500;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.spinner > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:rgba(255,255,255,1);
+  zoom: 150%;
+  padding: 10px;
+  border: 3px solid #35D4B0;
+  width: 150px;
+  height: 150px;
+  border-radius: 80px;
+}
+
 /****************************************** login_page *********************************/
 
 .fullPage {
-    background: #315F96 url(../img/bg_teal.jpg) no-repeat center;
+    background: #315F96 url(/assets/img/bg_teal.jpg) no-repeat center;
     background-size:cover;
     min-height: 100vh;
     padding:5% 15px;
@@ -558,6 +571,8 @@ transform: scale(3); }
 .bg-light-gray { background-color:#b3b3b3; }
 .bg-vl-gray { background-color:#f2f2f2; }
 
+.bg-dark-teal { background-color: #37D4B1;}
+.dark-teal { color: #37D4B1;}
 
 #walletform li.text-muted {
     color: #fff;
@@ -570,31 +585,6 @@ li.text-muted:before{
     content: '\2713';
     margin: 0 8px 0 0;
 
-}
-
-.spinner-overlay {
-    background: rgba(0,0,0,0.7);
-    position: fixed;
-    background-size: cover;
-    min-height: 100vh;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 1500;
-    overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.spinner-overlay img {
-    width: 60px;
-    height: 60px;
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
 }
 
 .overflow-hidden {
@@ -663,7 +653,6 @@ left:50%; top:10px; }
 .input-group {border: 1px solid #ccc; width: 47%; }
 /************* request ether responsive end*****************/
 /************************************/
-.spinner-overlay img {  width: 120px; height: 120px;}
 
 }
 @media screen and (min-width: 768px) {
@@ -674,7 +663,7 @@ left:50%; top:10px; }
        display: none;
    }
  
-.banner{ background: url(../img/bg_teal.jpg) no-repeat center bottom; 
+.banner{ background: url(/assets/img/bg_teal.jpg) no-repeat center bottom; 
   background-size:cover; text-align: center; color:#fff;
   height:calc(100vh - 150px);
    } 
@@ -788,19 +777,22 @@ left:50%; top:10px; }
 -o-transform: translateX(-50%);
 transform: translateX(-50%);
  top:0; margin-top:0;
--webkit-animation: dticker 10s ease-in-out infinite ;
--o-animation: dticker 10s ease-in-out infinite;
-animation: dticker 10s ease-in-out infinite;
+-webkit-animation: ticker 10s ease-in-out infinite ;
+-o-animation: ticker 10s ease-in-out infinite;
+animation: ticker 10s ease-in-out infinite;
 
 }
 
 @keyframes ticker {
   0% { top:0}
-  32% { top:0; }
+  /* 32% { top:0; }
   33% { top:-46px; }
   65% { top:-46px; }
   66% {top: -92px; }
-  99% {top: -92px; }
+  99% {top: -92px; } */
+  49% { top: 0;}
+  50% {top: -46px;}
+  99% { top: -46px;}
   to { top: 0 }
 }
 
@@ -814,26 +806,3 @@ animation: dticker 10s ease-in-out infinite;
 .bg-cyan.txt-white { color:#fff; }
 
 
-
-@keyframes spinner {
-  100% {
-    transform: rotate(2000deg);
-  }
-}
-
-.spinner-overlay .container {
-    width: 100%;
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.spinner-overlay .spinner {
-    width: 300px;
-    height: 300px;
-    align-self: center;
-    transform-origin: 50% 54.5%;
-    animation: spinner 7s infinite alternate ease-in-out;
-}

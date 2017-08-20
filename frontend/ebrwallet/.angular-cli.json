@@ -22,10 +22,11 @@
         "styles.css"
       ],
       "scripts": [
-        "assets/js/web3.min.js",
-        "assets/js/ethereumjs_wallet.js",
-        "assets/js/jquery-3.2.1.min.js",
-        "assets/js/toastr.min.js"
+        "lib/web3.min.js",
+        "lib/ethereumjs_wallet.js",
+        "lib/bitcore-lib.min.js",
+        "lib/jquery-3.2.1.min.js",
+        "lib/toastr.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

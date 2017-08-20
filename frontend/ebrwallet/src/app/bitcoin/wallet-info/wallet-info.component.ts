@@ -1,3 +1,4 @@
+import { DataService } from '../../services/data.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 import { ActivatedRoute, Route } from '@angular/router';
 import {Component, Input, OnInit} from '@angular/core';
@@ -13,7 +14,7 @@ import {WalletService} from '../services/wallet.service';
 
 import { PaginationInstance } from 'ngx-pagination';
 declare var toastr: any;
-
+declare var bitcore: any;
 
 
 @Component({
@@ -28,9 +29,10 @@ export class WalletInfoComponent implements OnInit {
 
   wallet: Wallet;
   balance: string;
+  balance_usd: string;
   transactions: any = null; // Transaction[];
 
-
+  btcusd: any;
   qrSvg: string;
   qrClass = '';
   blockie: string;
@@ -38,7 +40,7 @@ export class WalletInfoComponent implements OnInit {
   page = 1 ;
   total: number;  // total pages of transaction
   loading: boolean;
- 
+
 
   pending: any; // Pending transaction
   txhash: string;
@@ -49,6 +51,7 @@ export class WalletInfoComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionService,
+    private dataService: DataService,
     private walletService: WalletService,
     private route: ActivatedRoute,
     private googleAnalyticsService: GoogleAnalyticsService
@@ -59,8 +62,10 @@ export class WalletInfoComponent implements OnInit {
     this.timer = Observable.timer(0, this.interval);
 
     this.route.queryParams
-      .filter(params => params.pending && params.address)
+      .filter(params => params.pending || params.address)
       .subscribe(params => {
+        window.scrollTo(0, 0);
+
         this.txhash = params.pending;
         this.keyInput = params.address;
         this.showCardFromKey();
@@ -70,23 +75,17 @@ export class WalletInfoComponent implements OnInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.dataService.getCoinData('bitcoin')
+      .then(res => this.btcusd = res[0].price_usd);
+  }
 
   getDate(timeStamp) {
     return new Date(timeStamp * 1000);
   }
 
-  toBitcoin(satoshi) {
-    return (satoshi / 1e8).toString();
-  }
-
   isValidAddress(address: string) {
-    // try {
-    //     return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
-    // } catch (e) {
-    //     return false;
-    // }
-    return true;
+    return bitcore.Address.isValid(address);
   }
 
   showCardFromKey() {
@@ -95,31 +94,45 @@ export class WalletInfoComponent implements OnInit {
     this.showInfo();
   }
 
-  showInfo(){
+  showInfo() {
     this.ready = true;
     this.showQr();
     this.blockie = this.walletService.getBlockie(this.wallet);
 
+    this.loading = true;
     this.transactionService
-      .getAddressInfo(this.wallet.address, 1)
+      .getTransactions(this.wallet.address, 1)
       .then(res => {
-        this.balance = this.toBitcoin(res.final_balance);
-        this.total = res.n_tx;
-        console.log(this.total)
-        this.transactions  = res.txs;
+        this.total = res.totalItems;
+        this.transactions  = res.items;
+        this.loading = false;
       })
-      .catch(err => toastr.error('Failed to retrieve wallet information'));
+      .catch(err => {
+        toastr.error('Failed to retrieve wallet information')
+        this.loading = false;
+      });
+
+    this.transactionService.getBalance(this.wallet.address)
+      .then(bal => {
+        this.balance = bitcore.Unit.fromSatoshis(bal).toBTC();
+        const balance_usd = parseFloat(this.balance) * parseFloat(this.btcusd);
+        this.balance_usd = balance_usd.toString();
+      });
   }
-  
+
   getPage(page: number) {
-    console.log(page)
+    this.loading = true;
     this.transactionService
-      .getAddressInfo(this.wallet.address, page)
+      .getTransactions(this.wallet.address, page)
       .then(res => {
-        this.transactions  = res.txs;
+        this.transactions  = res.items;
         this.page = page;
+        this.loading = false;
       })
-      .catch(err => toastr.error('Failed to retrieve wallet information'));
+      .catch(err => {
+        toastr.error('Failed to retrieve wallet information')
+        this.loading = false;
+      });
   }
 
 
@@ -139,8 +152,8 @@ export class WalletInfoComponent implements OnInit {
       ? this.qrClass = 'showQr'
       : this.qrClass = '';
   }
-    
-  ngOnDestroy() {
+
+  OnDestroy() {
     this.alive = false;
   }
 }

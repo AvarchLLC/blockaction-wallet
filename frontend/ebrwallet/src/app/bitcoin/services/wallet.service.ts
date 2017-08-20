@@ -15,9 +15,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WalletService {
 
-  constructor(private http: Http) {
-
-  }
+  constructor(private http: Http) { }
 
   // creatWallet ... generates a new wallet object and returns encrypted object
   createWallet(password: string): Promise<Wallet> {
@@ -26,34 +24,10 @@ export class WalletService {
 
     return new Promise((resolve, reject) => {
       try {
-        // let wallet = EthJS.Wallet.generate(false);
         const wallet = BitcoinJS.ECPair.makeRandom();
         w.address = wallet.getAddress();
         w.privateKey = wallet.toWIF();
-        // w.fileName = 'BTC-' + w.address;
-
-        // const decoded = WIF.decode(w.privateKey);
-        // const encryptedKey = BIP38.encrypt(decoded.privateKey, decoded.compressed, password);
-        // w.keystore = {
-        //   address_compressed : w.address,
-        //   wif_bip38: encryptedKey
-        // };
         resolve(w);
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
-  // getPrivateKey ... decrypts wallet object and returns private key bytes ( not safe )
-  decryptPrivateKey(encryptedKey: string, password: string): Promise<string> {
-
-    return new Promise((resolve, reject) => {
-      try {
-        const decryptedKey = BIP38.decrypt(encryptedKey, password);
-        decryptedKey.version = 128;
-
-        resolve(WIF.encode(decryptedKey));
       } catch (e) {
         reject(e);
       }
@@ -145,12 +119,6 @@ export class WalletService {
               justify-content: center;
               align-items: center;
             }
-            .bg-img{ background-image: url("/assets/img/ba_logo.svg");
-              background-repeat:no-repeat;
-              min-height: 50px;
-              width:250px;
-              align-self: center;
-              }
             .head-logo {
               display: flex; flex-direction: column; 
               flex:1; 
@@ -161,15 +129,7 @@ export class WalletService {
             }
             .head-logo a{ padding:3px 0; margin-top: 10px; font-size:17px;color: #fff; text-decoration:none; }
             
-            .bg-img img{display: none;}
-            @media print{
-                  
-              .bg-img{ background-image:none;
-                background-repeat:no-repeat;
-                height: 50px;
-                }
-                
-              .bg-img img{display: inline;}
+            @media print{              
               .head-logo a{color: #000;}
             }
           </style>
@@ -180,7 +140,7 @@ export class WalletService {
             <div class="codes">
             <div class="head-logo">
               <div class="bg-img">
-                  <img src="/assets/img/bg_logo.svg" alt="">
+                  <img src="/assets/img/logo.svg" alt="">
               </div>
               <a href="">www.blockaction.io</a>
             </div>
@@ -222,59 +182,6 @@ export class WalletService {
         console.error(e);
         reject('Couldn\'t generate paper wallet');
       }
-    });
-  }
-
-  // saveWalletToFile ... saves the encrypted wallet object ( wallet keystore ) to disk
-  saveWalletToFile(w: Wallet): Promise<any> {
-    return new Promise((resolve, reject) => {
-
-      try {
-        const fileName: string = w.fileName || 'walletKeystore';
-        const data = JSON.stringify(w.keystore);
-        const blob = new Blob([data], { type: 'binary' });
-
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-          window.navigator.msSaveOrOpenBlob(blob, fileName);
-        } else {
-          const e = document.createEvent('MouseEvents'),
-            a = document.createElement('a');
-
-          a.download = fileName;
-          a.href = window.URL.createObjectURL(blob);
-          a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
-          e.initEvent('click', true, false);
-          a.dispatchEvent(e);
-        }
-        resolve(true);
-      } catch (e) {
-        reject('Couldn\'t save wallet to disk');
-      }
-    });
-  }
-
-  readWalletFromFile(uploaded): Promise<Wallet> {
-    const wallet = new Wallet;
-
-    return new Promise((resolve, reject) => {
-      const file: File = uploaded.files[0];
-      const myReader: FileReader = new FileReader();
-
-      myReader.onloadend = function (e) {
-        try {
-          const res = JSON.parse(myReader.result);
-          if (!res.address || !res.version || res.version !== 3) {
-            throw true;
-          }
-          wallet.keystore = res;
-          wallet.address = res.address_compressed;
-          resolve(wallet);
-        } catch (e) {
-          reject(null);
-        }
-      };
-
-      myReader.readAsText(file);
     });
   }
 }

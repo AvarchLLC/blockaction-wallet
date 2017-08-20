@@ -1,7 +1,7 @@
 import { DataService } from './services/data.service';
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
-import {SpinnerService} from "./services/spinner.service";
+import {SpinnerService} from './services/spinner.service';
 
 
 import 'rxjs/Rx';
@@ -32,9 +32,8 @@ export class AppComponent implements OnInit{
   private interval: number;
 
   images = {
-    'ETH': 'assets/img/Ethereum.png',
-    'BTC': 'assets/img/Bitcoin.png',
-    'XRP': 'assets/img/Ripple.png'
+    'ETH': 'assets/img/ethereum.svg',
+    'BTC': 'assets/img/bitcoin.svg'
   };
 
   constructor(
@@ -65,7 +64,7 @@ export class AppComponent implements OnInit{
     this.timer
       .takeWhile(() => this.alive)
       .subscribe(() => {
-        this.dataService.getCoinData('ethereum,bitcoin,ripple')
+        this.dataService.getCoinData('ethereum,bitcoin')
           .then(data =>  this.coins = data)
           .catch(err => console.log('No internet connection.'));
       });
@@ -78,14 +77,13 @@ export class AppComponent implements OnInit{
 
   }
 
-onScroll(){
-    if(this.element.nativeElement.getBoundingClientRect().top * -1  >= 50 ) {
+  onScroll() {
+    if (this.element.nativeElement.getBoundingClientRect().top * -1  >= 50 ) {
       this.sticky = true;
     }else {
       this.sticky = false;
     }
   }
-
 
   OnDestroy () {
     this.alive = false;

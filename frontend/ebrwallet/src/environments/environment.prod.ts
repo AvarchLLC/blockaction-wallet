@@ -1,5 +1,11 @@
 export const environment = {
   production: true,
   ETH_NODE_URL: 'https://mainnet.infura.io/',
-    API_URL: '/api/'
+  API_URL: '/',
+  BITCOIN : {
+    TRANSATIONS:     'https://blockexplorer.com/api/addrs/ADDRESS/txs',
+    BALANCE_API:     'https://blockexplorer.com/api/addr/ADDRESS/balance',
+    UTXO_API:        'https://blockexplorer.com/api/addr/ADDRESS/utxo',
+    TRANSACTION_API: 'https://blockexplorer.com/api/tx/send'
+  }
 };

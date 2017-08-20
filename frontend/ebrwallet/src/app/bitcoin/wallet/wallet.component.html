@@ -16,8 +16,8 @@
     <div class="container-md" [class.slide]="this.wallet">
         <div class="row">
             <div class="col-md-6">
-                <div class="block block-center bg-cyan">
-                    <h2> Create bitcoin wallet </h2>
+                <div class="block block-center bg-dark-teal">
+                    <h2 class="text-white"> Create bitcoin wallet </h2>
                     <br/>
                     <div class="buttonWithLoader">
                         <button type="submit" id="createButton" class="btn btn-info btn-block btn-lg" (click)="create()">Create Wallet</button>
@@ -25,30 +25,28 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="block bg-gray">
-                    <div *ngIf="wallet">
-                        <h2>Wallet Ready!</h2>
-                        <div class="form-group mg-top-sm">
-                            <b>Address (Compressed)</b>
-                            <div class="clearfix">
-                                <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+                <div *ngIf="wallet" class="block bg-vl-gray">
+                    <h2>Wallet Ready!</h2>
+                    <div class="form-group mg-top-sm">
+                        <b>Address (Compressed)</b>
+                        <div class="clearfix">
+                            <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
 
-                                <span class="{{ qrClass }}" (click)="qrToggle()">
-                                    <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
-                                        <path [attr.d]="qrSvg"></path>
-                                    </svg>
-                                </span>
-                            </div>
+                            <span class="{{ qrClass }}" (click)="qrToggle()">
+                                <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
+                                    <path [attr.d]="qrSvg"></path>
+                                </svg>
+                            </span>
                         </div>
-                        <div class="form-group">
-                            <b>Private Key (WIF)</b>
-                            <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
-                            <br>
-                            <button class="btn btn-link btn-lg" [disabled]="true" (click)="toggleModal()">Request Bitcoin</button>
-                        </div>
+                    </div>
+                    <div class="form-group">
+                        <b>Private Key (WIF)</b>
+                        <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()">Print Wallet</button>
+                        <br>
+                        <button class="btn btn-link btn-lg" [disabled]="true" (click)="toggleModal()">Request Bitcoin</button>
                     </div>
                 </div>
             </div>
@@ -57,22 +55,49 @@
 </div>
 <!--- Ether Request Modal -->
 <div *ngIf="modalVisible" class="request-modal">
-<div class="card">
-    
-    <h2>Request Ether</h2>
-    <form [formGroup]="requestEtherForm">
-        <input class="form-control" formControlName="email" type="email" placeholder="Email...">
+    <div class="card">
 
-        <!-- Currency Converter Box Start -->
-        <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+        <h2>Request Ether</h2>
+        <form [formGroup]="requestEtherForm">
+            <input class="form-control" formControlName="email" type="email" placeholder="Email...">
 
-        <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
-        <!-- Currency Converter Box End -->
+            <!-- Currency Converter Box Start -->
+            <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
 
-        <textarea class="form-control" formControlName="message"></textarea>
-    </form>
-    <button class="btn btn-primary btn-lg" [disabled]="!requestEtherForm.valid"  (click)="requestEther()">Request</button>
-    <button class="" id="closeButton" (click)="toggleModal()">x</button>
-    <button class="btn btn-link btn-lg" (click)="toggleModal()">Close</button>
+            <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
+            <!-- Currency Converter Box End -->
+
+            <textarea class="form-control" formControlName="message"></textarea>
+        </form>
+        <button class="btn btn-primary btn-lg" [disabled]="!requestEtherForm.valid" (click)="requestEther()">Request</button>
+        <button class="" id="closeButton" (click)="toggleModal()">x</button>
+        <button class="btn btn-link btn-lg" (click)="toggleModal()">Close</button>
+    </div>
 </div>
-</div>
+
+
+<!-- Blocks with Action -->
+<!-- <div class="blocks">
+    <ul>
+        <li>
+            <a class='list-item' href=''>
+                Create
+            </a>
+        </li>
+        <li>
+            <a class='list-item' href=''>
+                View
+            </a>
+        </li>
+        <li>
+            <a class='list-item' href=''>
+                Send
+            </a>
+        </li>
+        <li>
+            <a class='list-item' href=''>
+                Request
+            </a>
+        </li>
+    </ul>
+</div> -->

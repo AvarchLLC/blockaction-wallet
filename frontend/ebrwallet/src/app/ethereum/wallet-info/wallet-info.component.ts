@@ -14,7 +14,7 @@ import {WalletService} from '../services/wallet.service';
 import { PaginationInstance } from 'ngx-pagination';
 declare var EthJS: any;
 declare var toastr: any;
-
+declare var Web3: any;
 
 
 @Component({
@@ -23,6 +23,7 @@ declare var toastr: any;
   styleUrls: ['./wallet-info.component.css']
 })
 export class WalletInfoComponent implements OnInit {
+  web3: any;
 
   ready= false;
   existing = 'key';
@@ -63,21 +64,11 @@ export class WalletInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {
+    this.web3 = new Web3();
 
     this.alive = true;
     this.interval = 10000;
     this.timer = Observable.timer(0, this.interval);
-    
-    // this.router.events
-    //   .filter(event => event instanceof NavigationEnd)
-    //   .subscribe((event: NavigationEnd) => {
-    //     console.log('url', event.url)
-    //     if(event.url === '/ethereum/info') {
-    //       this.ready = false;
-    //       this.wallet = null;
-    //       this.keyInput = '';  
-    //     }
-    //   });
 
     this.route.queryParams
       .filter(params => params.pending || params.address)
@@ -249,6 +240,12 @@ export class WalletInfoComponent implements OnInit {
 
             });
       });
+  }
+
+  getTransactionFee(gasUsed, gasPrice) {
+    let price = new this.web3.BigNumber(gasPrice);
+    let fee = price.div(1e18).mul(gasUsed).toString();
+    return fee;
   }
 
   showTxDetail(tx: any) {
