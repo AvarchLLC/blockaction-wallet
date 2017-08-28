@@ -16,16 +16,18 @@
     <div class="container-md" [class.slide]="this.wallet">
         <div class="row">
             <div class="col-md-6">
-                <div class="block block-center bg-dark-teal">
+                <div class="block block-center bg-black">
+                <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 200px;" />
                     <h2 class="text-white"> Create bitcoin wallet </h2>
                     <br/>
+                    <p>It is safe to create bitcoin wallet with us. Start enjoying benefits of bitcoin so don't let the time to be wasted.</p>
                     <div class="buttonWithLoader">
                         <button type="submit" id="createButton" class="btn btn-info btn-block btn-lg" (click)="create()">Create Wallet</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div *ngIf="wallet" class="block bg-vl-gray">
+                <div *ngIf="wallet" class="block bg-dark-teal">
                     <h2>Wallet Ready!</h2>
                     <div class="form-group mg-top-sm">
                         <b>Address (Compressed)</b>
