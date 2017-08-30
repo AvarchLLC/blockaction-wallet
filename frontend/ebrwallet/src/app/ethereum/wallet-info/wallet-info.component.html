@@ -1,14 +1,34 @@
-<!-- Existing Wallet Box -->
-<div class="container-md" *ngIf="!ready">
-        <div class="block block-center inputBox">
-            <h2>View Wallet</h2><br>
-            <input placeholder="Address" [(ngModel)]="keyInput">
-            <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
-            <br><br>
-            <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
-        </div>
-    </div>
 
+<!-- Existing Wallet Box -->
+<div *ngIf="!ready" class="container-md">
+    <div class="block block-center inputBox">
+        <h2 class="text-white">View Wallet</h2><br>
+        <input placeholder="Address" [(ngModel)]="keyInput">
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+        <br>
+        <p class="text-white">----------or----------</p>
+        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
+        <br><br>
+        <p class="text-white">Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+    </div>
+</div>
+
+<!-- Scan Qr Box -->
+<div *ngIf="scanQr" class="scanQrOverlay">
+    <div class="scanQr">
+        <h2>Scan Qr</h2><br>
+        <p class="text-justify">Place your address Qr Code in front of the camera.</p>
+        <qr-scanner
+            [debug]="false"        
+            [canvasWidth]="640"    
+            [canvasHeight]="480"   
+            [mirror]="false"       
+            [stopAfterScan]="true" 
+            [updateTime]="500"
+            (onRead)="decodedQrOutput($event)"></qr-scanner>
+        <a class="btn btn-link btn-lg" (click)="scanQr = false">Dismiss</a>
+    </div>
+</div>
 
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container">
@@ -84,7 +104,7 @@
                         <tr>
                             <th>Block</th>
                             <th>Tx Hash</th>
-                            <th>Age</th>
+                            <th>Time</th>
                             <th>From</th>
                             <th>To</th>
                             <th>Value</th>

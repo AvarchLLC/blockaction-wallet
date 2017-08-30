@@ -14,7 +14,7 @@ export class TransactionService {
   }
 
   /**
-   * Create and send a transaction.
+   * Create and send a bitcoin transaction.
    * @param fromaddress
    * @param toaddress
    * @param amount
@@ -88,6 +88,10 @@ export class TransactionService {
     });
   }
 
+  /**
+   * Sends serialized transaction to the blockchain
+   * @param rawtx serialized string of transaction
+   */
   sendRawTransaction(rawtx: string): Promise<any> {
     const url = environment.BITCOIN.TRANSACTION_API;
     return this.http
@@ -95,9 +99,10 @@ export class TransactionService {
       .toPromise()
       .then(res => res.json());
   }
+
   /**
-   * Get balance in given address
-   * @param address Account Address
+   * Get list of transactions for given address
+   * @param address Bitcoin Address
    */
   getTransactions(address: string, page: number): Promise<any> {
     const perpage = 10;
@@ -110,6 +115,10 @@ export class TransactionService {
       .then(res => res.json());
   }
 
+  /**
+   * Get the balance in the given address
+   * @param address Bitcoin Address
+   */
   getBalance(address: string): Promise<any> {
     const url = environment.BITCOIN.BALANCE_API.replace('ADDRESS', address);
     return this.http
@@ -117,8 +126,9 @@ export class TransactionService {
       .toPromise()
       .then(res => res.json());
   }
+
   /**
-   * Get the unspent transaction outputs of an address 
+   * Get the unspent transaction outputs of an address
    * @param address Account Address
    */
   getUTXOS(address: string): Promise<any> {

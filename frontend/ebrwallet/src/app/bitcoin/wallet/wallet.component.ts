@@ -58,6 +58,7 @@ export class WalletComponent implements OnInit {
     });
   }
 
+  // Get the current exchange rate for bitcoin.
   ngOnInit(): void {
     this.dataService.getCoinData('bitcoin')
       .then(data => this.btcusd = parseFloat(data[0].price_usd))
@@ -68,6 +69,7 @@ export class WalletComponent implements OnInit {
     }
   }
 
+  // Get the qr code for address.
   showQr(): void {
     if (this.wallet) {
       this.walletService
@@ -76,6 +78,7 @@ export class WalletComponent implements OnInit {
     }
   }
 
+  // Toggle the css class for qr image
   qrToggle() {
     this.googleAnalyticsService
       .emitEvent('Post Wallet Creation', 'Show Qr');
@@ -85,7 +88,7 @@ export class WalletComponent implements OnInit {
       : this.qrClass = '';
   }
 
-
+  // Set the privacy message shown flag
   isReady() {
     this.ready = true;
     const messageExpiry = new Date();
@@ -93,6 +96,7 @@ export class WalletComponent implements OnInit {
     localStorage.setItem('messageShown', messageExpiry.toString());
   }
 
+  // 
   create(): void {
 
     this.googleAnalyticsService

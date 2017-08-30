@@ -18,17 +18,18 @@ export class NavComponent implements OnInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        this.activeLink = event.url.split('?')[0];
+        this.activeLink = event.url.split('?')[0];    // Get first part of route excluding query parameters
         this.menuItems = NAVROUTES.filter(menuItem => menuItem);
-
       });
-
   }
 
   ngOnInit() {
     this.menuItems = NAVROUTES.filter(menuItem => menuItem);
   }
 
+  /**
+   * Check if item route matches the current active route
+   */
   isActive(menuItem): boolean {
     if (menuItem.routes) {
       for (const route of menuItem.routes) {
