@@ -3,7 +3,8 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { EthereumRoutingModule } from './ethereum-routing.module';
 import {SharedModule} from '../shared/shared.module';
 
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { QrScannerModule } from 'angular2-qrscanner';
 
 import {WalletComponent} from './wallet/wallet.component';
 import {TransactionComponent} from './transaction/transaction.component';
@@ -16,7 +17,8 @@ import {TransactionService} from './services/transaction.service';
   imports: [
     EthereumRoutingModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QrScannerModule
   ],
   declarations: [
     WalletComponent,

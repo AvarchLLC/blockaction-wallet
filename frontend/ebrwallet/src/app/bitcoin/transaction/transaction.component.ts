@@ -28,12 +28,9 @@ export class TransactionComponent implements OnInit {
   wallet: Wallet;
   btcusd: any;
 
-  message = '';
-  error = '';
-  ready = false;
+  ready = false;    // Flag to show transaction form.
 
   receipt: any;
-  test: any;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder,
     private route: ActivatedRoute,
@@ -51,6 +48,7 @@ export class TransactionComponent implements OnInit {
 
     });
 
+    // Check query parameters for requested address and amount
     this.route.queryParams
       .filter(params => params.to || params.value)
       .subscribe(params => {
@@ -99,10 +97,11 @@ export class TransactionComponent implements OnInit {
     this.dataService
       .getCoinData('bitcoin')
       .then(coinData => {
-        this.btcusd = coinData[0].price_usd;
+        this.btcusd = coinData[0].price_usd; // The exchange rate for bitcoin
       });
   }
 
+  // Sets the data on form based on value emitted from app-converted-box
   converter(data) {
     this.sendBitcoin.controls.amount_bitcoin.setValue(data.baseValue);
     this.sendBitcoin.controls.amount_usd.setValue(data.quoteValue);
@@ -111,15 +110,14 @@ export class TransactionComponent implements OnInit {
   showCardFromKey() {
     this.wallet = new Wallet;
     try {
-      if (environment.production) {
+      const privateKey = new bitcore.PrivateKey(this.keyInput);
+      this.wallet.privateKey = privateKey.toWIF(); // get private key in wallet imoprt format
 
-        const privateKey = new bitcore.PrivateKey(this.keyInput);
-        this.wallet.privateKey = privateKey.toWIF();
+      // Derive the desired address format.
+      // Bitcoin Addresses for the main network and test network are differently derived from private key
+      if (environment.production) {
         this.wallet.address = privateKey.toAddress();
       } else {
-
-        const privateKey = new bitcore.PrivateKey(this.keyInput);
-        this.wallet.privateKey = privateKey.toWIF(); // get private key in wallet imoprt format
         this.wallet.address = privateKey.toAddress(bitcore.Networks.testnet);
       }
       this.spinner.displaySpiner(false);
@@ -140,8 +138,8 @@ export class TransactionComponent implements OnInit {
     const amount = this.sendBitcoin.controls.amount_bitcoin.value;
     const amount_usd = this.sendBitcoin.controls.amount_usd.value;
 
-    let fee = 0.000128;
-    let total = amount + fee;
+    const fee = 0.000128;
+    const total = amount + fee;
     let balance;
     this.receipt = {
       to,

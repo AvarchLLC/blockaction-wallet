@@ -182,7 +182,7 @@ Today, many people are purchasing digital asset considering it as an investment 
     <div class="col-lg-4 links-footer ">
       <form action="" class="bg-light" [formGroup]="subscription">
         <input type="email" class="form-control" formControlName="email" placeholder="Type your email">
-        <button (click)="subscribe()" class="btn btn-primary btn-block ">Subscribe Newsletter</button>
+        <button (click)="subscribe()" [disabled]="!subscription.valid" class="btn btn-primary btn-block ">I'm In</button>
       </form>
 
       <div class="social-btns">

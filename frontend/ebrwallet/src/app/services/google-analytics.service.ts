@@ -5,6 +5,13 @@ declare var ga: any;
 @Injectable()
 export class GoogleAnalyticsService {
 
+  /**
+   * Event custom events to google analtics
+   * @param eventCategory 
+   * @param eventAction 
+   * @param eventLabel 
+   * @param eventValue 
+   */
   public emitEvent(eventCategory: string,
                    eventAction: string,
                    eventLabel: string = null,

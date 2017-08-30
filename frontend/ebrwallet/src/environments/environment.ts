@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  COIN_API_URL: 'https://api.coinmarketcap.com/v1/ticker',
   ETH_NODE_URL: 'https://kovan.infura.io/',
   API_URL: 'http://localhost:1234',
   BITCOIN : {

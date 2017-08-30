@@ -1,5 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+/**
+ * Example Usage for using the converter box
+ * <app-converter-box
+ *     [baseImage]='"assets/img/Ethereum.png"'
+ *     [bid]='ethusd.value'
+ *     baseName='eth'
+ *     quoteName='usd'
+ *     (on_change)="handleConvertedData($event)"
+ *     ></app-converter-box>
+ */
 @Component({
   selector: 'app-converter-box',
   templateUrl: './converter-box.component.html',
@@ -23,7 +33,7 @@ export class ConverterBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if(!this.baseValue) {
+    if (!this.baseValue) {
       this.baseValue = '0';
     }
     const quote_value = parseFloat(this.baseValue) * parseFloat(this.bid);
@@ -58,6 +68,7 @@ export class ConverterBoxComponent implements OnInit {
     this.emit_change();
   }
 
+  // Emits converted data to the parent component
   emit_change() {
     this.on_change.emit({baseValue: this.baseValue, quoteValue: this.quoteValue})
   }

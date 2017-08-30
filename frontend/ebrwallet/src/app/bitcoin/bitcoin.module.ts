@@ -4,6 +4,7 @@ import { BitcoinRoutingModule } from './bitcoin-routing.module';
 import {SharedModule} from '../shared/shared.module';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { QrScannerModule } from 'angular2-qrscanner';
 
 import {WalletComponent} from './wallet/wallet.component';
 import { WalletInfoComponent } from './wallet-info/wallet-info.component';
@@ -17,7 +18,8 @@ import { TransactionService } from './services/transaction.service';
   imports: [
     BitcoinRoutingModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QrScannerModule
   ],
   declarations: [
     WalletComponent,

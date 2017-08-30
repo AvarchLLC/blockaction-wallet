@@ -17,7 +17,10 @@ export class WalletService {
 
   constructor(private http: Http) { }
 
-  // creatWallet ... generates a new wallet object and returns encrypted object
+  /**
+   * Generates a new wallet and encrypts it with given password
+   * @param password Wallet encryption password
+   */
   createWallet(password: string): Promise<Wallet> {
 
     const w: Wallet = new Wallet;
@@ -34,7 +37,10 @@ export class WalletService {
     });
   }
 
-  // getQrCode ... create a svg string for qr code of wallet address
+  /**
+   * Returns the inner path object of svg string for address qr.
+   * @param w Wallet object to return address qr.
+   */
   getQrCode(w: Wallet): Promise<string> {
     return new Promise((resolve, reject) => {
       try {
@@ -48,6 +54,10 @@ export class WalletService {
     });
   }
 
+  /**
+   * Returns the Blockie image/png for address of a wallet
+   * @param w Wallet object to get address blockie
+   */
   getBlockie(w: Wallet): string {
     return new Blockies({
       seed: w.address.toLowerCase(),
@@ -56,6 +66,10 @@ export class WalletService {
     }).toDataURL();
   }
 
+  /**
+   * Returns plain html for paper wallet with embedded wallet info
+   * @param w Wallet object to generate paper wallet
+   */
   getPaperWallet(w: Wallet): Promise<any> {
 
     return new Promise((resolve, reject) => {

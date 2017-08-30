@@ -22,10 +22,11 @@ declare var ga: any;
 
 export class AppComponent implements OnInit{
   title = 'Block Action';
-  busy;
+  busy: boolean;                // The loading spinner visibility flag
   sticky = false;
 
-  coins: Array<object>;
+  coins: Array<object>;        // Holds the coins market data
+
   private alive: boolean; // used to unsubscribe from the IntervalObservable
                           // when OnDestroy is called.
   private timer: Observable<number>;
@@ -42,12 +43,13 @@ export class AppComponent implements OnInit{
     private spinner: SpinnerService,
     private element: ElementRef
   ) {
-    this.busy = false;
 
+    // Coin Data
     this.alive = true;
-    this.interval = 20 * 1000;
+    this.interval = 20 * 1000; // Interval at which coin data is retreived
     this.timer = Observable.timer(0, this.interval);
 
+    // Google Analytics: subscribes to router and sends page and page view data
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         ga('set', 'page', event.urlAfterRedirects);
@@ -57,10 +59,12 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    // Subscribe to spinner value and sets the visibility of the spinner
     this.spinner.spinnerStatus.subscribe((val: boolean) => {
       this.busy = val;
     });
 
+    // Sets a interval for getting the coins market data
     this.timer
       .takeWhile(() => this.alive)
       .subscribe(() => {
@@ -69,6 +73,7 @@ export class AppComponent implements OnInit{
           .catch(err => console.log('No internet connection.'));
       });
 
+    // Prints warning texts to the console
     console.log('%cBlock%cAction', 'color: #1ED6E5; font-size:50px; font-weight:900;', 'color: #000000; font-size:38px; font-weight: 900');
     console.log('%cIf someone told you to paste some script here then', 'font-size: 16px;');
     console.log('%cStop!', 'color: #f00; font-size:38px; font-weight: 700;');
@@ -77,8 +82,10 @@ export class AppComponent implements OnInit{
 
   }
 
+  // Sticky nav bar once user scrolls more than the stickyThreshold
   onScroll() {
-    if (this.element.nativeElement.getBoundingClientRect().top * -1  >= 50 ) {
+    const stickyThreshold = 50;
+    if (this.element.nativeElement.getBoundingClientRect().top * -1  >= stickyThreshold ) {
       this.sticky = true;
     }else {
       this.sticky = false;

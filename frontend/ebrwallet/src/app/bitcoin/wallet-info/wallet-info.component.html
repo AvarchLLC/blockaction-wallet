@@ -2,10 +2,30 @@
 <div *ngIf="!ready" class="col-md-6 mg-top">
     <div class="block block-center bg-dark-teal inputBox">
         <h2 class="text-white">View Wallet</h2><br>
-            <input placeholder="Address" [(ngModel)]="keyInput">
-            <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>    
+        <input placeholder="Address" [(ngModel)]="keyInput">
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>    
+        <br>
+        <p class="text-white">----------or----------</p>
+        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
         <br><br>
         <p class="text-white">Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+    </div>
+</div>
+
+<!-- Scan Qr Box -->
+<div *ngIf="scanQr" class="scanQrOverlay">
+    <div class="scanQr">
+        <h2>Scan Qr</h2><br>
+        <p class="text-justify">Place your address Qr Code in front of the camera.</p>
+        <qr-scanner
+            [debug]="false"        
+            [canvasWidth]="640"    
+            [canvasHeight]="480"   
+            [mirror]="true"       
+            [stopAfterScan]="true" 
+            [updateTime]="500"
+            (onRead)="decodedQrOutput($event)"></qr-scanner>
+        <a class="btn btn-link btn-lg" (click)="scanQr = false">Dismiss</a>
     </div>
 </div>
 

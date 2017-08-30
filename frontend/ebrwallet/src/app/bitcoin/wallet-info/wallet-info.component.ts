@@ -32,7 +32,9 @@ export class WalletInfoComponent implements OnInit {
   balance_usd: string;
   transactions: any = null; // Transaction[];
 
-  btcusd: any;
+  btcusd;
+
+  scanQr: boolean;
   qrSvg: string;
   qrClass = '';
   blockie: string;
@@ -94,7 +96,7 @@ export class WalletInfoComponent implements OnInit {
     this.showInfo();
   }
 
-  showInfo() {
+  async showInfo() {
     this.ready = true;
     this.showQr();
     this.blockie = this.walletService.getBlockie(this.wallet);
@@ -108,15 +110,24 @@ export class WalletInfoComponent implements OnInit {
         this.loading = false;
       })
       .catch(err => {
-        toastr.error('Failed to retrieve wallet information')
+        toastr.error('Failed to retrieve wallet transactions');
         this.loading = false;
       });
+
+    // Check that the convertion rate is retrived
+    if (!this.btcusd) {
+      const btcusd = await this.dataService.getCoinData('bitcoin');
+      this.btcusd = btcusd[0].price_usd;
+    }
 
     this.transactionService.getBalance(this.wallet.address)
       .then(bal => {
         this.balance = bitcore.Unit.fromSatoshis(bal).toBTC();
         const balance_usd = parseFloat(this.balance) * parseFloat(this.btcusd);
         this.balance_usd = balance_usd.toString();
+      }).catch(err => {
+        toastr.error('Failed to retrieve wallet balance');
+        this.loading = false;
       });
   }
 
@@ -152,6 +163,18 @@ export class WalletInfoComponent implements OnInit {
       ? this.qrClass = 'showQr'
       : this.qrClass = '';
   }
+
+  decodedQrOutput(address) {
+    if (!this.isValidAddress(address)) {
+      this.scanQr = false;
+      toastr.error('Not a valid address.');
+    } else {
+      toastr.success('Successfully scanned address.');
+      this.scanQr = false;
+      this.keyInput = address;
+    }
+  }
+
 
   OnDestroy() {
     this.alive = false;
