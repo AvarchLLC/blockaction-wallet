@@ -1,19 +1,19 @@
 <!-- Existing Wallet Box -->
-<div *ngIf="!ready" class="col-md-6 mg-top">
-        <div class="block block-center bg-dark-teal inputBox">
-            <h2 class="text-white">View Wallet</h2><br>
+<div class="container-md" *ngIf="!ready">
+        <div class="block block-center inputBox">
+            <h2>View Wallet</h2><br>
             <input placeholder="Address" [(ngModel)]="keyInput">
             <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
             <br><br>
-            <p class="text-white">Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+            <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         </div>
     </div>
-    
+
 
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12">
 
             <div class="box">
                 <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
@@ -91,7 +91,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let tx of transactions | paginate: config" 
+                        <tr *ngFor="let tx of transactions | paginate: config"
                             [class.in]="tx.to === wallet.address"
                             [class.out]="tx.from === wallet.address">
                             <td>{{ tx.blockNumber }}</td>
@@ -165,6 +165,6 @@
         <strong>Transaction Fee: </strong> {{ getTransactionFee(selectedTx.gasUsed, selectedTx.gasPrice) }} Ethers  <br>
         <strong>Confirmations: </strong> {{ selectedTx.confirmations }}  <br>
         <!-- <pre> {{ selectedTx | json }}</pre> -->
-        <a class="btn btn-link btn-lg" (click)="this.modalVisible = false;">Dismiss</a>  
+        <a class="btn btn-link btn-lg" (click)="this.modalVisible = false;">Dismiss</a>
     </div>
 </div>

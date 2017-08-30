@@ -11,7 +11,8 @@ declare var toastr: any;
 export class HomeComponent implements OnInit {
 
   subscription : FormGroup;
-
+  shownPopup: boolean=false;
+  shownModal: boolean=false;
   constructor( @Inject(FormBuilder) fb: FormBuilder) {
     this.subscription = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])]
@@ -36,5 +37,18 @@ export class HomeComponent implements OnInit {
       }
     }, 15);
   }
+
+  showPopup() {
+
+this.shownPopup=!this.shownPopup;
+
+}
+
+  showModal() {
+
+this.shownModal=!this.shownModal;
+
+}
+
 
 }

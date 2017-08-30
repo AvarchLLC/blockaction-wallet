@@ -1,17 +1,18 @@
 <!-- Existing Wallet Box -->
-<div *ngIf="!ready" class="col-md-6 mg-top">
-    <div class="block block-center bg-dark-teal inputBox">
-        <h2 class="text-white">Send Bitcoin</h2><br>
-        <input placeholder="Private Key" [(ngModel)]="keyInput">
+<div class="container-md" *ngIf="!ready">
+    <div class="block block-center align-center inputBox">
+        <h2>Send Bitcoin</h2><br>
+        <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
         <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         <br><br>
-        <p class="text-white">Enter private key in the above field to unlock your wallet and perform the transaction.</p>
+        <p>Enter private key in the above field to unlock your wallet and perform the transaction.</p>
     </div>
 </div>
 
 <!--- Ether Send Modal -->
-<div *ngIf="ready && !receipt">
-    <div class="card card-md-p send-ether">
+<div class="container-md" *ngIf="ready && !receipt">
+
+    <div class="block block-center align-center send-ether">
         <div class="text-center">
             <h3><b>Send Bitcoin</b></h3>
         </div>

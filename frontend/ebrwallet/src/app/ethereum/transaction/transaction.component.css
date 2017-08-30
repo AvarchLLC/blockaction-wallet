@@ -14,26 +14,16 @@
   margin-bottom: 40px;
 }
 
-span > a {
-  cursor: pointer;
-  cursor: hand;
-  text-decoration:  none;
-}
-
-span > a:hover ,span.active > a{
-  color: #ffffff;  
-}
-
 .nav-content input {
   background-color: #fff;
   width: 500px;
   height: 50px;
   font-size: 20px;
-  padding: 15px; 
+  padding: 15px;
   margin: 20px auto;
   border: 1px solid #e9e9e9;
   border-radius: 5px;
-  
+
 }
 
 .send-ether {
@@ -56,10 +46,10 @@ p {
   justify-content: space-around;
   margin-top: 10px;
 }
- 
+
 .app > .center {
   text-align: center;
-} 
+}
 /* .app > button {
   cursor: pointer;
   border: none;
@@ -89,9 +79,9 @@ p {
 
 .app > .header {
   border-radius: 4px 4px 0 0;
-  background-color:rgba(255,255,255,.7); 
-  border-top: 1px solid #eee; 
-  padding:10px 0; 
+  background-color:rgba(255,255,255,.7);
+  border-top: 1px solid #eee;
+  padding:10px 0;
   width:100%;
 }
 

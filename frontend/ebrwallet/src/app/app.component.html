@@ -1,12 +1,16 @@
+
+
 <div [class.overflow-hidden]="busy">
+
+<div class="bodyContent">
     <div class="coins">
         <div *ngIf="coins" id="top">
             <div class="container">
                 <div class="row" *ngFor="let coin of coins">
                     <div class="col-lg-2">
-                        <img src="{{images[coin.symbol]}}" style="width:25px;" />
+                        <p style="margin-top: 10px;"><img src="{{images[coin.symbol]}}" style="width:25px;" />
                         <strong>{{ coin.symbol}}</strong>
-                        <div><a class="text-sm" href="http://coinmarketcap.com">By: CoinMarketCap</a></div>
+                        </p>
                     </div>
                     <div class="col-lg-2">
                         <p>Price</p>
@@ -41,10 +45,35 @@
         </div>
     </header>
     <router-outlet></router-outlet>
+
+</div>
+<!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++-->
+<footer>
+  <div class="container">
+  <div class="row">
+
+<div class="col-lg-4">
+<p>You can support us by donating:</p>
+<a class="copyLink" href="#copy">BTC</a>
+<a class="copyLink" href="#copy">ETH</a>
+</div>
+<div class="col-lg-4 text-center">
+<button class="btn btn-link" type="button" name="up_arrow"><a (click)="scrollTop()"><span class="icon-circle-up"></span></a></button>
+</div>
+
+<div class="col-lg-4 text-right">
+      <P>&copy; 2017 BlockAction. All Right Reserved</P>
+
+  </div>
+  </div>
+  </div>
+</footer>
+
+
 </div>
 
 <div *ngIf="busy" class="spinner">
     <div>
-        <img width="100" height="100" src="/assets/img/logo-anim.gif" />
+        <img src="/assets/img/logo_icon.svg" />
     </div>
 </div>

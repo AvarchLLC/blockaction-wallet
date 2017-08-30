@@ -5,43 +5,52 @@
       <div>
         <!-- <canvas id="demo-canvas"></canvas>  -->
         <h1>Secure and Simplified Solutions for Blockchain Transactions</h1>
-        <div>
-          <p>BlockAction is the most secured and easy to use interface to create wallet and perform transactions on blockchain.
-            Our mission is to simplify the process to make it usable by mainstream users.</p>
+
+<div style="margin-top:40px">
+        <a href="#getStart" class="btn btn-primary btn-lg" type="button" name="Join_now">Get Started</a><br/>
+        <a href="javascript:void(0)" (click)="showModal()" class="text-white">New to Blockchain?</a>
         </div>
 
-        <a href="#howitworks" class="btn btn-primary btn-lg" type="button" name="Join_now">Get Started</a>
+
       </div>
     </div>
   </div>
 </div>
 
+<div class="messageBar">
 
-<!--+++++++++++++++++++++++++++++++++++++++why we need section++++++++++++++++++++-->
-<div class="empty-section">
-  <div class="container">
-    <h2>Why we need BlockAction Digital Asset Wallet?</h2>
-    <p style="float:left;">
-      The blockchain technology is widely accepted because of its features - anonymity, anytime accessibility, security, preventing
-      censorship, inexpensive etc. Basically, blockchain users are empowered. Today, many people are purchasing digital asset
-      considering it as an investment due to its increasing monetary value, but are keeping it on an exchange. Not only you
-      compromise with your identity, privacy and money, you are actually not having any control on your private key.
-    </p>
-    <img style="float:right;" src="/assets/img/img_square.png">
-  </div>
+This website is currently open for testing. We need your valuable feedbacks to fill the room of improvements.
+
 </div>
+
+
+<!--+++++++++++++++++++++++++++++++++++++++why we need section++++++++++++++++++++--><!--
+<div class="empty-section">
+  <div class="container-sm">
+    <h2>Why we need BlockAction Digital Asset Wallet?</h2>
+    <div class="media">
+    <div class="media-left">
+ <img style="max-width: 200px; margin-right:20px;" src="/assets/img/img_square.png">
+    </div>
+    <div class="media-body">
+      <p>The blockchain technology is widely accepted because of its features - anonymity, anytime accessibility, security, preventing censorship, inexpensive etc. Basically, blockchain users are empowered.
+Today, many people are purchasing digital asset considering it as an investment due to its increasing monetary value, but are keeping it on an exchange. Not only you compromise with your identity, privacy and money, you are actually not having any control on your <b>private key</b>.
+    </p>
+    </div>
+    </div>
+  </div>
+</div> -->
 
 <!--+++++++++++++++++++++++++++++++++++++++services section++++++++++++++++++++-->
 <div class="four-col-box pad-tp-btm features">
   <div class="container icon pad-none">
     <h2>Why BlockAction ?</h2>
-    <p>BlockAction is created to shift power back to user to control their asset without any intermediaries. It provides user
-      with full control on wallet.</p>
+    <p style="max-width:600px; margin:0 auto;">BlockAction is created to shift power back to user to control their asset without any intermediaries. It enables user with full control on wallet. Key features of our wallet are</p>
     <div class="row">
       <div class="col-lg-4">
         <img src="/assets/img/img1.png" alt="Wallet Logo">
-        <h3>Free Online Ethereum Wallet</h3>
-        <p>We provide offline wallet creation facility which ensures complete safety of your wallet.</p>
+        <h3>Free Wallet</h3>
+        <p>We provide free offline wallet creation facility which ensures complete safety of your wallet. You don’t need to download entire node on your machine.</p>
       </div>
       <div class="col-lg-4">
         <img src="/assets/img/img2.png" alt="Wallet Logo">
@@ -66,8 +75,8 @@
       </div>
       <div class="col-lg-4">
         <img src="/assets/img/img6.png" alt="Wallet Logo">
-        <h3>Full Control of Wallet</h3>
-        <p>We do not store wallet password and private key. User has full control of your private key with offline wallet creation.</p>
+        <h3>Full Control of Private Key</h3>
+        <p>BlockAction allows user to create wallet with password and generate private key on local machine. User has full control over the wallet.</p>
       </div>
     </div>
   </div>
@@ -75,19 +84,46 @@
 
 
 <!--+++++++++++++++++++++++++++++++++++++++more text section++++++++++++++++++++-->
-<div class="empty-section">
-  <div class="container">
-    <h3>
-      BlockAction creates the most secured digital asset wallet, provides user friendly interface, simplify the blockchain transaction
-      and make it usable by mainstream users.
-    </h3>
-    <img src="/assets/img/bitcoin.svg" height="150px;">
-    <img src="/assets/img/ethereum.svg" height="150px;">
+
+
+<div class="empty-section bg-vl-gray" style="padding-bottom: 0;">
+<div class="container">
+<div class="media">
+<div class="media-left">
+<img src="/assets/img/howItworks.png" style="margin-right: 60px;" />
+</div>
+
+
+<div class="media-body">
+<h2>How BlockAction Works</h2>
+
+<p class="lead">BlockAction is the most secured and easy to use interface to create wallet and perform transactions on blockchain. Our mission is to simplify the process to make it usable by mainstream users.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="empty-section bg-world text-center" id="getStart">
+  <div class="container-sm">
+  <h2>Wallets Supported</h2>
+    <p class="lead">
+      BlockAction creates the most secured digital asset wallet, provides user friendly interface, simplify the blockchain transaction and make it usable by mainstream users. At present we support
+    </p>
+    <div class="clearfix" style="display: inline-block;">
+    <a class="clikableImg"  style="margin-right:40px;" [routerLink]="['/bitcoin/wallet']"><img src="/assets/img/bitcoin.png" height="100px;">Create Wallet</a>
+    <a  class="clikableImg" [routerLink]="['/ethereum/wallet']" href="#"><img src="/assets/img/ethereum.png" height="100px;">Create Wallet</a>
+
+    </div>
   </div>
 </div>
 
 <!--++++++++++++++++++++++++++++++++++++++++We provide section++++++++++++++++++++-->
-<div class="bg-teal" id="howitworks">
+<div class="bg-teal" id="howitworks" style="display: none;">
   <div class="container">
     <div class="col-lg-8 pad-none">
       <h1>How it works</h1>
@@ -115,14 +151,14 @@
         <h5>About Us</h5>
         <ul>
           <li><a href="">Contact Us</a></li>
-          <li><a href="">Vision & Mission</a></li>
+          <li><a href="javascript:void(0)" (click)="showPopup()">Vision & Mission</a></li>
         </ul>
       </div>
       <div class="col-lg-3">
         <h5>Bitcoin</h5>
         <ul>
           <li><a [routerLink]="['/bitcoin/wallet']">Create Wallet</a></li>
-          <li><a [routerLink]="['/bitcoin/send']">Send Bitcoin</a></li>
+         <!--  <li><a [routerLink]="['/bitcoin/send']">Send Bitcoin</a></li> -->
           <li><a [routerLink]="['/bitcoin/info']">View Wallet</a></li>
         </ul>
       </div>
@@ -132,6 +168,7 @@
           <li><a [routerLink]="['/ethereum/wallet']">Create Wallet</a></li>
           <li><a [routerLink]="['/ethereum/send']">Send Ether</a></li>
           <li><a [routerLink]="['/ethereum/info']">View Wallet</a></li>
+        <li><a [routerLink]="['/ethereum/info']">Request Ether</a></li>
         </ul>
       </div>
       <div class="col-lg-3">
@@ -143,32 +180,77 @@
       </div>
     </div>
     <div class="col-lg-4 links-footer ">
-      <h2><b>Subscribe Newsletter</b></h2>
       <form action="" class="bg-light" [formGroup]="subscription">
         <input type="email" class="form-control" formControlName="email" placeholder="Type your email">
-        <button (click)="subscribe()" class="btn btn-primary btn-block ">I'm In</button>
+        <button (click)="subscribe()" class="btn btn-primary btn-block ">Subscribe Newsletter</button>
       </form>
-      <p>Never misss any offer and news from us. <br>you'll never regret this subscription.</p>
-    </div>
-  </div>
-  <div class="copy-right">
-    <P>&copy; 2017 Block Action</P>
-  </div>
-</section>
-<!--+++++++++++++++++++++++++++++++++++++++footer section++++++++++++++++++++-->
-<footer>
-  <div class="container ">
-    <div class="social-btns">
+
+      <div class="social-btns">
       <ul>
-        <li><a href=""><span class="icon-google-plus"></span></a></li>
         <li><a href=""><span class="icon-facebook"></span></a></li>
-        <li><a href=""><span class="icon-instagram"></span></a></li>
         <li><a href=""><span class="icon-twitter"></span></a></li>
         <li><a href=""><span class="icon-youtube"></span></a></li>
         <li><a href=""><span class="icon-linkedin2"></span></a></li>
       </ul>
-      <P>&copy; 2017 Privacy Policy</P>
-      <button type="button" name="up_arrow"><a (click)="scrollTop()"><span class="icon-circle-up"></span></a></button>
+</div>
     </div>
   </div>
-</footer>
+</section>
+
+<div class="modal" [class.visible]="shownPopup">
+<div class="modal-dialog">
+<div class="modal-content dropcap">
+<div class="modal-header">
+ <button type="button" class="close" (click)="showPopup()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+Vision &amp; Mission
+</div>
+
+<div class="modal-body">
+<p>We envision a decentralized world, where digital currency is not exclusive for geeks. Mainstream users should also get equal opportunity to participate and grow with this revolutionary technology called ‘Blockchain’.</p>
+<p>
+Our mission is to provide best digital wallet, simplify blockchain transaction and provide user-friendly interface. In order to bring cryptocurrency to mainstream, we need to get their confidence by ensuring user about the security of their money, ease of usability and anonymity. We need to encourage people to be their own bank.
+</p>
+<p>
+BlockAction is committed to provide best services to the users.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="modal" [class.visible]="shownModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+ <button type="button" class="close" (click)="showModal()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+New to Blockchain?
+</div>
+
+<div class="modal-body">
+
+<ul class="list-group">
+  <li class="list-group-item">What is Blockchain Technology?
+<div class="detail">A blockchain – originally block chain – is a continuously growing list of records, called blocks, ..... Blockchain technology has a large potential to transform business operating models in the long term. Blockchain distributed ledger technology is ...</div>
+  </li>
+  <li class="list-group-item">What is Bitcoin?</li>
+  <li class="list-group-item">What is Ethereum?</li>
+  <li class="list-group-item">What is a Digital Currency Wallet?</li>
+</ul>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+

@@ -1,8 +1,8 @@
 <!-- Existing Wallet Box -->
 
-<div *ngIf="!ready" class="col-md-6 mg-top">
-    <div class="block block-center bg-dark-teal">
-        <div class="row text-white tabs" style="font-size:24px;">
+<div *ngIf="!ready" class="container-md">
+    <div class="block block-center">
+        <div class="row tabs" style="font-size:24px;">
             <div class="col-sm-5 text-center">
                 <span [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></span>
             </div>
@@ -25,12 +25,13 @@
             <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         </div>
         <br><br>
-        <p class="text-white">Enter private key or upload wallet above to unlock your wallet and perform the transaction.</p>
+        <p>Enter private key or upload wallet above to unlock your wallet and perform the transaction.</p>
     </div>
 </div>
 
 <!--- Ether Send Modal -->
 <div *ngIf="ready && !receipt">
+<div class="container-md">
     <div class="card card-md-p send-ether">
         <div class="text-center">
             <h3><b>Send Ether {{ network }}: </b></h3>
@@ -61,6 +62,7 @@
                     class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
             </form>
         </div>
+    </div>
     </div>
 </div>
 

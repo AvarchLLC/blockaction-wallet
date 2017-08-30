@@ -1,6 +1,6 @@
 <!-- Wallet Creation Info  -->
-<div class="" *ngIf="!ready">
-    <div class="pop-alert-box card-center card-md-p align-center">
+<div class="container-md" *ngIf="!ready">
+    <div class="card card-center card-md-p align-center">
         <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
         <div class="pop-alert">
             <h1 class="color-black"><b>We don't store your keys</b></h1>
@@ -14,14 +14,12 @@
 <!-- Wallet Creation Page -->
 <div *ngIf="ready">
     <div class="container-md" [class.slide]="this.wallet">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="block block-center bg-dark-teal">
-                    <h2 class="text-white"> Create wallet </h2>
+                <div class="block block-center align-center" *ngIf="!wallet">
+                    <h2 > Create wallet </h2>
                     <br/>
                     <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
                         <div class="form-group">
-                            <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Passphrase"
+                            <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Password"
                             />
                             <div class="text-right">
                                 <a style="color:#fff;" class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
@@ -51,9 +49,8 @@
                         </p>
                     </form>
                 </div>
-            </div>
-            <div *ngIf="wallet" class="col-md-6">
-                <div class="block bg-vl-gray">
+            <div *ngIf="wallet">
+                <div class="block block-center align-center">
                     <div>
                         <h2>Wallet Ready!</h2>
                         <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
@@ -83,13 +80,12 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 <!--- Ether Request Modal -->
 <div *ngIf="modalVisible" class="request-modal">
 <div class="card card-md">
-    
+
     <h2>Request Ether</h2>
     <form [formGroup]="requestEtherForm">
         <input class="form-control" formControlName="email" type="email" placeholder="Email...">

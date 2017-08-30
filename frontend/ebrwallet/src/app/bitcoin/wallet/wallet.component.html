@@ -1,6 +1,6 @@
 <!-- Wallet Creation Info  -->
-<div class="" *ngIf="!ready">
-    <div class="pop-alert-box card-center card-md-p align-center">
+<div class="container-md" *ngIf="!ready">
+    <div class="card card-center card-md-p align-center">
         <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
         <div class="pop-alert">
             <h1 class="color-black"><b>We don't store your keys</b></h1>
@@ -13,21 +13,19 @@
 
 <!-- Wallet Creation Page -->
 <div *ngIf="ready">
-    <div class="container-md" [class.slide]="this.wallet">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="block block-center bg-black">
+    <div class="container-md">
+            <div *ngIf="!wallet">
+                <div class="block block-center align-center">
                 <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 200px;" />
-                    <h2 class="text-white"> Create bitcoin wallet </h2>
+                    <h2> Create bitcoin wallet </h2>
                     <br/>
                     <p>It is safe to create bitcoin wallet with us. Start enjoying benefits of bitcoin so don't let the time to be wasted.</p>
                     <div class="buttonWithLoader">
-                        <button type="submit" id="createButton" class="btn btn-info btn-block btn-lg" (click)="create()">Create Wallet</button>
+                        <button type="submit" id="createButton" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div *ngIf="wallet" class="block bg-dark-teal">
+                <div *ngIf="wallet" class="block block-center align-center">
                     <h2>Wallet Ready!</h2>
                     <div class="form-group mg-top-sm">
                         <b>Address (Compressed)</b>
@@ -52,9 +50,7 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-</div>
 <!--- Ether Request Modal -->
 <div *ngIf="modalVisible" class="request-modal">
     <div class="card">
