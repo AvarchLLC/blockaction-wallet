@@ -757,7 +757,7 @@ header + .container { padding-top:60px; padding-bottom: 60px; }
 -ms-transform: translateX(-50%);
 -o-transform: translateX(-50%);
 transform: translateX(-50%);
- top:0px; margin-top:6px;
+ top:0px; margin-top:9px;
 -webkit-animation: ticker 10s linear infinite ;
 -o-animation: ticker 10s linear infinite;
 animation: ticker 10s linear infinite;
