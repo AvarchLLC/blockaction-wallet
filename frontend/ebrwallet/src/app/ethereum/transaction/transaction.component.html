@@ -1,5 +1,31 @@
 <!-- Existing Wallet Box -->
 
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/ethereum/wallet']">
+ <img src="../../assets/img/add_ether.png"/><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']">
+ <img src="../../assets/img/view_ether.png"/><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/send']">
+ <img src="../../assets/img/send_ether.png"/><span>Send Ether</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']">
+ <img src="../../assets/img/request_ether.png"/><span>Request Ether</span></a>
+ </li>
+
+</ul></nav>
+
 <div *ngIf="!ready" class="container-md">
     <div class="block block-center">
         <div class="row tabs" style="font-size:24px;">

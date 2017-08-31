@@ -84,7 +84,7 @@ export class AppComponent implements OnInit{
 
   // Sticky nav bar once user scrolls more than the stickyThreshold
   onScroll() {
-    const stickyThreshold = 50;
+    const stickyThreshold = 82;
     if (this.element.nativeElement.getBoundingClientRect().top * -1  >= stickyThreshold ) {
       this.sticky = true;
     }else {

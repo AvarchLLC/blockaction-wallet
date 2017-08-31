@@ -11,12 +11,40 @@
 </div>
 
 
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/ethereum/wallet']">
+ <img src="../../assets/img/add_ether.png"/><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']">
+ <img src="../../assets/img/view_ether.png"/><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/send']">
+ <img src="../../assets/img/send_ether.png"/><span>Send Ether</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']">
+ <img src="../../assets/img/request_ether.png"/><span>Request Ether</span></a>
+ </li>
+
+</ul></nav>
+
 <!-- Wallet Creation Page -->
 <div *ngIf="ready">
     <div class="container-md" [class.slide]="this.wallet">
                 <div class="block block-center align-center" *ngIf="!wallet">
                     <h2 > Create wallet </h2>
-                    <br/>
+                    <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+                            need this password + your private key to unlock your wallet.
+                        </p>
                     <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
                         <div class="form-group">
                             <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Password"
@@ -39,14 +67,12 @@
                             </ul>
                         </div>
                         <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
-                            Your password is secure and you'll all set!
+                           Strong Password. Please save the password as it can never be retrieved if lost.
                         </div>
                         <div class="buttonWithLoader">
                             <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
                         </div>
-                        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
-                            need this password + your private key to unlock your wallet.
-                        </p>
+
                     </form>
                 </div>
             <div *ngIf="wallet">

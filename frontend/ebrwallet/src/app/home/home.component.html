@@ -17,12 +17,6 @@
   </div>
 </div>
 
-<div class="messageBar">
-
-This website is currently open for testing. We need your valuable feedbacks to fill the room of improvements.
-
-</div>
-
 
 <!--+++++++++++++++++++++++++++++++++++++++why we need section++++++++++++++++++++--><!--
 <div class="empty-section">
@@ -42,6 +36,24 @@ Today, many people are purchasing digital asset considering it as an investment 
 </div> -->
 
 <!--+++++++++++++++++++++++++++++++++++++++services section++++++++++++++++++++-->
+
+
+
+<div class="empty-section bg-world text-center" id="getStart">
+  <div class="container-sm">
+  <h2>Wallets Supported</h2>
+    <p class="lead">
+      BlockAction creates the most secured digital asset wallet, provides user friendly interface, simplify the blockchain transaction and make it usable by mainstream users. At present we support
+    </p>
+    <div class="clearfix" style="display: inline-block;">
+    <a class="clikableImg"  style="margin-right:40px;" [routerLink]="['/bitcoin/wallet']"><img src="/assets/img/bitcoin.png" height="100px;"></a>
+    <a  class="clikableImg" [routerLink]="['/ethereum/wallet']" href="#"><img src="/assets/img/ethereum.png" style="margin:0 18px;" height="100px;"></a>
+
+    </div>
+  </div>
+</div>
+
+
 <div class="four-col-box pad-tp-btm features">
   <div class="container icon pad-none">
     <h2>Why BlockAction ?</h2>
@@ -86,11 +98,12 @@ Today, many people are purchasing digital asset considering it as an investment 
 <!--+++++++++++++++++++++++++++++++++++++++more text section++++++++++++++++++++-->
 
 
-<div class="empty-section bg-vl-gray" style="padding-bottom: 0;">
+<div class="empty-section bg-vl-gray">
 <div class="container">
 <div class="media">
 <div class="media-left">
-<img src="/assets/img/howItworks.png" style="margin-right: 60px;" />
+<img src="/assets/img/howItworks.png" style="margin-bottom:60px;
+margin-right: 60px;" />
 </div>
 
 
@@ -105,22 +118,6 @@ Today, many people are purchasing digital asset considering it as an investment 
 </div>
 </div>
 
-
-
-
-<div class="empty-section bg-world text-center" id="getStart">
-  <div class="container-sm">
-  <h2>Wallets Supported</h2>
-    <p class="lead">
-      BlockAction creates the most secured digital asset wallet, provides user friendly interface, simplify the blockchain transaction and make it usable by mainstream users. At present we support
-    </p>
-    <div class="clearfix" style="display: inline-block;">
-    <a class="clikableImg"  style="margin-right:40px;" [routerLink]="['/bitcoin/wallet']"><img src="/assets/img/bitcoin.png" height="100px;">Create Wallet</a>
-    <a  class="clikableImg" [routerLink]="['/ethereum/wallet']" href="#"><img src="/assets/img/ethereum.png" height="100px;">Create Wallet</a>
-
-    </div>
-  </div>
-</div>
 
 <!--++++++++++++++++++++++++++++++++++++++++We provide section++++++++++++++++++++-->
 <div class="bg-teal" id="howitworks" style="display: none;">
@@ -182,7 +179,7 @@ Today, many people are purchasing digital asset considering it as an investment 
     <div class="col-lg-4 links-footer ">
       <form action="" class="bg-light" [formGroup]="subscription">
         <input type="email" class="form-control" formControlName="email" placeholder="Type your email">
-        <button (click)="subscribe()" [disabled]="!subscription.valid" class="btn btn-primary btn-block ">I'm In</button>
+        <button (click)="subscribe()" [disabled]="!subscription.valid" class="btn btn-primary btn-block ">Subscribe Newsletter</button>
       </form>
 
       <div class="social-btns">

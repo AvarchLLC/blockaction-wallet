@@ -80,16 +80,19 @@ font-weight: 400;
 }
 
 
+.bodyContent { padding-top: 75px; }
+
+
 header {
  padding:12px 0;
  position: absolute; width:100%; height:75px;
- top:50px; background:#fff;
+ top:0px; background:#fff;
 box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
 }
 
 h2, .h2, h1, .h1 { font-family: "at"; }
 
-nav{
+header nav{
   height: 75px;
   float: right;
   text-align: center;
@@ -117,7 +120,7 @@ margin-bottom: 30px;
   padding-top: 5vh; padding-bottom:5vh;
   text-align: center;
 }
-.banner-content h1 { max-width:556px; display:inline-block; font-family: "at"; font-size: 32px; }
+.banner-content h1 { max-width:556px; display:inline-block; font-family: "at"; font-size: 24px; }
 .banner-content p { max-width:600px; display: inline-block; margin:30px 0;  }
 
 header.sticky { position: fixed; width:100%; left:0; top:0; right:0; background:#fff; z-index:100; border-bottom:1px solid #ccc; }
@@ -135,7 +138,6 @@ header.sticky { position: fixed; width:100%; left:0; top:0; right:0; background:
 
 .bg-dark a { color:#fff;}
 
-.bg-light{ background: #fff;}
 .four-col-box {
 padding-top: 40px;
 text-align: center;
@@ -198,6 +200,7 @@ footer{
 .social-btns{
   text-align: center;
   padding: 0px;
+  margin-top:20px;
 }
 
 .social-btns p{
@@ -378,9 +381,9 @@ span h2{ font-size: 30px; font-weight: 900; margin: 18px 6px;text-align: center;
 
 .spinner img {
 
--webkit-animation:rotate 1s linear infinite;
--o-animation:rotate 1s linear infinite;
-animation:rotate 1s linear infinite;
+-webkit-animation:rotate 1s ease-in-out infinite;
+-o-animation:rotate 1s ease-in-out infinite;
+animation:rotate 1s ease-in-out infinite;
 }
 
 /****************************************** login_page *********************************/
@@ -598,15 +601,12 @@ li.text-muted:before{
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 /******************************************** creat wallet ends**************************/
 
-/*
+.banner{ background: url(/assets/img/bg_teal.jpg) no-repeat center bottom;
+  background-size:cover; text-align: center; color:#fff; padding:10vh 0;
+   }
 
-.buttonWithLoader button:focus, .buttonWithLoader button:active { color:transparent;  }
 
-.buttonWithLoader { position: relative; }
 
-.buttonWithLoader:active:before, .buttonWithLoader:focus:before { content: ""; background: url(../img/loadingicon.gif) no-repeat center; width:32px; height: 32px; position: absolute;
-left:50%; top:10px; }
-*/
 /****************************************** responsive_laytout*********************************/
 @media screen and (min-width:480px) {
 
@@ -659,14 +659,12 @@ header + .container { padding-top:60px; padding-bottom: 60px; }
 }
 @media screen and (min-width: 768px) {
 
+.banner-content h1 { font-size:32px }
+.clikableImg { padding:20px 40px; }
 .pd-all-md { padding: 50px;}
 
 #nav-open-btn {
        display: none;
-   }
-
-.banner{ background: url(/assets/img/bg_teal.jpg) no-repeat center bottom;
-  background-size:cover; text-align: center; color:#fff; padding:10vh 0;
    }
 
 
@@ -801,14 +799,13 @@ animation: ticker 10s ease-in-out infinite;
 .copyLink { padding:5px 10px; background:#333; border:1px solid #999; border-radius:4px;
 margin-right:20px; color:#fff;}
 
-.bg-world { background:#f2f2f2 url(../img/mapdots.png) no-repeat center; padding:100px 0; }
+.bg-world { background: url(../img/mapdots.png) no-repeat center; padding:100px 0 40px; }
 
 .links-footer h5 { font-size:18px; font-family: "SourceSansPro-Bold"; }
 
 .messageBar { background:#F68F48; color:#000; text-align: center; padding:5px;}
 
-.clikableImg { transition:all .2s ease-in-out; padding:20px 40px; border:1px solid #ccc; margin-right: 40px; float: left; }
-.clikableImg img { margin-right: 20px; }
+.clikableImg { transition:all .2s ease-in-out; padding:20px 10px; border:1px solid #ccc;float: left; }
 .clikableImg:hover { box-shadow: 0 0 5px #ccc; background:#fff;}
 
 .modal { background: url(../img/bg_teal.jpg) no-repeat; background-size: cover;}
@@ -829,3 +826,31 @@ margin-right:20px; color:#fff;}
 .bodyContent { min-height: 100vh; padding-bottom:128px;}
 footer { margin-top:-128px;}
 
+
+.affix { right:10px; top:250px; position: absolute;
+background: #F0F0F0;
+box-shadow: -5px 0px 0px 0px #D8D8D8;
+border-radius:6px 0 0 6px;
+}
+
+.affix li a { cursor: pointer; display: block; font-size:18px; color:#454A75; border-bottom: 1px solid #D8D8D8; padding:20px 40px; }
+.affix li img { margin-bottom: 10px;  }
+.affix li span { display: block; }
+
+
+@media screen and (min-width:1170px)
+{
+
+  .coins, .messageBar { display: block !important; }
+
+  header { top:82px; }
+  .bodyContent { padding-top:0; }
+}
+
+ @media screen and (max-width:768px) {
+
+  .media-left img { max-width:100% }
+    h2, .h2 { font-size:24px; }
+    .media-left, .media-right, .media-body { display: block; }
+
+  }

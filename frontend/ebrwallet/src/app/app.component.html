@@ -3,7 +3,12 @@
 <div [class.overflow-hidden]="busy">
 
 <div class="bodyContent">
-    <div class="coins">
+<div class="messageBar" style="display: none">
+
+This website is currently open for testing. We need your valuable feedbacks to fill the room of improvements.
+
+</div>
+    <div class="coins" style="display: none;">
         <div *ngIf="coins" id="top">
             <div class="container">
                 <div class="row" *ngFor="let coin of coins">
