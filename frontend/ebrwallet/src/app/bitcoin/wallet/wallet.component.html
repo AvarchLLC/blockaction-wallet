@@ -11,14 +11,36 @@
 </div>
 
 
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
+ </li>
+
+</ul></nav>
+
+
 
 
 <!-- Wallet Creation Page -->
 <div *ngIf="ready">
     <div class="container-md">
             <div *ngIf="!wallet">
-                <div class="block block-center align-center">
-                <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 200px;" />
+                <div class="block block-center bg-vl-gray align-center">
+                <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
                     <h2> Create bitcoin wallet </h2>
                     <br/>
                     <p>It is safe to create bitcoin wallet with us. Start enjoying benefits of bitcoin so don't let the time to be wasted.</p>

@@ -1,16 +1,40 @@
 <!-- Existing Wallet Box -->
-<div *ngIf="!ready" class="col-md-6 mg-top">
-    <div class="block block-center bg-dark-teal inputBox">
-        <h2 class="text-white">View Wallet</h2><br>
+<div *ngIf="!ready" class="container-md">
+    <div class="block block-center bg-vl-gray inputBox">
+     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
+        <h2 >View Wallet</h2><br>
         <input placeholder="Address" [(ngModel)]="keyInput">
-        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>    
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         <br>
-        <p class="text-white">----------or----------</p>
+        <p >----------or----------</p>
         <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
         <br><br>
-        <p class="text-white">Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+        <p >Enter address key in the above field to view your wallet information such as balance and transactions.</p>
     </div>
 </div>
+
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
+ </li>
+
+</ul></nav>
+
 
 <!-- Scan Qr Box -->
 <div *ngIf="scanQr" class="scanQrOverlay">
@@ -18,11 +42,11 @@
         <h2>Scan Qr</h2><br>
         <p class="text-justify">Place your address Qr Code in front of the camera.</p>
         <qr-scanner
-            [debug]="false"        
-            [canvasWidth]="640"    
-            [canvasHeight]="480"   
-            [mirror]="true"       
-            [stopAfterScan]="true" 
+            [debug]="false"
+            [canvasWidth]="640"
+            [canvasHeight]="480"
+            [mirror]="true"
+            [stopAfterScan]="true"
             [updateTime]="500"
             (onRead)="decodedQrOutput($event)"></qr-scanner>
         <a class="btn btn-link btn-lg" (click)="scanQr = false">Dismiss</a>
@@ -35,7 +59,7 @@
         <div class="col-sm-8">
 
             <div class="box">
-                <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
+                <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
                 <div class="form-group mg-top-sm">
                     <b>Address</b>
                     <div class="clearfix" style="width:450px;">
@@ -74,7 +98,7 @@
                         <div class=" box-bdr  pad-top-btm">
                             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 ">
                                 <button type="button" class="btn btn-default btn-sm hidden">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>                                      
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
                                 <span>{{ tx.txid }}</span>
                             </div>

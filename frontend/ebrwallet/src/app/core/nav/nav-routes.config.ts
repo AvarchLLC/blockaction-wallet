@@ -18,7 +18,7 @@ export const NAVROUTES: NavRouteInfo[] =[
         { path: '/', title: 'Home' , subroutes : false, routes : null},
         { path: '/bitcoin/wallet', title: 'Bitcoin' , subroutes : false, routes : null},
         { path: '/ethereum/wallet', title: 'Ethereum' , subroutes : false, routes : null},
-        { path: '/help', title: 'Help' , subroutes : false, routes : null},
+        { path: '/help', title: 'FAQ' , subroutes : false, routes : null},
         // { path: '/register', title: 'Sign Up' ,subroutes : false, routes : null}
 
 ];

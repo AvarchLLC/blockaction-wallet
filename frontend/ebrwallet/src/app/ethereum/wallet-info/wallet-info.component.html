@@ -1,15 +1,18 @@
 
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class="container-md">
-    <div class="block block-center inputBox">
+    <div class="block block-center bg-vl-gray inputBox">
+
+ <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>View Wallet</h2><br>
         <input placeholder="Address" [(ngModel)]="keyInput">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
         <p>----------or----------</p>
         <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
         <br><br>
-        <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+
     </div>
 </div>
 
@@ -19,23 +22,19 @@
 
 <ul class="nav">
  <li>
- <a  [routerLink]="['/ethereum/wallet']">
- <img src="../../assets/img/add_ether.png"/><span>Create Wallet</span></a>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/view_ether.png"/><span>View Wallet</span></a>
+ <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/send']">
- <img src="../../assets/img/send_ether.png"/><span>Send Ether</span></a>
+ <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/request_ether.png"/><span>Request Ether</span></a>
+ <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
  </li>
 
 </ul></nav>

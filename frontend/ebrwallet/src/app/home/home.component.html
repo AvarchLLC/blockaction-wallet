@@ -10,8 +10,6 @@
         <a href="#getStart" class="btn btn-primary btn-lg" type="button" name="Join_now">Get Started</a><br/>
         <a href="javascript:void(0)" (click)="showModal()" class="text-white">New to Blockchain?</a>
         </div>
-
-
       </div>
     </div>
   </div>
@@ -41,7 +39,7 @@ Today, many people are purchasing digital asset considering it as an investment 
 
 <div class="empty-section bg-world text-center" id="getStart">
   <div class="container-sm">
-  <h2>Wallets Supported</h2>
+  <h2>What is BlockAction</h2>
     <p class="lead">
       BlockAction creates the most secured digital asset wallet, provides user friendly interface, simplify the blockchain transaction and make it usable by mainstream users. At present we support
     </p>
@@ -56,7 +54,7 @@ Today, many people are purchasing digital asset considering it as an investment 
 
 <div class="four-col-box pad-tp-btm features">
   <div class="container icon pad-none">
-    <h2>Why BlockAction ?</h2>
+    <h2>Why choose BlockAction ?</h2>
     <p style="max-width:600px; margin:0 auto;">BlockAction is created to shift power back to user to control their asset without any intermediaries. It enables user with full control on wallet. Key features of our wallet are</p>
     <div class="row">
       <div class="col-lg-4">
@@ -76,7 +74,7 @@ Today, many people are purchasing digital asset considering it as an investment 
       </div>
       <div class="col-lg-4">
         <img src="/assets/img/img4.png" alt="Wallet Logo">
-        <h3>Live Transaction Status</h3>
+        <h3>Real Time Transaction Status</h3>
         <p>We provide real time status and transaction history for user’s convenience.</p>
       </div>
       <div class="col-lg-4">
@@ -98,7 +96,7 @@ Today, many people are purchasing digital asset considering it as an investment 
 <!--+++++++++++++++++++++++++++++++++++++++more text section++++++++++++++++++++-->
 
 
-<div class="empty-section bg-vl-gray">
+<div class="empty-section bg-vl-gray ptn">
 <div class="container">
 <div class="media">
 <div class="media-left">
@@ -147,7 +145,7 @@ margin-right: 60px;" />
       <div class="col-lg-3">
         <h5>About Us</h5>
         <ul>
-          <li><a href="">Contact Us</a></li>
+          <li><a href="javascript:void(0)" (click)="showContact()">Contact Us</a></li>
           <li><a href="javascript:void(0)" (click)="showPopup()">Vision & Mission</a></li>
         </ul>
       </div>
@@ -157,15 +155,18 @@ margin-right: 60px;" />
           <li><a [routerLink]="['/bitcoin/wallet']">Create Wallet</a></li>
          <!--  <li><a [routerLink]="['/bitcoin/send']">Send Bitcoin</a></li> -->
           <li><a [routerLink]="['/bitcoin/info']">View Wallet</a></li>
+          <li><a [routerLink]="['/bitcoin/send']">Send BTC</a></li>
+          <li><a [routerLink]="['/bitcoin/request']">Request BTC</a></li>
         </ul>
       </div>
       <div class="col-lg-3">
         <h5>Ethereum</h5>
         <ul>
           <li><a [routerLink]="['/ethereum/wallet']">Create Wallet</a></li>
-          <li><a [routerLink]="['/ethereum/send']">Send Ether</a></li>
           <li><a [routerLink]="['/ethereum/info']">View Wallet</a></li>
-        <li><a [routerLink]="['/ethereum/info']">Request Ether</a></li>
+
+          <li><a [routerLink]="['/ethereum/send']">Send ETH</a></li>
+        <li><a [routerLink]="['/ethereum/request']">Request ETH</a></li>
         </ul>
       </div>
       <div class="col-lg-3">
@@ -186,8 +187,6 @@ margin-right: 60px;" />
       <ul>
         <li><a href=""><span class="icon-facebook"></span></a></li>
         <li><a href=""><span class="icon-twitter"></span></a></li>
-        <li><a href=""><span class="icon-youtube"></span></a></li>
-        <li><a href=""><span class="icon-linkedin2"></span></a></li>
       </ul>
 </div>
     </div>
@@ -239,15 +238,59 @@ New to Blockchain?
   <li class="list-group-item">What is a Digital Currency Wallet?</li>
 </ul>
 
+</div>
+</div>
+</div>
+</div>
 
 
 
 
 
+<div class="modal" [class.visible]="shownContact">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+ <button type="button" class="close" (click)="showContact()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+Contact Us
+</div>
+
+
+<div class="modal-body">
+
+<form>
+<div class="form-group">
+<input class="form-control" type="text" placeholder="First Name" />
+</div>
+
+
+<div class="form-group">
+<input class="form-control" type="text" placeholder="Last Name" />
+</div>
+
+
+<div class="form-group">
+<input class="form-control" type="text" placeholder="Your Email Address Name" />
+</div>
+
+
+<div class="form-group">
+<textarea class="form-control" placeholder="Type your message here...">
+</textarea>
+</div>
+
+<div class="form-group">
+
+<button class="btn btn-primary btn-block">Submit</button>
+
+</div>
+</form>
 
 </div>
 </div>
 </div>
 </div>
+
+
 
 

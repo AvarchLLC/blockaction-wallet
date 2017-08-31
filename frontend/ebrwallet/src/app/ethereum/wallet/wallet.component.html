@@ -1,7 +1,7 @@
 <!-- Wallet Creation Info  -->
 <div class="container-md" *ngIf="!ready">
     <div class="card card-center card-md-p align-center">
-        <img src="../../assets/img/key-icon.svg" alt="key" class="img-responsive">
+        <img src="../../assets/img/key-icon.svg" alt="key">
         <div class="pop-alert">
             <h1 class="color-black"><b>We don't store your keys</b></h1>
             <p p-font-size>We believe in user privacy and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions</p>
@@ -16,23 +16,19 @@
 
 <ul class="nav">
  <li>
- <a  [routerLink]="['/ethereum/wallet']">
- <img src="../../assets/img/add_ether.png"/><span>Create Wallet</span></a>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/view_ether.png"/><span>View Wallet</span></a>
+ <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/send']">
- <img src="../../assets/img/send_ether.png"/><span>Send Ether</span></a>
+ <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/request_ether.png"/><span>Request Ether</span></a>
+ <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
  </li>
 
 </ul></nav>
@@ -40,17 +36,16 @@
 <!-- Wallet Creation Page -->
 <div *ngIf="ready">
     <div class="container-md" [class.slide]="this.wallet">
-                <div class="block block-center align-center" *ngIf="!wallet">
-                    <h2 > Create wallet </h2>
-                    <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
-                            need this password + your private key to unlock your wallet.
-                        </p>
+                <div class="block block-center align-center bg-vl-gray" *ngIf="!wallet">
+ <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+                    <h2> Create wallet </h2>
+
                     <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
                         <div class="form-group">
                             <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Password"
                             />
                             <div class="text-right">
-                                <a style="color:#fff;" class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
+                                <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
                             </div>
                         </div>
                         <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
@@ -72,6 +67,9 @@
                         <div class="buttonWithLoader">
                             <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
                         </div>
+                        <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+                            need this password + your private key to unlock your wallet.
+                        </p>
 
                     </form>
                 </div>

@@ -20,10 +20,14 @@ declare var ga: any;
   }
 })
 
+
 export class AppComponent implements OnInit{
   title = 'Block Action';
   busy: boolean;                // The loading spinner visibility flag
   sticky = false;
+  shownFeedback = false;
+
+
 
   coins: Array<object>;        // Holds the coins market data
 
@@ -59,6 +63,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+
     // Subscribe to spinner value and sets the visibility of the spinner
     this.spinner.spinnerStatus.subscribe((val: boolean) => {
       this.busy = val;
@@ -84,7 +89,7 @@ export class AppComponent implements OnInit{
 
   // Sticky nav bar once user scrolls more than the stickyThreshold
   onScroll() {
-    const stickyThreshold = 82;
+    const stickyThreshold = 50;
     if (this.element.nativeElement.getBoundingClientRect().top * -1  >= stickyThreshold ) {
       this.sticky = true;
     }else {
@@ -92,7 +97,16 @@ export class AppComponent implements OnInit{
     }
   }
 
+
+
+
   OnDestroy () {
     this.alive = false;
   }
+
+
+    showFeedback() {
+    this.shownFeedback = !this.shownFeedback;
+  }
+
 }

@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   subscription: FormGroup;
   shownPopup = false;
   shownModal = false;
+  shownContact = false;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private dataService: DataService) {
     this.subscription = fb.group({
@@ -48,6 +49,11 @@ export class HomeComponent implements OnInit {
       }
     }, 15);
   }
+
+  showContact() {
+    this.shownContact = !this.shownContact;
+  }
+
 
   showPopup() {
     this.shownPopup = !this.shownPopup;

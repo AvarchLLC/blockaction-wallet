@@ -5,29 +5,27 @@
 
 <ul class="nav">
  <li>
- <a  [routerLink]="['/ethereum/wallet']">
- <img src="../../assets/img/add_ether.png"/><span>Create Wallet</span></a>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/view_ether.png"/><span>View Wallet</span></a>
+ <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/send']">
- <img src="../../assets/img/send_ether.png"/><span>Send Ether</span></a>
+ <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']">
- <img src="../../assets/img/request_ether.png"/><span>Request Ether</span></a>
+ <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
  </li>
 
 </ul></nav>
 
 <div *ngIf="!ready" class="container-md">
-    <div class="block block-center">
+    <div class="block block-center bg-vl-gray">
+
+ <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <div class="row tabs" style="font-size:24px;">
             <div class="col-sm-5 text-center">
                 <span [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></span>

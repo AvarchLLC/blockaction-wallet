@@ -1,6 +1,7 @@
 <!-- Existing Wallet Box -->
 <div class="container-md" *ngIf="!ready">
-    <div class="block block-center align-center inputBox">
+    <div class="block block-center bg-vl-gray align-center inputBox">
+    <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <h2>Send Bitcoin</h2><br>
         <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
         <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
@@ -9,11 +10,37 @@
     </div>
 </div>
 
+
+
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
+ </li>
+
+</ul></nav>
+
 <!--- Ether Send Modal -->
 <div class="container-md" *ngIf="ready && !receipt">
 
-    <div class="block block-center align-center send-ether">
+    <div class="block block-center bg-vl-gray align-center send-ether">
+    <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <div class="text-center">
+
             <h3><b>Send Bitcoin</b></h3>
         </div>
 
