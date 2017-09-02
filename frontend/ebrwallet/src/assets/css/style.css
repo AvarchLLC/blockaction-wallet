@@ -459,6 +459,7 @@ font-size: 29px;}
    padding:10px 25px;
 background-image: linear-gradient(-180deg, #68ECD9 0%, #37D4B1 100%);
 border:1px solid #37D4B1;
+margin-bottom: 10px;
 }
 
 .block {
@@ -808,6 +809,7 @@ font-size: 12px; line-height: 20px;}
 .clikableImg:hover { box-shadow: 0 0 5px #ccc; background:#fff;}
 
 .modal { background: url(../img/bg_teal.jpg) no-repeat; background-size: cover;}
+.modal.visible { overflow: auto; }
 .modal-header { font-size: 22px; }
 .dropcap p:first-child:first-letter {
   color: #50E3C2;
@@ -857,3 +859,12 @@ border-radius:6px 0 0 6px;
 
   .ptn { background: url(../img/ptn.jpg); }
 */
+
+
+.list-group-item h3 {    font-size: 16px;
+    background: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 0 20px; }
+
+
