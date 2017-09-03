@@ -1,6 +1,28 @@
 
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class="container-md">
+
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
+ </li>
+
+</ul></nav>
     <div class="block block-center bg-vl-gray inputBox">
 
  <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
@@ -18,26 +40,6 @@
 
 
 
-<nav class="hidden-print hidden-sm hidden-xs affix" >
-
-<ul class="nav">
- <li>
- <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
- </li>
-
-</ul></nav>
 
 
 <!-- Scan Qr Box -->
@@ -61,7 +63,29 @@
 
 
 <!--- Wallet Info View -->
-<div *ngIf="ready" class="container">
+<div *ngIf="ready" class="container-md">
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
+ </li>
+
+</ul></nav>
+
     <div class="row">
         <div class="col-sm-12">
 

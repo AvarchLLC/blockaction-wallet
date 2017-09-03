@@ -49,6 +49,10 @@
 
 @media screen and (max-width: 768px) {
 
+  .nav-block a {
+    padding:12px;
+  }
+
   #nav-open-btn  {
     position: absolute;
     right:50px;
@@ -79,7 +83,7 @@
 
   }
 
-  #nav.open .nav-block { transform: translateX(0px);}
+  #nav.open .nav-block { transform: translateX(0px); z-index: 1000;}
 
   #nav.open #nav-open-btn { position: fixed;  left:calc(80vw + 15px)}
 }

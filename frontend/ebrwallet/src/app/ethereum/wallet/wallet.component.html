@@ -12,11 +12,17 @@
 
 
 
+
+<!-- Wallet Creation Page -->
+<div *ngIf="ready">
+    <div class="container-md" [class.slide]="this.wallet">
+
+
 <nav class="hidden-print hidden-sm hidden-xs affix" >
 
 <ul class="nav">
  <li>
- <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+ <a   class="active" [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
  </li>
 
   <li>
@@ -33,9 +39,6 @@
 
 </ul></nav>
 
-<!-- Wallet Creation Page -->
-<div *ngIf="ready">
-    <div class="container-md" [class.slide]="this.wallet">
                 <div class="block block-center align-center bg-vl-gray" *ngIf="!wallet">
  <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
                     <h2> Create wallet </h2>

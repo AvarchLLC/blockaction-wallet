@@ -1,7 +1,12 @@
 <!-- Existing Wallet Box -->
 
 
+
+
+<div *ngIf="!ready" class="container-md">
+
 <nav class="hidden-print hidden-sm hidden-xs affix" >
+
 
 <ul class="nav">
  <li>
@@ -13,7 +18,7 @@
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+ <a class="active" [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
  </li>
 
   <li>
@@ -22,7 +27,6 @@
 
 </ul></nav>
 
-<div *ngIf="!ready" class="container-md">
     <div class="block block-center bg-vl-gray">
 
  <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
@@ -56,6 +60,28 @@
 <!--- Ether Send Modal -->
 <div *ngIf="ready && !receipt">
 <div class="container-md">
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a class="active"  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
+ </li>
+
+</ul></nav>
+
     <div class="card card-md-p send-ether">
         <div class="text-center">
             <h3><b>Send Ether {{ network }}: </b></h3>

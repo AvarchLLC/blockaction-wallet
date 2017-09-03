@@ -11,11 +11,18 @@
 </div>
 
 
+
+
+<!-- Wallet Creation Page -->
+<div *ngIf="ready">
+    <div class="container-md">
+
+
 <nav class="hidden-print hidden-sm hidden-xs affix" >
 
 <ul class="nav">
  <li>
- <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+ <a class="active" [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
  </li>
 
   <li>
@@ -32,12 +39,6 @@
 
 </ul></nav>
 
-
-
-
-<!-- Wallet Creation Page -->
-<div *ngIf="ready">
-    <div class="container-md">
             <div *ngIf="!wallet">
                 <div class="block block-center bg-vl-gray align-center">
                 <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />

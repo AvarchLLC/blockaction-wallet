@@ -1,17 +1,5 @@
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class="container-md">
-    <div class="block block-center bg-vl-gray inputBox">
-     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
-        <h2 >View Wallet</h2><br>
-        <input placeholder="Address" [(ngModel)]="keyInput">
-        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
-        <br>
-        <p >----------or----------</p>
-        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
-        <br><br>
-        <p >Enter address key in the above field to view your wallet information such as balance and transactions.</p>
-    </div>
-</div>
 
 
 <nav class="hidden-print hidden-sm hidden-xs affix" >
@@ -22,7 +10,7 @@
  </li>
 
   <li>
- <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+ <a  class="active" [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
  </li>
 
   <li>
@@ -34,6 +22,21 @@
  </li>
 
 </ul></nav>
+
+    <div class="block block-center bg-vl-gray inputBox">
+     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
+        <h2 >View Wallet</h2><br>
+        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput">
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+        <br>
+        <p >----------or----------</p>
+        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
+        <br><br>
+        <p >Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+    </div>
+</div>
+
+
 
 
 <!-- Scan Qr Box -->
@@ -54,7 +57,28 @@
 </div>
 
 <!--- Wallet Info View -->
-<div *ngIf="ready" class="container">
+<div *ngIf="ready" class="container-md">
+
+<nav class="hidden-print hidden-sm hidden-xs affix" >
+
+<ul class="nav">
+ <li>
+ <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+ </li>
+
+  <li>
+ <a class="active"  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
+ </li>
+
+  <li>
+ <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
+ </li>
+
+</ul></nav>
     <div class="row">
         <div class="col-sm-8">
 
