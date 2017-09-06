@@ -37,7 +37,7 @@ module.exports = {
         options.content.title  = req.feedbackData.firstName +" "+ req.feedbackData.lastName;
         options.content.header = req.feedbackData.email;
         options.content.body   = req.feedbackData.message;
-        options.receiver       = 'contact@blockaction.io';
+        options.receiver       = 'support@blockaction.io';
         email.sendMail(options,(error,response)=>{
             if(error){
                 next(error);
