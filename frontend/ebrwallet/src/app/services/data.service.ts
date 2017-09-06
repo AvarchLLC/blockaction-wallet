@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions} from '@angular/http';
 
 import { environment } from '../../environments/environment';
 
@@ -37,7 +37,7 @@ export class DataService {
 
   private fetchData = ticker => this.http.get(`${environment.COIN_API_URL}/${ticker}/`)
     .map(res => res.json()[0] as CoinMarketData)
-    .toPromise()
+    .toPromise();
 
   /**
    * Request Ether by email
@@ -64,6 +64,29 @@ export class DataService {
   }
 
   /**
+   * Request Ether by email
+   * @param address address to receive
+   * @param email email to request
+   * @param value request amount in ether
+   */
+  requestBitcoin(address: string, email: string, bitcoin: number): Promise<any> {
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    const content = {
+        address,
+        bitcoin
+    };
+    const data = `receiver=${email}&content=${JSON.stringify(content)}`;
+
+    return this.http
+      .post(`${environment.API_URL}/request/bitcoin`, data, { headers })
+      .toPromise()
+      .then(res => res.json());
+  }
+
+  /**
    * Subscribe to newsletter
    * @param email email to request
    */
@@ -79,4 +102,44 @@ export class DataService {
       .toPromise()
       .then(res => res.json());
   }
+
+   /**
+   * Contact Form Submission
+   * paramObj Contains the following
+   * @param email email of the sender
+   * @param message from the sender
+   * @param firstName of the sender
+   * @param lastName of the sender
+   */
+
+   submitContact(paramObj : any) {
+       const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const req = new RequestOptions({headers: headers});
+
+    return this.http
+      .post(`${environment.API_URL}/contact`, JSON.stringify(paramObj), req)
+      .toPromise()
+      .then(res => res.json());
+   }
+
+   /**
+   * Feedback Form Submission
+   * paramObj Contains the following
+   * @param email email of the sender
+   * @param message from the sender
+   * @param firstName of the sender
+   * @param lastName of the sender
+   */
+
+   submitFeedback(paramObj : any) {
+       const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const req = new RequestOptions({headers: headers});
+
+    return this.http
+      .post(`${environment.API_URL}/feedback`, JSON.stringify(paramObj), req)
+      .toPromise()
+      .then(res => res.json());
+   }
 }

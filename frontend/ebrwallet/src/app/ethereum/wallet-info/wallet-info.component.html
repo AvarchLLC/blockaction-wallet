@@ -3,29 +3,30 @@
 <div *ngIf="!ready" class="container-md">
 
 
-<nav class="hidden-print hidden-sm hidden-xs affix" >
+    <nav class="hidden-print hidden-sm hidden-xs affix" >
 
-<ul class="nav">
- <li>
- <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
- </li>
+        <ul class="nav">
+            <li>
+                <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+            </li>
 
-  <li>
- <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
- </li>
+            <li>
+                <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
- </li>
+            <li>
+                <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
- </li>
+            <li>
+                <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+            </li>
 
-</ul></nav>
+        </ul>
+    </nav>
     <div class="block block-center bg-vl-gray inputBox">
 
- <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>View Wallet</h2><br>
         <input placeholder="Address" [(ngModel)]="keyInput">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
@@ -81,7 +82,7 @@
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
+ <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
  </li>
 
 </ul></nav>
@@ -186,7 +187,7 @@
                             <td>{{ toEther(tx.value) }}</td>
                         </tr>
                         <tr *ngIf="transactions === null">
-                            Loading Transactios
+                            Loading Transactions...
                         </tr>
                         <tr *ngIf="transactions && transactions.length === 0">
                             No Transactions

@@ -306,30 +306,30 @@ Contact Us
 
 <div class="modal-body">
 
-<form>
+<form [formGroup]="contact" >
 <div class="form-group">
-<input class="form-control" type="text" placeholder="First Name" />
+<input class="form-control" type="text" placeholder="First Name" formControlName="firstName" />
 </div>
 
 
 <div class="form-group">
-<input class="form-control" type="text" placeholder="Last Name" />
+<input class="form-control" type="text" placeholder="Last Name" formControlName="lastName" />
 </div>
 
 
 <div class="form-group">
-<input class="form-control" type="text" placeholder="Your Email Address Name" />
+<input class="form-control" type="text" placeholder="Your Email Address Name" formControlName="email" />
 </div>
 
 
 <div class="form-group">
-<textarea class="form-control" placeholder="Type your message here...">
+<textarea class="form-control" placeholder="Type your message here..."  formControlName="message">
 </textarea>
 </div>
 
 <div class="form-group">
 
-<button class="btn btn-primary btn-block">Submit</button>
+<button class="btn btn-primary btn-block" (click)="submitContact()">Submit</button>
 
 </div>
 </form>

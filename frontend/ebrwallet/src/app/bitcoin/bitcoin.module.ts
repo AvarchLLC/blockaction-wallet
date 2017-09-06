@@ -9,7 +9,7 @@ import { QrScannerModule } from 'angular2-qrscanner';
 import {WalletComponent} from './wallet/wallet.component';
 import { WalletInfoComponent } from './wallet-info/wallet-info.component';
 import { TransactionComponent } from './transaction/transaction.component';
-
+import { RequestBitcoinComponent } from './request/request-bitcoin.component';
 
 import {WalletService} from './services/wallet.service';
 import { TransactionService } from './services/transaction.service';
@@ -24,7 +24,8 @@ import { TransactionService } from './services/transaction.service';
   declarations: [
     WalletComponent,
     WalletInfoComponent,
-    TransactionComponent
+    TransactionComponent,
+    RequestBitcoinComponent
   ],
   providers: [WalletService, TransactionService],
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]

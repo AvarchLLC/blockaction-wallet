@@ -8,28 +8,29 @@
 <nav class="hidden-print hidden-sm hidden-xs affix" >
 
 
-<ul class="nav">
- <li>
- <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
- </li>
+    <ul class="nav">
+        <li>
+            <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+        </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
- </li>
+        <li>
+            <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+        </li>
 
-  <li>
- <a class="active" [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
- </li>
+        <li>
+            <a class="active" [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+        </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
- </li>
+        <li>
+            <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+        </li>
 
-</ul></nav>
+    </ul>
+</nav>
 
-    <div class="block block-center bg-vl-gray">
+    <div class="block block-center bg-vl-gray ">
 
- <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <div class="row tabs" style="font-size:24px;">
             <div class="col-sm-5 text-center">
                 <span [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></span>
@@ -77,7 +78,7 @@
  </li>
 
   <li>
- <a  [routerLink]="['/ethereum/info']"><span>Request Ether</span></a>
+ <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
  </li>
 
 </ul></nav>

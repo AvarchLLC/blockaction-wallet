@@ -2,26 +2,27 @@
 <div *ngIf="!ready" class="container-md">
 
 
-<nav class="hidden-print hidden-sm hidden-xs affix" >
+    <nav class="hidden-print hidden-sm hidden-xs affix" >
 
-<ul class="nav">
- <li>
- <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
- </li>
+        <ul class="nav">
+            <li>
+                <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
+            </li>
 
-  <li>
- <a  class="active" [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
- </li>
+            <li>
+                <a  class="active" [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
- </li>
+            <li>
+                <a  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
- </li>
+            <li>
+                <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
+            </li>
 
-</ul></nav>
+        </ul>
+    </nav>
 
     <div class="block block-center bg-vl-gray inputBox">
      <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
@@ -103,9 +104,10 @@
                 <br/>
                 <div class="row">
                     <div class="col-lg-6">
-                        <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
+                        <a [routerLink]="['/bitcoin/send']" class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a><
+                    </div>
                     <div class="col-lg-6">
-                        <button class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>REQUEST</button>
+                        <a [routerLink]="['/bitcoin/request']" class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a><
                     </div>
                 </div>
             </div>

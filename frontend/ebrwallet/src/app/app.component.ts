@@ -2,6 +2,7 @@ import { DataService } from './services/data.service';
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
 import {SpinnerService} from './services/spinner.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 import 'rxjs/Rx';
@@ -10,6 +11,7 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 declare var $: any;
 declare var ga: any;
+declare var toastr: any;
 
 @Component({
   selector: 'app-root',
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit{
   busy: boolean;                // The loading spinner visibility flag
   sticky = false;
   shownFeedback = false;
+  feedback      : FormGroup;
 
 
 
@@ -45,7 +48,8 @@ export class AppComponent implements OnInit{
     public router: Router,
     private dataService: DataService,
     private spinner: SpinnerService,
-    private element: ElementRef
+    private element: ElementRef,
+    private fb: FormBuilder
   ) {
 
     // Coin Data
@@ -59,6 +63,13 @@ export class AppComponent implements OnInit{
         ga('set', 'page', event.urlAfterRedirects);
         ga('send', 'pageview');
       }
+    });
+
+    this.feedback = fb.group({
+      firstName : ['', Validators.required],
+      lastName  : ['', Validators.required],
+      email     : ['', Validators.compose([Validators.required, Validators.email])],
+      message   : ['', Validators.required]
     });
   }
 
@@ -105,8 +116,21 @@ export class AppComponent implements OnInit{
   }
 
 
-    showFeedback() {
+  showFeedback() {
     this.shownFeedback = !this.shownFeedback;
+  }
+
+
+  submitFeedback() {
+    if(this.feedback.valid) {
+      this.dataService.submitFeedback(this.feedback.value)
+       .then(res => {
+         toastr.success('Success!', 'Thank you for your feedback');
+         this.feedback.reset();
+         this.showFeedback();
+       })
+       .catch(err => toastr.error('Couldn\'t send your feedback at the moment. Try again.'));
+    }
   }
 
 }
