@@ -62,6 +62,8 @@ font-weight: 400;
   font-size: 50px;
   color: #999;
 }
+.btn-link a:hover { text-decoration: none; }
+.icon-circle-up:hover:before { color:#37d4b1 }
 .icon-google-plus:before {
   content: "\ea8b";
 }
@@ -81,7 +83,6 @@ font-weight: 400;
   content: "\eaca";
 }
 
-.coins .container { width:972px;}
 
 .panel-group .panel { margin-bottom:2px;}
 accordion-toggle { display: block; cursor: pointer;}
@@ -396,6 +397,8 @@ animation:rotate 1s ease-in-out infinite;
 .pt-2 {
   padding: 2% 15px;
 }
+
+a:active, a:focus, button:focus, button:active { outline:0; }
 
 .card {
     padding: 40px;
@@ -871,6 +874,12 @@ border-radius:5px;
 @media screen and (min-width:1024px)
 {
 .nav-block > ul > li { margin-left: 30px; margin-right:30px; }
+
+}
+
+@media screen and (max-width:1024px)
+{
+    .coins .container { width:900px;}
 
 }
 
