@@ -18,7 +18,7 @@
     <div class="container-md" [class.slide]="this.wallet">
 
 
-        <nav class="hidden-print hidden-sm hidden-xs affix" >
+        <nav class="affix clearfix" >
             <ul class="nav">
                 <li>
                     <a   class="active" [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
@@ -75,7 +75,7 @@
 
             </form>
         </div>
-        
+
         <div *ngIf="wallet">
             <div class="block block-center align-center">
                 <div>
