@@ -694,9 +694,9 @@ header + .container { padding-top:60px; padding-bottom: 60px; }
 
 .coins .container {
   position: relative;
--webkit-animation: tickerd 10s linear infinite ;
--o-animation: tickerd 10s linear infinite;
-animation: tickerd 10s linear infinite;
+-webkit-animation: ticker 10s linear infinite ;
+-o-animation: ticker 10s linear infinite;
+animation: ticker 10s linear infinite;
 
 }
 
