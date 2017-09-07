@@ -3,31 +3,31 @@
 <div [class.overflow-hidden]="busy">
 
 <div class="bodyContent">
-    <div class="coins" style="display: none;">
+    <div class="coins">
         <div *ngIf="coins" id="top">
             <div class="container">
                 <div class="row" *ngFor="let coin of coins">
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p style="margin-top: 10px;"><img src="{{images[coin.symbol]}}" style="width:25px;" />
                         <strong>{{ coin.symbol}}</strong>
                         </p>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p>Price</p>
                         <strong>  $ {{ coin.price_usd }} </strong></div>
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p>Change 1h </p>
                         <strong [ngClass]="coin.percent_change_1h < 0 ? 'red' : 'green'">{{ coin.percent_change_1h }}</strong>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p>Change 24h</p>
                         <strong [ngClass]="coin.percent_change_24h < 0 ? 'red' : 'green'">{{ coin.percent_change_24h }}</strong>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p>#coins</p>
                         <strong>{{ coin.total_supply }}</strong>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-xs-2">
                         <p>24h Volume</p>
                         <strong>$ {{ coin['24h_volume_usd'] }}</strong>
                     </div>
@@ -44,7 +44,7 @@
             <app-nav-bar class="pull-right"></app-nav-bar>
         </div>
     </header>
-    <div class="messageBar" style="display: none">
+    <div class="messageBar">
 THIS WEBSITE IS IN BETA PHASE, YOUR
 <a href="javascript:void(0)" (click)="showFeedback()">FEEDBACK</a> IS APPRECIATED.
 </div>

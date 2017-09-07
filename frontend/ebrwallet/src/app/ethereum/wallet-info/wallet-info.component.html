@@ -3,7 +3,7 @@
 <div *ngIf="!ready" class="container-md">
 
 
-<nav class="hidden-print hidden-sm hidden-xs affix" >
+<nav class="affix clearfix" >
 
 <ul class="nav">
  <li>
@@ -27,11 +27,13 @@
 
  <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>View Wallet</h2><br>
-        <input placeholder="Address" [(ngModel)]="keyInput">
+        <div class="form-group">
+        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput">
+        </div>
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
-        <p>----------or----------</p>
+        <p>----e------or----------</p>
         <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
         <br><br>
 
@@ -65,7 +67,7 @@
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container-md">
 
-<nav class="hidden-print hidden-sm hidden-xs affix" >
+<nav class="affix clearfix">
 
 <ul class="nav">
  <li>

@@ -2,24 +2,12 @@
     padding: 0;
     margin-top:50px;
   }
-  
+
 .inputBox{
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-}
-
-
-.inputBox input {
-  background-color: #fff;
-  width: 400px;
-  height: 50px;
-  font-size: 20px;
-  padding: 15px; 
-  /* margin: 15px; */
-  border: 1px solid #e9e9e9;
-  border-radius: 5px;
 }
 
 .scanQrOverlay {
@@ -29,7 +17,7 @@
   left: 0;
   right: 0;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.8); 
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 2000;
 }
 
@@ -52,7 +40,7 @@ td {
     max-width: 180px;
     overflow: hidden;
     padding:10px;
-}  
+}
 
 .box {
     border: 1px solid #e9e9e9;
