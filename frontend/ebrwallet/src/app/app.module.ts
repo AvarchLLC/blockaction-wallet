@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { EthereumModule} from './ethereum/ethereum.module';
 import { BitcoinModule} from './bitcoin/bitcoin.module';
+import {AccordionModule} from "ng2-accordion";
 
 // Project Components
 import { AppComponent } from './app.component';
@@ -34,7 +35,8 @@ import { HelpComponent } from './help/help.component';
     AppRoutingModule,
     AuthModule,
     EthereumModule,
-    BitcoinModule
+    BitcoinModule,
+    AccordionModule
   ],
   providers: [  ],
   bootstrap: [ AppComponent ]
