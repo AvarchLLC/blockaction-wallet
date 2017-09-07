@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="27px" viewBox="0 0 66 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>key-icon copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.70224819,50.9090909 L9.70224819,53.3333333 L5.84765868,53.3333333 C5.3063134,53.3333333 4.85112409,53.7792543 4.85112409,54.3293258 L4.85112409,59.6100682 C4.85112409,60.1511189 5.29728782,60.6060606 5.84765868,60.6060606 L9.70224819,60.6060606 L9.70224819,62.4552415 C9.70224819,64.1127823 11.0461632,65.4545455 12.7039664,65.4545455 L13.9772161,65.4545455 C15.6442779,65.4545455 16.9789343,64.1117113 16.9789343,62.4552415 L16.9789343,26.1647697 C22.5783559,24.5819118 26.6811825,19.4364951 26.6811825,13.3333333 C26.6811825,5.96953667 20.7083964,0 13.3405913,0 C5.97278615,0 -1.13686838e-13,5.96953667 -1.13686838e-13,13.3333333 C-1.13686838e-13,19.4364951 4.10282657,24.5819118 9.70224819,26.1647697 L9.70224819,43.6363636 L5.84765868,43.6363636 C5.3063134,43.6363636 4.85112409,44.0822846 4.85112409,44.6323561 L4.85112409,49.9130985 C4.85112409,50.4541492 5.29728782,50.9090909 5.84765868,50.9090909 L9.70224819,50.9090909 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="26.6811825" height="65.4545455" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <path d="M13.3405913,19.3939394 C16.6895936,19.3939394 19.4044964,16.6805136 19.4044964,13.3333333 C19.4044964,9.98615303 16.6895936,7.27272727 13.3405913,7.27272727 C9.99158894,7.27272727 7.27668614,9.98615303 7.27668614,13.3333333 C7.27668614,16.6805136 9.99158894,19.3939394 13.3405913,19.3939394 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="12.1278102" height="12.1212121" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+    </defs>
+    <g id="send-ether" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-Landscape" transform="translate(-820.000000, -672.000000)" stroke="#585858" stroke-width="2" fill="#FFFFFF">
+            <g id="key-icon-copy" transform="translate(853.000000, 685.500000) scale(-1, 1) rotate(-90.000000) translate(-853.000000, -685.500000) translate(839.500000, 652.500000)">
+                <use id="Combined-Shape" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                <use id="Oval-42" mask="url(#mask-4)" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

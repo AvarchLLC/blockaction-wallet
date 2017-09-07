@@ -24,11 +24,11 @@
         </ul>
     </nav>
 
-    <div class="block block-center bg-vl-gray inputBox" *ngIf="!addressProvided">
+    <div class="block block-center bg-vl-gray inputBox align-center" *ngIf="!addressProvided">
 
         <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>Request Ether</h2><br>
-        <input placeholder="Address" [(ngModel)]="etherAddress">
+        <input class="form-control" placeholder="Address" [(ngModel)]="etherAddress">
         <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue...</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
@@ -56,17 +56,18 @@
     </div>
 
 
-    <div class="block block-center bg-vl-gray"  *ngIf="addressProvided">
+    <div class="block block-center bg-vl-gray align-center"  *ngIf="addressProvided">
 
         <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>Request Ether</h2>
         <form [formGroup]="requestEtherForm">
-            <input class="form-control" formControlName="email" type="email" placeholder="Email...">
+        <label>Email to which you're sending request</label>
+            <input class="form-control" formControlName="email" type="email" placeholder="Email">
 
             <!-- Currency Converter Box Start -->
-            <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd?.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+            <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd?.value' baseName='ETH' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
 
-            <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethusd?.time}}</span>
+            <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
             <!-- Currency Converter Box End -->
 
             <textarea class="form-control" formControlName="message"></textarea>

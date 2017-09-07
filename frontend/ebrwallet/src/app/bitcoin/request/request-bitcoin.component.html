@@ -28,7 +28,8 @@
 
         <img src="../../assets/img/bitcoin.png" style="max-width:50px;" />
         <h2>Request Bitcoin</h2><br>
-        <input placeholder="Address" [(ngModel)]="bitcoinAddress">
+        <label>Your Bitcoin Address</label>
+        <input class="form-control" placeholder="Address" [(ngModel)]="bitcoinAddress">
         <button [disabled]="!isValidPrivateKey(bitcoinAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue...</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
@@ -56,19 +57,20 @@
     </div>
 
 
-    <div class="block block-center bg-vl-gray"  *ngIf="addressProvided">
+    <div class="block block-center bg-vl-gray align-center"  *ngIf="addressProvided">
 
         <img src="../../assets/img/bitcoin.png" style="max-width:50px;" />
-        <h2>Request Bitcion</h2>
+        <h2>Request Bitcoin</h2>
         <form [formGroup]="sendBitcoin">
+       <label>Email where you are sending request</label>
             <input class="form-control" formControlName="email" type="email" placeholder="Email...">
 
             <!-- Currency Converter Box Start -->
-            <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Bitcoin.png"' [bid]='btcusd' baseName='btc' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+            <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Bitcoin.png"' [bid]='btcusd' baseName='BTC' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
 
             <span *ngIf="ethbtc?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethbtc?.time}}</span>
             <!-- Currency Converter Box End -->
-
+            <label>Type your message</label>
             <textarea class="form-control" formControlName="message"></textarea>
         </form>
         <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>

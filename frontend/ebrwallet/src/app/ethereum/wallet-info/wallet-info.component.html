@@ -24,11 +24,12 @@
 
         </ul>
     </nav>
+
     <div class="block block-center bg-vl-gray inputBox">
 
         <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
         <h2>View Wallet</h2><br>
-        <input placeholder="Address" [(ngModel)]="keyInput">
+        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
@@ -87,6 +88,9 @@
 
 </ul></nav>
 
+
+  <div class="container bg-white">
+
     <div class="row">
         <div class="col-sm-12">
 
@@ -119,6 +123,7 @@
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-sm-12">
             <div *ngIf="pending">
@@ -220,6 +225,7 @@
                 </pagination-template>
             </div>
         </div>
+    </div>
     </div>
 </div>
 

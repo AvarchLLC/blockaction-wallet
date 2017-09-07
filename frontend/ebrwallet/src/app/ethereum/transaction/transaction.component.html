@@ -28,29 +28,33 @@
     </ul>
 </nav>
 
-    <div class="block block-center bg-vl-gray ">
+    <div class="block block-center bg-vl-gray align-center">
 
         <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
-        <div class="row tabs" style="font-size:24px;">
-            <div class="col-sm-5 text-center">
-                <span [class.active]="existing === 'wallet'"><a (click)="existing='wallet'">Wallet File</a></span>
+        <h2>Send Ether</h2><br>
+        <div class="row tabs">
+            <div class="col-sm-6">
+                <span [class.active]="existing === 'wallet'"><a (click)="existing='wallet'"><span class="imgHolder">
+            <img src="../../assets/img/wallet-o.svg">
+            </span> Wallet File</a></span>
             </div>
-            <div class="col-sm-2">|</div>
-            <div class="col-sm-5 text-center">
-                <span [class.active]="existing === 'key'"><a (click)="existing='key'">Private Key</a></span>
+            <div class="col-sm-6">
+                <span [class.active]="existing === 'key'"><a (click)="existing='key'"><span class="imgHolder">
+            <img src="../../assets/img/key.svg">
+            </span> Private Key</a></span>
             </div>
         </div>
-        <div *ngIf="existing === 'wallet'" class="nav nav-content inputBox">
+        <div *ngIf="existing === 'wallet'" >
             <label class="btn btn-lg btn-primary">
                 Upload Wallet File <input type="file" (change)="fileChangeListener($event)" style="display: none;">
             </label>
-            <div *ngIf="wallet" class="nav-content">
-                <input type="password" placeholder="Wallet password..." [(ngModel)]="walletPassword" />
+            <div *ngIf="wallet">
+                <input class="form-control" type="password" placeholder="Wallet password..." [(ngModel)]="walletPassword" />
                 <button class="btn btn-primary btn-lg" (click)="decryptWallet()">View Wallet</button>
             </div>
         </div>
-        <div *ngIf="existing === 'key'" class="nav nav-content inputBox">
-            <input placeholder="Private Key" [(ngModel)]="keyInput">
+        <div *ngIf="existing === 'key'">
+            <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
             <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         </div>
         <br><br>
@@ -83,7 +87,7 @@
 
 </ul></nav>
 
-    <div class="card card-md-p send-ether">
+    <div class="block block-center send-ether">
         <div class="text-center">
             <h3><b>Send Ether {{ network }}: </b></h3>
         </div>
@@ -94,20 +98,20 @@
                     <b>From</b>
                     <div class="clearfix">
                         <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
-                        <img width="40" height="40" style="border-radius: 20px; margin-top:20px;" src="{{ getBlockie(wallet.address) }}">
+                        <img width="40" height="40" style="border-radius: 20px;" src="{{ getBlockie(wallet.address) }}">
                     </div>
                     <b>To</b>
                     <div class="clearfix {{ sendEther.errors?.invalidAddress && sendEther.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendEther.errors?.invalidAddress && sendEther.get('receiveAddress').touched ? 'has-success' : ''}}">
                         <input class="form-control withQr" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required"
                         />
-                        <img *ngIf="isValidAddress(sendEther.controls.receiveAddress.value)" width="40" height="40" style="border-radius: 20px;margin-top:20px;"
+                        <img *ngIf="isValidAddress(sendEther.controls.receiveAddress.value)" width="40" height="40" style="border-radius: 20px;"
                             src="{{ getBlockie(sendEther.get('receiveAddress').value) }}">
                     </div>
                 </div>
                 <br />
                 <app-converter-box [baseValue]='sendEther.controls.amount_ether.value' [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value'
-                    baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
-                <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
+                    baseName='ETH' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
+                <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
 
                 <button [disabled]="!sendEther.valid || !isValidAddress(sendEther.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()"
                     class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Ether</button>
