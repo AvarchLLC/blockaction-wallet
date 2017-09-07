@@ -7,8 +7,8 @@ import {Observable} from 'rxjs/Observable';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 import { Wallet} from '../wallet';
-import {TransactionService} from '../services/transaction.service';
-import {WalletService} from '../services/wallet.service';
+import {EthereumTransactionService} from '../services/ethereum-transaction.service';
+import {EthereumWalletService} from '../services/ethereum-wallet.service';
 
 
 import { PaginationInstance } from 'ngx-pagination';
@@ -60,8 +60,8 @@ export class WalletInfoComponent implements OnInit {
   modalVisible: boolean;
 
   constructor(
-    private transactionService: TransactionService,
-    private walletService: WalletService,
+    private transactionService: EthereumTransactionService,
+    private walletService: EthereumWalletService,
     private route: ActivatedRoute,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {

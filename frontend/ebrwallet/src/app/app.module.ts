@@ -12,6 +12,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { EthereumModule} from './ethereum/ethereum.module';
 import { BitcoinModule} from './bitcoin/bitcoin.module';
+import { DonationModule} from './donation/donation.module';
+
 import {AccordionModule} from "ng2-accordion";
 
 // Project Components
@@ -36,6 +38,7 @@ import { HelpComponent } from './help/help.component';
     AuthModule,
     EthereumModule,
     BitcoinModule,
+    DonationModule,
     AccordionModule
   ],
   providers: [  ],

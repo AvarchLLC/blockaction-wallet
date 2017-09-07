@@ -7,14 +7,14 @@ import { TransactionComponent } from './transaction/transaction.component';
 import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [
-  { path: 'ethereum/wallet', component: WalletComponent },
-  { path: 'ethereum/send', component: TransactionComponent },
-  { path: 'ethereum/info', component: WalletInfoComponent },
-  { path: 'ethereum/request', component: RequestEtherComponent },
+  { path: 'wallet', component: WalletComponent },
+  { path: 'send', component: TransactionComponent },
+  { path: 'info', component: WalletInfoComponent },
+  { path: 'request', component: RequestEtherComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 

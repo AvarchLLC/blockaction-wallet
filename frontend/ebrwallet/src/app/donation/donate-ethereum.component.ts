@@ -1,14 +1,16 @@
-import { environment } from '../../../environments/environment';
-import { Wallet } from '../wallet';
+import { environment } from './../../environments/environment';
+
+import { Wallet } from './../ethereum/wallet';
+
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import 'rxjs/add/operator/filter';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { EthereumWalletService } from '../services/ethereum-wallet.service';
-import { EthereumTransactionService } from '../services/ethereum-transaction.service';
-import {SpinnerService} from '../../services/spinner.service';
+import { EthereumWalletService }  from './../ethereum/services/ethereum-wallet.service';
+import { EthereumTransactionService } from './../ethereum/services/ethereum-transaction.service';
+import { SpinnerService } from './../services/spinner.service';
 
 
 declare var toastr;
@@ -16,11 +18,11 @@ declare var Web3: any;
 declare var EthJS: any;
 
 @Component({
-  selector: 'app-ethereum-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.css']
+  selector: 'donate-ethereum',
+  templateUrl: './donate-ethereum.component.html',
+  styleUrls: ['./../ethereum/transaction/transaction.component.css']
 })
-export class TransactionComponent implements OnInit {
+export class DonateEthereumComponent implements OnInit {
   web3: any;
 
   sendEther: FormGroup;
@@ -49,7 +51,7 @@ export class TransactionComponent implements OnInit {
     this.web3 = new Web3();
 
     this.sendEther = fb.group({
-      receiveAddress: ['', Validators.required],
+      receiveAddress: ['0xf13e477365B0FAa64130DA2FF663aAb20d32d929', Validators.required],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0', Validators.required],
 

@@ -1,7 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { TransactionService } from '../services/transaction.service';
+import { EthereumTransactionService } from '../services/ethereum-transaction.service';
 import { DataService } from '../../services/data.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 
@@ -47,7 +47,7 @@ export class RequestEtherComponent {
     }
   }
   constructor( fb: FormBuilder,
-    private transactionService: TransactionService,
+    private transactionService: EthereumTransactionService,
     private dataService: DataService,
     private googleAnalyticsService: GoogleAnalyticsService,
     private spinner: SpinnerService

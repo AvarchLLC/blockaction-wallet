@@ -18,7 +18,8 @@ export class NavComponent implements OnInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        this.activeLink = event.url.split('?')[0];    // Get first part of route excluding query parameters
+        let url = event.url.split('?')[0];   // Get first part of route excluding query parameters
+        this.activeLink = url.split('/')[1];
         this.menuItems = NAVROUTES.filter(menuItem => menuItem);
       });
   }
@@ -38,7 +39,8 @@ export class NavComponent implements OnInit {
         }
       }
     } else {
-      return menuItem.path === this.activeLink;
+      let url = menuItem.path.split('/')[1];
+      return url === this.activeLink;
     }
   }
 

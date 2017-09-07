@@ -132,5 +132,22 @@ export class AppComponent implements OnInit{
        .catch(err => toastr.error('Couldn\'t send your feedback at the moment. Try again.'));
     }
   }
+  
+  /**
+   * Scrolling to the top of the screen at decremental steps
+   */
+  scrollTop() {
+   let x = window.innerHeight;
+   // Set a interval id
+   const clId = setInterval(() => {
+     window.scrollTo(0, x);
+     x -= 50;
+     if (x <= 0) {
+       window.scrollTo(0, 0);
+       clearInterval(clId);    // Clear interval once it reaches the top
+     }
+   }, 15);
+ }
+
 
 }
