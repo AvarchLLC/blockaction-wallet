@@ -13,7 +13,7 @@ declare var EthJS: any;
 declare var Web3: any;
 
 @Injectable()
-export class TransactionService {
+export class EthereumTransactionService {
 
 
   // API_URL =`http://localhost:8545`;

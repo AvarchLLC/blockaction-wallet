@@ -2,9 +2,9 @@ import { DataService } from '../../services/data.service';
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { WalletService } from '../services/wallet.service';
+import { BitcoinWalletService } from '../services/bitcoin-wallet.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
-import { TransactionService } from '../services/transaction.service';
+import { BitcoinTransactionService } from '../services/bitcoin-transaction.service';
 
 import { Wallet } from '../wallet';
 import {SpinnerService} from '../../services/spinner.service';
@@ -43,9 +43,9 @@ export class WalletComponent implements OnInit {
     }
   }
   constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private walletService: WalletService,
+    private walletService: BitcoinWalletService,
     private googleAnalyticsService: GoogleAnalyticsService,
-    private transactionService: TransactionService,
+    private transactionService: BitcoinTransactionService,
     private spinner: SpinnerService,
     private dataService: DataService
   ) {

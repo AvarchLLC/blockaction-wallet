@@ -1,8 +1,8 @@
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { WalletService } from '../services/wallet.service';
-import { TransactionService } from '../services/transaction.service';
+import { EthereumWalletService } from '../services/ethereum-wallet.service';
+import { EthereumTransactionService } from '../services/ethereum-transaction.service';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
@@ -53,9 +53,9 @@ export class WalletComponent implements OnInit {
     }
   }
   constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private walletService: WalletService,
+    private walletService: EthereumWalletService,
     private authService: AuthService,
-    private transactionService: TransactionService,
+    private transactionService: EthereumTransactionService,
     private dataService: DataService,
     private googleAnalyticsService: GoogleAnalyticsService,
     private spinner: SpinnerService,

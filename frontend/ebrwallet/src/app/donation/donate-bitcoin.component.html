@@ -1,33 +1,8 @@
 <!-- Existing Wallet Box -->
 <div class="container-md" *ngIf="!ready">
-
-
-
-
-<nav class="affix clearfix" >
-
-<ul class="nav">
- <li>
- <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
- </li>
-
-  <li>
- <a class="active"  [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
- </li>
-
-</ul></nav>
-
     <div class="block block-center bg-vl-gray align-center inputBox">
-    <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
-        <h2>Send Bitcoin</h2><br>
+        <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
+        <h2>Donate Bitcoin</h2><br>
         <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
         <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         <br><br>
@@ -40,35 +15,11 @@
 <!--- Ether Send Modal -->
 <div class="container-md" *ngIf="ready && !receipt">
 
-
-
-
-<nav class="affix clearfix" >
-
-<ul class="nav">
- <li>
- <a  [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
- </li>
-
-  <li>
- <a  class="active" [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
- </li>
-
-  <li>
- <a  [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
- </li>
-
-</ul></nav>
-
     <div class="block block-center bg-vl-gray align-center send-ether">
     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <div class="text-center">
 
-            <h3><b>Send Bitcoin</b></h3>
+            <h3><b>Donate Bitcoin</b></h3>
         </div>
 
         <div *ngIf="!receipt">
@@ -80,14 +31,14 @@
             </div>
             <b>To</b>
             <div class="clearfix {{ sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-success' : ''}}">
-                <input class="form-control" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" />
+                <input class="form-control" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" readonly/>
             </div>
         </div>
                 <br />
                 <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/bitcoin.png"' [bid]='btcusd' baseName='btc' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
                 <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
 
-                <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Bitcoin</button>
+                <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Donate Bitcoin</button>
             </form>
         </div>
     </div>

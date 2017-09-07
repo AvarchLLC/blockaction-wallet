@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 declare var bitcore: any;
 
 @Injectable()
-export class TransactionService {
+export class BitcoinTransactionService {
 
   constructor(private http: Http) {
   }

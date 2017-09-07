@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import { EthereumRoutingModule } from './ethereum-routing.module';
 import {SharedModule} from '../shared/shared.module';
@@ -11,8 +11,8 @@ import {TransactionComponent} from './transaction/transaction.component';
 import {WalletInfoComponent} from './wallet-info/wallet-info.component';
 import { RequestEtherComponent } from './request/request-ether.component';
 
-import {WalletService} from './services/wallet.service';
-import {TransactionService} from './services/transaction.service';
+import {EthereumWalletService} from './services/ethereum-wallet.service';
+import {EthereumTransactionService} from './services/ethereum-transaction.service';
 
 @NgModule({
   imports: [
@@ -27,7 +27,6 @@ import {TransactionService} from './services/transaction.service';
     WalletInfoComponent,
     RequestEtherComponent
   ],
-  providers: [WalletService, TransactionService],
-  // schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [EthereumWalletService, EthereumTransactionService]
 })
 export class EthereumModule { }

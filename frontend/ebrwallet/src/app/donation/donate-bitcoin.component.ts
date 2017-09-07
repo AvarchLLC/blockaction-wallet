@@ -1,26 +1,26 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { environment } from '../../../environments/environment';
+import { DataService } from './../services/data.service';
+import { environment } from './../../environments/environment';
 import 'rxjs/add/operator/filter';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { BitcoinWalletService } from '../services/bitcoin-wallet.service';
-import { BitcoinTransactionService } from '../services/bitcoin-transaction.service';
-import { SpinnerService } from '../../services/spinner.service';
+import { BitcoinWalletService } from './../bitcoin/services/bitcoin-wallet.service';
+import { BitcoinTransactionService } from './../bitcoin/services/bitcoin-transaction.service';
+import {SpinnerService} from './../services/spinner.service';
 
-import { Wallet } from '../wallet';
+import { Wallet } from './../bitcoin/wallet';
 
 declare var toastr;
 declare var bitcore: any;
 
 @Component({
-  selector: 'app-ethereum-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.css']
+  selector: 'donate-bitcoin',
+  templateUrl: './donate-bitcoin.component.html',
+  styleUrls: ['./../bitcoin/transaction/transaction.component.css']
 })
-export class TransactionComponent implements OnInit {
+export class DonateBitcoinComponent implements OnInit {
 
   sendBitcoin: FormGroup;
 
@@ -42,7 +42,7 @@ export class TransactionComponent implements OnInit {
   ) {
 
     this.sendBitcoin = fb.group({
-      receiveAddress: ['', Validators.required],
+      receiveAddress: ['1FeNXHYmZqpDh9TFPYpaAM2PxdvEFCdQHy', Validators.required],
       amount_bitcoin: ['0', Validators.required],
       amount_usd: ['0', Validators.required],
 
@@ -86,11 +86,12 @@ export class TransactionComponent implements OnInit {
   }
 
   isValidAddress(address: string) {
-    if (environment.production) {
+    //   console.log(address);
+    // if (environment.production) {
       return bitcore.Address.isValid(address);
-    } else {
-      return bitcore.Address.isValid(address, bitcore.Networks.testnet);
-    }
+    // } else {
+    //   return bitcore.Address.isValid(address, bitcore.Networks.testnet);
+    // }
   }
 
   ngOnInit() {

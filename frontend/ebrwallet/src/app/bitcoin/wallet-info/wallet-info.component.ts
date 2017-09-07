@@ -8,8 +8,8 @@ import {Observable} from 'rxjs/Observable';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 import { Wallet} from '../wallet';
-import {TransactionService} from '../services/transaction.service';
-import {WalletService} from '../services/wallet.service';
+import {BitcoinTransactionService} from '../services/bitcoin-transaction.service';
+import {BitcoinWalletService} from '../services/bitcoin-wallet.service';
 
 
 import { PaginationInstance } from 'ngx-pagination';
@@ -52,9 +52,9 @@ export class WalletInfoComponent implements OnInit {
   private interval: number;
 
   constructor(
-    private transactionService: TransactionService,
+    private transactionService: BitcoinTransactionService,
     private dataService: DataService,
-    private walletService: WalletService,
+    private walletService: BitcoinWalletService,
     private route: ActivatedRoute,
     private googleAnalyticsService: GoogleAnalyticsService
   ) {
