@@ -28,7 +28,7 @@ module.exports = {
     },
     subscribe:(req,res,next)=>{
         let options = req.emailData;
-        options.template = 'subscribe'
+        options.template = 'subscribe';
         email.sendMail(options,(error,response)=>{
             if(error){
                 next(error);
@@ -42,24 +42,45 @@ module.exports = {
     },
 
     requestEther: (req, res, next) => {
-    let options = req.emailData;
-    options.template = 'requestether';
+        let options = req.emailData;
+        options.template = 'requestether';
 
-    try {
-        options.content = JSON.parse(req.body.content);
-    } catch (err) {
-        return next(err);
+        try {
+            options.content = JSON.parse(req.body.content);
+        } catch (err) {
+            return next(err);
+        }
+
+        email.sendMail(options,(error,response)=>{
+            if(error){
+                next(error);
+            }
+            else{
+                req.cdata = response;
+                next();
+            }
+        });
+    },
+    requestBitcoin: (req, res, next) => {
+        let options = req.emailData;
+        options.template = 'requestbitcoin';
+
+        try {
+            options.content = JSON.parse(req.body.content);
+        } catch (err) {
+            return next(err);
+        }
+        email.sendMail(options,(error,response)=>{
+            if(error){
+                next(error);
+            }
+            else{
+                req.cdata = response;
+                next();
+            }
+        });
+
     }
 
-    email.sendMail(options,(error,response)=>{
-        if(error){
-            next(error);
-        }
-        else{
-            req.cdata = response;
-            next();
-        }
-    });
 
-    }
 }

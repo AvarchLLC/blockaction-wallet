@@ -138,4 +138,21 @@ export class TransactionService {
       .toPromise()
       .then(res => res.json());
   }
+
+  /**
+   * Get the convertion rate for given symbol
+   * @param type Symbol (eg. ethbtc, ethusd)
+   */
+  getConversionRate(type): Promise<any> {
+    let symbol = type;
+    if (!type) {
+      symbol = 'ethbtc';
+    }
+
+    return this.http
+      .get(`https://api.infura.io/v1/ticker/${symbol}`)
+      .map(res => res.json())
+      .toPromise();
+  }
+
 }

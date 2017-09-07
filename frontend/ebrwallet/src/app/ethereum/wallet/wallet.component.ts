@@ -11,6 +11,7 @@ import { Wallet } from '../wallet';
 
 import {SpinnerService} from '../../services/spinner.service';
 import { Config } from '../../config';
+import { Router } from '@angular/router';
 const config = new Config();
 
 declare const toastr: any;
@@ -57,7 +58,8 @@ export class WalletComponent implements OnInit {
     private transactionService: TransactionService,
     private dataService: DataService,
     private googleAnalyticsService: GoogleAnalyticsService,
-    private spinner: SpinnerService
+    private spinner: SpinnerService,
+    private router: Router
   ) {
 
     const passwordValidator = Validators.compose([
@@ -251,7 +253,7 @@ export class WalletComponent implements OnInit {
   }
 
   toggleModal() {
-    this.modalVisible = !this.modalVisible;
+    this.router.navigate(['ethereum/request']);
   }
 
   converter(data) {

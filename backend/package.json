@@ -1,10 +1,11 @@
 {
   "name": "ebrwallet",
   "version": "1.0.0",
-  "description": "ebrwaller",
+  "description": "ebrwallet",
   "main": "server.js",
   "scripts": {
-    "test": "grunt"
+    "test": "grunt",
+    "start": "nodemon server.js"
   },
   "author": "bitsbeat",
   "license": "ISC",

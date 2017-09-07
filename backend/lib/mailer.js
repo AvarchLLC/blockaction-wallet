@@ -33,6 +33,15 @@ module.exports = {
                 case 'requestether':
                     emailOptions.subject = 'Ether request';
                     break;
+                case 'requestbitcoin':
+                    emailOptions.subject = 'Bitcoin request';
+                    break;
+                case 'contact':
+                    emailOptions.subject = 'Somebody just contacted you';
+                    break;
+                case 'feedback':
+                    emailOptions.subject = 'You have a feedback';
+                    break;
 
                 default:
             }
