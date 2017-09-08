@@ -50,12 +50,12 @@
             </label>
             <div *ngIf="wallet">
                 <input class="form-control" type="password" placeholder="Wallet password..." [(ngModel)]="walletPassword" />
-                <button class="btn btn-primary btn-lg" (click)="decryptWallet()">View Wallet</button>
+                <button class="btn btn-primary btn-lg" (click)="decryptWallet()">Continue</button>
             </div>
         </div>
         <div *ngIf="existing === 'key'">
             <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
-            <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
+            <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">Continue</button>
         </div>
         <br><br>
         <p>Enter private key or upload wallet above to unlock your wallet and perform the transaction.</p>

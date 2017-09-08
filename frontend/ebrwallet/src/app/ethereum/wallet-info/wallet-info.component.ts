@@ -1,17 +1,16 @@
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
+import {ActivatedRoute, Route} from '@angular/router';
 import {Component, Input, OnInit} from '@angular/core';
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 
-import { Wallet} from '../wallet';
+import {Wallet} from '../wallet';
 import {EthereumTransactionService} from '../services/ethereum-transaction.service';
 import {EthereumWalletService} from '../services/ethereum-wallet.service';
 
-
-import { PaginationInstance } from 'ngx-pagination';
+import {PaginationInstance} from 'ngx-pagination';
 declare var EthJS: any;
 declare var toastr: any;
 declare var Web3: any;
@@ -25,7 +24,7 @@ declare var Web3: any;
 export class WalletInfoComponent implements OnInit {
   web3: any;
 
-  ready= false;
+  ready = false;
   existing = 'key';
   keyInput: string;
 
@@ -40,7 +39,7 @@ export class WalletInfoComponent implements OnInit {
   qrClass = '';
   blockie: string;
 
-  page = 1 ;
+  page = 1;
   total: number;  // total pages of transaction
   loading: boolean;
   public config: PaginationInstance = {
@@ -59,12 +58,10 @@ export class WalletInfoComponent implements OnInit {
   selectedTx: any;
   modalVisible: boolean;
 
-  constructor(
-    private transactionService: EthereumTransactionService,
-    private walletService: EthereumWalletService,
-    private route: ActivatedRoute,
-    private googleAnalyticsService: GoogleAnalyticsService
-  ) {
+  constructor(private transactionService: EthereumTransactionService,
+              private walletService: EthereumWalletService,
+              private route: ActivatedRoute,
+              private googleAnalyticsService: GoogleAnalyticsService) {
     this.web3 = new Web3();
 
     this.alive = true;
@@ -88,7 +85,8 @@ export class WalletInfoComponent implements OnInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   getDate(timeStamp) {
     return new Date(timeStamp * 1000);
@@ -100,9 +98,9 @@ export class WalletInfoComponent implements OnInit {
 
   isValidAddress(address: string) {
     try {
-        return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
+      return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
     } catch (e) {
-        return false;
+      return false;
     }
   }
 
@@ -123,7 +121,7 @@ export class WalletInfoComponent implements OnInit {
     this.showInfo();
   }
 
-  showInfo(){
+  showInfo() {
     this.ready = true;
     this.showQr();
     this.blockie = this.walletService.getBlockie(this.wallet);
@@ -131,12 +129,12 @@ export class WalletInfoComponent implements OnInit {
     this.transactionService
       .getBalance(this.wallet.address)
       .then(balance => {
-        this.balance = balance;
+        this.balance = parseFloat(balance).toFixed(3).toString();
         return this.transactionService.getConversionRate('ethusd');
       })
       .then(rate => {
         const bal = rate.bid * parseFloat(this.balance);
-        this.balance_usd = bal.toString();
+        this.balance_usd = bal.toFixed(3).toString();
       })
       .catch(err => toastr.error('Failed to retrieve wallet balance'));
 
@@ -176,7 +174,7 @@ export class WalletInfoComponent implements OnInit {
           .then(data => {
             if (!data) {
               this.pending = {
-                hash : this.txhash
+                hash: this.txhash
               };
             } else {
               this.pending = data;
@@ -193,14 +191,14 @@ export class WalletInfoComponent implements OnInit {
                   })
                   .catch(err => toastr.error('Failed to refresh wallet transactions'));
 
-                  this.transactionService
+                this.transactionService
                   .getBalance(this.wallet.address)
                   .then(balance => this.balance = balance)
                   .catch(err => toastr.error('Failed to refresh wallet balance'));
               }
             }
 
-            });
+          });
       });
   }
 

@@ -31,9 +31,9 @@
         <input class="form-control" placeholder="Address" [(ngModel)]="etherAddress">
         <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue...</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
-        <br>
-        <p>----------or----------</p>
-        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
+        <!--<br>-->
+        <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+        <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
         <br><br>
 
     </div>
@@ -70,7 +70,7 @@
             <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
             <!-- Currency Converter Box End -->
 
-            <textarea class="form-control" formControlName="message"></textarea>
+            <textarea placeholder="Please type your message here..." class="form-control" formControlName="message"></textarea>
         </form>
         <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
     </div>

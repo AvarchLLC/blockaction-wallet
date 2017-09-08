@@ -1,17 +1,17 @@
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { EthereumWalletService } from '../services/ethereum-wallet.service';
-import { EthereumTransactionService } from '../services/ethereum-transaction.service';
-import { DataService } from '../../services/data.service';
-import { AuthService } from '../../services/auth.service';
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import {EthereumWalletService} from '../services/ethereum-wallet.service';
+import {EthereumTransactionService} from '../services/ethereum-transaction.service';
+import {DataService} from '../../services/data.service';
+import {AuthService} from '../../services/auth.service';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
 
-import { Wallet } from '../wallet';
+import {Wallet} from '../wallet';
 
 import {SpinnerService} from '../../services/spinner.service';
-import { Config } from '../../config';
-import { Router } from '@angular/router';
+import {Config} from '../../config';
+import {Router} from '@angular/router';
 const config = new Config();
 
 declare const toastr: any;
@@ -41,10 +41,11 @@ export class WalletComponent implements OnInit {
   passphraseType = 'password';
   passphraseButton = 'Show Passphrase';
   modalVisible = false;
-
+  walletCreated: boolean = false;
+  walletDownload: boolean = false;
   blockie: any;
   showSpinner = false;
-  ready= false;
+  ready = false;
 
   @HostListener('window:beforeunload', ['$event'])
   unloadHandler(event) {
@@ -52,15 +53,15 @@ export class WalletComponent implements OnInit {
       event.returnValue = true;
     }
   }
-  constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private walletService: EthereumWalletService,
-    private authService: AuthService,
-    private transactionService: EthereumTransactionService,
-    private dataService: DataService,
-    private googleAnalyticsService: GoogleAnalyticsService,
-    private spinner: SpinnerService,
-    private router: Router
-  ) {
+
+  constructor(@Inject(FormBuilder) fb: FormBuilder,
+              private walletService: EthereumWalletService,
+              private authService: AuthService,
+              private transactionService: EthereumTransactionService,
+              private dataService: DataService,
+              private googleAnalyticsService: GoogleAnalyticsService,
+              private spinner: SpinnerService,
+              private router: Router) {
 
     const passwordValidator = Validators.compose([
       Validators.required
@@ -74,18 +75,18 @@ export class WalletComponent implements OnInit {
       email: ['', Validators.email],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
-      message : ['', Validators.required]
+      message: ['', Validators.required]
     });
   }
 
   passwordCheck(password: string) {
 
     const checked = {
-      passwordLength: password.length >= 8 && password.length <= 20 ,
+      passwordLength: password.length >= 8 && password.length <= 20,
       passwordLowercase: /[a-z]/.test(password),
       passwordUppercase: /[A-Z]/.test(password),
       passwordNumber: /[0-9]/.test(password),
-      passwordSpecialchar : /[@#$%^&+-=!*]/.test(password),
+      passwordSpecialchar: /[@#$%^&+-=!*]/.test(password),
       invalidChar: /[^a-zA-Z0-9@#$%^&+-=!*]/.test(password)
     };
 
@@ -111,7 +112,7 @@ export class WalletComponent implements OnInit {
       })
       .catch(err => toastr.error('Couldn\'t get exchange rate'));
 
-    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
+    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date()) {
       this.ready = true;
     }
   }
@@ -174,6 +175,7 @@ export class WalletComponent implements OnInit {
           this.wallet = data;
           this.walletForm.controls.password.setValue('');
           toastr.success('Created!', 'Wallet Creation');
+          this.walletCreated = true;
           this.showQr();
           this.blockie = this.walletService.getBlockie(this.wallet);
           this.disabled = false;
@@ -201,6 +203,7 @@ export class WalletComponent implements OnInit {
     this.walletService
       .saveWalletToFile(this.wallet)
       .then(ok => {
+        this.walletDownload = true;
         console.log('emitting card show object');
         this.on_card_show.emit(true);
       })

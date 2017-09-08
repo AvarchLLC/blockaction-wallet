@@ -181,7 +181,7 @@ export class TransactionComponent implements OnInit {
     const from = this.wallet.address;
     const to = EthJS.Util.addHexPrefix(this.sendEther.controls.receiveAddress.value);
     const amount = this.sendEther.controls.amount_ether.value;
-    const amount_usd = this.sendEther.controls.amount_usd.value;
+    const amount_usd = this.sendEther.controls.amount_usd.value.toFixed(3);
     const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
 
     let fee;

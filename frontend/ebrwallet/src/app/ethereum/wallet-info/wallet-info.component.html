@@ -33,9 +33,9 @@
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
-        <p>----------or----------</p>
-        <button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>
-        <br><br>
+        <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
+        <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
+        <!--<br><br>-->
 
     </div>
 </div>
@@ -107,7 +107,7 @@
                     </span>
                     </div>
                 </div>
-                <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b>
+                <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b> -
                 <span style="font-size: 37px;">$ {{ balance_usd }}</span> <b>USD</b>
             </div>
             <div class="col-sm-3">

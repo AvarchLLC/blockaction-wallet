@@ -37,7 +37,9 @@
                 </li>
             </ul>
         </nav>
-
+        <div class="messageBar" *ngIf="walletCreated">
+Your Wallet has been created. Please Download the Wallet as it is mandatory and could not be recovered later once you leave this page.
+        </div>
         <div class="block block-center align-center bg-vl-gray" *ngIf="!wallet">
             <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
             <h2> Create wallet </h2>
@@ -99,9 +101,8 @@
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
-                        <br />
-                        <button class="btn btn-link btn-lg" (click)="printPaperWallets()">Print Wallet</button>
-                        <button class="btn btn-link btn-lg" (click)="toggleModal()">Request Ether</button>
+                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()" [disabled]="!walletDownload">Print Wallet</button>
+                        <!--<button class="btn btn-link btn-lg" (click)="toggleModal()">Request Ether</button>-->
                         <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                     </div>
                 </div>
