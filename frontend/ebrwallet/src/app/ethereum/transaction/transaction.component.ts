@@ -1,13 +1,13 @@
-import { environment } from '../../../environments/environment';
-import { Wallet } from '../wallet';
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import {environment} from '../../../environments/environment';
+import {Wallet} from '../wallet';
+import {Component, OnInit, Inject, Input} from '@angular/core';
 import 'rxjs/add/operator/filter';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { EthereumWalletService } from '../services/ethereum-wallet.service';
-import { EthereumTransactionService } from '../services/ethereum-transaction.service';
+import {EthereumWalletService} from '../services/ethereum-wallet.service';
+import {EthereumTransactionService} from '../services/ethereum-transaction.service';
 import {SpinnerService} from '../../services/spinner.service';
 
 
@@ -39,13 +39,12 @@ export class TransactionComponent implements OnInit {
   receipt: any;
   gasPrice: string;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private transactionService: EthereumTransactionService,
-    private walletService: EthereumWalletService,
-    private spinner: SpinnerService
-  ) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private transactionService: EthereumTransactionService,
+              private walletService: EthereumWalletService,
+              private spinner: SpinnerService) {
     this.web3 = new Web3();
 
     this.sendEther = fb.group({
@@ -83,7 +82,7 @@ export class TransactionComponent implements OnInit {
         this.wallet.privateKey
       )
       .then(hash => {
-        this.router.navigate(['/ethereum/info'], {queryParams: { pending: hash, address: this.wallet.address}});
+        this.router.navigate(['/ethereum/info'], {queryParams: {pending: hash, address: this.wallet.address}});
         toastr.success('Transaction sent');
         this.spinner.displaySpiner(false);
       })
@@ -99,9 +98,9 @@ export class TransactionComponent implements OnInit {
 
   isValidPrivateKey(privKey: string) {
     try {
-        return EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privKey)));
+      return EthJS.Util.isValidPrivate(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privKey)));
     } catch (e) {
-        return false;
+      return false;
     }
   }
 
@@ -161,12 +160,12 @@ export class TransactionComponent implements OnInit {
     this.spinner.displaySpiner(true);
 
     setTimeout(async function () {
-    // TODO: Get private key from wallet
+      // TODO: Get private key from wallet
       try {
         this.wallet.privateKey = await this.walletService.getPrivateKeyString(this.wallet, this.walletPassword);
         this.ready = true;
         this.spinner.displaySpiner(false);
-      }catch(e) {
+      } catch (e) {
         this.spinner.displaySpiner(false);
         toastr.error('Wrong wallet password.')
       }
@@ -181,12 +180,12 @@ export class TransactionComponent implements OnInit {
     const from = this.wallet.address;
     const to = EthJS.Util.addHexPrefix(this.sendEther.controls.receiveAddress.value);
     const amount = this.sendEther.controls.amount_ether.value;
-    const amount_usd = this.sendEther.controls.amount_usd.value.toFixed(3);
+    const amount_usd = parseFloat(this.sendEther.controls.amount_usd.value).toFixed(3);
     const value = this.transactionService.intToHex(this.transactionService.etherToWei(amount));
 
     let fee;
 
-    this.transactionService.getTransactionCost({ to, value })
+    this.transactionService.getTransactionCost({to, value})
       .then(res => {
         fee = res['cost'];
         this.gasPrice = res['price'];
@@ -223,5 +222,10 @@ export class TransactionComponent implements OnInit {
       w.address = addr;
       return this.walletService.getBlockie(w);
     }
+  }
+
+  resetWallet() {
+    this.wallet = undefined;
+    this.walletPassword = "";
   }
 }

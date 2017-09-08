@@ -28,7 +28,7 @@
 
         <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>View Wallet</h2><br>
-        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput">
+        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
             Wallet
         </button>
@@ -104,8 +104,8 @@
                     </span>
                         </div>
                     </div>
-                    <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b> <span
-                    style="font-size: 37px;">-</span>
+                    <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b>
+                    <br/>
                     <span style="font-size: 37px;">$ {{ balance_usd }}</span> <b>USD</b>
                 </div>
                 <div class="col-sm-3">
@@ -116,9 +116,9 @@
                             <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i
                                 class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
                         <div class="col-lg-6">
-                            <button class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down"
-                                                                   aria-hidden="true"></i>REQUEST
-                            </button>
+                            <a routerLink="/ethereum/request/{{wallet.address}}" class="btn btn-link btn-lg"><i
+                                class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
+
                         </div>
                     </div>
                 </div>

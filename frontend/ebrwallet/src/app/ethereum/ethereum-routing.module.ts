@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'send', component: TransactionComponent },
   { path: 'info', component: WalletInfoComponent },
   { path: 'request', component: RequestEtherComponent },
+  { path: 'request/:address', component: RequestEtherComponent }
 ];
 
 @NgModule({

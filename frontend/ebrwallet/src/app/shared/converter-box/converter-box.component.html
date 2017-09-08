@@ -1,23 +1,23 @@
 <div class="converter-box">
-  <div class="money-input">
-   <h4>{{ baseName }}</h4>
-      <div class="amount-container" dir="ltr">
-          <div class="amount-currency">
-              <span class="amount-currency-symbol"><img src="{{ baseImage }}" alt=""></span>
-          </div>
-          <input type="number" placeholder="0.00" (input)="baseToQuote($event)" [(ngModel)]="baseValue">
+    <div class="money-input">
+        <h4>{{ baseName }}</h4>
+        <div class="amount-container" dir="ltr">
+            <div class="amount-currency">
+                <span class="amount-currency-symbol"><img src="{{ baseImage }}" alt=""></span>
+            </div>
+            <input type="number" placeholder="0.00" min="0" (input)="baseToQuote($event)" [(ngModel)]="baseValue">
 
-      </div>
-  </div>
-  <span><h2> = </h2></span>
-  <div class="money-input">
-  <h4>{{ quoteName }}</h4>
-      <div class="amount-container" dir="ltr">
-          <div class="amount-currency">
-              <span class="amount-currency-symbol">$</span>
-          </div>
-          <input type="number" placeholder="0.00" (input)="quoteToBase($event)" [(ngModel)]="quoteValue">
+        </div>
+    </div>
+    <span><h2> = </h2></span>
+    <div class="money-input">
+        <h4>{{ quoteName }}</h4>
+        <div class="amount-container" dir="ltr">
+            <div class="amount-currency">
+                <span class="amount-currency-symbol">$</span>
+            </div>
+            <input type="number" placeholder="0.00" min="0" (input)="quoteToBase($event)" [(ngModel)]="quoteValue">
 
-      </div>
-  </div>
+        </div>
+    </div>
 </div>

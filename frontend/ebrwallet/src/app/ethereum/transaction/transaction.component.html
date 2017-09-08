@@ -45,16 +45,17 @@
             </div>
         </div>
         <div *ngIf="existing === 'wallet'" >
-            <label class="btn btn-lg btn-primary">
+            <label class="btn btn-lg btn-primary" *ngIf="!wallet">
                 Upload Wallet File <input type="file" (change)="fileChangeListener($event)" style="display: none;">
             </label>
             <div *ngIf="wallet">
-                <input class="form-control" type="password" placeholder="Wallet password..." [(ngModel)]="walletPassword" />
+                <input class="form-control" type="password" placeholder="Wallet password..." [(ngModel)]="walletPassword" (keyup.enter)="decryptWallet()"/>
                 <button class="btn btn-primary btn-lg" (click)="decryptWallet()">Continue</button>
+                <button class="btn btn-primary btn-lg" (click)="resetWallet()">Cancel</button>
             </div>
         </div>
         <div *ngIf="existing === 'key'">
-            <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
+            <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()">
             <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">Continue</button>
         </div>
         <br><br>

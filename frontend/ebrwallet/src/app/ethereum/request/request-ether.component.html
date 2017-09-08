@@ -2,23 +2,23 @@
 <div class="container-md">
 
 
-    <nav class="affix clearfix" >
+    <nav class="affix clearfix">
 
         <ul class="nav">
             <li>
-                <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+                <a [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
             </li>
 
             <li>
-                <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+                <a [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
             </li>
 
             <li>
-                <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+                <a [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
             </li>
 
             <li>
-                <a  class="active" [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+                <a class="active" [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
             </li>
 
         </ul>
@@ -26,11 +26,13 @@
 
     <div class="block block-center bg-vl-gray inputBox align-center" *ngIf="!addressProvided">
 
-        <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>Request Ether</h2><br>
-        <input class="form-control" placeholder="Address" [(ngModel)]="etherAddress">
-        <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue...</button>
-         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+        <input class="form-control" placeholder="Address" [(ngModel)]="etherAddress" (keyup.enter)="showNextForm()">
+        <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">
+            Continue...
+        </button>
+        <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <!--<br>-->
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
         <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
@@ -56,22 +58,24 @@
     </div>
 
 
-    <div class="block block-center bg-vl-gray align-center"  *ngIf="addressProvided">
+    <div class="block block-center bg-vl-gray align-center" *ngIf="addressProvided">
 
-        <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>Request Ether</h2>
         <form [formGroup]="requestEtherForm">
-        <label>Email to which you're sending request</label>
+            <label>Email to which you're sending request</label>
             <input class="form-control" formControlName="email" type="email" placeholder="Email">
 
             <!-- Currency Converter Box Start -->
-            <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd?.value' baseName='ETH' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
+            <app-converter-box [baseImage]='"assets/img/Ethereum.png"' [baseValue]="baseValue" [bid]='ethusd?.value'
+                               baseName='ETH' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
 
             <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
             <!-- Currency Converter Box End -->
 
-            <textarea placeholder="Please type your message here..." class="form-control" formControlName="message"></textarea>
+            <textarea placeholder="Please type your message here..." class="form-control"
+                      formControlName="message"></textarea>
         </form>
-        <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+        <button class="btn btn-primary btn-lg" (click)="requestEther()">Request</button>
     </div>
 </div>

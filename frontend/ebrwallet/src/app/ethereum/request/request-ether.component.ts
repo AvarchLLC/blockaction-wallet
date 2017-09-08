@@ -1,14 +1,16 @@
 import {Component, HostListener} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import 'rxjs/add/operator/switchMap';
 
-import { EthereumTransactionService } from '../services/ethereum-transaction.service';
-import { DataService } from '../../services/data.service';
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import {EthereumTransactionService} from '../services/ethereum-transaction.service';
+import {DataService} from '../../services/data.service';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
 
-import { Wallet } from '../wallet';
+import {Wallet} from '../wallet';
 
 import {SpinnerService} from '../../services/spinner.service';
-import { Config } from '../../config';
+import {Config} from '../../config';
+import {ActivatedRoute, ParamMap} from "@angular/router";
 const config = new Config();
 
 declare const toastr: any;
@@ -18,7 +20,7 @@ declare var EthJS: any;
 @Component({
   selector: 'request-ether-component',
   templateUrl: './request-ether.component.html',
-  styleUrls:['request-ether.component.css']
+  styleUrls: ['request-ether.component.css']
 })
 
 export class RequestEtherComponent {
@@ -28,14 +30,14 @@ export class RequestEtherComponent {
   wallet: Wallet;
   ethusd: any;
   etherAddress: string;
-  addressProvided:boolean = false;
-
+  addressProvided: boolean = false;
+  baseValue: string;
   modalVisible = false;
 
   showSpinner = false;
-  ready= false;
+  ready = false;
 
-  scanQr:boolean =false;
+  scanQr: boolean = false;
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
 
@@ -46,18 +48,23 @@ export class RequestEtherComponent {
       event.returnValue = true;
     }
   }
-  constructor( fb: FormBuilder,
-    private transactionService: EthereumTransactionService,
-    private dataService: DataService,
-    private googleAnalyticsService: GoogleAnalyticsService,
-    private spinner: SpinnerService
-  ) {
+
+  constructor(fb: FormBuilder,
+              private transactionService: EthereumTransactionService,
+              private dataService: DataService,
+              private googleAnalyticsService: GoogleAnalyticsService,
+              private spinner: SpinnerService,
+              private activatedRoute: ActivatedRoute) {
 
     this.requestEtherForm = fb.group({
       email: ['', Validators.email],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
-      message : ['', Validators.required]
+      message: ['', Validators.required]
+    });
+
+    this.activatedRoute.paramMap.subscribe((param: ParamMap)=> {
+      this.etherAddress = param.get('address')
     });
 
     this.transactionService
@@ -70,7 +77,7 @@ export class RequestEtherComponent {
       })
       .catch(err => toastr.error('Couldn\'t get exchange rate'));
 
-    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
+    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date()) {
       this.ready = true;
     }
   }
@@ -79,7 +86,6 @@ export class RequestEtherComponent {
 
     this.googleAnalyticsService
       .emitEvent('Post Wallet Creation', 'Request Ether');
-
     const email = this.requestEtherForm.value.email;
     const amount = this.requestEtherForm.value.amount_ether;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
@@ -88,6 +94,8 @@ export class RequestEtherComponent {
       .requestEther(this.etherAddress, email, amount)
       .then(ok => {
         toastr.success(str, 'Request Ether');
+        this.ethusd = 0;
+        this.baseValue = "0";
         this.requestEtherForm.reset();
       })
       .catch(err => toastr.error('Couldn\'t send request at the moment.'));
@@ -95,7 +103,7 @@ export class RequestEtherComponent {
   }
 
   converter(data) {
-    
+
     this.requestEtherForm.controls.amount_ether.setValue(data.baseValue);
     this.requestEtherForm.controls.amount_usd.setValue(data.quoteValue);
   }
@@ -103,9 +111,9 @@ export class RequestEtherComponent {
 
   isValidAddress(address: string) {
     try {
-        return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
+      return EthJS.Util.isValidAddress(EthJS.Util.addHexPrefix(address));
     } catch (e) {
-        return false;
+      return false;
     }
   }
 
@@ -121,8 +129,8 @@ export class RequestEtherComponent {
   }
 
 
-  showNextForm(){
-      this.addressProvided = true;
+  showNextForm() {
+    this.addressProvided = true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angular/core';
 
 /**
  * Example Usage for using the converter box
@@ -15,7 +15,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './converter-box.component.html',
   styleUrls: ['./converter-box.component.css']
 })
-export class ConverterBoxComponent implements OnInit {
+export class ConverterBoxComponent implements OnInit, OnChanges{
 
   @Input() baseName: string;
   @Input() quoteName: string;
@@ -30,7 +30,8 @@ export class ConverterBoxComponent implements OnInit {
   @Input() baseValue: string;
   quoteValue: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     if (!this.baseValue) {
@@ -45,7 +46,7 @@ export class ConverterBoxComponent implements OnInit {
     if (base_value !== 0 && evt.target.value.length > base_value.toString().length) {
       evt.target.value = base_value;
     }
-    if(!base_value) {
+    if (!base_value) {
       this.baseValue = '0';
       this.quoteValue = '0';
     }
@@ -60,12 +61,20 @@ export class ConverterBoxComponent implements OnInit {
     const quote_value = parseFloat(evt.target.value);
     if (quote_value !== 0 && evt.target.value.length > quote_value.toString().length) {
       evt.target.value = quote_value;
+    } else {
+      this.baseValue = "0";
     }
+
     if (quote_value && !isNaN(quote_value) && quote_value >= 0) {
       const base_value = quote_value / parseFloat(this.bid);
       this.baseValue = base_value.toString();
     }
     this.emit_change();
+  }
+
+  ngOnChanges() {
+    if (this.baseValue == "0")
+      this.quoteValue = "0";
   }
 
   // Emits converted data to the parent component
