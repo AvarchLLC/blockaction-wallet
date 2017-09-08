@@ -48,7 +48,7 @@ font-weight: 400;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
+me
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -740,7 +740,7 @@ margin-right:20px; color:#fff;}
 
 .messageBar { background:#F68F48; color:#000; text-align: center; padding:5px;
 font-size: 12px; line-height: 20px;}
-
+.report-message{background-color:#37d4b1; font-weight: bold; margin-bottom:60px;color:#fff; }
 .clikableImg { transition:all .2s ease-in-out; padding:20px 10px; border:1px solid #ccc;float: left; }
 .clikableImg:hover { box-shadow: 0 0 5px #ccc; background:#fff;}
 

@@ -1,25 +1,24 @@
-
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class="container-md">
 
 
-    <nav class="affix clearfix" >
+    <nav class="affix clearfix">
 
         <ul class="nav">
             <li>
-                <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+                <a [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
             </li>
 
             <li>
-                <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+                <a class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
             </li>
 
             <li>
-                <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+                <a [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
             </li>
 
             <li>
-                <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+                <a [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
             </li>
 
         </ul>
@@ -27,11 +26,13 @@
 
     <div class="block block-center bg-vl-gray inputBox">
 
-        <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>View Wallet</h2><br>
         <input class="form-control" placeholder="Address" [(ngModel)]="keyInput">
-        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
-         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
+            Wallet
+        </button>
+        <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
         <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
@@ -39,9 +40,6 @@
 
     </div>
 </div>
-
-
-
 
 
 <!-- Scan Qr Box -->
@@ -62,77 +60,80 @@
 </div>
 
 
-
-
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container-md">
 
-<nav class="affix clearfix" >
+    <nav class="affix clearfix">
 
-<ul class="nav">
- <li>
- <a  [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
- </li>
+        <ul class="nav">
+            <li>
+                <a [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+            </li>
 
-  <li>
- <a  class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
- </li>
+            <li>
+                <a class="active" [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
- </li>
+            <li>
+                <a [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+            </li>
 
-  <li>
- <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
- </li>
+            <li>
+                <a [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+            </li>
 
-</ul></nav>
+        </ul>
+    </nav>
 
 
-  <div class="container bg-white">
+    <div class="container bg-white">
 
-    <div class="row">
-        <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
 
-            <div class="box">
-                <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
-                <div class="form-group mg-top-sm">
-                    <b>Address</b>
-                    <div class="clearfix"  style="width:450px;">
-                        <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
-                        <span class="{{ qrClass }}" (click)="qrToggle()">
+                <div class="box">
+                    <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
+                    <div class="form-group mg-top-sm">
+                        <b>Address</b>
+                        <div class="clearfix" style="width:450px;">
+                            <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
+                            <span class="{{ qrClass }}" (click)="qrToggle()">
                         <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
                             <path [attr.d]="qrSvg"></path>
                         </svg>
                     </span>
+                        </div>
                     </div>
+                    <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b> <span
+                    style="font-size: 37px;">-</span>
+                    <span style="font-size: 37px;">$ {{ balance_usd }}</span> <b>USD</b>
                 </div>
-                <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b> -
-                <span style="font-size: 37px;">$ {{ balance_usd }}</span> <b>USD</b>
-            </div>
-            <div class="col-sm-3">
-                <br/>
-                <br/>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
-                    <div class="col-lg-6">
-                        <button class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>REQUEST</button>
+                <div class="col-sm-3">
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i
+                                class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-link btn-lg"><i class="fa fa-arrow-circle-o-down"
+                                                                   aria-hidden="true"></i>REQUEST
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <div *ngIf="pending">
-                <div class="panel-heading">
-                    <h3>Pending Transactions</h3>
-                </div>
-                <div class="table-responsive">
-                    <table class="table ">
-                        <thead>
+        <div class="row">
+            <div class="col-sm-12">
+                <div *ngIf="pending">
+                    <div class="panel-heading">
+                        <h3>Pending Transactions</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead>
                             <tr>
                                 <th>Block</th>
                                 <th>Tx Hash</th>
@@ -141,8 +142,8 @@
                                 <th>Value</th>
                                 <th>Status</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>??????</td>
                                 <td>{{ pending.hash }}</td>
@@ -151,16 +152,16 @@
                                 <td>{{ toEther(pending.value?.toString()) }}</td>
                                 <td>Pending</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="panel-heading">
-                <h3>Transactions</h3>
-            </div>
-            <div class="table-responsive">
-                <table class="table ">
-                    <thead>
+                <div class="panel-heading">
+                    <h3>Transactions</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
                         <tr>
                             <th>Block</th>
                             <th>Tx Hash</th>
@@ -169,23 +170,27 @@
                             <th>To</th>
                             <th>Value</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         <tr *ngFor="let tx of transactions | paginate: config"
                             [class.in]="tx.to === wallet.address"
                             [class.out]="tx.from === wallet.address">
                             <td>{{ tx.blockNumber }}</td>
                             <td><a (click)="showTxDetail(tx)" style="cursor:pointer;cursor:hand;">{{ tx.hash }}</a></td>
-                            <td>{{ (tx.timeStamp * 1000) | date : 'mediumDate' }} {{ (tx.timeStamp * 1000) | date : 'shortTime' }}</td>
+                            <td>{{ (tx.timeStamp * 1000) | date : 'mediumDate' }} {{ (tx.timeStamp * 1000) | date :
+                                'shortTime' }}
+                            </td>
                             <td>
-                                <div *ngIf="tx.from !== wallet.address;else fromText" >
-                                    <a style="color:dodgerblue" [routerLink]="['/ethereum/info']" [queryParams]="{address: tx.from}">{{ tx.from }}</a>
+                                <div *ngIf="tx.from !== wallet.address;else fromText">
+                                    <a style="color:dodgerblue" [routerLink]="['/ethereum/info']"
+                                       [queryParams]="{address: tx.from}">{{ tx.from }}</a>
                                 </div>
                                 <ng-template #fromText>{{ tx.from }}</ng-template>
                             </td>
                             <td>
-                                <div *ngIf="tx.to !== wallet.address;else toText" >
-                                    <a style="color:dodgerblue" [routerLink]="['/ethereum/info']" [queryParams]="{address: tx.to}">{{ tx.to }}</a>
+                                <div *ngIf="tx.to !== wallet.address;else toText">
+                                    <a style="color:dodgerblue" [routerLink]="['/ethereum/info']"
+                                       [queryParams]="{address: tx.to}">{{ tx.to }}</a>
                                 </div>
                                 <ng-template #toText>{{ tx.to }}</ng-template>
                             </td>
@@ -197,54 +202,55 @@
                         <tr *ngIf="transactions && transactions.length === 0">
                             No Transactions
                         </tr>
-                    </tbody>
-                </table>
-                <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li [class.disabled]="p.isFirstPage()">
-                                <a aria-label="Previous" (click)="p.previous()">
-                                <span  aria-hidden="true">&laquo;</span>
-                            </a>
-                            </li>
-                            <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                                <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-                                <span>{{ page.label }}</span>
-                            </a>
-                                <a [class.active]="p.getCurrent() === page.value" *ngIf="p.getCurrent() === page.value">
-                                    <span>{{ page.label }}</span>
-                            </a>
-                            </li>
-                            <li [class.disabled]="p.isLastPage()">
-                                <a (click)="p.next()" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </pagination-template>
+                        </tbody>
+                    </table>
+                    <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li [class.disabled]="p.isFirstPage()">
+                                    <a aria-label="Previous" (click)="p.previous()">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                                    <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                                        <span>{{ page.label }}</span>
+                                    </a>
+                                    <a [class.active]="p.getCurrent() === page.value"
+                                       *ngIf="p.getCurrent() === page.value">
+                                        <span>{{ page.label }}</span>
+                                    </a>
+                                </li>
+                                <li [class.disabled]="p.isLastPage()">
+                                    <a (click)="p.next()" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </pagination-template>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 
 <!-- Transaction Detail Model -->
 <div *ngIf="modalVisible" class="request-modal">
     <div class="card card-md">
-        <strong>Block Height: </strong>  {{ selectedTx.blockNumber }}   <br>
-        <strong>TimeStamp: </strong> {{ (selectedTx.timeStamp * 1000) | date }}  <br>
-        <strong>Transaction Hash: </strong> {{ selectedTx.hash }}  <br>
-        <strong>Nonce: </strong> {{ selectedTx.nonce }}  <br>
-        <strong>Block Hash: </strong> {{ selectedTx.blockHash }}  <br>
-        <strong>From :</strong>  {{ selectedTx.from }}  <br>
-        <strong>to :</strong>  {{ selectedTx.to }}  <br>
-        <strong>value :</strong>  {{ selectedTx.value }}  <br>
-        <strong>Gas :</strong>  {{ selectedTx.gas }}  <br>
-        <strong>Gas Price:</strong>  {{ selectedTx.gasPrice }}  <br>
-        <strong>Gas Used: </strong> {{ selectedTx.gasUsed }}  <br>
-        <strong>Transaction Fee: </strong> {{ getTransactionFee(selectedTx.gasUsed, selectedTx.gasPrice) }} Ethers  <br>
-        <strong>Confirmations: </strong> {{ selectedTx.confirmations }}  <br>
+        <strong>Block Height: </strong> {{ selectedTx.blockNumber }} <br>
+        <strong>TimeStamp: </strong> {{ (selectedTx.timeStamp * 1000) | date }} <br>
+        <strong>Transaction Hash: </strong> {{ selectedTx.hash }} <br>
+        <strong>Nonce: </strong> {{ selectedTx.nonce }} <br>
+        <strong>Block Hash: </strong> {{ selectedTx.blockHash }} <br>
+        <strong>From :</strong> {{ selectedTx.from }} <br>
+        <strong>to :</strong> {{ selectedTx.to }} <br>
+        <strong>value :</strong> {{ selectedTx.value }} <br>
+        <strong>Gas :</strong> {{ selectedTx.gas }} <br>
+        <strong>Gas Price:</strong> {{ selectedTx.gasPrice }} <br>
+        <strong>Gas Used: </strong> {{ selectedTx.gasUsed }} <br>
+        <strong>Transaction Fee: </strong> {{ getTransactionFee(selectedTx.gasUsed, selectedTx.gasPrice) }} Ethers <br>
+        <strong>Confirmations: </strong> {{ selectedTx.confirmations }} <br>
         <!-- <pre> {{ selectedTx | json }}</pre> -->
         <a class="btn btn-link btn-lg" (click)="this.modalVisible = false;">Dismiss</a>
     </div>
