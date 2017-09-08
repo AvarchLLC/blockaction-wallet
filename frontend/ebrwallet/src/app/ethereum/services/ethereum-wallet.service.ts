@@ -30,7 +30,7 @@ export class EthereumWalletService {
         w.address = wallet.getAddressString();
         w.privateKey = wallet.getPrivateKeyString();
         w.fileName = wallet.getV3Filename();
-        w.keystore = wallet.toV3(passsword, { kdf: 'scrypt' }); // Encrypts wallet object with scrypt
+        w.keystore = wallet.toV3(passsword, { kdf: 'scrypt',n:8192,p:1 }); // Encrypts wallet object with scrypt
 
         wallet = null; // Set the unencrypted wallet memory to null
 
