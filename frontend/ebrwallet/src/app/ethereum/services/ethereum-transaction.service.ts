@@ -166,8 +166,8 @@ export class EthereumTransactionService {
   getAllTransactions(address: string): any {
     let prod = environment.production;
     let network = 'api';
-    if (!prod) { 
-      network = 'kovan'; 
+    if (!prod) {
+      network = 'kovan';
     }
 
     return this.http

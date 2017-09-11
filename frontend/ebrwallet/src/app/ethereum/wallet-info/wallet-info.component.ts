@@ -224,6 +224,11 @@ export class WalletInfoComponent implements OnInit {
     }
   }
 
+  viewAnother() {
+    this.ready = false;
+    this.keyInput = "";
+  }
+
   OnDestroy() {
     this.alive = false;
   }

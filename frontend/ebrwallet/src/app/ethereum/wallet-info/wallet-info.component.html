@@ -103,6 +103,9 @@
                         </svg>
                     </span>
                         </div>
+                        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="viewAnother()">View
+                            Another Wallet
+                        </button>
                     </div>
                     <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b>
                     <br/>
