@@ -907,9 +907,8 @@ input::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-
-.text-lg { font-size:24px; font-weight: 300; color:#999;}
+.text-lg { font-size:24px; font-weight: 300; color:#999;; word-break: break-all;}
 
 .box { box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
 
-.qrHolder { display: block; height: 200px; overflow: hidden;}
+.qrHolder { display: block; height: 100px; overflow: hidden;}
