@@ -25,15 +25,14 @@
     </nav>
 
     <div class="block block-center bg-vl-gray inputBox">
-
         <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>View Wallet</h2><br>
-        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()">
+        <input class="form-control" placeholder="Address" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()"/>
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
             Wallet
         </button>
         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
-        <br>
+        <br/>
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
         <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
         <!--<br><br>-->
@@ -85,49 +84,43 @@
         </ul>
     </nav>
 
-
-    <div class="container bg-white">
-
-        <div class="row">
-            <div class="col-sm-12">
-
-                <div class="box">
-                    <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">
-                    <div class="form-group mg-top-sm">
-                        <b>Address</b>
-                        <div class="clearfix" style="width:450px;">
-                            <input type="text" class="form-control withQr" value="{{ wallet.address }}" readonly>
-                            <span class="{{ qrClass }}" (click)="qrToggle()">
-                        <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
-                            <path [attr.d]="qrSvg"></path>
-                        </svg>
-                    </span>
-                        </div>
+  <div class="container">
+                <div class="box bg-white">
+                  <div class="clearfix">
+                    <img class="identicon" width="50" height="50" src="{{ blockie }}"/>
+                        <span class="h3">Address</span>
+                <span class="text-lg">{{ wallet.address }}</span>
                     </div>
-                    <span style="font-size: 37px;">{{ balance }}</span> <b>Ethers</b>
-                    <br/>
-                    <span style="font-size: 37px;">$ {{ balance_usd }}</span> <b>USD</b>
-                </div>
-                <div class="col-sm-3">
-                    <br/>
-                    <br/>
+                  </div>
+
+                    <div class="box bg-white">
+                    <h3>Overview</h3>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg"><i
-                                class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a></div>
-                        <div class="col-lg-6">
-                            <a routerLink="/ethereum/request/{{wallet.address}}" class="btn btn-link btn-lg"><i
-                                class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
+                      <div class="col-sm-6">
+                      <table class="table">
+                        <tr><td>ETH Balance</td>
+                          <td>{{ balance }} <b>Ethers</b></td>
+</tr>                          <tr><td>ETH USD Balance</td>
+                            <td>$ {{ balance_usd }}</td></tr>
 
+                            <tr><td>Total Transactions</td>
+                              <td>3 billion txns</td>
+                            </tr>
+                          </table>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div *ngIf="pending">
+                        <div class="col-sm-6">
+                          <span class="qrHolder">
+                      <svg class="qr" width="500px" height="500px" viewBox="0 0 150 150">
+                          <path [attr.d]="qrSvg"></path>
+                      </svg>
+                  </span>
+                </div>
+                </div>
+              </div>
+
+              <div *ngIf="pending" class="box bg-white">
+                <div>
                     <div class="panel-heading">
                         <h3>Pending Transactions</h3>
                     </div>
@@ -156,9 +149,9 @@
                         </table>
                     </div>
                 </div>
-                <div class="panel-heading">
+</div>
+                <div class="box bg-white">
                     <h3>Transactions</h3>
-                </div>
                 <div class="table-responsive">
                     <table class="table ">
                         <thead>
@@ -231,8 +224,15 @@
                     </pagination-template>
                 </div>
             </div>
-        </div>
-    </div>
+
+        <div class="box bg-white">
+                <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg">
+                  <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a>
+                <a routerLink="/ethereum/request/{{wallet.address}}" class="btn btn-link btn-lg">
+                  <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
+
+            </div>
+          </div>
 </div>
 
 <!-- Transaction Detail Model -->

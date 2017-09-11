@@ -575,20 +575,6 @@ input:focus, input:active { outline:0; }
 
 .block p.text-sm {bottom:40px; left:40px; padding-top: 20px;}
 
-.withQr { width: calc(100% - 50px); float: left; margin-right:10px; }
-
-.qr { padding-top: 5px; display: inline-block; cursor: pointer; }
-
-.qr { -webkit-transition:transform .2s ease-in-out;
--o-transition:transform .2s ease-in-out;
-transition:transform .2s ease-in-out;
-
--webkit-transform: scale(1.5);
--ms-transform: scale(1.5);
--o-transform: scale(1.5);
-transform: scale(1.5); }
-
-
 .showQr .qr { -webkit-transform: scale(3);
 -ms-transform: scale(3);
 -o-transform: scale(3);
@@ -909,6 +895,21 @@ border-radius:5px;
 footer .col-lg-4.text-center { display: none; }
 }
 
+.identicon { border-radius: 25px;  }
+.box .identicon { float:left; margin-right:20px; }
 
 
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
 
+
+.text-lg { font-size:24px; font-weight: 300; color:#999;}
+
+.box { box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
+
+.qrHolder { display: block; height: 200px; overflow: hidden;}
