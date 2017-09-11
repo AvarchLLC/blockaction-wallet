@@ -20,12 +20,16 @@ import {AccordionModule} from "ng2-accordion";
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HelpComponent } from './help/help.component';
+import { FormControlMessages } from './shared/components/control-validation-message.component';
+import { EmailControlMessages } from './shared/components/email-validation-message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HelpComponent
+    HelpComponent,
+    FormControlMessages,
+    EmailControlMessages
   ],
   imports: [
     BrowserModule,

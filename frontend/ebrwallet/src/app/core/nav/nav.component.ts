@@ -44,4 +44,8 @@ export class NavComponent implements OnInit {
     }
   }
 
+  toggleNav(){
+    this.navOpen=!this.navOpen;
+  }
+
 }
