@@ -11,11 +11,11 @@ declare var toastr: any;
 })
 export class HomeComponent implements OnInit {
 
-  subscription  : FormGroup;
-  contact       : FormGroup;
-  shownPopup    = false;
-  shownModal    = false;
-  shownContact  = false;
+  subscription          : FormGroup;
+  contact               : FormGroup;
+  shownPopup:boolean    = false;
+  shownModal:boolean    = false;
+  shownContact:boolean  = false;
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private dataService: DataService) {
     this.subscription = fb.group({
@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit {
   }
 
   showContact() {
+    if(this.shownContact === true)
+      this.contact.reset();
     this.shownContact = !this.shownContact;
   }
 

@@ -142,4 +142,20 @@ export class DataService {
       .toPromise()
       .then(res => res.json());
    }
+  /**
+   * Report Form for feedback Submission
+   * paramObj Contains the following
+   * @param email email of the sender
+   * @param message from the sender
+   */
+   submitReport(paramObj : any) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const req = new RequestOptions({headers: headers});
+
+    return this.http
+      .post(`${environment.API_URL}/report-feedback`, JSON.stringify(paramObj), req)
+      .toPromise()
+      .then(res => res.json());
+   }
 }

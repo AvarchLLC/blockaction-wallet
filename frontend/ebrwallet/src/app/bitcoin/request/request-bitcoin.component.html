@@ -73,6 +73,6 @@
             <label>Type your message</label>
             <textarea class="form-control" formControlName="message"></textarea>
         </form>
-        <button class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+        <button [disabled]="sendBitcoin.valid" class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
     </div>
 </div>

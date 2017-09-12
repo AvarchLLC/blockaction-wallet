@@ -1,5 +1,5 @@
 <nav id="nav" role="navigation" [class.open]='navOpen === true'>
-    <div id="nav-open-btn" (click)="navOpen=!navOpen" >
+    <div id="nav-open-btn" (click)="toggleNav()" >
         <ul>
           <li><a class="hamburger"  [class.active]="navOpen == true">
                 <span></span>
@@ -11,11 +11,11 @@
         <div class="nav-block">
             <div class="slidenav-logo"></div>
             <ul>
-                <li *ngFor="let menuItem of menuItems" >
+                <li *ngFor="let menuItem of menuItems" (click)="toggleNav()">
 
                     <div *ngIf="menuItem.subroutes" class="dropdown" >
                       <ul class="dropdown-menuBar">
-                          <li *ngFor="let subroute of menuItem.routes" >
+                          <li *ngFor="let subroute of menuItem.routes" (click)="toggleNav()" >
                             <a [routerLink]="[subroute.path]">
                                 {{subroute.title}}
                             </a>

@@ -39,6 +39,8 @@ module.exports = {
         options.content.header = req.contactData.email;
         options.content.body   = req.contactData.message;
         options.receiver       = 'contact@blockaction.io';
+        
+        // sending the contact information to contact@blockaction.io
         email.sendMail(options,(error,response)=>{
             if(error){
                 next(error);
@@ -48,6 +50,22 @@ module.exports = {
                 next();
             }
         });
+
+        // sending the response message to the sender
+
+        options.template       = 'thankyoucontact';
+        options.receiver       = req.contactData.email;
+
+        email.sendMail(options,(error,response)=>{
+            if(error){
+                next(error);
+            }
+            else{
+                req.cdata = response;
+                next();
+            }
+        });
+
 
     }
 

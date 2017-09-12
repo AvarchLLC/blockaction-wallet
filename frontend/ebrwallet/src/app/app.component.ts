@@ -117,6 +117,8 @@ export class AppComponent implements OnInit{
 
 
   showFeedback() {
+    if(this.shownFeedback === true)
+      this.feedback.reset();
     this.shownFeedback = !this.shownFeedback;
   }
 
