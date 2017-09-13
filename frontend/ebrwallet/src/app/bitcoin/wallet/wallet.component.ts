@@ -96,7 +96,7 @@ export class WalletComponent implements OnInit {
     localStorage.setItem('messageShown', messageExpiry.toString());
   }
 
-  // 
+  //
   create(): void {
 
     this.googleAnalyticsService
@@ -113,7 +113,7 @@ export class WalletComponent implements OnInit {
           this.spinner.displaySpiner(false);
         })
         .catch(err => {
-          toastr.error('An Error Occurred', 'Wallet Creation');
+          toastr.error('dAn Error Occurred', 'Wallet Creation');
           this.spinner.displaySpiner(false);
         });
     }.bind(this), 1000);
@@ -158,5 +158,6 @@ export class WalletComponent implements OnInit {
     this.requestBitcoinForm.controls.amount_ether.setValue(data.baseValue);
     this.requestBitcoinForm.controls.amount_usd.setValue(data.quoteValue);
   }
+
 
 }

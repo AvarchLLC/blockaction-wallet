@@ -1,13 +1,13 @@
-import { Injectable, PACKAGE_ROOT_URL } from '@angular/core';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import {Injectable, PACKAGE_ROOT_URL} from '@angular/core';
+import {Headers, Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 import Transaction from 'ethereumjs-tx';
-import { ApiResponse } from './response';
-import { TransactionResponse } from './transaction-response';
+import {ApiResponse} from './response';
+import {TransactionResponse} from './transaction-response';
 
 declare var EthJS: any;
 declare var Web3: any;
@@ -72,7 +72,7 @@ export class EthereumTransactionService {
           to,
           value: opts.value,
           gasLimit: '0x27100',
-          gasPrice : opts.gasPrice
+          gasPrice: opts.gasPrice
         };
         // console.log('here', rawTx)
         const tx = new Transaction(rawTx);
@@ -91,14 +91,14 @@ export class EthereumTransactionService {
         tx.sign(EthJS.Util.toBuffer(EthJS.Util.addHexPrefix(privkey), 'hex'));
         resolve('0x' + tx.serialize().toString('hex'));
       } catch (e) {
-        reject({ message : 'Error signing transaction. Private key is invalid.'});
+        reject({message: 'Error signing transaction. Private key is invalid.'});
       }
     });
   }
 
   /**
-  * sendTransaction ... send a serialized transaction to a ethereum node
-    */
+   * sendTransaction ... send a serialized transaction to a ethereum node
+   */
   sendTransaction(serialTx: string): Promise<any> {
     // return this.callApi('eth_sendRawTransaction', [serialTx]);
     return new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ export class EthereumTransactionService {
 
   /**
    * getTransactionCost ... get the total cost for processing transaction
-    */
+   */
   getTransactionCost(tx: Transaction): Promise<object> {
     return new Promise((resolve, reject) => {
       this.web3.eth.estimateGas(tx, (err, gas) => {
@@ -124,7 +124,7 @@ export class EthereumTransactionService {
           if (error) {
             reject(error);
           }
-          resolve({ cost : price.div(1e18).mul(gas).toString(), price: price.toString() });
+          resolve({cost: price.div(1e18).mul(gas).toString(), price: price.toString()});
         });
       });
     });
@@ -132,7 +132,7 @@ export class EthereumTransactionService {
 
   /**
    * sendMoney ... send money in transaction
-  */
+   */
   sendMoney(from: string, to: string, value: number, gasPrice: string, privateKey: string): Promise<string> {
     const wei_value = this.web3.toWei(value, 'ether');
     const hexValue = this.web3.toHex(wei_value);
@@ -140,14 +140,14 @@ export class EthereumTransactionService {
     to = EthJS.Util.addHexPrefix(to);
     gasPrice = this.web3.toHex(gasPrice);
 
-    return this.createTransaction(from, to, { value: hexValue, gasPrice: gasPrice })
+    return this.createTransaction(from, to, {value: hexValue, gasPrice: gasPrice})
       .then(tx => this.signAndSerializeTransaction(tx, privateKey))
       .then(serialTx => this.sendTransaction(serialTx));
   }
 
   /**
    * getTransactionDetails ... get the details of transaction from transaction hash
-    */
+   */
   getTransactionDetails(transactionHash: string) {
     // return this.callApi('eth_getTransactionByHash', [transactionHash]);
     return new Promise((resolve, reject) => {
@@ -162,7 +162,7 @@ export class EthereumTransactionService {
 
   /**
    * getAllTransactions ... get all transaction information involving the given address
-    */
+   */
   getAllTransactions(address: string): any {
     let prod = environment.production;
     let network = 'api';
@@ -171,7 +171,7 @@ export class EthereumTransactionService {
     }
 
     return this.http
-    .get(`https://${network}.etherscan.io/api?module=account&action=txlist&address=${address}&tag=latest&sort=desc&startBlock=0&endBlock=latest`)
+      .get(environment.ETH_SCAN + `/api?module=account&action=txlist&address=${address}&tag=latest&sort=desc&startBlock=0&endBlock=latest`)
       .map(res => {
         const resp = res.json();
         return resp.result as TransactionResponse[];

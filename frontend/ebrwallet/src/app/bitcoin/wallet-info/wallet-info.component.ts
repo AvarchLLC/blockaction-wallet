@@ -1,18 +1,18 @@
-import { DataService } from '../../services/data.service';
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import {DataService} from '../../services/data.service';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
+import {ActivatedRoute, Route} from '@angular/router';
 import {Component, Input, OnInit} from '@angular/core';
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 
-import { Wallet} from '../wallet';
+import {Wallet} from '../wallet';
 import {BitcoinTransactionService} from '../services/bitcoin-transaction.service';
 import {BitcoinWalletService} from '../services/bitcoin-wallet.service';
 
 
-import { PaginationInstance } from 'ngx-pagination';
+import {PaginationInstance} from 'ngx-pagination';
 declare var toastr: any;
 declare var bitcore: any;
 
@@ -24,7 +24,7 @@ declare var bitcore: any;
 })
 export class WalletInfoComponent implements OnInit {
 
-  ready= false;
+  ready = false;
   keyInput: string;
 
   wallet: Wallet;
@@ -39,7 +39,7 @@ export class WalletInfoComponent implements OnInit {
   qrClass = '';
   blockie: string;
 
-  page = 1 ;
+  page = 1;
   total: number;  // total pages of transaction
   loading: boolean;
 
@@ -51,13 +51,11 @@ export class WalletInfoComponent implements OnInit {
   private timer: Observable<number>;
   private interval: number;
 
-  constructor(
-    private transactionService: BitcoinTransactionService,
-    private dataService: DataService,
-    private walletService: BitcoinWalletService,
-    private route: ActivatedRoute,
-    private googleAnalyticsService: GoogleAnalyticsService
-  ) {
+  constructor(private transactionService: BitcoinTransactionService,
+              private dataService: DataService,
+              private walletService: BitcoinWalletService,
+              private route: ActivatedRoute,
+              private googleAnalyticsService: GoogleAnalyticsService) {
 
     this.alive = true;
     this.interval = 10000;
@@ -106,7 +104,7 @@ export class WalletInfoComponent implements OnInit {
       .getTransactions(this.wallet.address, 1)
       .then(res => {
         this.total = res.totalItems;
-        this.transactions  = res.items;
+        this.transactions = res.items;
         this.loading = false;
       })
       .catch(err => {
@@ -126,9 +124,9 @@ export class WalletInfoComponent implements OnInit {
         const balance_usd = parseFloat(this.balance) * parseFloat(this.btcusd);
         this.balance_usd = balance_usd.toString();
       }).catch(err => {
-        toastr.error('Failed to retrieve wallet balance');
-        this.loading = false;
-      });
+      toastr.error('Failed to retrieve wallet balance');
+      this.loading = false;
+    });
   }
 
   getPage(page: number) {
@@ -136,7 +134,7 @@ export class WalletInfoComponent implements OnInit {
     this.transactionService
       .getTransactions(this.wallet.address, page)
       .then(res => {
-        this.transactions  = res.items;
+        this.transactions = res.items;
         this.page = page;
         this.loading = false;
       })
@@ -175,7 +173,11 @@ export class WalletInfoComponent implements OnInit {
     }
   }
 
-
+  viewAnother() {
+    this.ready = false;
+    this.keyInput = "";
+  }
+  
   OnDestroy() {
     this.alive = false;
   }
