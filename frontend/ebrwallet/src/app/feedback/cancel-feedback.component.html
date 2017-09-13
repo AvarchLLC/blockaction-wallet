@@ -1,0 +1,36 @@
+<div class="modal" [class.visible]="shownCancelFeedback">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="redirectToMainPage()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Report to BlockAction
+            </div>
+
+            <div class="modal-body">
+
+                <form [formGroup]="feedback" >
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Your Email Address" formControlName="email" readonly/>
+                        <control-messages [isSubmitted]="isSubmitted"
+                                        [control]="feedback.controls['email']"></control-messages>
+                        <email-validation [isSubmitted]="isSubmitted"
+                                        [control]="feedback.controls['email']"></email-validation>
+                    </div>
+
+
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Type your feedback here..."  formControlName="message">
+                        </textarea>
+                        <control-messages [isSubmitted]="isSubmitted"
+                                        [control]="feedback.controls['message']"></control-messages>
+                    </div>
+
+                    <div class="form-group">
+                        <button [disabled]="!feedback.valid" class="btn btn-primary btn-block" (click)="submitFeedback()">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

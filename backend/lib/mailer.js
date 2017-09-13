@@ -42,6 +42,15 @@ module.exports = {
                 case 'feedback':
                     emailOptions.subject = 'You have a feedback';
                     break;
+                case 'thankyoufeedback':
+                    emailOptions.subject = 'Thank you for your feedback';
+                    break;
+                case 'thankyoucontact':
+                    emailOptions.subject = 'Thank you for contacting us';
+                    break;
+                case 'report-feedback':
+                    emailOptions.subject = 'Feedback Report';
+                    break;
 
                 default:
             }

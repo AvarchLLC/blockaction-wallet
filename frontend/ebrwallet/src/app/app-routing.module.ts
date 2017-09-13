@@ -5,10 +5,13 @@ import { HomeComponent } from './home/home.component';
 import { HelpComponent } from './help/help.component';
 import { DonateBitcoinComponent } from './donation/donate-bitcoin.component';
 import { DonateEthereumComponent } from './donation/donate-ethereum.component';
+import { CancelFeedbackComponent } from './feedback/cancel-feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'feedback', component: CancelFeedbackComponent  },
+  
   {
     path: 'bitcoin',
     loadChildren: 'app/bitcoin/bitcoin.module#BitcoinModule'

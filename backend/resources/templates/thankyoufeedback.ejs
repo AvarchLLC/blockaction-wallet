@@ -12,28 +12,31 @@
           </td>
         </tr>
         <tr>
-          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 18px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">Dear Sir/Madam,</td>
+          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 18px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">Dear Sir/Madam</td>
         </tr>
         <tr>
-          <td style="padding:0px 20px 0px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#757575 ;font-size:15px;line-height:1.7em;text-align:left;font-weight:none">Address
-            <table width="700px">
-              <tr>
-                <td align="center"><a href="" target="_blank" style="background-color:#50e3c2 ;color:#fff;padding:15px 40px;text-decoration:none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:15px;letter-spacing:0.1em;font-weight:400;"><%= address %></a></td>
-              </tr>
-            </table><br/>has requested  <b> <%= bitcoin %> </b> btc from you.
-          </td>
-        </tr>
-        <tr height="80px;">
-          <td align="center">
-            <table width="700px">
-              <tr>
-                <td align="center"><a href="http://www.blockaction.io/bitcoin/send?to=<%= address %>&value=<%=bitcoin%>" target="_blank" style="background-color:dodgerblue ;color:#fff;padding:15px 40px;text-decoration:none;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:15px;letter-spacing:0.1em;font-weight:400;">Send Bitcion</a></td>
-              </tr>
-            </table>
+          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 16px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">
+            Thank you for your feedback about our product. Your feedback is as follows: 
           </td>
         </tr>
         <tr>
-          <td style="padding:10px 20px 20px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#757575 ;font-size:15px;line-height:1.7em;text-align:left;font-weight:none">Should you require any further help, please feel free to write a mail to support@blockaction.io</td>
+          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 16px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">From: <%= title %></td>
+        </tr>
+        <tr>
+          <td style="padding:0px 20px 0px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#757575 ;font-size:15px;line-height:1.7em;text-align:left;font-weight:none">Email: <%= header %></td>
+        </tr>
+        <tr>
+          <td style="padding:0px 20px 0px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#757575 ;font-size:15px;line-height:1.7em;text-align:left;font-weight:none">Feedback: <%= body %></td>
+        </tr>
+        <tr>
+          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 16px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">
+            If you didn't send this feedback then click on the link below.  
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 20px 10px 20px; color:#7b7b7b ;font: 16px Lucida Grande, Helvetica, Arial, sans-serif;font-weight:600;">
+            <a href="http://www.blockaction.io/feedback?cancel=true&email=<%= header %>">http://www.blockaction.io?cancelfeedback=true&email=<%= header %> </a>
+          </td>
         </tr>
         <tr>
           <td style="padding:0px 20px 0px 20px;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#757575 ;font-size:15px;line-height:1.7em;text-align:left;font-weight:none">Thanks,</td>
