@@ -28,7 +28,7 @@
         <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
         <h2>View Wallet</h2><br>
         <input class="form-control" placeholder="Address" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()"/>
-        <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
+        <button class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
             Wallet
         </button>
         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
@@ -91,7 +91,8 @@
                 <img class="identicon" width="50" height="50" src="{{ blockie }}"/>
                 <span class="h3">Address</span>
                 <span class="text-lg">{{ wallet.address }}</span>
-                <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="viewAnother()">View
+                <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="viewAnother()">
+                    View
                     Another Wallet
                 </button>
 
@@ -114,6 +115,13 @@
 
 
                     </table>
+                    <div class="box bg-white">
+                        <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg">
+                            <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a>
+                        <a routerLink="/ethereum/request/{{wallet.address}}" class="btn btn-link btn-lg">
+                            <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
+
+                    </div>
                 </div>
 
                 <div class="col-sm-6">
@@ -232,13 +240,7 @@
             </div>
         </div>
 
-        <div class="box bg-white">
-            <a [routerLink]="['/ethereum/send']" class="btn btn-link btn-lg">
-                <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a>
-            <a routerLink="/ethereum/request/{{wallet.address}}" class="btn btn-link btn-lg">
-                <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
 
-        </div>
     </div>
 </div>
 

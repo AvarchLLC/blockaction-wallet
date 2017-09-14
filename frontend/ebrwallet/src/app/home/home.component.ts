@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   shownPopup:boolean    = false;
   shownModal:boolean    = false;
   shownContact:boolean  = false;
-
+  shownStartedModal:boolean=false;
   constructor( @Inject(FormBuilder) fb: FormBuilder, private dataService: DataService) {
     this.subscription = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])]
@@ -58,7 +58,9 @@ export class HomeComponent implements OnInit {
   showModal() {
     this.shownModal = !this.shownModal;
   }
-
+  showStartedModal(){
+    this.shownStartedModal = !this.shownStartedModal;
+  }
   submitContact() {
     if(this.contact.valid) {
       this.dataService.submitContact(this.contact.value)

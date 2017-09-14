@@ -27,7 +27,8 @@ export class BitcoinWalletService {
 
     return new Promise((resolve, reject) => {
       try {
-        const wallet = BitcoinJS.ECPair.makeRandom();
+        var testnet = BitcoinJS.networks.testnet;
+        const wallet = BitcoinJS.ECPair.makeRandom({network:testnet});
         w.address = wallet.getAddress();
         w.privateKey = wallet.toWIF();
         resolve(w);

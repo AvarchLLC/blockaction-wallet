@@ -28,7 +28,7 @@
     <div class="block block-center bg-vl-gray align-center inputBox">
     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <h2>Send Bitcoin</h2><br>
-        <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
+        <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()">
         <button [disabled]="!isValidPrivateKey(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View Wallet</button>
         <br><br>
         <p>Enter private key in the above field to unlock your wallet and perform the transaction.</p>

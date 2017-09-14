@@ -70,7 +70,7 @@ export class RequestBitcoinComponent {
 
   }
 
-  requestEther() {
+  requestBitcoin() {
 
     this.googleAnalyticsService
       .emitEvent('Post Wallet Creation', 'Request Bitcoin');
