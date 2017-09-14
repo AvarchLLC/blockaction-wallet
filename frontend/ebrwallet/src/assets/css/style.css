@@ -894,7 +894,7 @@ border-radius:5px;
 footer .col-lg-4.text-center { display: none; }
 }
 
-.identicon { border-radius: 25px;  }
+.identicon { border-radius: 25px;}
 .box .identicon { float:left; margin-right:20px; }
 
 
@@ -908,6 +908,12 @@ input::-webkit-contacts-auto-fill-button {
 
 .text-lg { font-size:24px; font-weight: 300; color:#999;; word-break: break-all;}
 
-.box { box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
+.box, .box-shadow { box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
 
 .qrHolder { display: block; height: 100px; overflow: hidden;}
+
+.trans { margin-bottom: 20px; background-color:#f0f0f0; padding: 5px; }
+
+.trans-block { padding-top: 40px; margin-top: 40px; border-top:1px solid #ccc; }
+
+.inline-block { display: inline-block; }
