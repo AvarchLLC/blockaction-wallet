@@ -7,7 +7,7 @@
         <h1>Secure and Simplified Solutions for Blockchain Transactions</h1>
 
 <div style="margin-top:40px">
-        <a href="#getStart" class="btn btn-primary btn-lg" type="button" name="Join_now">Get Started</a><br/>
+        <a href="#getStart" class="btn btn-primary btn-lg" (click)="showStartedModal()" type="button" name="Join_now">Get Started</a><br/>
         <a href="javascript:void(0)" (click)="showModal()" class="text-white">New to Blockchain?</a>
         </div>
       </div>
@@ -348,6 +348,138 @@ BlockAction is committed to provide best services to the users.</p>
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal" [class.visible]="shownStartedModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="showStartedModal()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                New to Blockchain?
+            </div>
+
+            <div class="modal-body accordion">
+                <accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
+                    <accordion-group heading="" [isOpened]="true">
+                        <accordion-heading>
+                            <accordion-toggle>What is Blockchain Technology?</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                            <p>The blockchain is the latest revolution in technology world. It is a combination of network and database. The idea of a blockchain is based on a ledger which is distributed across the globe. </p>
+                            <p>
+                                In simpler words, blockchain is a distributed database that maintains a continuously growing list of records (blocks). Every transaction that is being recorded in each block is being recorded simultaneously on many other computers through peer-to-peer network. Data on blockchain are highly secured, can never be changed or deleted, has faster access and is less expensive.
+                            </p>
+                            <p>
+                                Know more about blockchain technology <a href="http://etherworld.co/topic/15/blockchain-beginner-s-guide-part-1" target="_blank">here</a>
+                            </p>
+                        </div>
+                    </accordion-group>
+                    <accordion-group heading="">
+                        <accordion-heading>
+                            <accordion-toggle>What is Bitcoin?</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                            <p>Bitcoin is the first decentralized digital currency also known as  <a href="etherworld.co/topic/81/a-beginner-s-guide-for-cryptocurrency" target="_blank">cryptocurrency</a>. It was designed by Satoshi Nakamoto (unknown) in 2009. These are digital coins (BTC) that can be sent through internet using peer to peer network, instantly across the globe without any government involvement for negligible fee. It is widely used for micropayments and ecommerce with blockchain as the core technology used.</p>
+
+                            <p>
+                                Know more about Bitcoin<a href="http://etherworld.co/topic/89/all-about-bitcoin-for-beginners" target="_blank"> here</a>.
+                            </p>
+                        </div>
+                    </accordion-group>
+                    <accordion-group heading="">
+                        <accordion-heading>
+                            <accordion-toggle>What is Ethereum?</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                            <p>
+                                Soon, it was realized that blockchain technology can be used for various other applications and not just as currency. In Jan 2014, Vitalik Buterin and team announced another blockchain named as Ethereum.
+                            </p>
+
+                            <p>
+                                Ethereum is an open source blockchain platform with built in programming language that allows developers to write, test and execute their decentralized application (contract). Any transaction performed is anonymous, parties involved are always unknown.
+                            </p>
+                            <p>
+                                Ether (ETH) is the digital currency of Ethereum used for monetary transaction across the world just like Bitcoin.
+                            </p>
+                            <p>
+                                Know more about Ethereum <a href="http://etherworld.co/topic/105/a-complete-guide-to-understand-ethereum-for-beginners"> here</a>.
+                            </p>
+                        </div>
+                    </accordion-group>
+                    <accordion-group heading="">
+                        <accordion-heading>
+                            <accordion-toggle>What is Digital Currency Wallet?</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                            <p>
+                                A digital asset wallet also known as cryptocurrency wallet is a secured wallet used to store, send, and receive digital currency like Bitcoin, Ethereum and other altcoins. Since, the currency itself in in digital form, so the cryptocurrency wallet is a software program to store them.</p>
+
+                            <p>Know more about Digital Asset Wallet <a href="http://etherworld.co/topic/83/an-introduction-to-cryptocurrency-wallet">here</a>.
+                            </p>
+                        </div>
+                    </accordion-group>
+                </accordion>
+
+                <ul class="list-group">
+
+                    <!--<li class="list-group-item">
+                      <h3>What is Blockchain Technology?</h3>
+                      <div class="detail dropcap">
+                        <p>The blockchain is the latest revolution in technology world. It is a combination of network and database. The idea of a blockchain is based on a ledger which is distributed across the globe. </p>
+                        <p>
+                        In simpler words, blockchain is a distributed database that maintains a continuously growing list of records (blocks). Every transaction that is being recorded in each block is being recorded simultaneously on many other computers through peer-to-peer network. Data on blockchain are highly secured, can never be changed or deleted, has faster access and is less expensive.
+                        </p>
+                        <p>
+                        Know more about blockchain technology <a href="http://etherworld.co/topic/15/blockchain-beginner-s-guide-part-1" target="_blank">here</a>
+                        </p>
+                      </div>
+                    </li>-->
+                    <!--<li class="list-group-item">
+                      <h3>What is Bitcoin?</h3>
+                      <div class="detail dropcap">
+                        <p>Bitcoin is the first decentralized digital currency also known as  <a href="etherworld.co/topic/81/a-beginner-s-guide-for-cryptocurrency" target="_blank">cryptocurrency</a>. It was designed by Satoshi Nakamoto (unknown) in 2009. These are digital coins (BTC) that can be sent through internet using peer to peer network, instantly across the globe without any government involvement for negligible fee. It is widely used for micropayments and ecommerce with blockchain as the core technology used.</p>
+
+                        <p>
+                        Know more about Bitcoin<a href="http://etherworld.co/topic/89/all-about-bitcoin-for-beginners" target="_blank"> here</a>.
+                        </p>
+                      </div>
+                    </li>-->
+                    <!--<li class="list-group-item"><h3>What is Ethereum?</h3>
+
+                      <div class="detail dropcap">
+                        <p>
+                        Soon, it was realized that blockchain technology can be used for various other applications and not just as currency. In Jan 2014, Vitalik Buterin and team announced another blockchain named as Ethereum.
+                        </p>
+
+                        <p>
+                        Ethereum is an open source blockchain platform with built in programming language that allows developers to write, test and execute their decentralized application (contract). Any transaction performed is anonymous, parties involved are always unknown.
+                        </p>
+                        <p>
+                        Ether (ETH) is the digital currency of Ethereum used for monetary transaction across the world just like Bitcoin.
+                        </p>
+                        <p>
+                        Know more about Ethereum <a href="http://etherworld.co/topic/105/a-complete-guide-to-understand-ethereum-for-beginners"> here</a>.
+                        </p>
+                      </div>
+                    </li>-->
+
+                    <!--<li class="list-group-item">
+                      <h3>What is a Digital Currency Wallet?</h3>
+
+                      <div class="detail dropcap">
+                        <p>
+                          A digital asset wallet also known as cryptocurrency wallet is a secured wallet used to store, send, and receive digital currency like Bitcoin, Ethereum and other altcoins. Since, the currency itself in in digital form, so the cryptocurrency wallet is a software program to store them.</p>
+
+                        <p>Know more about Digital Asset Wallet <a href="http://etherworld.co/topic/83/an-introduction-to-cryptocurrency-wallet">here</a>.
+                        </p>
+                      </div>
+                    </li>-->
+                </ul>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 

@@ -30,7 +30,7 @@
         <h2>Request Bitcoin</h2><br>
         <label>Your Bitcoin Address</label>
         <input class="form-control" placeholder="Address" [(ngModel)]="bitcoinAddress" (keyup.enter)="showNextForm()">
-        <button [disabled]="!isValidPrivateKey(bitcoinAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue...</button>
+        <button [disabled]="!isValidPrivateKey(bitcoinAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue</button>
          <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <br>
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
@@ -71,8 +71,8 @@
             <span *ngIf="ethbtc?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethbtc?.time}}</span>
             <!-- Currency Converter Box End -->
             <label>Type your message</label>
-            <textarea class="form-control" formControlName="message"></textarea>
+            <textarea  placeholder="Please type your message here..." class="form-control" formControlName="message"></textarea>
         </form>
-        <button [disabled]="sendBitcoin.valid" class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+        <button [disabled]="!sendBitcoin.valid" class="btn btn-primary btn-lg"  (click)="requestBitcoin()">Request</button>
     </div>
 </div>
