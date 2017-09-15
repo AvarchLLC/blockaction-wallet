@@ -917,3 +917,5 @@ input::-webkit-contacts-auto-fill-button {
 .trans-block { padding-top: 40px; margin-top: 40px; border-top:1px solid #ccc; }
 
 .inline-block { display: inline-block; }
+
+.bg-img { background: url(../img/ethereum.png) no-repeat left top; background-size: auto 100%; width:100px; height:100px; }
