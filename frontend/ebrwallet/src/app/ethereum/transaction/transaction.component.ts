@@ -73,28 +73,31 @@ export class TransactionComponent implements OnInit {
 
   sendMoney() {
     this.spinner.displaySpiner(true);
-    this.transactionService
-      .sendMoney(
-        this.wallet.address,
-        this.sendEther.controls.receiveAddress.value,
-        this.sendEther.controls.amount_ether.value,
-        this.gasPrice,
-        this.wallet.privateKey
-      )
-      .then(hash => {
-        this.router.navigate(['/ethereum/info'], {queryParams: {pending: hash, address: this.wallet.address}});
-        toastr.success('Transaction sent');
-        this.spinner.displaySpiner(false);
-      })
-      .catch(err => {
-        this.spinner.displaySpiner(false);
-        if (err.message.indexOf('funds') > -1) {
-          toastr.error('Insufficent Funds');
-        } else {
-          toastr.error('Couldn\'t send transaction.');
-        }
-      });
+    if (this.sendEther.controls.amount_ether.value > 0)
+      this.transactionService
+        .sendMoney(
+          this.wallet.address,
+          this.sendEther.controls.receiveAddress.value,
+          this.sendEther.controls.amount_ether.value,
+          this.gasPrice,
+          this.wallet.privateKey
+        )
+        .then(hash => {
+          this.router.navigate(['/ethereum/info'], {queryParams: {pending: hash, address: this.wallet.address}});
+          toastr.success('Transaction sent');
+          this.spinner.displaySpiner(false);
+        })
+        .catch(err => {
+          this.spinner.displaySpiner(false);
+          if (err.message.indexOf('funds') > -1) {
+            toastr.error('Insufficent Funds');
+          } else {
+            toastr.error('Couldn\'t send transaction.');
+          }
+        });
   }
+
+
 
   isValidPrivateKey(privKey: string) {
     try {

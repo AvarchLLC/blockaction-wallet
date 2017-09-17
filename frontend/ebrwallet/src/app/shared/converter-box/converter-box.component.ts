@@ -15,7 +15,7 @@ import {Component, EventEmitter, Input, OnInit, Output, OnChanges} from '@angula
   templateUrl: './converter-box.component.html',
   styleUrls: ['./converter-box.component.css']
 })
-export class ConverterBoxComponent implements OnInit, OnChanges{
+export class ConverterBoxComponent implements OnInit, OnChanges {
 
   @Input() baseName: string;
   @Input() quoteName: string;
@@ -41,11 +41,16 @@ export class ConverterBoxComponent implements OnInit, OnChanges{
     this.quoteValue = quote_value.toString();
   }
 
+  toCap(value) {
+    return value.toUpperCase();
+  }
+
   baseToQuote(evt) {
     const base_value = parseFloat(evt.target.value);
     if (base_value !== 0 && evt.target.value.length > base_value.toString().length) {
       evt.target.value = base_value;
     }
+
     if (!base_value) {
       this.baseValue = '0';
       this.quoteValue = '0';

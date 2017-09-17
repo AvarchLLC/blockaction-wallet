@@ -30,7 +30,7 @@
         <h2>Request Ether</h2><br>
         <input class="form-control" placeholder="Address" [(ngModel)]="etherAddress" (keyup.enter)="showNextForm()">
         <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">
-            Continue...
+            Continue
         </button>
         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
         <!--<br>-->

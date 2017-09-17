@@ -174,7 +174,7 @@ export class WalletComponent implements OnInit {
         .then(data => {
           this.wallet = data;
           this.walletForm.controls.password.setValue('');
-          toastr.success('Created!', 'Wallet Creation');
+          toastr.success('Successful!', 'Wallet Creation');
           this.walletCreated = true;
           this.showQr();
           this.blockie = this.walletService.getBlockie(this.wallet);

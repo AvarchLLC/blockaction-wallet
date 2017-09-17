@@ -1,6 +1,6 @@
 <div class="converter-box">
     <div class="money-input">
-        <h4>{{ baseName }}</h4>
+        <h4>{{ toCap(baseName) }}</h4>
         <div class="amount-container" dir="ltr">
             <div class="amount-currency">
                 <span class="amount-currency-symbol"><img src="{{ baseImage }}" alt=""></span>
@@ -11,7 +11,7 @@
     </div>
     <span><h2> = </h2></span>
     <div class="money-input">
-        <h4>{{ quoteName }}</h4>
+        <h4>{{ toCap(quoteName) }}</h4>
         <div class="amount-container" dir="ltr">
             <div class="amount-currency">
                 <span class="amount-currency-symbol">$</span>

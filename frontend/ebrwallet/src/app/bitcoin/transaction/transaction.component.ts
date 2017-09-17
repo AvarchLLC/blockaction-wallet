@@ -1,16 +1,16 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { environment } from '../../../environments/environment';
+import {Component, OnInit, Inject, Input} from '@angular/core';
+import {DataService} from '../../services/data.service';
+import {environment} from '../../../environments/environment';
 import 'rxjs/add/operator/filter';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { BitcoinWalletService } from '../services/bitcoin-wallet.service';
-import { BitcoinTransactionService } from '../services/bitcoin-transaction.service';
-import { SpinnerService } from '../../services/spinner.service';
+import {BitcoinWalletService} from '../services/bitcoin-wallet.service';
+import {BitcoinTransactionService} from '../services/bitcoin-transaction.service';
+import {SpinnerService} from '../../services/spinner.service';
 
-import { Wallet } from '../wallet';
+import {Wallet} from '../wallet';
 
 declare var toastr;
 declare var bitcore: any;
@@ -32,14 +32,13 @@ export class TransactionComponent implements OnInit {
 
   receipt: any;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private transactionService: BitcoinTransactionService,
-    private walletService: BitcoinWalletService,
-    private spinner: SpinnerService,
-    private dataService: DataService
-  ) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private transactionService: BitcoinTransactionService,
+              private walletService: BitcoinWalletService,
+              private spinner: SpinnerService,
+              private dataService: DataService) {
 
     this.sendBitcoin = fb.group({
       receiveAddress: ['', Validators.required],
@@ -68,17 +67,17 @@ export class TransactionComponent implements OnInit {
     this.spinner.displaySpiner(true);
     const receiver = this.sendBitcoin.controls.receiveAddress.value;
     const amount = parseFloat(this.sendBitcoin.controls.amount_bitcoin.value);
-
-    this.transactionService.createTransaction(this.wallet.address,receiver,amount.toString(),this.wallet.privateKey)
-      .then(res => {
-        this.router.navigate(['/bitcoin/info'], {queryParams: { pending: res.txid, address: this.wallet.address}});
-        this.spinner.displaySpiner(false);
-        toastr.success(res);
-      })
-      .catch(err => {
-        this.spinner.displaySpiner(false);
-        toastr.error(err)
-      });
+    if (amount > 0)
+      this.transactionService.createTransaction(this.wallet.address, receiver, amount.toString(), this.wallet.privateKey)
+        .then(res => {
+          this.router.navigate(['/bitcoin/info'], {queryParams: {pending: res.txid, address: this.wallet.address}});
+          this.spinner.displaySpiner(false);
+          toastr.success(res);
+        })
+        .catch(err => {
+          this.spinner.displaySpiner(false);
+          toastr.error(err)
+        });
   }
 
   isValidPrivateKey(privKey: string) {

@@ -84,7 +84,7 @@
             </div>
         </div>
                 <br />
-                <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/bitcoin.png"' [bid]='btcusd' baseName='btc' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+                <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/bitcoin.png"' [bid]='btcusd' baseName='BTC' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
                 <span *ngIf="ethusd?.time" style="color:#bbb;font-size:14px;margin-bottom:0px;bottom:0;">** The exchange rate is as of {{ ethusd?.time}}</span>
 
                 <button [disabled]="!sendBitcoin.valid || !isValidAddress(sendBitcoin.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()" class="btn btn-primary btn-block btn-lg mg-btm-sm">Send Bitcoin</button>

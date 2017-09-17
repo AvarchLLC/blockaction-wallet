@@ -37,8 +37,12 @@
                 </li>
             </ul>
         </nav>
-        <div class="messageBar report-message" *ngIf="walletCreated">
-Your Wallet has been created !!!  Please download the wallet before printing as it is mandatory and could not be recovered later once you leave this page.
+        <div class="container" *ngIf="walletCreated">
+
+        <div class="alert alert-success">
+Your Wallet has been created.</div>
+<div class="alert alert-danger">Please download the wallet before printing as it is mandatory and could not be recovered later once you leave this page.
+</div>
         </div>
         <div class="block block-center align-center bg-vl-gray" *ngIf="!wallet">
             <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
@@ -79,7 +83,7 @@ Your Wallet has been created !!!  Please download the wallet before printing as 
         </div>
 
         <div *ngIf="wallet">
-            <div class="block block-center align-center">
+            <div class="block block-center align-center bg-vl-gray">
                 <div>
                     <h2>Wallet Ready!</h2>
                     <img width="50" height="50" style="border-radius: 25px;" src="{{ blockie }}">

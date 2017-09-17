@@ -1,6 +1,6 @@
 <!-- Existing Wallet Box -->
 <div class="container-md" *ngIf="!ready">
-    <div class="block block-center bg-vl-gray align-center inputBox">
+    <div class="block block-center bg-vl-gray align-center inputBox" style="margin-top: 50px;">
         <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <h2>Donate Bitcoin</h2><br>
         <input class="form-control" placeholder="Private Key" [(ngModel)]="keyInput">
@@ -15,7 +15,7 @@
 <!--- Ether Send Modal -->
 <div class="container-md" *ngIf="ready && !receipt">
 
-    <div class="block block-center bg-vl-gray align-center send-ether">
+    <div class="block block-center bg-vl-gray align-center send-ether" style="margin-top: 50px;">
     <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;" />
         <div class="text-center">
 

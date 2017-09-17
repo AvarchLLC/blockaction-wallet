@@ -1,32 +1,25 @@
 <!-- Existing Wallet Box -->
 <div *ngIf="!ready" class="container-md">
-
-
     <nav class="affix clearfix">
-
         <ul class="nav">
             <li>
                 <a [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
             </li>
-
             <li>
                 <a class="active" [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
             </li>
-
             <li>
                 <a [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
             </li>
-
             <li>
                 <a [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
             </li>
-
         </ul>
     </nav>
-
     <div class="block block-center bg-vl-gray inputBox">
         <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;"/>
-        <h2>View Wallet</h2><br>
+        <h2>View Wallet</h2>
+        <br>
         <input class="form-control" placeholder="Address" [(ngModel)]="keyInput" (keyup.enter)="showCardFromKey()">
         <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="showCardFromKey()">View
             Wallet
@@ -38,194 +31,168 @@
         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
     </div>
 </div>
-
-
 <!-- Scan Qr Box -->
 <div *ngIf="scanQr" class="scanQrOverlay">
     <div class="scanQr">
-        <h2>Scan Qr</h2><br>
+        <h2>Scan Qr</h2>
+        <br>
         <p class="text-justify">Place your address Qr Code in front of the camera.</p>
-        <qr-scanner
-            [debug]="false"
-            [canvasWidth]="640"
-            [canvasHeight]="480"
-            [mirror]="true"
-            [stopAfterScan]="true"
-            [updateTime]="500"
-            (onRead)="decodedQrOutput($event)"></qr-scanner>
+        <qr-scanner [debug]="false" [canvasWidth]="640" [canvasHeight]="480" [mirror]="true" [stopAfterScan]="true"
+                    [updateTime]="500" (onRead)="decodedQrOutput($event)"></qr-scanner>
         <a class="btn btn-link btn-lg" (click)="scanQr = false">Dismiss</a>
     </div>
 </div>
-
 <!--- Wallet Info View -->
 <div *ngIf="ready" class="container-md">
-
     <nav class="affix clearfix">
-
         <ul class="nav">
             <li>
                 <a [routerLink]="['/bitcoin/wallet']"><span>Create Wallet</span></a>
             </li>
-
             <li>
                 <a class="active" [routerLink]="['/bitcoin/info']"><span>View Wallet</span></a>
             </li>
-
             <li>
                 <a [routerLink]="['/bitcoin/send']"><span>Send Bitcoin</span></a>
             </li>
-
             <li>
                 <a [routerLink]="['/bitcoin/request']"><span>Request Bitcoin</span></a>
             </li>
-
         </ul>
     </nav>
     <div class="container">
-        <div class="box bg-white">
+        <div class="box-shadow bg-white">
             <div class="clearfix">
                 <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;"/>
                 <span class="h3">Address</span>
                 <span class="text-lg">{{ wallet.address }}</span>
-                <button class="btn btn-primary btn-lg"
-                        (click)="viewAnother()">
-                    View
-                    Another Wallet
+                <button style="margin-left:50px;" class="btn btn-primary btn-lg" (click)="viewAnother()">
+                    View Another Wallet
                 </button>
-
             </div>
         </div>
-        <div class="box bg-white">
+        <div class="box-shadow bg-white">
             <h3>Overview</h3>
-            <table class="table">
-                <tr>
-                    <td>Bitcoin Balance</td>
-                    <td>{{ balance }} <b>BTC</b></td>
-                </tr>
-                <tr>
-                    <td>USD Balance</td>
-                    <td>$ {{ balance_usd }}</td>
-                    <b>USD</b>
-                </tr>
-
-
-            </table>
-
-            <div>
-                          <span class="qrHolder">
+            <div class="row">
+                <div class="col-md-6">
+                    <div className="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td>Bitcoin Balance</td>
+                                <td>{{ balance }}</td>
+                            </tr>
+                            <tr>
+                                <td>USD Balance</td>
+                                <td>$ {{ balance_usd }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <span class="qrHolder">
                       <svg class="qr" width="500px" height="500px" viewBox="0 0 150 150">
                           <path [attr.d]="qrSvg"></path>
                       </svg>
                         </span>
-            </div>
-        </div>
-        <div class="box bg-white">
-            <a [routerLink]="['/bitcoin/send']" class="btn btn-link btn-lg">
-                <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a>
-            <a routerLink="/bitcoin/request/{{wallet.address}}" class="btn btn-link btn-lg">
-                <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
-
-        </div>
-
-
-        <div class="box bg-white">
-            <div class="panel-heading">
-                <h3>Transactions</h3>
-            </div>
-            <div class="container"
-                 *ngFor="let tx of transactions | paginate: { itemsPerPage: 10, currentPage: page, totalItems: total }">
-                <div class="bg-light-gray ">
-                    <div class="row pad-rt-lt ">
-                        <div class=" box-bdr  pad-top-btm">
-                            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 ">
-                                <button type="button" class="btn btn-default btn-sm hidden">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                                <span>{{ tx.txid }}</span>
-                            </div>
-                            <span>mined {{ (tx.time * 1000) | date : 'mediumDate' }} {{ (tx.time * 1000) | date : 'shortTime' }}</span>
-                        </div>
-
-                    </div>
-                    <div class="pad-top-btm">
-                        <div class="row pad-rt-lt">
-                            <div class="col-lg-5">
-                                <div *ngFor="let vin of tx.vin" class="text-box marg-top">
-                                    <div class="row pad-all space-between">
-                                        <div *ngIf="vin?.addr !== wallet.address;else fromText">
-                                            <a style="color:dodgerblue" [routerLink]="['/bitcoin/info']"
-                                               [queryParams]="{address: vin?.addr }">{{ vin?.addr }}</a>
-                                        </div>
-                                        <ng-template #fromText>{{ vin?.addr }}</ng-template>
-                                        <span>{{ vin?.value }} BTC</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 text-center marg-top text-white"><i class="fa fa-chevron-right"
-                                                                                     style="color:black;font-size:26px;"
-                                                                                     aria-hidden="true"></i></div>
-                            <div class="col-lg-5">
-                                <div *ngFor="let vout of tx.vout" class="text-box marg-top">
-                                    <div *ngIf="vout?.scriptPubKey?.addresses" class="row pad-all space-between">
-                                        <!-- <a>{{ vout?.scriptPubKey?.addresses[0] }}</a> -->
-                                        <div
-                                            *ngIf="vout?.scriptPubKey?.addresses[0] !== wallet.address;else toText">
-                                            <a style="color:dodgerblue" [routerLink]="['/bitcoin/info']"
-                                               [queryParams]="{address: vout?.scriptPubKey?.addresses[0] }">{{
-                                                vout?.scriptPubKey?.addresses[0] }}</a>
-                                        </div>
-                                        <ng-template #toText>{{ vout?.scriptPubKey?.addresses[0] }}</ng-template>
-                                        <span>{{ vout?.value }} BTC</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row pad-rt-lt">
-                        <div class="box-bdr text-right pad-all ">
-                            <span class="btn">Fee: {{ tx.fees}} BTC</span>
-                            <span class="btn btn-primary">{{tx.confirmations}} Confirmations</span>
-                            <span class="btn btn-success  pad-all">{{ tx.valueOut}} BTC</span>
-                        </div>
+                </div>
+                <div>
+                    <div>
+                        <a [routerLink]="['/bitcoin/send']" class="btn btn-link btn-lg">
+                            <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> SEND</a>
+                        <a routerLink="/bitcoin/request/{{wallet.address}}" class="btn btn-link btn-lg">
+                            <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
                     </div>
                 </div>
             </div>
-            <div>
-                <span *ngIf="total<=0">
+        </div>
+        <div class="box-shadow bg-white">
+            <div class="panel-heading">
+                <h3>Transactions</h3>
+            </div>
+            <div class="trans-block"
+                 *ngFor="let tx of transactions | paginate: { itemsPerPage: 10, currentPage: page, totalItems: total }">
+                <div class="text-center trans">
+                    <div class="inline-block">
+                        <div class="inline-block" *ngFor="let vin of tx.vin">
+                            <div *ngIf="vin?.addr !== wallet.address;else fromText">
+                                <a style="color:dodgerblue" [routerLink]="['/bitcoin/info']"
+                                   [queryParams]="{address: vin?.addr }">{{ vin?.addr }}</a>
+                            </div>
+                            <ng-template #fromText>{{ vin?.addr }}</ng-template>
+                        </div>
+                        <span><i class="fa fa-chevron-right" style="color:teal;font-size:26px;" aria-hidden="true"></i></span>
+                        <div class="inline-block">
+                            <div *ngFor="let vout of tx.vout">
+                                <div *ngIf="vout?.scriptPubKey?.addresses">
+                                    <!-- <a>{{ vout?.scriptPubKey?.addresses[0] }}</a> -->
+                                    <div *ngIf="vout?.scriptPubKey?.addresses[0] !== wallet.address;else toText">
+                                        <a style="color:dodgerblue" [routerLink]="['/bitcoin/info']"
+                                           [queryParams]="{address: vout?.scriptPubKey?.addresses[0] }">{{
+                                            vout?.scriptPubKey?.addresses[0] }}</a>
+                                    </div>
+                                    <!--<ng-template #toText>{{ vout?.scriptPubKey?.addresses[0] }}</ng-template>-->
+                                    <!-- <span>{{ vout?.value }} BTC</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <p>Sent Amount: <b>{{ vin?.value }} BTC</b></p>
+                        <p>Fee: <b>{{ tx.fees}} BTC</b></p>
+                        <!--  <span class="btn btn-primary">{{tx.confirmations}} Confirmations</span> -->
+                        <span class="">Transfered Amount: <b>{{ tx.valueOut}} BTC</b></span>
+                    </div>
+                    <div class="col-lg-8 text-right">
+                        <p>
+                            <span class="text-muted">{{ tx.txid }}</span>
+                        </p>
+                        <p>Mined Date:
+                            <span class="text-muted">{{ (tx.time * 1000) | date : 'mediumDate' }} {{ (tx.time * 1000) | date : 'shortTime' }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <pagination-template #p="paginationApi" (pageChange)="getPage($event)">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li [class.disabled]="p.isFirstPage()">
+                            <a aria-label="Previous" (click)="p.previous()">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                            <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                                <span>{{ page.label }}</span>
+                            </a>
+                            <a [class.active]="p.getCurrent() === page.value"
+                               *ngIf="p.getCurrent() === page.value">
+                                <span>{{ page.label }}</span>
+                            </a>
+                        </li>
+                        <li [class.disabled]="p.isLastPage()">
+                            <a (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
+
+            <span *ngIf="total<=0">
                     No Transactions
                 </span>
-            </div>
         </div>
-
     </div>
+
+
     <div [class.hidden]="!loading" class="spinner-cube">
         <div class="cube1"></div>
         <div class="cube2"></div>
     </div>
-    <pagination-template #p="paginationApi" (pageChange)="getPage($event)">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li [class.disabled]="p.isFirstPage()">
-                    <a aria-label="Previous" (click)="p.previous()">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                    <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-                        <span>{{ page.label }}</span>
-                    </a>
-                    <a [class.active]="p.getCurrent() === page.value" *ngIf="p.getCurrent() === page.value">
-                        <span>{{ page.label }}</span>
-                    </a>
-                </li>
-                <li [class.disabled]="p.isLastPage()">
-                    <a (click)="p.next()" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </pagination-template>
+
 </div>
-
-

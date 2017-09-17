@@ -111,7 +111,7 @@
                 </div>
                 <br />
                 <app-converter-box [baseValue]='sendEther.controls.amount_ether.value' [baseImage]='"assets/img/Ethereum.png"' [bid]='ethusd.value'
-                    baseName='ETH' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
+                    baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
                 <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
 
                 <button [disabled]="!sendEther.valid || !isValidAddress(sendEther.controls.receiveAddress.value)" type="submit" (click)="makeReceipt()"

@@ -109,7 +109,8 @@ export class WalletComponent implements OnInit {
         .then(data => {
           this.wallet = data;
           this.showQr();
-          toastr.success('Created!', 'Wallet Creation');
+          this.blockie = this.walletService.getBlockie(this.wallet);
+          toastr.success('Successful!', 'Wallet Creation');
           this.spinner.displaySpiner(false);
         })
         .catch(err => {

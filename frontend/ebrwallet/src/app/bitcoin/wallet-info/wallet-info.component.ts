@@ -104,7 +104,7 @@ export class WalletInfoComponent implements OnInit {
       .getTransactions(this.wallet.address, 1)
       .then(res => {
         this.loading = false;
-          this.total = res.totalItems;
+          this.total = +res.totalItems;
           this.transactions = res.items;
 
       })

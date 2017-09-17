@@ -66,7 +66,7 @@
             <input class="form-control" formControlName="email" type="email" placeholder="Email...">
 
             <!-- Currency Converter Box Start -->
-            <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Bitcoin.png"' [bid]='btcusd' baseName='BTC' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
+            <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/Bitcoin.png"' [bid]='btcusd' baseName='btc' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
 
             <span *ngIf="ethbtc?.time" style="color:#bbb;font-size:14px;">** The exchange rate is as of {{ ethbtc?.time}}</span>
             <!-- Currency Converter Box End -->

@@ -1,14 +1,14 @@
 import {Component, HostListener} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { BitcoinTransactionService } from '../services/bitcoin-transaction.service';
-import { DataService } from '../../services/data.service';
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import {BitcoinTransactionService} from '../services/bitcoin-transaction.service';
+import {DataService} from '../../services/data.service';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
 
-import { Wallet } from '../wallet';
+import {Wallet} from '../wallet';
 
 import {SpinnerService} from '../../services/spinner.service';
-import { Config } from '../../config';
+import {Config} from '../../config';
 const config = new Config();
 
 declare const toastr: any;
@@ -18,7 +18,7 @@ declare var bitcore: any;
 @Component({
   selector: 'request-bitcoin-component',
   templateUrl: './request-bitcoin.component.html',
-  styleUrls:['request-bitcoin.component.css']
+  styleUrls: ['request-bitcoin.component.css']
 })
 
 export class RequestBitcoinComponent {
@@ -28,14 +28,14 @@ export class RequestBitcoinComponent {
   wallet: Wallet;
   btcusd: any;
   bitcoinAddress: string;
-  addressProvided:boolean = false;
+  addressProvided: boolean = false;
 
   modalVisible = false;
 
   showSpinner = false;
-  ready= false;
+  ready = false;
 
-  scanQr:boolean =false;
+  scanQr: boolean = false;
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
 
@@ -46,23 +46,23 @@ export class RequestBitcoinComponent {
       event.returnValue = true;
     }
   }
-  constructor( fb: FormBuilder,
-    private transactionService: BitcoinTransactionService,
-    private dataService: DataService,
-    private googleAnalyticsService: GoogleAnalyticsService,
-    private spinner: SpinnerService
-  ) {
+
+  constructor(fb: FormBuilder,
+              private transactionService: BitcoinTransactionService,
+              private dataService: DataService,
+              private googleAnalyticsService: GoogleAnalyticsService,
+              private spinner: SpinnerService) {
 
     this.sendBitcoin = fb.group({
       email: ['', Validators.email],
-      message : ['', Validators.required],
+      message: ['', Validators.required],
       amount_bitcoin: ['0', Validators.required],
       amount_usd: ['0', Validators.required],
 
     });
 
 
-      this.dataService
+    this.dataService
       .getCoinData('bitcoin')
       .then(coinData => {
         this.btcusd = coinData[0].price_usd; // The exchange rate for bitcoin
@@ -79,14 +79,16 @@ export class RequestBitcoinComponent {
     const amount = this.sendBitcoin.value.amount_bitcoin;
     const message = this.sendBitcoin.value.message;
     const str = `Bitcoin request sent to ${email} for ${amount} btc.`;
-
-    this.dataService
-      .requestBitcoin(this.bitcoinAddress, email, amount,message)
-      .then(ok => {
-        toastr.success(str, 'Request Bitcion');
-        this.sendBitcoin.reset();
-      })
-      .catch(err => toastr.error('Couldn\'t send request at the moment.'));
+    if (amount > 0)
+      this.dataService
+        .requestBitcoin(this.bitcoinAddress, email, amount, message)
+        .then(ok => {
+          toastr.success(str, 'Request Bitcion');
+          this.btcusd = 0;
+          this.sendBitcoin.controls.amount_bitcoin.patchValue(0);
+          this.sendBitcoin.reset();
+        })
+        .catch(err => toastr.error('Couldn\'t send request at the moment.'));
 
   }
 
@@ -112,8 +114,8 @@ export class RequestBitcoinComponent {
   }
 
 
-  showNextForm(){
-      this.addressProvided = true;
+  showNextForm() {
+    this.addressProvided = true;
   }
 
 }
