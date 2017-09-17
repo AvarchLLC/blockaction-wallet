@@ -245,9 +245,10 @@ export class WalletComponent implements OnInit {
     const email = this.requestEtherForm.controls.email.value;
     const amount = this.requestEtherForm.controls.amount_ether.value;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
+    const message = this.requestEtherForm.value.message;
 
     this.dataService
-      .requestEther(this.wallet.address, email, amount)
+      .requestEther(this.wallet.address, email, amount, message)
       .then(ok => {
         toastr.success(str, 'Request Ether');
       })

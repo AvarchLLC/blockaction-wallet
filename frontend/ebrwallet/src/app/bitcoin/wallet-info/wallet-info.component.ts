@@ -103,9 +103,10 @@ export class WalletInfoComponent implements OnInit {
     this.transactionService
       .getTransactions(this.wallet.address, 1)
       .then(res => {
-        this.total = res.totalItems;
-        this.transactions = res.items;
         this.loading = false;
+          this.total = res.totalItems;
+          this.transactions = res.items;
+
       })
       .catch(err => {
         toastr.error('Failed to retrieve wallet transactions');
@@ -177,7 +178,7 @@ export class WalletInfoComponent implements OnInit {
     this.ready = false;
     this.keyInput = "";
   }
-  
+
   OnDestroy() {
     this.alive = false;
   }

@@ -77,10 +77,11 @@ export class RequestBitcoinComponent {
 
     const email = this.sendBitcoin.value.email;
     const amount = this.sendBitcoin.value.amount_bitcoin;
+    const message = this.sendBitcoin.value.message;
     const str = `Bitcoin request sent to ${email} for ${amount} btc.`;
 
     this.dataService
-      .requestBitcoin(this.bitcoinAddress, email, amount)
+      .requestBitcoin(this.bitcoinAddress, email, amount,message)
       .then(ok => {
         toastr.success(str, 'Request Bitcion');
         this.sendBitcoin.reset();

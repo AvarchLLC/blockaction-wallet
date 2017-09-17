@@ -13,7 +13,7 @@
             password: 'wallet',
             host: 'localhost',
             port: '27017',
-            dbName: 'ebrwaller'
+            dbName: 'ebrwallet'
         },
         test: {
             username: 'ebrwalletuser',

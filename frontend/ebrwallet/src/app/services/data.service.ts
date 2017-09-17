@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Headers, Http, RequestOptions} from '@angular/http';
 
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 
-declare var EthJS : any;
+declare var EthJS: any;
 
 class CoinMarketData {
   'id': string;
@@ -24,7 +24,8 @@ class CoinMarketData {
 @Injectable()
 export class DataService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   /**
    * Get the market data of coins
@@ -45,20 +46,21 @@ export class DataService {
    * @param email email to request
    * @param value request amount in ether
    */
-  requestEther(address: string, email: string, ether: number): Promise<any> {
+  requestEther(address: string, email: string, ether: number, message: string): Promise<any> {
     address = EthJS.Util.addHexPrefix(address);
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     const content = {
-        address,
-        ether
+      address,
+      ether,
+      message
     };
     const data = `receiver=${email}&content=${JSON.stringify(content)}`;
 
     return this.http
-      .post(`${environment.API_URL}/request/ether`, data, { headers })
+      .post(`${environment.API_URL}/request/ether`, data, {headers})
       .toPromise()
       .then(res => res.json());
   }
@@ -69,19 +71,20 @@ export class DataService {
    * @param email email to request
    * @param value request amount in ether
    */
-  requestBitcoin(address: string, email: string, bitcoin: number): Promise<any> {
+  requestBitcoin(address: string, email: string, bitcoin: number,message:string): Promise<any> {
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded')
 
     const content = {
-        address,
-        bitcoin
+      address,
+      bitcoin,
+      message
     };
     const data = `receiver=${email}&content=${JSON.stringify(content)}`;
 
     return this.http
-      .post(`${environment.API_URL}/request/bitcoin`, data, { headers })
+      .post(`${environment.API_URL}/request/bitcoin`, data, {headers})
       .toPromise()
       .then(res => res.json());
   }
@@ -93,17 +96,17 @@ export class DataService {
   subscribeNews(email: string): Promise<any> {
 
     const headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
     const data = `receiver=${email}`;
 
     return this.http
-      .post(`${environment.API_URL}/subscribe`, data, { headers })
+      .post(`${environment.API_URL}/subscribe`, data, {headers})
       .toPromise()
       .then(res => res.json());
   }
 
-   /**
+  /**
    * Contact Form Submission
    * paramObj Contains the following
    * @param email email of the sender
@@ -112,8 +115,8 @@ export class DataService {
    * @param lastName of the sender
    */
 
-   submitContact(paramObj : any) {
-       const headers = new Headers();
+  submitContact(paramObj: any) {
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const req = new RequestOptions({headers: headers});
 
@@ -121,9 +124,9 @@ export class DataService {
       .post(`${environment.API_URL}/contact`, JSON.stringify(paramObj), req)
       .toPromise()
       .then(res => res.json());
-   }
+  }
 
-   /**
+  /**
    * Feedback Form Submission
    * paramObj Contains the following
    * @param email email of the sender
@@ -132,8 +135,8 @@ export class DataService {
    * @param lastName of the sender
    */
 
-   submitFeedback(paramObj : any) {
-       const headers = new Headers();
+  submitFeedback(paramObj: any) {
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const req = new RequestOptions({headers: headers});
 
@@ -141,14 +144,15 @@ export class DataService {
       .post(`${environment.API_URL}/feedback`, JSON.stringify(paramObj), req)
       .toPromise()
       .then(res => res.json());
-   }
+  }
+
   /**
    * Report Form for feedback Submission
    * paramObj Contains the following
    * @param email email of the sender
    * @param message from the sender
    */
-   submitReport(paramObj : any) {
+  submitReport(paramObj: any) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     const req = new RequestOptions({headers: headers});
@@ -157,5 +161,5 @@ export class DataService {
       .post(`${environment.API_URL}/report-feedback`, JSON.stringify(paramObj), req)
       .toPromise()
       .then(res => res.json());
-   }
+  }
 }

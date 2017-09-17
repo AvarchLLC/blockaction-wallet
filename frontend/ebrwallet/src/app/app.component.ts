@@ -1,13 +1,13 @@
-import { DataService } from './services/data.service';
+import {DataService} from './services/data.service';
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
 import {SpinnerService} from './services/spinner.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import {IntervalObservable} from 'rxjs/observable/IntervalObservable';
 
 declare var $: any;
 declare var ga: any;
@@ -18,18 +18,18 @@ declare var toastr: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   host: {
-    '(window:scroll)':'onScroll()'
+    '(window:scroll)': 'onScroll()'
   }
 })
 
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Block Action';
   busy: boolean;                // The loading spinner visibility flag
   sticky = false;
   shownFeedback = false;
-  feedback      : FormGroup;
-
+  feedback: FormGroup;
+  isSubmitted: boolean = false;
 
 
   coins: Array<object>;        // Holds the coins market data
@@ -44,13 +44,11 @@ export class AppComponent implements OnInit{
     'BTC': 'assets/img/bitcoin.svg'
   };
 
-  constructor(
-    public router: Router,
-    private dataService: DataService,
-    private spinner: SpinnerService,
-    private element: ElementRef,
-    private fb: FormBuilder
-  ) {
+  constructor(public router: Router,
+              private dataService: DataService,
+              private spinner: SpinnerService,
+              private element: ElementRef,
+              private fb: FormBuilder) {
 
     // Coin Data
     this.alive = true;
@@ -66,10 +64,10 @@ export class AppComponent implements OnInit{
     });
 
     this.feedback = fb.group({
-      firstName : ['', Validators.required],
-      lastName  : ['', Validators.required],
-      email     : ['', Validators.compose([Validators.required, Validators.email])],
-      message   : ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      message: ['', Validators.required]
     });
   }
 
@@ -85,7 +83,7 @@ export class AppComponent implements OnInit{
       .takeWhile(() => this.alive)
       .subscribe(() => {
         this.dataService.getCoinData('ethereum,bitcoin')
-          .then(data =>  this.coins = data)
+          .then(data => this.coins = data)
           .catch(err => console.log('No internet connection.'));
       });
 
@@ -101,55 +99,53 @@ export class AppComponent implements OnInit{
   // Sticky nav bar once user scrolls more than the stickyThreshold
   onScroll() {
     const stickyThreshold = 50;
-    if (this.element.nativeElement.getBoundingClientRect().top * -1  >= stickyThreshold ) {
+    if (this.element.nativeElement.getBoundingClientRect().top * -1 >= stickyThreshold) {
       this.sticky = true;
-    }else {
+    } else {
       this.sticky = false;
     }
   }
 
 
-
-
-  OnDestroy () {
+  OnDestroy() {
     this.alive = false;
   }
 
 
   showFeedback() {
-    if(this.shownFeedback === true)
+    if (this.shownFeedback === true)
       this.feedback.reset();
     this.shownFeedback = !this.shownFeedback;
   }
 
 
   submitFeedback() {
-    if(this.feedback.valid) {
+    if (this.feedback.valid) {
       this.dataService.submitFeedback(this.feedback.value)
-       .then(res => {
-         toastr.success('Success!', 'Thank you for your feedback');
-         this.feedback.reset();
-         this.showFeedback();
-       })
-       .catch(err => toastr.error('Couldn\'t send your feedback at the moment. Try again.'));
+        .then(res => {
+          toastr.success('Success!', 'Thank you for your feedback');
+          this.feedback.reset();
+          this.showFeedback();
+        })
+        .catch(err => toastr.error('Couldn\'t send your feedback at the moment. Try again.'));
     }
   }
-  
+
   /**
    * Scrolling to the top of the screen at decremental steps
    */
   scrollTop() {
-   let x = window.innerHeight;
-   // Set a interval id
-   const clId = setInterval(() => {
-     window.scrollTo(0, x);
-     x -= 50;
-     if (x <= 0) {
-       window.scrollTo(0, 0);
-       clearInterval(clId);    // Clear interval once it reaches the top
-     }
-   }, 15);
- }
+    let x = window.innerHeight;
+    // Set a interval id
+    const clId = setInterval(() => {
+      window.scrollTo(0, x);
+      x -= 50;
+      if (x <= 0) {
+        window.scrollTo(0, 0);
+        clearInterval(clId);    // Clear interval once it reaches the top
+      }
+    }, 15);
+  }
 
 
 }

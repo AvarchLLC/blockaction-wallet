@@ -32,7 +32,7 @@ font-weight: 400;
   font-family: 'icomoon';
   src:  url('../fonts/icomoon.eot?cp5yvy');
   src:  url('../fonts/icomoon.eot?cp5yvy#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?cp5yvy') format('truetype'),
+    url('../fonts/icomoon.ttf') format('truetype'),
     url('../fonts/icomoon.woff?cp5yvy') format('woff'),
     url('../fonts/icomoon.svg?cp5yvy#icomoon') format('svg');
   font-weight: normal;

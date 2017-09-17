@@ -1,6 +1,6 @@
-import { DataService } from '../services/data.service';
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {DataService} from '../services/data.service';
+import {Component, OnInit, Inject} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 declare var toastr: any;
 
@@ -11,22 +11,25 @@ declare var toastr: any;
 })
 export class HomeComponent implements OnInit {
 
-  subscription          : FormGroup;
-  contact               : FormGroup;
-  shownPopup:boolean    = false;
-  shownModal:boolean    = false;
-  shownContact:boolean  = false;
-  shownStartedModal:boolean=false;
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private dataService: DataService) {
+  subscription: FormGroup;
+  contact: FormGroup;
+  shownPopup: boolean = false;
+  shownModal: boolean = false;
+  shownContact: boolean = false;
+  shownStartedModal: boolean = false;
+  isSubmitted: boolean = false;
+  emailPattern: string = "";
+
+  constructor(@Inject(FormBuilder) fb: FormBuilder, private dataService: DataService) {
     this.subscription = fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])]
     });
 
     this.contact = fb.group({
-      firstName : ['', Validators.required],
-      lastName  : ['', Validators.required],
-      email     : ['', Validators.compose([Validators.required, Validators.email])],
-      message   : ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      message: ['', Validators.required]
     });
 
   }
@@ -38,7 +41,7 @@ export class HomeComponent implements OnInit {
    * Subscribe to newsletter
    */
   subscribe() {
-    if(this.subscription.valid){
+    if (this.subscription.valid) {
       this.dataService.subscribeNews(this.subscription.value.email)
         .then(res => toastr.success('Success!', 'Subscribed successfully.'))
         .catch(err => toastr.error('Couldn\'t subscribe at the moment.'));
@@ -46,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   showContact() {
-    if(this.shownContact === true)
+    if (this.shownContact === true)
       this.contact.reset();
     this.shownContact = !this.shownContact;
   }
@@ -58,16 +61,18 @@ export class HomeComponent implements OnInit {
   showModal() {
     this.shownModal = !this.shownModal;
   }
-  showStartedModal(){
+
+  showStartedModal() {
     this.shownStartedModal = !this.shownStartedModal;
   }
+
   submitContact() {
-    if(this.contact.valid) {
+    if (this.contact.valid) {
       this.dataService.submitContact(this.contact.value)
-       .then(res => {
-            toastr.success('Success!', 'Contacted successfully.');
-            this.contact.reset();
-            this.showContact();
+        .then(res => {
+          toastr.success('Success!', 'Contacted successfully.');
+          this.contact.reset();
+          this.showContact();
         })
         .catch(err => toastr.error('Couldn\'t contact at the moment.'));
     }

@@ -88,10 +88,11 @@ export class RequestEtherComponent {
       .emitEvent('Post Wallet Creation', 'Request Ether');
     const email = this.requestEtherForm.value.email;
     const amount = this.requestEtherForm.value.amount_ether;
+    const message = this.requestEtherForm.value.message;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
 
     this.dataService
-      .requestEther(this.etherAddress, email, amount)
+      .requestEther(this.etherAddress, email, amount,message)
       .then(ok => {
         toastr.success(str, 'Request Ether');
         this.ethusd = 0;
