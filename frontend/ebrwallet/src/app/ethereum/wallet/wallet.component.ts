@@ -35,6 +35,7 @@ export class WalletComponent implements OnInit {
   ethusd: any;
 
   qrSvg: string;   // QrCode SVG string
+  qrPrivate: string;
   qrClass = '';
 
   disabled = false; // disable "create wallet" button
@@ -125,7 +126,10 @@ export class WalletComponent implements OnInit {
     if (this.wallet) {
       this.walletService
         .getQrCode(this.wallet)
-        .then(qrCode => this.qrSvg = qrCode);
+        .then((qrCode: any)=> {
+          this.qrSvg = qrCode.qrString;
+          this.qrPrivate = qrCode.qrPrivateString;
+        });
     }
   }
 

@@ -8,7 +8,7 @@ export const environment = {
   COIN_API_URL: 'https://api.coinmarketcap.com/v1/ticker',
   ETH_NODE_URL: 'https://kovan.infura.io/',
   ETH_SCAN:'https://kovan.etherscan.io/',
-  API_URL: 'http://localhost:1234',
+  API_URL: 'http://localhost:1234/api',
   BITCOIN : {
     TRANSATIONS:     'https://testnet.blockexplorer.com/api/addrs/ADDRESS/txs',
     BALANCE_API:     'https://testnet.blockexplorer.com/api/addr/ADDRESS/balance',

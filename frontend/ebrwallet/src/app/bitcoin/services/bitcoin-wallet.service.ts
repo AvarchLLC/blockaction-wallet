@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Http } from '@angular/http';
-import { Wallet } from '../wallet';
+import {Http} from '@angular/http';
+import {Wallet} from '../wallet';
 
 import qrImage from 'qr-image';
 import Blockies from 'blockies';
@@ -15,7 +15,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class BitcoinWalletService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   /**
    * Generates a new wallet and encrypts it with given password
@@ -28,7 +29,7 @@ export class BitcoinWalletService {
     return new Promise((resolve, reject) => {
       try {
         var testnet = BitcoinJS.networks.testnet;
-        const wallet = BitcoinJS.ECPair.makeRandom({network:testnet});
+        const wallet = BitcoinJS.ECPair.makeRandom({network: testnet});
         w.address = wallet.getAddress();
         w.privateKey = wallet.toWIF();
         resolve(w);
@@ -45,10 +46,19 @@ export class BitcoinWalletService {
   getQrCode(w: Wallet): Promise<string> {
     return new Promise((resolve, reject) => {
       try {
-        const qrString = qrImage.imageSync(w.address, { type: 'svg' });
-        const index = qrString.toString().indexOf('d="');
-        const lastIndex = qrString.toString().indexOf('/>');
-        resolve(qrString.substring(index + 3, lastIndex - 1));
+        let qrString = qrImage.imageSync(w.address, {type: 'svg'});
+        let index = qrString.toString().indexOf('d="');
+        let lastIndex = qrString.toString().indexOf('/>');
+        qrString = qrString.substring(index + 3, lastIndex - 1);
+        let qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        index = qrPrivateString.toString().indexOf('d="');
+        lastIndex = qrPrivateString.toString().indexOf('/>');
+        qrPrivateString = qrPrivateString.substring(index + 3, lastIndex - 1);
+        const qrSvgImage: any = {
+          qrString: qrString,
+          qrPrivateString: qrPrivateString
+        };
+        resolve(qrSvgImage);
       } catch (e) {
         reject(e);
       }
@@ -78,8 +88,8 @@ export class BitcoinWalletService {
         // create a base64 encoded PNG
         const blockie = this.getBlockie(w);
 
-        const privQrCodeData = qrImage.imageSync(w.privateKey, { type: 'svg' });
-        const addrQrCodeData = qrImage.imageSync(w.address, { type: 'svg' });
+        const privQrCodeData = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        const addrQrCodeData = qrImage.imageSync(w.address, {type: 'svg'});
 
         const paperHTML = `
         <html>
@@ -192,7 +202,7 @@ export class BitcoinWalletService {
         </html>
         `;
 
-        resolve({ paperHTML, blockie , privQrCodeData, addrQrCodeData });
+        resolve({paperHTML, blockie, privQrCodeData, addrQrCodeData});
       } catch (e) {
         console.error(e);
         reject('Couldn\'t generate paper wallet');

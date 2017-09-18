@@ -1,14 +1,14 @@
-import { DataService } from '../../services/data.service';
+import {DataService} from '../../services/data.service';
 import {Component, OnInit, Inject, Output, EventEmitter, Input, HostListener} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { BitcoinWalletService } from '../services/bitcoin-wallet.service';
-import { GoogleAnalyticsService } from '../../services/google-analytics.service';
-import { BitcoinTransactionService } from '../services/bitcoin-transaction.service';
+import {BitcoinWalletService} from '../services/bitcoin-wallet.service';
+import {GoogleAnalyticsService} from '../../services/google-analytics.service';
+import {BitcoinTransactionService} from '../services/bitcoin-transaction.service';
 
-import { Wallet } from '../wallet';
+import {Wallet} from '../wallet';
 import {SpinnerService} from '../../services/spinner.service';
-import { Config } from '../../config';
+import {Config} from '../../config';
 const config = new Config();
 
 declare const toastr: any;
@@ -29,12 +29,12 @@ export class WalletComponent implements OnInit {
 
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
-
+  qrPrivate: string = '';
   btcusd: number;
 
   modalVisible = false;
   blockie: any;
-  ready= false;
+  ready = false;
 
   @HostListener('window:beforeunload', ['$event'])
   unloadHandler(event) {
@@ -42,19 +42,19 @@ export class WalletComponent implements OnInit {
       event.returnValue = true;
     }
   }
-  constructor( @Inject(FormBuilder) fb: FormBuilder,
-    private walletService: BitcoinWalletService,
-    private googleAnalyticsService: GoogleAnalyticsService,
-    private transactionService: BitcoinTransactionService,
-    private spinner: SpinnerService,
-    private dataService: DataService
-  ) {
+
+  constructor(@Inject(FormBuilder) fb: FormBuilder,
+              private walletService: BitcoinWalletService,
+              private googleAnalyticsService: GoogleAnalyticsService,
+              private transactionService: BitcoinTransactionService,
+              private spinner: SpinnerService,
+              private dataService: DataService) {
 
     this.requestBitcoinForm = fb.group({
       email: ['', Validators.email],
       amount_ether: ['0', Validators.required],
       amount_usd: ['0'],
-      message : ['', Validators.required]
+      message: ['', Validators.required]
     });
   }
 
@@ -64,7 +64,7 @@ export class WalletComponent implements OnInit {
       .then(data => this.btcusd = parseFloat(data[0].price_usd))
       .catch(err => toastr.error('Couldn\'t get exchange rate'));
 
-    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date() ) {
+    if (localStorage.getItem('messageShown') && new Date(localStorage.getItem('messageShown')) > new Date()) {
       this.ready = true;
     }
   }
@@ -74,7 +74,11 @@ export class WalletComponent implements OnInit {
     if (this.wallet) {
       this.walletService
         .getQrCode(this.wallet)
-        .then(qrCode => this.qrSvg = qrCode);
+        .then((qrCode: any) => {
+          this.qrSvg = qrCode.qrString;
+          this.qrPrivate = qrCode.qrPrivateString;
+        });
+      ;
     }
   }
 
