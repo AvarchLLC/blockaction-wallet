@@ -179,7 +179,7 @@ export class EthereumWalletService {
 
         <body>
           <div class="containers">
-            <div class="codes">
+            <div class="codes" style="position: relative;">
             <div class="row text-center">
               <div class="bg-img col-md-3">
               </div>
@@ -222,8 +222,15 @@ export class EthereumWalletService {
               </p>
 
             </div>
-<div class="text-right">
-            <p><span>Issued by</span>
+
+<div style="position: absolute; right:40px; bottom:150px; vertical-align: middle;">
+<span style="display:inline-block;">Total ETH</span> <span style="border:4px solid #91d3c0;width: 50px; height:40px; display: inline-block; background-color:#fff;">
+</div>
+
+
+<div class="text-left">
+<img src="../../assets/img/iconLogo.png" style="float: left; margin-right:20px;" />
+            <p style="display: inline-block;"><span>Issued by</span>
               <a href="">www.blockaction.io</a>
               </p>
 

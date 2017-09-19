@@ -1,7 +1,7 @@
 body {
     background: #fff url(../img/network.svg) no-repeat center top;
     background-size: 100% auto;
-    background-attachment: fixed;
+    /*background-attachment: fixed;*/
     font-family: verdana, sans-serif;
 
     font-size: 14px;
@@ -874,10 +874,11 @@ border-radius:5px;
     h2, .h2 { font-size:24px; }
     .media-left, .media-right, .media-body { display: block; }
 
-  }/*
+  }
 
-  .ptn { background: url(../img/ptn.jpg); }
-*/
+
+  .ptn { background: url(../img/ptn.png); }
+
 
 
 .list-group-item h3 {    font-size: 16px;
@@ -917,5 +918,9 @@ input::-webkit-contacts-auto-fill-button {
 .trans-block { padding-top: 40px; margin-top: 40px; border-top:1px solid #ccc; }
 
 .inline-block { display: inline-block; }
+
+.withQr {    width: calc(100% - 52px);
+    float: left;
+    margin-right: 10px;}
 
 .bg-img { background: url(../img/ethereum.png) no-repeat left top; background-size: auto 100%; width:100px; height:100px; }
