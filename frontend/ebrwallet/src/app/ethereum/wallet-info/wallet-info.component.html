@@ -207,9 +207,7 @@
                     <tr *ngIf="transactions === null">
                         Loading Transactions...
                     </tr>
-                    <tr *ngIf="transactions && transactions.length === 0">
-                        No Transactions
-                    </tr>
+                   f
                     </tbody>
                 </table>
                 <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">

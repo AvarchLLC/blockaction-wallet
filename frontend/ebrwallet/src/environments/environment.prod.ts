@@ -4,7 +4,7 @@ export const environment = {
   ETH_NODE_URL: 'https://kovan.infura.io/',
   // ETH_NODE_URL: 'https://mainnet.infura.io/',
   ETH_SCAN:'https://kovan.etherscan.io/',
-  API_URL: 'http://web3c.etherworld.co:1234',
+  API_URL: 'http://blockaction.io/api',
   BITCOIN : {
     TRANSATIONS:     'https://testnet.blockexplorer.com/api/addrs/ADDRESS/txs',
     BALANCE_API:     'https://testnet.blockexplorer.com/api/addr/ADDRESS/balance',

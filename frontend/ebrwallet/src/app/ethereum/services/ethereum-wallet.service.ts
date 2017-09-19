@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { Http } from '@angular/http';
-import { Wallet } from '../wallet';
+import {Http} from '@angular/http';
+import {Wallet} from '../wallet';
 
 import qrImage from 'qr-image';
 // import Identicon from 'identicon.js';
@@ -30,7 +30,7 @@ export class EthereumWalletService {
         w.address = wallet.getAddressString();
         w.privateKey = wallet.getPrivateKeyString();
         w.fileName = wallet.getV3Filename();
-        w.keystore = wallet.toV3(passsword, { kdf: 'scrypt',n:8192,p:1 }); // Encrypts wallet object with scrypt
+        w.keystore = wallet.toV3(passsword, {kdf: 'scrypt', n: 8192, p: 1}); // Encrypts wallet object with scrypt
 
         wallet = null; // Set the unencrypted wallet memory to null
 
@@ -83,10 +83,19 @@ export class EthereumWalletService {
   getQrCode(w: Wallet): Promise<string> {
     return new Promise((resolve, reject) => {
       try {
-        const qrString = qrImage.imageSync(w.address, { type: 'svg' });
-        const index = qrString.toString().indexOf('d="');
-        const lastIndex = qrString.toString().indexOf('/>');
-        resolve(qrString.substring(index + 3, lastIndex - 1));
+        let qrString = qrImage.imageSync(w.address, {type: 'svg'});
+        let index = qrString.toString().indexOf('d="');
+        let lastIndex = qrString.toString().indexOf('/>');
+        qrString = qrString.substring(index + 3, lastIndex - 1);
+        let qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        index = qrPrivateString.toString().indexOf('d="');
+        lastIndex = qrPrivateString.toString().indexOf('/>');
+        qrPrivateString = qrPrivateString.substring(index + 3, lastIndex - 1);
+        const qrSvgImage: any = {
+          qrString: qrString,
+          qrPrivateString: qrPrivateString
+        };
+        resolve(qrSvgImage);
       } catch (e) {
         reject(e);
       }
@@ -108,8 +117,8 @@ export class EthereumWalletService {
         // create a base64 encoded PNG
         const blockie = this.getBlockie(w);
 
-        const privQrCodeData = qrImage.imageSync(w.privateKey, { type: 'svg' });
-        const addrQrCodeData = qrImage.imageSync(w.address, { type: 'svg' });
+        const privQrCodeData = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        const addrQrCodeData = qrImage.imageSync(w.address, {type: 'svg'});
 
         const paperHTML = `
         <html>
@@ -242,7 +251,7 @@ export class EthereumWalletService {
         </html>
         `;
 
-        resolve({ paperHTML, blockie , privQrCodeData, addrQrCodeData });
+        resolve({paperHTML, blockie, privQrCodeData, addrQrCodeData});
       } catch (e) {
         console.error(e);
         reject('Couldn\'t generate paper wallet');
@@ -257,7 +266,7 @@ export class EthereumWalletService {
       try {
         const fileName: string = w.fileName || 'walletKeystore';
         const data = JSON.stringify(w.keystore);
-        const blob = new Blob([data], { type: 'binary' });
+        const blob = new Blob([data], {type: 'binary'});
 
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
           window.navigator.msSaveOrOpenBlob(blob, fileName);
