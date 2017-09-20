@@ -31,7 +31,7 @@
         <label>Your Bitcoin Address</label>
         <input class="form-control" placeholder="Address" [(ngModel)]="bitcoinAddress" (keyup.enter)="showNextForm()">
         <button [disabled]="!isValidPrivateKey(bitcoinAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">Continue</button>
-         <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+         <p>Enter the address where you want to receive Bitcoin.</p>
         <br>
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
         <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->

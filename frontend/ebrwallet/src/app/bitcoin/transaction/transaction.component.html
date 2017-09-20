@@ -76,12 +76,15 @@
                         <div class="form-group mg-top-sm">
             <b>From</b>
             <div class="clearfix">
-                <input type="text" class="form-control" value="{{ wallet.address }}" readonly>
+                <input type="text" class="form-control" #fromImg value="{{ wallet.address }}" readonly>
+                <img width="40" height="40" style="border-radius: 20px;"  src="{{ getBlockie(fromImg.value) }}">
+
             </div>
             <b>To</b>
             <div class="clearfix {{ sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-success' : ''}}">
                 <input class="form-control" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" />
-            </div>
+                <img *ngIf="isValidAddress(sendBitcoin.controls.receiveAddress.value)" width="40" height="40" style="border-radius: 20px;"
+                     src="{{ getBlockie(sendBitcoin.get('receiveAddress').value) }}">            </div>
         </div>
                 <br />
                 <app-converter-box [baseValue]='sendBitcoin.controls.amount_bitcoin.value' [baseImage]='"assets/img/bitcoin.png"' [bid]='btcusd' baseName='BTC' quoteName='USD' (on_change)="converter($event)"></app-converter-box>
@@ -113,14 +116,14 @@
         </div>
         <div class="cust-info">
             <h3>Are you sure?</h3>
-            <p>You've about to send real money of amount ${{ receipt.amount_usd}}</p>
+            <p>You're about to send {{ receipt.amount}} BTC</p>
         </div>
 
     </div>
 
     <main>
         <ul>
-        <li>Amount <span>{{receipt.amount}} BTC</span></li>
+        <li>Amount <span>${{receipt.amount_usd}}</span></li>
         <li>Transaction Fee<span>{{ receipt.fee}} BTC</span></li>
         </ul>
         <div class="total">

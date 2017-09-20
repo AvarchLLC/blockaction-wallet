@@ -61,9 +61,12 @@
         </ul>
     </nav>
     <div class="container">
+        <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;"/>
         <div class="box-shadow bg-white">
+
             <div class="clearfix">
-                <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;"/>
+                <img class="identicon" width="50" height="50" src="{{ blockie }}"/>
+
                 <span class="h3">Address</span>
                 <span class="text-lg">{{ wallet.address }}</span>
                 <button style="margin-left:50px;" class="btn btn-primary btn-lg" (click)="viewAnother()">
@@ -103,6 +106,7 @@
                             <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> REQUEST</a>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="box-shadow bg-white">
@@ -142,57 +146,56 @@
 
                 <div class="row">
                     <div class="col-lg-4">
-                        <p>Sent Amount: <b>{{ vin?.value }} BTC</b></p>
+                        <p>Sent Amount: <b>{{ vin?.valueIn }} BTC</b></p>
                         <p>Fee: <b>{{ tx.fees}} BTC</b></p>
                         <!--  <span class="btn btn-primary">{{tx.confirmations}} Confirmations</span> -->
                         <span class="">Transfered Amount: <b>{{ tx.valueOut}} BTC</b></span>
                     </div>
                     <div class="col-lg-8 text-right">
                         <p>
-                            <span class="text-muted">{{ tx.txid }}</span>
+                            Txn ID : <span class="text-muted">{{ tx.txid }}</span>
                         </p>
                         <p>Mined Date:
                             <span class="text-muted">{{ (tx.time * 1000) | date : 'mediumDate' }} {{ (tx.time * 1000) | date : 'shortTime' }}</span>
                         </p>
                     </div>
                 </div>
-            </div>
-            <pagination-template #p="paginationApi" (pageChange)="getPage($event)">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li [class.disabled]="p.isFirstPage()">
-                            <a aria-label="Previous" (click)="p.previous()">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-                            <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
-                                <span>{{ page.label }}</span>
-                            </a>
-                            <a [class.active]="p.getCurrent() === page.value"
-                               *ngIf="p.getCurrent() === page.value">
-                                <span>{{ page.label }}</span>
-                            </a>
-                        </li>
-                        <li [class.disabled]="p.isLastPage()">
-                            <a (click)="p.next()" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </pagination-template>
+                <pagination-template #p="paginationApi" (pageChange)="getPage($event)">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li [class.disabled]="p.isFirstPage()">
+                                <a aria-label="Previous" (click)="p.previous()">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+                                <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+                                    <span>{{ page.label }}</span>
+                                </a>
+                                <a [class.active]="p.getCurrent() === page.value"
+                                   *ngIf="p.getCurrent() === page.value">
+                                    <span>{{ page.label }}</span>
+                                </a>
+                            </li>
+                            <li [class.disabled]="p.isLastPage()">
+                                <a (click)="p.next()" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </pagination-template>
 
+            </div>
+            <div [class.hidden]="!loading" class="spinner-cube">
+                <div class="cube1"></div>
+                <div class="cube2"></div>
+            </div>
             <span *ngIf="total<=0">
                     No Transactions
                 </span>
         </div>
     </div>
 
-
-    <div [class.hidden]="!loading" class="spinner-cube">
-        <div class="cube1"></div>
-        <div class="cube2"></div>
-    </div>
 
 </div>

@@ -87,7 +87,9 @@ export class EthereumWalletService {
         let index = qrString.toString().indexOf('d="');
         let lastIndex = qrString.toString().indexOf('/>');
         qrString = qrString.substring(index + 3, lastIndex - 1);
-        let qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        let qrPrivateString: string = "";
+        if (w.privateKey)
+          qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
         index = qrPrivateString.toString().indexOf('d="');
         lastIndex = qrPrivateString.toString().indexOf('/>');
         qrPrivateString = qrPrivateString.substring(index + 3, lastIndex - 1);

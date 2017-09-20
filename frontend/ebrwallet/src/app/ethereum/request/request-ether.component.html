@@ -32,7 +32,8 @@
         <button [disabled]="!isValidAddress(etherAddress)" class="btn btn-primary btn-lg" (click)="showNextForm()">
             Continue
         </button>
-        <p>Enter address key in the above field to view your wallet information such as balance and transactions.</p>
+        <p>Enter the address where you want to receive Ethereum.
+        </p>
         <!--<br>-->
         <!--<p>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;or&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</p>-->
         <!--<button class="btn btn-link btn-lg" (click)="scanQr = true">Scan Qr</button>-->
@@ -67,13 +68,15 @@
             <input class="form-control" formControlName="email" type="email" placeholder="Email">
 
             <!-- Currency Converter Box Start -->
-            <app-converter-box [baseImage]='"assets/img/ethereum.png"' [bid]='ethusd?.value' baseName='eth' quoteName='usd' (on_change)="converter($event)"></app-converter-box>
+            <app-converter-box [baseImage]='"assets/img/ethereum.png"' [bid]='ethusd?.value' baseName='eth'
+                               quoteName='usd' (on_change)="converter($event)"></app-converter-box>
             <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
             <!-- Currency Converter Box End -->
 
             <textarea placeholder="Please type your message here..." class="form-control"
                       formControlName="message"></textarea>
         </form>
-        <button [disabled]="!requestEtherForm.valid" class="btn btn-primary btn-lg"  (click)="requestEther()">Request</button>
+        <button [disabled]="!requestEtherForm.valid" class="btn btn-primary btn-lg" (click)="requestEther()">Request
+        </button>
     </div>
 </div>

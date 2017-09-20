@@ -13,6 +13,7 @@ import {BitcoinWalletService} from '../services/bitcoin-wallet.service';
 
 
 import {PaginationInstance} from 'ngx-pagination';
+
 declare var toastr: any;
 declare var bitcore: any;
 
@@ -150,7 +151,7 @@ export class WalletInfoComponent implements OnInit {
     if (this.wallet) {
       this.walletService
         .getQrCode(this.wallet)
-        .then(qrCode => this.qrSvg = qrCode);
+        .then((qrCode:any) => this.qrSvg = qrCode.qrString);
     }
   }
 

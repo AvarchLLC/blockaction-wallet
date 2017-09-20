@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, Input} from '@angular/core';
+import {Component, OnInit, Inject, Input, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {environment} from '../../../environments/environment';
 import 'rxjs/add/operator/filter';
@@ -85,11 +85,11 @@ export class TransactionComponent implements OnInit {
   }
 
   isValidAddress(address: string) {
-    if (environment.production) {
-      return bitcore.Address.isValid(address);
-    } else {
-      return bitcore.Address.isValid(address, bitcore.Networks.testnet);
-    }
+    // if (environment.production) {
+    //   return bitcore.Address.isValid(address);
+    // } else {
+    return bitcore.Address.isValid(address, bitcore.Networks.testnet);
+    // }
   }
 
   ngOnInit() {
@@ -111,14 +111,14 @@ export class TransactionComponent implements OnInit {
     try {
       const privateKey = new bitcore.PrivateKey(this.keyInput);
       this.wallet.privateKey = privateKey.toWIF(); // get private key in wallet imoprt format
-
+      var publicKey = privateKey.toPublicKey();
       // Derive the desired address format.
       // Bitcoin Addresses for the main network and test network are differently derived from private key
-      if (environment.production) {
-        this.wallet.address = privateKey.toAddress();
-      } else {
-        this.wallet.address = privateKey.toAddress(bitcore.Networks.testnet);
-      }
+      //  if (environment.production) {
+      //    this.wallet.address = privateKey.toAddress();
+      //  } else {
+      this.wallet.address = publicKey.toAddress(bitcore.Networks.testnet);
+      //  }
       this.spinner.displaySpiner(false);
       this.ready = true;
     } catch (e) {
@@ -156,4 +156,11 @@ export class TransactionComponent implements OnInit {
     this.receipt = null;
   }
 
+  getBlockie(addr) {
+    if (this.isValidAddress(addr)) {
+      const w = new Wallet;
+      w.address = addr;
+      return this.walletService.getBlockie(w);
+    }
+  }
 }

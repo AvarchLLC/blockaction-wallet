@@ -46,11 +46,13 @@ export class BitcoinWalletService {
   getQrCode(w: Wallet): Promise<string> {
     return new Promise((resolve, reject) => {
       try {
-        let qrString = qrImage.imageSync(w.address, {type: 'svg'});
+        let qrString: string = qrImage.imageSync(w.address, {type: 'svg'});
         let index = qrString.toString().indexOf('d="');
         let lastIndex = qrString.toString().indexOf('/>');
         qrString = qrString.substring(index + 3, lastIndex - 1);
-        let qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
+        let qrPrivateString: string = "";
+        if (w.privateKey)
+          qrPrivateString = qrImage.imageSync(w.privateKey, {type: 'svg'});
         index = qrPrivateString.toString().indexOf('d="');
         lastIndex = qrPrivateString.toString().indexOf('/>');
         qrPrivateString = qrPrivateString.substring(index + 3, lastIndex - 1);

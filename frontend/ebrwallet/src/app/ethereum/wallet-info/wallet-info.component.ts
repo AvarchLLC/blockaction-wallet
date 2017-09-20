@@ -152,7 +152,7 @@ export class WalletInfoComponent implements OnInit {
     if (this.wallet) {
       this.walletService
         .getQrCode(this.wallet)
-        .then(qrCode => this.qrSvg = qrCode);
+        .then((qrCode:any) => this.qrSvg = qrCode.qrString);
     }
   }
 

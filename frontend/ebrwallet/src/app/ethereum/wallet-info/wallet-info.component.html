@@ -86,7 +86,10 @@
 
 
     <div class="container">
+        <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
+
         <div class="box bg-white">
+
             <div class="clearfix">
                 <img class="identicon" width="50" height="50" src="{{ blockie }}"/>
                 <span class="h3">Address</span>
@@ -167,7 +170,7 @@
         </div>
         <div class="box bg-white">
             <h3>Transactions</h3>
-            <div class="table-responsive">
+            <div class="table-responsive" *ngIf="total>0">
                 <table class="table ">
                     <thead>
                     <tr>
@@ -207,7 +210,6 @@
                     <tr *ngIf="transactions === null">
                         Loading Transactions...
                     </tr>
-                   f
                     </tbody>
                 </table>
                 <pagination-template #p="paginationApi" [id]="config.id" (pageChange)="config.currentPage = $event">
@@ -235,7 +237,10 @@
                         </ul>
                     </nav>
                 </pagination-template>
-            </div>
+            </div >
+            <span *ngIf="total<=0">
+                    No Transactions
+                </span>
         </div>
 
 
