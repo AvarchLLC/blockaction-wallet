@@ -90,8 +90,6 @@ export class RequestEtherComponent {
     const amount = this.requestEtherForm.value.amount_ether;
     const message = this.requestEtherForm.value.message;
     const str = `Ether request sent to ${email} for ${amount} ether.`;
-    this.ethusd = 0;
-    this.baseValue = "0";
     if (amount > 0)
       this.dataService
         .requestEther(this.etherAddress, email, amount, message)
@@ -99,6 +97,7 @@ export class RequestEtherComponent {
           toastr.success(str, 'Request Ether');
           this.ethusd = 0;
           this.baseValue = "0";
+          this.addressProvided = false;
           this.requestEtherForm.reset();
         })
         .catch(err => toastr.error('Couldn\'t send request at the moment.'));

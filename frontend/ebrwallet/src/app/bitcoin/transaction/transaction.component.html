@@ -76,13 +76,13 @@
                         <div class="form-group mg-top-sm">
             <b>From</b>
             <div class="clearfix">
-                <input type="text" class="form-control" #fromImg value="{{ wallet.address }}" readonly>
+                <input type="text" class="form-control withQr" #fromImg value="{{ wallet.address }}" readonly>
                 <img width="40" height="40" style="border-radius: 20px;"  src="{{ getBlockie(fromImg.value) }}">
 
             </div>
             <b>To</b>
             <div class="clearfix {{ sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-error' : ''}} {{ !sendBitcoin.errors?.invalidAddress && sendBitcoin.get('receiveAddress').touched ? 'has-success' : ''}}">
-                <input class="form-control" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" />
+                <input class="form-control withQr" formControlName="receiveAddress" type="text" placeholder="Send to Address..." required="required" />
                 <img *ngIf="isValidAddress(sendBitcoin.controls.receiveAddress.value)" width="40" height="40" style="border-radius: 20px;"
                      src="{{ getBlockie(sendBitcoin.get('receiveAddress').value) }}">            </div>
         </div>

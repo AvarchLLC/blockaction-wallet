@@ -85,6 +85,7 @@ export class RequestBitcoinComponent {
         .then(ok => {
           toastr.success(str, 'Request Bitcion');
           this.btcusd = 0;
+          this.addressProvided = false;
           this.sendBitcoin.controls.amount_bitcoin.patchValue(0);
           this.sendBitcoin.reset();
         })
