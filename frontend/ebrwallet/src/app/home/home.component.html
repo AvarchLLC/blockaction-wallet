@@ -49,7 +49,7 @@ Today, many people are purchasing digital asset considering it as an investment 
             <a style="margin-right:40px;" [routerLink]="['/bitcoin/wallet']"><img
                 src="/assets/img/bitcoin.png" height="100px;"></a>
             <a [routerLink]="['/ethereum/wallet']">
-            <img src="/assets/img/ethereum.png" height="100px" />
+                <img src="/assets/img/ethereum.png" height="100px"/>
             </a>
         </div>
     </div>
@@ -107,22 +107,22 @@ Today, many people are purchasing digital asset considering it as an investment 
 
 <div class="empty-section bg-vl-gray ptn align-center">
     <div class="container">
-                <h2>How BlockAction Works?</h2>
-                <p class="lead">BlockAction is the most secured and easy to use interface to create wallet and perform
-                    transactions on blockchain. Our mission is to simplify the process to make it usable by mainstream
-                    users.
-                </p>
-                <img src="/assets/img/howItworks.png" style="margin-bottom:60px; max-width: 100%;"/>
-            </div>
-        </div>
+        <h2>How BlockAction Works?</h2>
+        <p class="lead">BlockAction is the most secured and easy to use interface to create wallet and perform
+            transactions on blockchain. Our mission is to simplify the process to make it usable by mainstream
+            users.
+        </p>
+        <img src="/assets/img/howItworks.png" style="margin-bottom:60px; max-width: 100%;"/>
+    </div>
+</div>
 
 <!--++++++++++++++++++++++++++++++++++++++++We provide section++++++++++++++++++++-->
 <div class="bg-teal align-center ptn" id="howitworks" style="display: none;">
     <div class="container">
-            <h1>How it works</h1>
-            <p>We provide offline wallet creation facility which ensures complete safety of your wallet.</p>
-        </div>
+        <h1>How it works</h1>
+        <p>We provide offline wallet creation facility which ensures complete safety of your wallet.</p>
     </div>
+</div>
 
 
 <!--+++++++++++++++++++++++++++++++++++++++empty section++++++++++++++++++++-->
@@ -135,13 +135,14 @@ Today, many people are purchasing digital asset considering it as an investment 
 
 <section class="pd-all-md" style="background:#fff; border-top:1px solid #ccc; text-align: center;">
 
-<h3>Our Partners</h3>
-<div style="display: inline-block; margin-top: 40px;">
-<img src="assets/img/site-logo.png" style="max-height:100px; margin-right:40px;">
-<img src="assets/img/bitsbeat.png" style="max-height:100px;  margin-right:40px;">
-</div>
+    <h3>Our Partners</h3>
+    <div style="display: inline-block; margin-top: 40px;">
+        <a href="http://etherworld.co/" target="_blank"><img src="assets/img/site-logo.png"
+                                                             style="max-height:100px; margin-right:40px;"></a>
+        <a href="https://www.bitsbeat.com" target="_blank">
+            <img src="assets/img/bitsbeat.png" style="max-height:100px;  margin-right:40px;"></a>
+    </div>
 </section>
-
 
 
 <!--+++++++++++++++++++++++++++++++++++++++links section++++++++++++++++++++-->
@@ -193,8 +194,10 @@ Today, many people are purchasing digital asset considering it as an investment 
 
             <div class="social-btns">
                 <ul>
-                    <li><a href="https://www.facebook.com/Block-Action-147676865835957" target="_blank"><span class="icon-facebook"></span></a></li>
-                    <li><a href="https://twitter.com/blockaction_io" target="_blank"><span class="icon-twitter"></span></a></li>
+                    <li><a href="https://www.facebook.com/Block-Action-147676865835957" target="_blank"><span
+                        class="icon-facebook"></span></a></li>
+                    <li><a href="https://twitter.com/blockaction_io" target="_blank"><span class="icon-twitter"></span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -327,16 +330,16 @@ Today, many people are purchasing digital asset considering it as an investment 
                     </accordion-group>
                 </accordion>
 
-<div style="text-align: center;">
-                <h4>Want to start now? Select the currency</h4>
-                <div class="row">
-                <div class="col-sm-6"><p><b>Bitcoin</b></p>
-                 <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create BTC Wallet. </a>
-                </div>
-                <div class="col-sm-6"></div>
-                <p><b>Ether</b></p>
-<a routerLink="/ethereum/wallet" title="Create Ether Wallet">Create ETH Wallet. </a>
-                </div>
+                <div style="text-align: center;">
+                    <h4>Want to start now? Select the currency</h4>
+                    <div class="row">
+                        <div class="col-sm-6"><p><b>Bitcoin</b></p>
+                            <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create BTC Wallet. </a>
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <p><b>Ether</b></p>
+                        <a routerLink="/ethereum/wallet" title="Create Ether Wallet">Create ETH Wallet. </a>
+                    </div>
                 </div>
 
 
@@ -412,29 +415,29 @@ Today, many people are purchasing digital asset considering it as an investment 
 
             <div class="modal-body accordion">
 
-            <h4>Bitcoin</h4>
+                <h4>Bitcoin</h4>
                 <accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
                     <accordion-group>
                         <accordion-heading>
                             <accordion-toggle>Create Wallet</accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                          <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create Bitcoin Wallet. </a>
-                          <br/>
-                          <br/>
+                            <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create Bitcoin Wallet. </a>
+                            <br/>
+                            <br/>
                             <img src="assets/img/createBitcoin.png"/>
                         </div>
                     </accordion-group>
                     <accordion-group>
                         <accordion-heading>
-                        <accordion-toggle>View wallet and transactions
-                        </accordion-toggle>
+                            <accordion-toggle>View wallet and transactions
+                            </accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                        <a routerLink="/bitcoin/info" title="View Bitcoin Wallet">View Bitcoin Wallet. </a>
-                          <br/>
-                          <br/>
-                           <img src="assets/img/viewBitcoin.png"/>
+                            <a routerLink="/bitcoin/info" title="View Bitcoin Wallet">View Bitcoin Wallet. </a>
+                            <br/>
+                            <br/>
+                            <img src="assets/img/viewBitcoin.png"/>
                         </div>
                     </accordion-group>
 
@@ -445,9 +448,9 @@ Today, many people are purchasing digital asset considering it as an investment 
                         </accordion-heading>
                         <div class="detail dropcap">
 
-                             <a routerLink="/bitcoin.send" title="Send Bitcoin Wallet">Send Bitcoin Wallet.</a>
+                            <a routerLink="/bitcoin.send" title="Send Bitcoin Wallet">Send Bitcoin Wallet.</a>
 
-                           <img src="assets/img/sendBitcoin.png"/>
+                            <img src="assets/img/sendBitcoin.png"/>
 
 
                         </div>
@@ -460,28 +463,28 @@ Today, many people are purchasing digital asset considering it as an investment 
                         </accordion-heading>
                         <div class="detail dropcap">
 
-                             <a routerLink="/bitcoin/request" title="Request Bitcoin Wallet">Send Bitcoin Wallet.</a>
+                            <a routerLink="/bitcoin/request" title="Request Bitcoin Wallet">Send Bitcoin Wallet.</a>
 
-                           <img src="assets/img/requestBitcoin.png"/>
+                            <img src="assets/img/requestBitcoin.png"/>
 
                         </div>
                     </accordion-group>
                 </accordion>
 
-<br/>
-<br/>
-<h4>Ethereum</h4>
+                <br/>
+                <br/>
+                <h4>Ethereum</h4>
 
 
-<accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
+                <accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
                     <accordion-group>
                         <accordion-heading>
                             <accordion-toggle>Create Wallet</accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                          <a routerLink="/Ethereum/wallet" title="Create Ethereum Wallet">Create Ethereum Wallet. </a>
-                          <br/>
-                          <br/>
+                            <a routerLink="/Ethereum/wallet" title="Create Ethereum Wallet">Create Ethereum Wallet. </a>
+                            <br/>
+                            <br/>
                             <img src="assets/img/createEth.png"/>
                         </div>
                     </accordion-group>
@@ -490,10 +493,10 @@ Today, many people are purchasing digital asset considering it as an investment 
                             <accordion-toggle>View wallet and transactions</accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                        <a routerLink="/Ethereum/info" title="View Ethereum Wallet">View Ethereum Wallet. </a>
-                          <br/>
-                          <br/>
-                           <img src="assets/img/viewEth.png"/>
+                            <a routerLink="/Ethereum/info" title="View Ethereum Wallet">View Ethereum Wallet. </a>
+                            <br/>
+                            <br/>
+                            <img src="assets/img/viewEth.png"/>
                         </div>
                     </accordion-group>
 
@@ -503,9 +506,9 @@ Today, many people are purchasing digital asset considering it as an investment 
                         </accordion-heading>
                         <div class="detail dropcap">
 
-                             <a routerLink="/Ethereum.send" title="Send Ethereum Wallet">Send Ethereum Wallet.</a>
+                            <a routerLink="/Ethereum.send" title="Send Ethereum Wallet">Send Ethereum Wallet.</a>
 
-                           <img src="assets/img/sendEth.png"/>
+                            <img src="assets/img/sendEth.png"/>
 
 
                         </div>
@@ -513,19 +516,19 @@ Today, many people are purchasing digital asset considering it as an investment 
 
                     <accordion-group>
                         <accordion-heading>
-                            <accordion-toggle>Request another address (user) via email to transfer BTC to your address.</accordion-toggle>
+                            <accordion-toggle>Request another address (user) via email to transfer BTC to your
+                                address.
+                            </accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
 
-                             <a routerLink="/Ethereum/request" title="Request Ethereum Wallet">Send Ethereum Wallet.</a>
+                            <a routerLink="/Ethereum/request" title="Request Ethereum Wallet">Send Ethereum Wallet.</a>
 
-                           <img src="assets/img/requestEth.png"/>
+                            <img src="assets/img/requestEth.png"/>
 
                         </div>
                     </accordion-group>
                 </accordion>
-
-
 
 
                 <p>If you have any further question, please reach us at
