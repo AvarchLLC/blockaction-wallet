@@ -29,6 +29,7 @@ export class WalletComponent implements OnInit {
 
   qrSvg: string;   // QrCode SVG string
   qrClass = '';
+  qrPrivateClass:String='';
   qrPrivate: string = '';
   btcusd: number;
 
@@ -91,7 +92,15 @@ export class WalletComponent implements OnInit {
       ? this.qrClass = 'showQr'
       : this.qrClass = '';
   }
+  // Toggle the css class for private key qr image
+  qrPrivateToggle() {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Show Qr');
 
+    this.qrPrivateClass === ''
+      ? this.qrPrivateClass = 'showQr'
+      : this.qrPrivateClass = '';
+  }
   // Set the privacy message shown flag
   isReady() {
     this.ready = true;

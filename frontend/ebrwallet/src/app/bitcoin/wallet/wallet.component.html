@@ -70,7 +70,7 @@
                         <b>Private Key (WIF)</b>
                         <div class="clearfix">
                         <input type="text" class="form-control withQr" value="{{ wallet.privateKey }}" readonly>
-                        <span class="{{ qrClass }}" (click)="qrToggle()">
+                        <span class="{{ qrPrivateClass }}" (click)="qrPrivateToggle()">
                                 <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
                                     <path [attr.d]="qrPrivate"></path>
                                 </svg>

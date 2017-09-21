@@ -37,7 +37,7 @@ export class WalletComponent implements OnInit {
   qrSvg: string;   // QrCode SVG string
   qrPrivate: string;
   qrClass = '';
-
+  qrPrivateClass: string = '';
   disabled = false; // disable "create wallet" button
   passphraseType = 'password';
   passphraseButton = 'Show Passphrase';
@@ -131,6 +131,16 @@ export class WalletComponent implements OnInit {
           this.qrPrivate = qrCode.qrPrivateString;
         });
     }
+  }
+
+  // Toggle the css class for private key qr image
+  qrPrivateToggle() {
+    this.googleAnalyticsService
+      .emitEvent('Post Wallet Creation', 'Show Qr');
+
+    this.qrPrivateClass === ''
+      ? this.qrPrivateClass = 'showQr'
+      : this.qrPrivateClass = '';
   }
 
   qrToggle() {
