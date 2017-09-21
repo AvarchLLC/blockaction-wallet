@@ -4,13 +4,13 @@
         <img src="../../assets/img/key-icon.svg" alt="key">
         <div class="pop-alert">
             <h1 class="color-black"><b>We don't store your keys</b></h1>
-            <p p-font-size>We believe in user privacy and we regard ourself as <span class="color-blue">Trusted</span> place to make transactions. </p>
-            <button (click)="isReady()" type="button" name="ok_go_it" class="btn  btn-primary"> <b>Ok, Got it</b></button>
+            <p p-font-size>We believe in user privacy and we regard ourself as <span class="color-blue">Trusted</span>
+                place to make transactions. </p>
+            <button (click)="isReady()" type="button" name="ok_go_it" class="btn  btn-primary"><b>Ok, Got it</b>
+            </button>
         </div>
     </div>
 </div>
-
-
 
 
 <!-- Wallet Creation Page -->
@@ -18,39 +18,40 @@
     <div class="container-md" [class.slide]="this.wallet">
 
 
-        <nav class="affix clearfix" >
+        <nav class="affix clearfix">
             <ul class="nav">
                 <li>
-                    <a   class="active" [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
+                    <a class="active" [routerLink]="['/ethereum/wallet']"><span>Create Wallet</span></a>
                 </li>
 
                 <li>
-                    <a  [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
+                    <a [routerLink]="['/ethereum/info']"><span>View Wallet</span></a>
                 </li>
 
                 <li>
-                    <a  [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
+                    <a [routerLink]="['/ethereum/send']"><span>Send Ether</span></a>
                 </li>
 
                 <li>
-                    <a  [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
+                    <a [routerLink]="['/ethereum/request']"><span>Request Ether</span></a>
                 </li>
             </ul>
         </nav>
         <div class="container" *ngIf="walletCreated">
 
-        <div class="alert alert-success">
-Your Wallet has been created.</div>
-<div class="alert alert-danger">Please download the wallet before printing as it is mandatory and could not be recovered later once you leave this page.
-</div>
+            <div class="alert alert-warning">Please download the wallet before printing as it is mandatory and could not
+                be recovered later once you leave this page.
+            </div>
         </div>
         <div class="block block-center align-center bg-vl-gray" *ngIf="!wallet">
-            <img src="../../assets/img/ethereum.png" style="max-width:50px;" />
+            <img src="../../assets/img/ethereum.png" style="max-width:50px;"/>
             <h2> Create wallet </h2>
 
             <form id="walletform" [formGroup]="walletForm" (ngSubmit)="create()">
                 <div class="form-group">
-                    <input type="{{ passphraseType }}" id="password" class="form-control input-lg" [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar" formControlName="password" placeholder="Enter Password"
+                    <input type="{{ passphraseType }}" id="password" class="form-control input-lg"
+                           [class.has-error]="passwordCheck(walletForm.controls.password.value).invalidChar"
+                           formControlName="password" placeholder="Enter Password"
                     />
                     <div class="text-right">
                         <a class="btn-link" (click)="passphraseToggle()">{{ passphraseButton }}</a>
@@ -58,24 +59,37 @@ Your Wallet has been created.</div>
                 </div>
                 <div class="list-left" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
                     <ul>
-                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One lowercase character</li>
-                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One uppercase character</li>
-                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One number</li>
+                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLowercase">One
+                            lowercase character
+                        </li>
+                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordUppercase">One
+                            uppercase character
+                        </li>
+                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordNumber">One
+                            number
+                        </li>
                     </ul>
                 </div>
                 <div class="list-right" *ngIf="!passwordCheck(walletForm.controls.password.value).all">
                     <ul>
-                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">One special character</li>
-                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20 characters</li>
+                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordSpecialchar">
+                            One special character
+                        </li>
+                        <li [class.text-muted]="passwordCheck(walletForm.controls.password.value).passwordLength">8 - 20
+                            characters
+                        </li>
                     </ul>
                 </div>
-                <div class="alert alert-success"*ngIf="passwordCheck(walletForm.controls.password.value).all">
+                <div class="alert alert-success" *ngIf="passwordCheck(walletForm.controls.password.value).all">
                     Strong Password. Please save the password as it can never be retrieved if lost.
                 </div>
                 <div class="buttonWithLoader">
-                    <button type="submit" id="createButton" [disabled]="isDisabled" class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet</button>
+                    <button type="submit" id="createButton" [disabled]="isDisabled"
+                            class="btn btn-primary btn-block btn-lg" (click)="create()">Create Wallet
+                    </button>
                 </div>
-                <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your keys. You will
+                <p class="text-sm">This password encrypts your private key. This does not act as a seed to generate your
+                    keys. You will
                     need this password + your private key to unlock your wallet.
                 </p>
 
@@ -90,7 +104,8 @@ Your Wallet has been created.</div>
                     <div class="form-group mg-top-sm">
                         <b>Address</b>
                         <div class="clearfix">
-                            <input type="text" class="form-control withQr" value="{{ toChecksum(wallet.address) }}" readonly>
+                            <input type="text" class="form-control withQr" value="{{ toChecksum(wallet.address) }}"
+                                   readonly>
 
                             <span class="{{ qrClass }}" (click)="qrToggle()">
                                 <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
@@ -101,7 +116,7 @@ Your Wallet has been created.</div>
                     </div>
                     <div class="form-group">
                         <b>Private Key</b>
-                        <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
+                        <input type="text" class="form-control withQr" value="{{ wallet.privateKey }}" readonly>
                         <span class="{{ qrClass }}" (click)="qrToggle()">
                                 <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
                                     <path [attr.d]="qrPrivate"></path>
@@ -110,7 +125,9 @@ Your Wallet has been created.</div>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" (click)="saveWalletToFile()">Download Wallet</button>
-                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()" [disabled]="!walletDownload">Print Wallet</button>
+                        <button class="btn btn-primary btn-lg" (click)="printPaperWallets()"
+                                [disabled]="!walletDownload">Print Wallet
+                        </button>
                         <!--<button class="btn btn-link btn-lg" (click)="toggleModal()">Request Ether</button>-->
                         <button class="hide" (click)="deleteWallet()">Delete Wallet</button>
                     </div>

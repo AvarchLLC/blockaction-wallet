@@ -78,8 +78,9 @@ export class ConverterBoxComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.baseValue == "0")
+    if (this.bid == "0")
       this.quoteValue = "0";
+    this.baseValue = "0 "
   }
 
   // Emits converted data to the parent component
