@@ -162,9 +162,10 @@ export class BitcoinWalletService {
         <body>
           <div class="containers">
             <div class="codes" style="position: relative;">
-            <div class="head-logo">
-              <div class="bg-img">
-                  <img src="/assets/img/bitcon.png" style="max-width:70px;" alt="">
+            <div class="">
+              <div>
+                  <img src="../../assets/img/bitcoin.png" style="max-width:70px; margin-right:40px; float: left;" alt="">
+                  <h1>Digital Wallet</h1>
               </div>
             </div>
             <div class="qrImages">
