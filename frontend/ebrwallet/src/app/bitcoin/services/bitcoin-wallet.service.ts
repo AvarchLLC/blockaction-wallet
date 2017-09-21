@@ -98,24 +98,22 @@ export class BitcoinWalletService {
         <head>
           <link rel="stylesheet" href="/assets/css/style.css">
           <style>
+          body { background: none; }
             .containers {
-              display: flex;
-              flex: 1;
-              margin: 0;
-              flex-direction: column;
+
             }
 
+.text-center { text-align: center; }
+.text-right { text-align:right; }
             .codes {
-              height: 600px;
-              border: 1px solid #555;
-              align-content: flex-start;
-              display: flex;
-              flex-direction:column;
+              width: 600px; margin:0 auto; padding:40px;
+              border: 2px solid teal; box-shadow: 0 0 0 4px #fff, 0 0 0 6px teal;
               margin: 0 auto;
 
             }
-            .head-logo{ background: #1ed6e5; color:#fff; text-align: center; padding:30px;}
-            .head-logo img{width: 250px; height: 60px;}
+            .col-md-3 { float: left; /*width: 33%;*/ }
+            .col-md-6 { float: left; width: 66%; }
+
             .Qr-width{width: 250px;}
             .Qr-width h3{margin:5px;}
             .pad-left{padding-left:20px;}
@@ -141,35 +139,33 @@ export class BitcoinWalletService {
             }
             .print-address-container {
               font-size: 17px;
-              color:#fff;
-              background: #1ed6e5;
               justify-content: center;
               align-items: center;
             }
             .head-logo {
-              display: flex; flex-direction: column; 
-              flex:1; 
-              flex-grow: row wrap; 
+              display: flex; flex-direction: column;
+              flex:1;
+              flex-grow: row wrap;
               align-content: center;
-              justify-content: center; 
+              justify-content: center;
               color: #fff;
             }
             .head-logo a{ padding:3px 0; margin-top: 10px; font-size:17px;color: #fff; text-decoration:none; }
-            
-            @media print{              
+
+            @media print{
               .head-logo a{color: #000;}
+
             }
           </style>
         </head>
 
         <body>
           <div class="containers">
-            <div class="codes">
+            <div class="codes" style="position: relative;">
             <div class="head-logo">
               <div class="bg-img">
-                  <img src="/assets/img/logo.svg" alt="">
+                  <img src="/assets/img/bitcon.png" style="max-width:70px;" alt="">
               </div>
-              <a href="">www.blockaction.io</a>
             </div>
             <div class="qrImages">
               <div id="paperwalletprivqr" class="Qr-width flex-dr">
