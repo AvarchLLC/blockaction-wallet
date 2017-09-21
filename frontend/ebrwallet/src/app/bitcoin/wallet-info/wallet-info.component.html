@@ -61,7 +61,9 @@
         </ul>
     </nav>
     <div class="container">
-        <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 50px;"/>
+    <div style="text-align: center;">
+        <img src="assets/img/bitcoin.png" alt="bitcoin" style="max-width: 90px; margin-bottom:40px;"/>
+        </div>
         <div class="box-shadow bg-white">
 
             <div class="clearfix">
@@ -69,11 +71,14 @@
 
                 <span class="h3">Address</span>
                 <span class="text-lg">{{ wallet.address }}</span>
-                <button style="margin-left:50px;" class="btn btn-primary btn-lg" (click)="viewAnother()">
-                    View Another Wallet
-                </button>
+
             </div>
         </div>
+
+        <div style="padding:20px 0; text-align: right;">   <button style="margin-left:50px;" class="btn btn-primary btn-lg" (click)="viewAnother()">
+                    View Another Wallet
+                </button>
+                </div>
         <div class="box-shadow bg-white">
             <h3>Overview</h3>
             <div class="row">

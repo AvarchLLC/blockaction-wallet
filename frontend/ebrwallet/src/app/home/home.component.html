@@ -112,7 +112,7 @@ Today, many people are purchasing digital asset considering it as an investment 
                     transactions on blockchain. Our mission is to simplify the process to make it usable by mainstream
                     users.
                 </p>
-                <img src="/assets/img/howItworks.png" style="margin-bottom:60px;"/>
+                <img src="/assets/img/howItworks.png" style="margin-bottom:60px; max-width: 100%;"/>
             </div>
         </div>
 
@@ -121,9 +121,6 @@ Today, many people are purchasing digital asset considering it as an investment 
     <div class="container">
             <h1>How it works</h1>
             <p>We provide offline wallet creation facility which ensures complete safety of your wallet.</p>
-
-
-            <img src="/assets/img/create.gif" alt="video image" class="img-responsive">
         </div>
     </div>
 
@@ -184,8 +181,8 @@ Today, many people are purchasing digital asset considering it as an investment 
 
             <div class="social-btns">
                 <ul>
-                    <li><a href=""><span class="icon-facebook"></span></a></li>
-                    <li><a href=""><span class="icon-twitter"></span></a></li>
+                    <li><a href="https://www.facebook.com/Block-Action-147676865835957" target="_blank"><span class="icon-facebook"></span></a></li>
+                    <li><a href="https://twitter.com/blockaction_io" target="_blank"><span class="icon-twitter"></span></a></li>
                 </ul>
             </div>
         </div>
@@ -233,7 +230,7 @@ Today, many people are purchasing digital asset considering it as an investment 
 
             <div class="modal-body accordion">
                 <accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
-                    <accordion-group heading="" [isOpened]="true">
+                    <accordion-group [isOpened]="true">
                         <accordion-heading>
                             <accordion-toggle>What is Blockchain Technology?</accordion-toggle>
                         </accordion-heading>
@@ -254,7 +251,7 @@ Today, many people are purchasing digital asset considering it as an investment 
                             </p>
                         </div>
                     </accordion-group>
-                    <accordion-group heading="">
+                    <accordion-group>
                         <accordion-heading>
                             <accordion-toggle>What is Bitcoin?</accordion-toggle>
                         </accordion-heading>
@@ -273,7 +270,7 @@ Today, many people are purchasing digital asset considering it as an investment 
                             </p>
                         </div>
                     </accordion-group>
-                    <accordion-group heading="">
+                    <accordion-group>
                         <accordion-heading>
                             <accordion-toggle>What is Ethereum?</accordion-toggle>
                         </accordion-heading>
@@ -300,7 +297,7 @@ Today, many people are purchasing digital asset considering it as an investment 
                             </p>
                         </div>
                     </accordion-group>
-                    <accordion-group heading="">
+                    <accordion-group>
                         <accordion-heading>
                             <accordion-toggle>What is Digital Currency Wallet?</accordion-toggle>
                         </accordion-heading>
@@ -317,6 +314,19 @@ Today, many people are purchasing digital asset considering it as an investment 
                         </div>
                     </accordion-group>
                 </accordion>
+
+<div style="text-align: center;">
+                <h4>Want to start now? Select the currency</h4>
+                <div class="row">
+                <div class="col-sm-6"><p><b>Bitcoin</b></p>
+                 <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create BTC Wallet. </a>
+                </div>
+                <div class="col-sm-6"></div>
+                <p><b>Ether</b></p>
+<a routerLink="/ethereum/wallet" title="Create Ether Wallet">Create ETH Wallet. </a>
+                </div>
+                </div>
+
 
                 <ul class="list-group">
 
@@ -389,122 +399,124 @@ Today, many people are purchasing digital asset considering it as an investment 
             </div>
 
             <div class="modal-body accordion">
+
+            <h4>Bitcoin</h4>
                 <accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
-                    <accordion-group heading="" [isOpened]="true">
+                    <accordion-group>
                         <accordion-heading>
-                            <accordion-toggle>1. I am new, what do I do?</accordion-toggle>
+                            <accordion-toggle>Create Wallet</accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                            <p>BlockAction.io provides you the facility to generate your own cryptocurrency wallet and
-                                proceed with your secured blockchain transactions so that you can store your ETH and BTC
-                                yourself and not on an exchange. This process happens entirely on your computer, not our
-                                servers. We are a client-side interface that allows you to interact with the Ethereum
-                                blockchain. We never save, store any sensitive information ever.
-                                <strong>Therefore, when you generate a new wallet, you are responsible for safely
-                                    backing
-                                    it up.
-                                </strong>
-                            </p>
+                          <a routerLink="/bitcoin/wallet" title="Create Bitcoin Wallet">Create Bitcoin Wallet. </a>
+                          <br/>
+                          <br/>
+                            <img src="assets/img/createBitcoin.png"/>
                         </div>
                     </accordion-group>
-                    <accordion-group heading="">
+                    <accordion-group>
                         <accordion-heading>
-                            <accordion-toggle>How to create a new wallet?</accordion-toggle>
+                        <accordion-toggle>View wallet and transactions
+                        </accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                            <li>
-                                <a routerLink="/help" title="Create Bitcoin Wallet">Create Bitcoin Wallet. </a>
-                            </li>
-                            <li>
-                                <a routerLink="/help" title="Create Ether Wallet">Create Ether Wallet </a>
-                            </li>
-                        </div>
-                    </accordion-group>
-                    <accordion-group heading="">
-                        <accordion-heading>
-                            <accordion-toggle>How to save / back up the wallet?</accordion-toggle>
-                        </accordion-heading>
-                        <div class="detail dropcap">
-                            <span>
-                                To save an Ether Wallet -
-                            </span>
-                            <ol>
-                                <li>Click ‘Download Wallet’ to download your Keystore / UTC file. Save this file to a
-                                    USB drive along with the password used to generate the wallet. Keystore / UTC file
-                                    is the encrypted version of your private key and you need the password to access
-                                    your wallet
-                                </li>
-                                <li> You can ‘Print Wallet’ to save wallet’s address and Private Key as pdf or make hard
-                                    copy of it. Keeping the Private Key on a desktop could risk security issue to your
-                                    wallet, so keeping it offline is advisable.
-                                </li>
-                                <li>To save a Bitcoin Wallet - You can ‘Print Wallet’ to save wallet’s address and
-                                    Private Key as pdf or make hard copy of it. Keeping the Private Key on a desktop
-                                    could risk security issue to your wallet, so keeping it offline is advisable.
-                                </li>
-                            </ol>
-                        </div>
-                    </accordion-group>
-                    <accordion-group heading="">
-                        <accordion-heading>
-                            <accordion-toggle>How to verify that you have access to this new wallet?</accordion-toggle>
-                        </accordion-heading>
-                        <div class="detail dropcap">
-                            <li>
-                                <a routerLink="/help" title="View Bitcoin Wallet">View Bitcoin Wallet.</a>
-                            </li>
-
-                            <li>
-                                <a routerLink="/help" title="View Ether Wallet">View Ether Wallet.</a>
-                            </li>
-                        </div>
-                    </accordion-group>
-                    <accordion-group heading="">
-                        <accordion-heading>
-                            <accordion-toggle>Transfer small amount of BTC / ETH to this new wallet.</accordion-toggle>
-                        </accordion-heading>
-                        <div class="detail dropcap">
-                            <li>Send a small amount of Bitcoin or Ether (0.00001) from your previous wallet or exchange
-                                to your new wallet. Unlock your new wallet from the Keystore / UTC file on your USB
-                                drive or via the private key that you printed out.
-                            </li>
-
-                            <li>
-                                Send a small amount of BTC or ETH (0.00001) from this new wallet to another address.
-                                Perhaps our donation address (Link to donation)? We offer free services. There are no
-                                fees, no ads, no tracking, no cookies, no selling your data.
-
-                            </li>
+                        <a routerLink="/bitcoin/info" title="View Bitcoin Wallet">View Bitcoin Wallet. </a>
+                          <br/>
+                          <br/>
+                           <img src="assets/img/viewBitcoin.png"/>
                         </div>
                     </accordion-group>
 
-                    <accordion-group heading="">
+                    <accordion-group>
                         <accordion-heading>
-                            <accordion-toggle>Transfer small amount of BTC / ETH to this new wallet.</accordion-toggle>
+                            <accordion-toggle>Send BTC to another address
+                            </accordion-toggle>
                         </accordion-heading>
                         <div class="detail dropcap">
-                            <p>Here is a list of reputable services that you can use to buy and sell BTC or ETH. There
-                                are many more out there, please do your due diligence before proceeding with any
-                                exchange.
-                                Not all exchanges support all coin types and fiat types, so take a look around to find
-                                one that fits your location and circumstances.
-                            </p>
-                            <ol>
-                                <li>
-                                    Bitfinex (https://www.bitfinex.com)
-                                </li>
-                                <li> Bittrex (https://bittrex.com/Home/Markets)</li>
-                                <li> Coinbase ( https://www.coinbase.com)</li>
-                                <li> Gemini (https://gemini24.zendesk.com/hc/en-us)</li>
-                                <li> Kraken ( https://support.kraken.com/hc/en-us)</li>
-                                <li> Poloniex ( https://poloniex.com/support/)
 
-                                </li>
-                            </ol>
+                             <a routerLink="/bitcoin.send" title="Send Bitcoin Wallet">Send Bitcoin Wallet.</a>
+
+                           <img src="assets/img/sendBitcoin.png"/>
+
+
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group>
+                        <accordion-heading>
+                            <accordion-toggle>Request another address (user) via email to transfer BTC to your address.
+                            </accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+
+                             <a routerLink="/bitcoin/request" title="Request Bitcoin Wallet">Send Bitcoin Wallet.</a>
+
+                           <img src="assets/img/requestBitcoin.png"/>
+
                         </div>
                     </accordion-group>
                 </accordion>
-                <p>If you have any further question, please feel free to contact us at
+
+<br/>
+<br/>
+<h4>Ethereum</h4>
+
+
+<accordion [showArrows]="true" [closeOthers]="true" [expandAll]="false">
+                    <accordion-group>
+                        <accordion-heading>
+                            <accordion-toggle>Create Wallet</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                          <a routerLink="/Ethereum/wallet" title="Create Ethereum Wallet">Create Ethereum Wallet. </a>
+                          <br/>
+                          <br/>
+                            <img src="assets/img/createEth.png"/>
+                        </div>
+                    </accordion-group>
+                    <accordion-group>
+                        <accordion-heading>
+                            <accordion-toggle>View wallet and transactions</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+                        <a routerLink="/Ethereum/info" title="View Ethereum Wallet">View Ethereum Wallet. </a>
+                          <br/>
+                          <br/>
+                           <img src="assets/img/viewEth.png"/>
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group>
+                        <accordion-heading>
+                            <accordion-toggle>Send BTC to another address</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+
+                             <a routerLink="/Ethereum.send" title="Send Ethereum Wallet">Send Ethereum Wallet.</a>
+
+                           <img src="assets/img/sendEth.png"/>
+
+
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group>
+                        <accordion-heading>
+                            <accordion-toggle>Request another address (user) via email to transfer BTC to your address.</accordion-toggle>
+                        </accordion-heading>
+                        <div class="detail dropcap">
+
+                             <a routerLink="/Ethereum/request" title="Request Ethereum Wallet">Send Ethereum Wallet.</a>
+
+                           <img src="assets/img/requestEth.png"/>
+
+                        </div>
+                    </accordion-group>
+                </accordion>
+
+
+
+
+                <p>If you have any further question, please reach us at
                     <a
                         href="mailto:contact@blockaction.io"
                         title="contact@blockaction.io">contact@blockaction.io.</a>
@@ -524,7 +536,7 @@ Today, many people are purchasing digital asset considering it as an investment 
                       </div>
                     </li>-->
                     <!--<li class="list-group-item">
-                      <h3>What is Bitcoin?</h3>
+                      <h3>What is Ethereum?</h3>
                       <div class="detail dropcap">
                         <p>Bitcoin is the first decentralized digital currency also known as  <a href="etherworld.co/topic/81/a-beginner-s-guide-for-cryptocurrency" target="_blank">cryptocurrency</a>. It was designed by Satoshi Nakamoto (unknown) in 2009. These are digital coins (BTC) that can be sent through internet using peer to peer network, instantly across the globe without any government involvement for negligible fee. It is widely used for micropayments and ecommerce with blockchain as the core technology used.</p>
 
