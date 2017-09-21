@@ -73,7 +73,7 @@
             <p *ngIf="ethusd?.time">** The exchange rate is as of {{ ethusd?.time}}</p>
             <!-- Currency Converter Box End -->
 
-            <textarea placeholder="Please type your message here..." class="form-control"
+            <textarea placeholder="Write your personalized message here" class="form-control"
                       formControlName="message"></textarea>
         </form>
         <button [disabled]="!requestEtherForm.valid" class="btn btn-primary btn-lg" (click)="requestEther()">Request

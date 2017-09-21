@@ -38,9 +38,6 @@
             </ul>
         </nav>
         <div class="container" *ngIf="walletCreated">
-
-        <div class="alert alert-success">
-Your Wallet has been created.</div>
 <div class="alert alert-danger">Please download the wallet before printing as it is mandatory and could not be recovered later once you leave this page.
 </div>
         </div>
@@ -99,9 +96,10 @@ Your Wallet has been created.</div>
                             </span>
                         </div>
                     </div>
+                    <b>Private Key</b>
                     <div class="form-group">
-                        <b>Private Key</b>
-                        <input type="text" class="form-control" value="{{ wallet.privateKey }}" readonly>
+
+                        <input type="text" class="form-control withQr" value="{{ wallet.privateKey }}" readonly>
                         <span class="{{ qrClass }}" (click)="qrToggle()">
                                 <svg class="qr" width="40px" height="40px" viewBox="0 0 40 40">
                                     <path [attr.d]="qrPrivate"></path>

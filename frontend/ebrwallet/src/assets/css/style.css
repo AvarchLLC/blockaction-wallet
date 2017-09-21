@@ -206,8 +206,8 @@ color: #fff;
 footer{
   background:#2a2a2a;
   color: #fff;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .social-btns p{
@@ -745,8 +745,8 @@ font-size: 12px; line-height: 20px;}
 
 .visible { display: block !important; }
 
-.bodyContent { min-height: 100vh; padding-bottom:128px;}
-footer { margin-top:-128px;}
+.bodyContent { min-height: 100vh; padding-bottom:86px;}
+footer { margin-top:-86px;}
 
 .btn-lg, .btn-group-lg > .btn { font-size:14px; }
 
@@ -877,7 +877,7 @@ border-radius:5px;
   }
 
 
-  .ptn { background: url(../img/ptn.png); }
+  .ptn { background: url(../img/ptn.png); background-attachment:fixed;  }
 
 
 
@@ -909,7 +909,8 @@ input::-webkit-contacts-auto-fill-button {
 
 .text-lg { font-size:24px; font-weight: 300; color:#999;; word-break: break-all;}
 
-.box, .box-shadow { box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
+.box, .box-shadow { background:#f0f0f0;
+ box-shadow:  0 0 5px #ddd; padding: 20px 40px; margin-bottom: 20px;}
 
 .qrHolder { display: block; height: 100px; overflow: hidden;}
 
@@ -922,5 +923,9 @@ input::-webkit-contacts-auto-fill-button {
 .withQr {    width: calc(100% - 52px);
     float: left;
     margin-right: 10px;}
+
+.detail img { max-width: 100%; margin-top: 20px; }
+
+.links-footer .form-control { margin-bottom:20px;  }
 
 .bg-img { background: url(../img/ethereum.png) no-repeat left top; background-size: auto 100%; width:100px; height:100px; }
