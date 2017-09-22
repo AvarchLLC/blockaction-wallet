@@ -86,21 +86,22 @@
 
 
     <div class="container">
-    <div style="text-align: center;">
-        <img src="../../assets/img/ethereum.png" style="max-width:50px; margin-bottom: 40px;"/>
-</div>
+        <div style="text-align: center;">
+            <img src="../../assets/img/ethereum.png" style="max-width:50px; margin-bottom: 40px;"/>
+        </div>
         <div class="box bg-white">
 
             <div class="clearfix">
                 <img class="identicon" width="50" height="50" src="{{ blockie }}"/>
                 <span class="h3">Address</span>
                 <span class="text-lg">{{ wallet.address }}</span>
-                <button [disabled]="!isValidAddress(keyInput)" class="btn btn-primary btn-lg" (click)="viewAnother()">
-                    View
-                    Another Wallet
-                </button>
 
             </div>
+        </div>
+        <div style="padding:20px 0; text-align: right;">
+            <button style="margin-left:50px;" class="btn btn-primary btn-lg" (click)="viewAnother()">
+                View Another Wallet
+            </button>
         </div>
 
         <div class="box bg-white">
@@ -238,7 +239,7 @@
                         </ul>
                     </nav>
                 </pagination-template>
-            </div >
+            </div>
             <span *ngIf="total<=0">
                     No Transactions
                 </span>

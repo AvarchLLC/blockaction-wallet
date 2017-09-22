@@ -87,7 +87,7 @@ export class WalletComponent implements OnInit {
       passwordLowercase: /[a-z]/.test(password),
       passwordUppercase: /[A-Z]/.test(password),
       passwordNumber: /[0-9]/.test(password),
-      passwordSpecialchar: /[@#$%^&+-=!*]/.test(password),
+      passwordSpecialchar: /[@#\$%\^&\+\-=\!\*]/.test(password),
       invalidChar: /[^a-zA-Z0-9@#$%^&+-=!*]/.test(password)
     };
 

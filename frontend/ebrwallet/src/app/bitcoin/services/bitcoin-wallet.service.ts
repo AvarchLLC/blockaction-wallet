@@ -192,7 +192,10 @@ export class BitcoinWalletService {
                 <strong>Your Private Key:</strong>
                 <br><span id="paperwalletadd">${w.privateKey}</span>
               </p>
-
+<img src="../../assets/img/iconLogo.png" style="float: left; margin-right:20px;" />
+            <p style="display: inline-block;"><span>Issued by</span>
+              <a href="">www.blockaction.io</a>
+              </p>
             </div>
         </div>
 
