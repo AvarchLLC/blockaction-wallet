@@ -1,6 +1,4 @@
-/**
- * Created by sazack on 7/21/17.
- */
+
 
 const root = require('app-root-path')
 

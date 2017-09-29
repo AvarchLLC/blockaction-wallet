@@ -1,6 +1,4 @@
-/**
- * Created by sazack on 7/23/17.
- */
+
 
 const email = require('../lib/mailer');
 const Collect = require('../lib/collect')
